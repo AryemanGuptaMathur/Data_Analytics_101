@@ -1,0 +1,11 @@
+# Preface {.unnumbered}
+
+This book is about:::
+
+* R programming.
+* RStudio.
+
+
+
+
+
