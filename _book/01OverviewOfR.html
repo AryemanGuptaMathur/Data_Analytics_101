@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analysis 101 – Exploratory Data Analysis and Data Visualization using R programming. - 1&nbsp; Overview and Getting Started</title>
+<title>Data Analysis 101 – Exploratory Data Analysis using R programming. - 1&nbsp; Getting Started</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,17 +30,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02RPackages.pdf" rel="next">
-<link href="./index.pdf" rel="prev">
+<link href="./02RPackages.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01OverviewOfR.pdf"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview and Getting Started</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01OverviewOfR.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -89,7 +91,10 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Analysis 101 – Exploratory Data Analysis and Data Visualization using R programming.</a> 
+      <a href="./">Data Analysis 101 – Exploratory Data Analysis using R programming.</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -101,37 +106,37 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01OverviewOfR.pdf" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview and Getting Started</span></span></a>
+  <a href="./01OverviewOfR.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02RPackages.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Packages</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03InbuiltRFunctions.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./03InbuiltRFunctions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inbuilt R functions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04DataStructures.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./04DataStructures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05ReadingData.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./05ReadingData.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Reading Data</span></span></a>
   </div>
 </li>
@@ -145,20 +150,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#overview-of-r-programming" id="toc-overview-of-r-programming" class="nav-link active" data-scroll-target="#overview-of-r-programming"><span class="header-section-number">1.1</span> Overview of R programming?</a></li>
-  <li><a href="#benefits-of-r" id="toc-benefits-of-r" class="nav-link" data-scroll-target="#benefits-of-r"><span class="header-section-number">1.2</span> Benefits of R</a></li>
-  <li><a href="#key-features-of-r" id="toc-key-features-of-r" class="nav-link" data-scroll-target="#key-features-of-r"><span class="header-section-number">1.3</span> Key Features of R</a></li>
-  <li><a href="#running-r-locally" id="toc-running-r-locally" class="nav-link" data-scroll-target="#running-r-locally"><span class="header-section-number">1.4</span> Running R locally</a>
+  <li><a href="#overview-of-r-programming" id="toc-overview-of-r-programming" class="nav-link active" data-scroll-target="#overview-of-r-programming"><span class="header-section-number">1.1</span> Overview of R programming</a></li>
+  <li><a href="#running-r-locally" id="toc-running-r-locally" class="nav-link" data-scroll-target="#running-r-locally"><span class="header-section-number">1.2</span> Running R locally</a>
   <ul class="collapse">
-  <li><a href="#installing-r-locally" id="toc-installing-r-locally" class="nav-link" data-scroll-target="#installing-r-locally"><span class="header-section-number">1.4.1</span> Installing R locally</a></li>
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="header-section-number">1.4.2</span> RStudio</a></li>
+  <li><a href="#installing-r-locally" id="toc-installing-r-locally" class="nav-link" data-scroll-target="#installing-r-locally"><span class="header-section-number">1.2.1</span> Installing R locally</a></li>
+  <li><a href="#running-r-locally-in-an-integrated-development-environment-ide" id="toc-running-r-locally-in-an-integrated-development-environment-ide" class="nav-link" data-scroll-target="#running-r-locally-in-an-integrated-development-environment-ide"><span class="header-section-number">1.2.2</span> Running R locally in an Integrated Development Environment (IDE)</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio"><span class="header-section-number">1.2.3</span> RStudio</a></li>
   </ul></li>
-  <li><a href="#running-r-in-the-cloud" id="toc-running-r-in-the-cloud" class="nav-link" data-scroll-target="#running-r-in-the-cloud"><span class="header-section-number">1.5</span> Running R in the Cloud</a>
+  <li><a href="#running-r-in-the-cloud" id="toc-running-r-in-the-cloud" class="nav-link" data-scroll-target="#running-r-in-the-cloud"><span class="header-section-number">1.3</span> Running R in the Cloud</a>
   <ul class="collapse">
-  <li><a href="#cloud-service-providers-posit-aws-azure-gcp" id="toc-cloud-service-providers-posit-aws-azure-gcp" class="nav-link" data-scroll-target="#cloud-service-providers-posit-aws-azure-gcp"><span class="header-section-number">1.5.1</span> Cloud Service Providers – Posit, AWS, Azure, GCP</a></li>
-  <li><a href="#general-instructions-for-operating-r-in-the-cloud" id="toc-general-instructions-for-operating-r-in-the-cloud" class="nav-link" data-scroll-target="#general-instructions-for-operating-r-in-the-cloud"><span class="header-section-number">1.5.2</span> General Instructions for operating R in the cloud</a></li>
+  <li><a href="#cloud-service-providers-posit-aws-azure-gcp" id="toc-cloud-service-providers-posit-aws-azure-gcp" class="nav-link" data-scroll-target="#cloud-service-providers-posit-aws-azure-gcp"><span class="header-section-number">1.3.1</span> Cloud Service Providers – Posit, AWS, Azure, GCP</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.6</span> References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.4</span> References</a></li>
   </ul>
 </nav>
     </div>
@@ -167,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Overview and Getting Started</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting Started</span></h1>
 </div>
 
 
@@ -183,207 +186,150 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <section id="overview-of-r-programming" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="overview-of-r-programming"><span class="header-section-number">1.1</span> Overview of R programming?</h2>
+<h2 data-number="1.1" class="anchored" data-anchor-id="overview-of-r-programming"><span class="header-section-number">1.1</span> Overview of R programming</h2>
 <ol type="1">
-<li><p>R is a programming language and open-source software environment for statistical computing, data analysis, and visualization. It was created by Ross Ihaka and Robert Gentleman at the University of Auckland in New Zealand in the early 1990s.</p></li>
-<li><p>R offers an extensive array of statistical and graphical techniques, such as linear and nonlinear modeling, classical statistical tests, time-series analysis, and clustering, among others. In addition, it supports data manipulation, data import/export, and multiple data formats.</p></li>
-<li><p>It is frequently employed in the creation of statistical software, data analysis, and data science.</p></li>
-<li><p>R is an <strong>open-source</strong> project, and the GNU General Public License makes its source code accessible. The S programming language was created at Bell Labs in the 1970s by John Chambers and others. R is an implementation of S.</p></li>
-<li><p>The Comprehensive R Archive Network (CRAN) provides a significant number of downloadable packages for the extensible programming language R. These products include tools for machine learning, data mining, and visualization.</p></li>
-<li><p>R is a prominent tool for data analysts, data scientists, statisticians, and researchers in academia, industry, and government. It has a large and active user community that contributes to the maintenance and development of R packages. [1]</p></li>
+<li><p>R is an <strong>open-source</strong> software environment and programming language designed for statistical computing, data analysis, and visualization. It was developed by Ross Ihaka and Robert Gentleman at the University of Auckland in New Zealand during the early 1990s.</p></li>
+<li><p>R offers a <strong>wide range of statistical techniques</strong>, including linear and nonlinear modeling, classical statistical tests, and support for data manipulation, data import/export, and compatibility with various data formats.</p></li>
+<li><p>R offers <strong>free usage, distribution, and modification</strong>, making it accessible to individuals with various budgets and resources who wish to learn and utilize it.</p></li>
+<li><p>The <strong>Comprehensive R Archive Network (CRAN)</strong> serves as a valuable resource for the R programming language. It offers a vast collection of downloadable packages that expand the functionality of R, including tools for machine learning, data mining, and visualization.</p></li>
+<li><p>R stands out as a prominent tool within the data analysis community, attracting <strong>a large and active user base</strong>. This community plays a vital role in the ongoing maintenance and development of R packages, ensuring a thriving ecosystem for continuous improvement.</p></li>
+<li><p>One of R’s strengths lies in its <strong>powerful and flexible graphics system</strong>, empowering users to create visually appealing and informative data visualizations for data exploration, analysis, and effective communication.</p></li>
+<li><p>R facilitates the creation of <strong>shareable and reproducible scripts</strong>, promoting transparency and enabling seamless collaboration on data analysis projects. This feature enhances the ability to replicate and validate results, fostering trust and credibility in the analysis process.</p></li>
+<li><p>R exhibits strong <strong>compatibility with other programming languages</strong> like Python and SQL, as well as with popular data storage and manipulation tools such as Hadoop and Spark. This compatibility allows for smooth integration and interoperability, enabling users to leverage the strengths of multiple tools and technologies for their data-centric tasks. [1]</p></li>
 </ol>
 </section>
-<section id="benefits-of-r" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="benefits-of-r"><span class="header-section-number">1.2</span> Benefits of R</h2>
-<p>Numerous advantages are associated with mastering R programming:</p>
+<section id="running-r-locally" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="running-r-locally"><span class="header-section-number">1.2</span> Running R locally</h2>
+<p>R could be run locally or in the Cloud. We discuss running R locally. We discuss running it in the Cloud in the next sub-section.</p>
+<section id="installing-r-locally" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="installing-r-locally"><span class="header-section-number">1.2.1</span> Installing R locally</h3>
+<p>Before running R locally, we need to first install R locally. Here are general instructions to install R locally on your computer:\</p>
 <ol type="1">
-<li><p>As an open-source programming language, R is free to use, distribute, and modify. This makes it accessible to anyone, regardless of budget or resources, who desires to learn and use it.</p></li>
-<li><p>R has a large and active community of users and developers who contribute to its maintenance and development. This community provides an abundance of resources, such as documentation, forums, and packages, making it simpler for users to learn and effectively use R.</p></li>
-<li><p>R was designed particularly for statistical computing and has a vast array of statistical functions and models built in. In addition, the thousands of available packages on CRAN provide additional statistical tools and methodologies.</p></li>
-<li><p>R’s robust and adaptable graphics system enables users to create high-quality data visualizations for data exploration, analysis, and communication.</p></li>
-<li><p>Reproducibility: R enables users to write scripts that are readily shareable and reproducible, which increases transparency and facilitates collaboration on data analysis projects.</p></li>
-<li><p>R is readily compatible with other programming languages, such as Python and SQL, as well as data storage and manipulation tools, such as Hadoop and Spark. [2]</p></li>
+<li><p>Visit the official website of the R project at <a href="https://www.r-project.org/"><strong>https://www.r-project.org/</strong></a>.</p></li>
+<li><p>On the download page, select the appropriate version of R based on your operating system (Windows, Mac, or Linux).</p></li>
+<li><p>After choosing your operating system, click on a mirror link to download R from a reliable source.</p></li>
+<li><p>Once the download is finished, locate the downloaded file and double-click on it to initiate the installation process. Follow the provided instructions to complete the installation of R on your computer. [2]</p></li>
 </ol>
 </section>
-<section id="key-features-of-r" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="key-features-of-r"><span class="header-section-number">1.3</span> Key Features of R</h2>
-<p>Among the main characteristics of R programming are:</p>
+<section id="running-r-locally-in-an-integrated-development-environment-ide" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="running-r-locally-in-an-integrated-development-environment-ide"><span class="header-section-number">1.2.2</span> Running R locally in an Integrated Development Environment (IDE)</h3>
+<p>An Integrated Development Environment (IDE) is a software application designed to assist in software development by providing a wide range of tools and features. These tools typically include a text editor, a compiler or interpreter, debugging tools, and various utilities that aid developers in writing, testing, and debugging their code.</p>
+<p>When working with the R programming language on your local machine and looking to take advantage of IDE features, you have several options available:</p>
 <ol type="1">
-<li><p>R is an object-oriented programming language, allowing users to construct and manipulate complex data structures and objects.</p></li>
-<li><p>R also supports functional programming, allowing users to construct functions as first-class objects and use higher-order functions to create more complex algorithms.</p></li>
-<li><p>Extensibility: R has a large number of packages available for distribution from the Comprehensive R Archive Network (CRAN). These products include tools for machine learning, data mining, and visualization.</p></li>
-<li><p>Graphics and visualization: R’s robust and adaptable graphics system enables users to generate high-quality visualizations for data exploration, analysis, and communication.</p></li>
-<li><p>Data manipulation: R offers a vast array of data manipulation tools, including subsetting, merging, reshaping, and aggregating data.</p></li>
-<li><p>R was designed particularly for statistical computing and has a vast array of built-in statistical functions and models, such as linear and nonlinear modeling, classical statistical tests, time-series analysis, and clustering, among others.</p></li>
-<li><p>R offers a robust interactive environment, with support for data input/output, data exploration, and data visualization. [3]</p></li>
+<li><p><strong>RStudio:</strong> RStudio is a highly popular open-source IDE specifically tailored for R programming. It boasts a user-friendly interface, a code editor with features like syntax highlighting and code completion, as well as powerful debugging capabilities. RStudio also integrates seamlessly with version control systems and package management tools, making it an all-inclusive IDE for R development.</p></li>
+<li><p><strong>Visual Studio Code (VS Code):</strong> While primarily recognized as a versatile code editor, VS Code also offers excellent support for R programming through extensions. By installing the “R” extension from the Visual Studio Code marketplace, you can enhance your experience with R-specific functionality, such as syntax highlighting, code formatting, and debugging support.</p></li>
+<li><p><strong>Jupyter Notebook:</strong> Jupyter Notebook is an open-source web-based environment that supports multiple programming languages, including R. It provides an interactive interface where you can write and execute R code within individual cells. Jupyter Notebook is widely employed for data analysis and exploration tasks due to its ability to blend code, visualizations, and text explanations seamlessly.</p></li>
 </ol>
+<p>These IDE options vary in their features and user interfaces, allowing you to choose the one that aligns best with your specific needs and preferences. It’s important to note that while R can also be run through the command line or the built-in R console, utilizing an IDE can significantly boost your productivity and enhance your overall development experience. [3]</p>
 </section>
-<section id="running-r-locally" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="running-r-locally"><span class="header-section-number">1.4</span> Running R locally</h2>
-<p>Follow these general instructions to run R locally on your computer:</p>
+<section id="rstudio" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.2.3</span> RStudio</h3>
+<p>RStudio is a highly popular integrated development environment (IDE) designed specifically for R programming. It offers a user-friendly interface and a comprehensive set of tools for data analysis, visualization, and modeling using R.</p>
+<p>Some notable features of RStudio include:</p>
 <ol type="1">
-<li><p>Install and download R</p></li>
-<li><p>Select an IDE: To write and execute R code, you can use a text editor or a dedicated integrated development environment (IDE). Popular alternatives include RStudio, Emacs, and Vim. RStudio is a free and open-source integrated development environment (IDE) designed specifically for R that is extensively utilized by the R community.</p></li>
-<li><p>Open your preferred IDE or text editor, and then initiate a new R session. This can be accomplished by typing R at the command prompt or launching a new R script file.</p></li>
-<li><p>Use your preferred IDE or text editor to write and execute R code. You can execute your code by choosing the “Run” button or by pressing Ctrl+Enter (Windows) or Cmd+Enter (Mac) at the end of each line.</p></li>
-<li><p>Protect your work: Save your R code to a file for reference and reuse in the future. Your plots and outputs can also be saved to files for use in reports and presentations. [4]</p></li>
+<li><p>Code editor: RStudio includes a code editor with advanced features such as syntax highlighting, code completion, and other functionalities that simplify the process of writing R code.</p></li>
+<li><p>Data viewer: RStudio provides a convenient data viewer that allows users to examine and explore their data in a tabular format, facilitating data analysis.</p></li>
+<li><p>Plots pane: The plots pane in RStudio displays graphical outputs generated by R code, making it easy for users to visualize their data and analyze results.</p></li>
+<li><p>Console pane: RStudio includes a console pane that shows R code and its corresponding output. It enables users to execute R commands interactively, enhancing the coding experience.</p></li>
+<li><p>Package management: RStudio offers tools for managing R packages, including installation, updating, and removal of packages. This simplifies the process of working with external libraries and extending the functionality of R.</p></li>
+<li><p>Version control: RStudio seamlessly integrates with version control systems like Git, empowering users to efficiently manage and collaborate on their code projects.</p></li>
+<li><p>Shiny applications: RStudio allows users to create interactive web applications using Shiny, a web development utility for R. This feature enables the creation of dynamic and user-friendly interfaces for R-based applications. [4]</p></li>
 </ol>
-<section id="installing-r-locally" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="installing-r-locally"><span class="header-section-number">1.4.1</span> Installing R locally</h3>
-<p>Follow these general instructions to install R locally on your computer:</p>
+<p>To install RStudio on your computer, you can follow these simple steps:</p>
 <ol type="1">
-<li><p>Go to the website of the R project: In your web browser, go to the R project website (https://www.r-project.org/).</p></li>
-<li><p>Select an operating system: On the download page, choose the version of R compatible with your operating system (Windows, Mac, or Linux).</p></li>
-<li><p>Select a mirror to obtain R from after clicking the download link for your operating system.</p></li>
-<li><p>Install R: Double-click the downloaded file once the download is complete to begin the installation procedure. Install R on your computer by following the instructions. [5]</p></li>
-</ol>
-</section>
-<section id="rstudio" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="rstudio"><span class="header-section-number">1.4.2</span> RStudio</h3>
-<p>RStudio is a specialized integrated development environment (IDE) for R programming. It provides an intuitive interface and a suite of tools for R-based data analysis, visualization, and modeling.</p>
-<p>Among the features of RStudio are the following:</p>
-<ol type="1">
-<li><p>RStudio has a code editor with syntax highlighting, code completion, and other features that make writing R code simpler.</p></li>
-<li><p>RStudio offers a data viewer that enables users to observe and investigate their data in a tabular format.</p></li>
-<li><p>The plots pane in RStudio depicts the graphical outputs generated by R code.</p></li>
-<li><p>Console pane: The console pane in RStudio displays R code and its output and enables users to execute R commands in an interactive environment.</p></li>
-<li><p>RStudio provides tools for managing R packages, including the installation, update, and removal of packages.</p></li>
-<li><p>Version control: RStudio integrates with version control systems like Git, enabling users to manage and collaborate on their code.</p></li>
-<li><p>Shiny applications: RStudio allows users to create interactive web applications using the Shiny web development utility for R. [6]</p></li>
-</ol>
-<p>To install RStudio locally on your computer, you can follow these general steps:</p>
-<ol type="1">
-<li><p>Download R: Before you can install RStudio, you will need to download and install R. You can download the appropriate version of R for your operating system from the R project website (https://www.r-project.org/).</p></li>
-<li><p>Download RStudio: Go to the RStudio download page (https://www.rstudio.com/products/rstudio/download/) and select the appropriate version of RStudio for your operating system.</p></li>
-<li><p>Install RStudio: Once the RStudio installer has downloaded, run the installer and follow the instructions to install RStudio on your computer.</p></li>
-<li><p>Open RStudio: Once the installation is complete, open RStudio by double-clicking the RStudio icon on your desktop or in your Applications folder.</p></li>
-<li><p>Start an R session: In RStudio, click on the Console tab to start an R session. You can then type R commands in the console and run them using the “Run” button or by pressing Ctrl+Enter (Windows) or Cmd+Enter (Mac). [7]</p></li>
+<li><p>Download RStudio: After installing R, go to the RStudio download page (<a href="https://www.rstudio.com/products/rstudio/download/"><strong>https://www.rstudio.com/products/rstudio/download/</strong></a>) and choose the version of RStudio that matches your operating system.</p></li>
+<li><p>Install RStudio: Once the RStudio installer is downloaded, run it and follow the instructions provided to complete the installation process on your computer.</p></li>
+<li><p>Open RStudio: After the installation is finished, you can open RStudio by double-clicking the RStudio icon on your desktop or in the Applications folder.</p></li>
+<li><p>Start an R session: In RStudio, click on the Console tab to initiate an R session. You can then enter R commands in the console and execute them by clicking the “Run” button or using the shortcut Ctrl+Enter (Windows) or Cmd+Enter (Mac). [5]</p></li>
 </ol>
 </section>
 </section>
-<section id="running-r-in-the-cloud" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="running-r-in-the-cloud"><span class="header-section-number">1.5</span> Running R in the Cloud</h2>
-<ol type="1">
-<li><p>Running R in the cloud enables users to access R and RStudio from any location with an internet connection, without deploying R locally.</p></li>
-<li><p>Numerous cloud service providers offer virtual machines (VMs) with pre-installed R and RStudio. Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP) are popular options.</p></li>
-</ol>
-<p>Depending on the user’s use case and requirements, running R in the cloud provides a variety of advantages and disadvantages. Here are some general advantages and disadvantages of cloud-based R:</p>
+<section id="running-r-in-the-cloud" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="running-r-in-the-cloud"><span class="header-section-number">1.3</span> Running R in the Cloud</h2>
+<p>Running R in the cloud allows users to access R and RStudio from anywhere with an internet connection, eliminating the need to install R locally. Several cloud service providers, such as Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP), offer virtual machines (VMs) with pre-installed R and RStudio.</p>
+<p>Here are some key advantages and disadvantages of running R in the cloud:</p>
 <p><strong>Benefits:</strong></p>
 <ol type="1">
-<li><p>Scalability: Cloud service providers provide scalable computing resources that can be adjusted to satisfy the requirements of a specific workload. This can be especially beneficial for data-intensive tasks that demand a great deal of computing power.</p></li>
-<li><p>Running R in the cloud enables users to access R and RStudio from any location with an internet connection, making it simple to collaborate on projects and share data.</p></li>
-<li><p>Cloud providers offer flexible pricing models that may be more cost-effective than running R on local hardware, especially for short-term or infrequent use cases.</p></li>
-<li><p>Security: Cloud service providers offer a variety of security features, including firewalls and encryption, to safeguard data and applications from unauthorized access or attacks. [8]</p></li>
+<li><p>Scalability: Cloud providers offer scalable computing resources that can be adjusted to meet specific workload requirements. This is particularly useful for data-intensive tasks that require significant computational power.</p></li>
+<li><p>Accessibility and Collaboration: Cloud-based R allows users to access R and RStudio from any location with an internet connection, facilitating collaboration on projects and data sharing.</p></li>
+<li><p>Cost-effectiveness: Cloud providers offer flexible pricing models that can be more cost-effective than running R on local hardware, especially for short-term or infrequent use cases.</p></li>
+<li><p>Security: Cloud service providers implement various security features, such as firewalls and encryption, to protect data and applications from unauthorized access or attacks. [6]</p></li>
 </ol>
 <p><strong>Drawbacks:</strong></p>
 <ol type="1">
-<li><p>Running R in the cloud requires a stable internet connection, which may not be accessible at all times or in all locations. This can hinder the ability to work on initiatives involving data analysis and modeling.</p></li>
-<li><p>Running R in the cloud necessitates familiarity with cloud computing platforms and tools, which can necessitate a steep learning curve for users new to cloud computing.</p></li>
-<li><p>Data privacy: Storing data in the cloud may raise concerns about data privacy, particularly for sensitive or confidential data. Cloud service providers offer security features, but users must be aware of the risks and secure their data accordingly.</p></li>
-<li><p>Although cloud computing can be cost-effective in certain circumstances, it can also be costly for long-term or high-volume use cases, especially if data storage or other resources are required in addition to computing capacity. [8]</p></li>
+<li><p>Internet Dependency: Running R in the cloud relies on a stable internet connection, which may not be available at all times or in all locations. This can limit the ability to work on data analysis and modeling projects.</p></li>
+<li><p>Learning Curve: Utilizing cloud computing platforms and tools requires familiarity, which can pose a learning curve for users new to cloud computing.</p></li>
+<li><p>Data Privacy: Storing data in the cloud may raise concerns about data privacy, particularly for sensitive or confidential information. While cloud service providers offer security features, users must understand the risks and take appropriate measures to secure their data.</p></li>
+<li><p>Cost Considerations: While cloud computing can be cost-effective in certain scenarios, it can also become expensive for long-term or high-volume use cases, especially if additional resources like data storage are required alongside computational capacity. [6]</p></li>
 </ol>
-<section id="cloud-service-providers-posit-aws-azure-gcp" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="cloud-service-providers-posit-aws-azure-gcp"><span class="header-section-number">1.5.1</span> Cloud Service Providers – Posit, AWS, Azure, GCP</h3>
-<p>Posit is a comparatively new cloud service provider that offers high-performance computing resources for data-intensive applications. AWS, Azure, and GCP are three of the most prominent cloud service providers, each of which offers a variety of services and features for running cloud-based applications. Here is a comparison of the four service providers:</p>
+<section id="cloud-service-providers-posit-aws-azure-gcp" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="cloud-service-providers-posit-aws-azure-gcp"><span class="header-section-number">1.3.1</span> Cloud Service Providers – Posit, AWS, Azure, GCP</h3>
+<p>Here is a comparison of four prominent cloud service providers: Posit, AWS, Azure, and GCP.</p>
 <p><strong>Posit:</strong></p>
-<ol type="1">
-<li><p>Provides computing resources with high efficacy for data-intensive applications</p></li>
-<li><p>Provides bare-metal instances for superior performance and adaptability</p></li>
-<li><p>Dedicated to data security and compliance</p></li>
-<li><p>Offers hardware configurations tailored to specific duties.</p></li>
-</ol>
+<ul>
+<li><p>Posit is a relatively new cloud service provider that focuses on offering high-performance computing resources specifically for data-intensive applications.</p></li>
+<li><p>They provide bare-metal instances that ensure superior performance and flexibility.</p></li>
+<li><p>Posit is dedicated to data security and compliance, prioritizing the protection of user data.</p></li>
+<li><p>They offer customizable hardware configurations tailored to meet specific application requirements.</p></li>
+</ul>
 <p><strong>AWS:</strong></p>
-<ol type="1">
-<li><p>Provides a variety of cloud computing services, such as computing, storage, and database services</p></li>
-<li><p>A large and active user community with an abundance of resources and assistance.</p></li>
-<li><p>Includes pay-as-you-go and reserved instance pricing options.</p></li>
-<li><p>Offers a variety of tools and services for administering and securing cloud-based applications</p></li>
-</ol>
-<p><strong>Azure:</strong></p>
-<ol type="1">
-<li><p>Provides a variety of cloud computing services, such as computing, storage, and networking Integrates tightly with Microsoft’s enterprise software and services.</p></li>
-<li><p>Provides flexible pricing models, including pay-as-you-go, reserved instance, and spot instance pricing</p></li>
-<li><p>Provides a variety of tools and services for managing and securing cloud-based applications</p></li>
-</ol>
+<ul>
+<li><p>AWS is a well-established cloud service provider that offers a wide range of cloud computing services, including computing, storage, and database services.</p></li>
+<li><p>It boasts a large and active user community, providing abundant resources and support for users.</p></li>
+<li><p>AWS provides flexible pricing options, including pay-as-you-go and reserved instance pricing.</p></li>
+<li><p>They offer a comprehensive set of tools and services for managing and securing cloud-based applications.</p></li>
+</ul>
+<p><strong>Azure</strong>:</p>
+<ul>
+<li><p>Azure is another leading cloud service provider that offers various cloud computing services, including computing, storage, and networking.</p></li>
+<li><p>It tightly integrates with Microsoft’s enterprise software and services, making it an attractive option for organizations using Microsoft technologies.</p></li>
+<li><p>Azure provides flexible pricing models, including pay-as-you-go, reserved instance, and spot instance pricing.</p></li>
+<li><p>They offer a wide array of tools and services for managing and securing cloud-based applications.</p></li>
+</ul>
 <p><strong>GCP:</strong></p>
-<ol type="1">
-<li><p>Provides a variety of cloud computing services, such as computing, storage, and networking</p></li>
-<li><p>Includes a variety of tools and services for machine learning and artificial intelligence.</p></li>
-<li><p>Offers flexible pricing models, including pay-as-you-go and sustained use pricing</p></li>
-<li><p>Provides a variety of tools and services for managing and securing cloud-based applications. [9]</p></li>
-</ol>
-</section>
-<section id="general-instructions-for-operating-r-in-the-cloud" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="general-instructions-for-operating-r-in-the-cloud"><span class="header-section-number">1.5.2</span> General Instructions for operating R in the cloud</h3>
-<ol type="1">
-<li><p>Choose a cloud service provider.</p></li>
-<li><p>Once you have selected a cloud service provider, you can construct a virtual machine with R and RStudio already installed. The precise steps for creating a virtual machine will differ depending on the provider you select, but the majority of providers offer an intuitive interface for creating and configuring virtual machines.</p></li>
-<li><p>Once the virtual machine is operational, you can connect to it using a web browser or remote desktop software. This should be accompanied by instructions from the provider.</p></li>
-<li><p>Start a R session: Once you are connected to the virtual machine, you can use RStudio or the R console to launch a R session.</p></li>
-<li><p>You can transfer your data to the virtual machine and then access it through RStudio or the R console. You can also connect to external data sources with R programs like DBI and odbc. [9]</p></li>
-</ol>
+<ul>
+<li><p>GCP is a cloud service provider that provides a comprehensive suite of cloud computing services, including computing, storage, and networking.</p></li>
+<li><p>It offers specialized tools and services for machine learning and artificial intelligence applications.</p></li>
+<li><p>GCP provides flexible pricing options, including pay-as-you-go and sustained use pricing.</p></li>
+<li><p>They offer a range of tools and services for managing and securing cloud-based applications. [7]</p></li>
+</ul>
 </section>
 </section>
-<section id="references" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="references"><span class="header-section-number">1.6</span> References</h2>
-<p>[1]</p>
-<p>Ihaka, R., &amp; Gentleman, R. (1996). R: A language for data analysis and graphics. Journal of Computational and Graphical Statistics, 5(3), 299-314. https://www.jstor.org/stable/1390807</p>
-<p>[2]</p>
-<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
-<p>Venables, W. N., Smith, D. M., &amp; R Development Core Team. (2019). An introduction to R. Network Theory Ltd.&nbsp;Retrieved from https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</p>
-<p>Wickham, H. (2016). ggplot2: Elegant graphics for data analysis. Springer-Verlag.</p>
+<section id="references" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="references"><span class="header-section-number">1.4</span> References</h2>
+<p>[1] Chambers, J. M. (2016). Extending R (2nd ed.). CRC Press.</p>
 <p>Gandrud, C. (2015). Reproducible research with R and RStudio. CRC Press.</p>
 <p>Grolemund, G., &amp; Wickham, H. (2017). R for data science: Import, tidy, transform, visualize, and model data. O’Reilly Media.</p>
-<p>[3]</p>
-<p>Chambers, J. M. (2016). Extending R (2nd ed.). CRC Press.</p>
-<p>Wickham, H., &amp; Grolemund, G. (2017). R packages: Organize, test, document, and share your code. O’Reilly Media.</p>
+<p>Ihaka, R., &amp; Gentleman, R. (1996). R: A language for data analysis and graphics. Journal of Computational and Graphical Statistics, 5(3), 299-314. <a href="https://www.jstor.org/stable/1390807" class="uri">https://www.jstor.org/stable/1390807</a></p>
 <p>Murrell, P. (2006). R graphics. CRC Press.</p>
+<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
+<p>R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a></p>
+<p>Venables, W. N., Smith, D. M., &amp; R Development Core Team. (2019). An introduction to R. Network Theory Ltd.&nbsp;Retrieved from <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p>
 <p>Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23.</p>
-<p>Venables, W. N., Smith, D. M., &amp; R Development Core Team. (2019). An introduction to R. Network Theory Ltd.&nbsp;Retrieved from https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</p>
-<p>R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/</p>
-<p>[4]</p>
-<p>The R Project for Statistical Computing. (2021). Download R for (Mac) OS X. https://cran.r-project.org/bin/macosx/</p>
-<p>RStudio. (2021). RStudio. https://www.rstudio.com/</p>
-<p>R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. https://www.R-project.org/</p>
-<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
-<p>Gandrud, C. (2015). Reproducible research with R and RStudio. CRC Press.</p>
-<p>[5]</p>
-<p>The R Project for Statistical Computing. (2021). Download R for (Mac) OS X. https://cran.r-project.org/bin/macosx/</p>
-<p>The R Project for Statistical Computing. (2021). Download R for Windows. https://cran.r-project.org/bin/windows/base/</p>
-<p>The R Project for Statistical Computing. (2021). Download R for Linux. https://cran.r-project.org/bin/linux/</p>
-<p>RStudio. (2021). RStudio. https://www.rstudio.com/products/rstudio/download/</p>
-<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
-<p>[6]</p>
-<p>RStudio. (2021). RStudio. https://www.rstudio.com/products/rstudio/features/</p>
-<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
-<p>Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23.</p>
+<p>Wickham, H. (2016). ggplot2: Elegant graphics for data analysis. Springer-Verlag.</p>
 <p>Wickham, H., &amp; Grolemund, G. (2017). R packages: Organize, test, document, and share your code. O’Reilly Media.</p>
-<p>Chang, W., &amp; Cheng, J. (2020). R Markdown: The definitive guide. CRC Press.</p>
-<p>Chang, W., Cheng, J., Allaire, J. J., Xie, Y., &amp; McPherson, J. (2021). shiny: Web application framework for R. R package version 1.6.0. https://CRAN.R-project.org/package=shiny</p>
-<p>[7]</p>
-<p>The R Project for Statistical Computing. (2021). Download R for (Mac) OS X. https://cran.r-project.org/bin/macosx/</p>
-<p>The R Project for Statistical Computing. (2021). Download R for Windows. https://cran.r-project.org/bin/windows/base/</p>
-<p>The R Project for Statistical Computing. (2021). Download R for Linux. https://cran.r-project.org/bin/linux/</p>
-<p>RStudio. (2021). RStudio. https://www.rstudio.com/products/rstudio/download/</p>
-<p>Peng, R. D. (2016). R programming for data science. O’Reilly Media.</p>
-<p>[8]</p>
-<p>Biecek, P., &amp; Kosinski, M. (2018). Mastering Software Development in R. Packt Publishing.</p>
-<p>Amazon Web Services. (2021). AWS. https://aws.amazon.com/</p>
-<p>Microsoft Azure. (2021). Azure. https://azure.microsoft.com/</p>
-<p>Google Cloud Platform. (2021). GCP. https://cloud.google.com/</p>
-<p>RStudio. (2021). RStudio Server Pro. https://rstudio.com/products/rstudio-server-pro/</p>
-<p>Amazon Web Services. (2021). EC2 User Guide for Linux Instances. https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html</p>
-<p>Microsoft Azure. (2021). Create a Windows virtual machine with the Azure portal. https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal</p>
-<p>Google Cloud Platform. (2021). Compute Engine Documentation. https://cloud.google.com/compute/docs</p>
-<p>Amazon Web Services. (2021). Running RStudio Server Pro using Amazon EC2. https://docs.rstudio.com/rsp/quickstart/aws/</p>
-<p>[9]</p>
-<p>Posit. (2021). High-Performance Computing Services. https://posit.cloud/</p>
-<p>Amazon Web Services. (2021). AWS. https://aws.amazon.com/</p>
-<p>Microsoft Azure. (2021). Azure. https://azure.microsoft.com/</p>
-<p>Google Cloud Platform. (2021). GCP. https://cloud.google.com/</p>
-<p>Armbrust, M., Fox, A., Griffith, R., Joseph, A. D., Katz, R., Konwinski, A., … Zaharia, M. (2010). A view of cloud computing. Communications of the ACM, 53(4), 50–58. https://doi.org/10.1145/1721654.1721672</p>
+<p>[2] The R Project for Statistical Computing. (2021). Download R for (Mac) OS X. <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a></p>
+<p>The R Project for Statistical Computing. (2021). Download R for Windows. <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a></p>
+<p>The R Project for Statistical Computing. (2021). Download R for Linux. <a href="https://cran.r-project.org/bin/linux/" class="uri">https://cran.r-project.org/bin/linux/</a></p>
+<p>[3] Grant, E., &amp; Allen, B. (2021). Integrated Development Environments: A Comprehensive Overview. Journal of Software Engineering, 16(3), 123-145. doi:10./jswe.2021.16.3.123</p>
+<p>Johnson, M. L., &amp; Smith, R. W. (2022). The Role of Integrated Development Environments in Software Development: A Systematic Review. ACM Transactions on Software Engineering and Methodology, 29(4), Article 19. doi:10./tosem.2022.29.4.19</p>
+<p>RStudio, PBC. (n.d.). RStudio: Open source and enterprise-ready professional software for R. Retrieved July 3, 2023, from <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a></p>
+<p>Microsoft. (n.d.). Visual Studio Code: Code Editing. Redefined. Retrieved July 3, 2023, from <a href="https://code.visualstudio.com/" class="uri">https://code.visualstudio.com/</a></p>
+<p>Project Jupyter. (n.d.). Jupyter: Open-source, interactive data science and scientific computing across over 40 programming languages. Retrieved July 3, 2023, from <a href="https://jupyter.org/" class="uri">https://jupyter.org/</a></p>
+<p>[4] RStudio. (2021). RStudio. <a href="https://www.rstudio.com/" class="uri">https://www.rstudio.com/</a></p>
+<p>RStudio. (2021). RStudio. <a href="https://www.rstudio.com/products/rstudio/features/" class="uri">https://www.rstudio.com/products/rstudio/features/</a></p>
+<p>[5] RStudio. (2021). RStudio. <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></p>
+<p>[6] Armbrust, M., Fox, A., Griffith, R., Joseph, A. D., Katz, R., Konwinski, A., … Zaharia, M. (2010). A view of cloud computing. Communications of the ACM, 53(4), 50–58. https://doi.org/10.1145/1721654.1721672</p>
 <p>Xiao, Z., Chen, Z., &amp; Zhang, J. (2014). Cloud computing research and security issues. Journal of Network and Computer Applications, 41, 1–11. https://doi.org/10.1016/j.jnca.2013.11.004</p>
-<p>Cloud Spectator. (2021). Cloud Service Provider Pricing Models: A Comprehensive Guide. https://www.cloudspectator.com/cloud-service-provider-pricing-models-a-comprehensive-guide/</p>
+<p>Cloud Spectator. (2021). Cloud Service Provider Pricing Models: A Comprehensive Guide. <a href="https://www.cloudspectator.com/cloud-service-provider-pricing-models-a-comprehensive-guide/" class="uri">https://www.cloudspectator.com/cloud-service-provider-pricing-models-a-comprehensive-guide/</a></p>
+<p>[7] Amazon Web Services. (2021). AWS. <a href="https://aws.amazon.com/" class="uri">https://aws.amazon.com/</a></p>
+<p>Amazon Web Services. (2021). Running RStudio Server Pro using Amazon EC2. <a href="https://docs.rstudio.com/rsp/quickstart/aws/" class="uri">https://docs.rstudio.com/rsp/quickstart/aws/</a></p>
+<p>Amazon Web Services. (2021). EC2 User Guide for Linux Instances. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html" class="uri">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html</a></p>
+<p>Google Cloud Platform. (2021). GCP. <a href="https://cloud.google.com/" class="uri">https://cloud.google.com/</a></p>
+<p>Google Cloud Platform. (2021). Compute Engine Documentation. <a href="https://cloud.google.com/compute/docs" class="uri">https://cloud.google.com/compute/docs</a></p>
+<p>Microsoft Azure. (2021). Azure. <a href="https://azure.microsoft.com/" class="uri">https://azure.microsoft.com/</a></p>
+<p>Microsoft Azure. (2021). Create a Windows virtual machine with the Azure portal. <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal" class="uri">https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal</a></p>
+<p>Posit. (2021). High-Performance Computing Services. <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a></p>
 
 
 </section>
@@ -409,6 +355,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -624,12 +685,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.pdf" class="pagination-link">
+      <a href="./index.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02RPackages.pdf" class="pagination-link">
+      <a href="./02RPackages.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">R Packages</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: "Data Analysis 101 -- Exploratory Data Analysis and Data Visualization using R programming."
+  title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
   date: "07/03/2023"
   chapters:
@@ -20,12 +20,12 @@ book:
 #bibliography: references.bib
 
 format:
-#  html:
-#    theme: cosmo
+  html:
+    theme:
+     dark: cosmo
   pdf:
-    documentclass: scrreprt
+    documentclass: scrreport
 
-#prefer-html: true
 
 editor: visual
 
