@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-This book is about:::
+This book is about:
 
 * R programming.
 * RStudio.
