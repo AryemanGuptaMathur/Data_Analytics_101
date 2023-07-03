@@ -2,9 +2,9 @@ project:
   type: book
 
 book:
-  title: "Data Analysis 101 -- Data Wrangling and Visualization using R."
+  title: "Data Analysis 101 -- Exploratory Data Analysis and Data Visualization using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
-  date: "6/30/2023"
+  date: "07/03/2023"
   chapters:
     - index.qmd
     - 01OverviewOfR.qmd
@@ -12,20 +12,18 @@ book:
     - 03InbuiltRFunctions.qmd
     - 04DataStructures.qmd
     - 05ReadingData.qmd
-
 #    - 06SummarzingCategoricalData.qmd
 #    - 07SummarizingContinuousData.qmd
 #    - 08SummarizingContinuousData.qmd
 #    - 09SummarizingContinuousData.qmd
 #    - references.qmd
-
 #bibliography: references.bib
 
 format:
-  html:
-    theme: cosmo
-#  pdf:
-#    documentclass: scrreprt
+#  html:
+#    theme: cosmo
+  pdf:
+    documentclass: scrreprt
 
 #prefer-html: true
 

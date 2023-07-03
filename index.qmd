@@ -2,9 +2,7 @@
 
 This book is about:
 
-* R programming.
-* RStudio.
-
+Exploratory Data Analysis and Data Visualization using R programming
 
 
 

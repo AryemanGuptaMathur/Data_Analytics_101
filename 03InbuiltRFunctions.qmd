@@ -2,7 +2,7 @@
 
 ## Mathematical Operations
 
-R is a powerful programming language for performing mathematical operations and statistical calculations. Here are some common mathematical operations in R:
+R is a powerful programming language for performing mathematical operations and statistical calculations. Here are some common mathematical operations in R.
 
 1.  Arithmetic Operations: R can perform basic arithmetic operations such as addition (+), subtraction (-), multiplication (\*), and division (/).
 
