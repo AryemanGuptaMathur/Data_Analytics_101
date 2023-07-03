@@ -5,10 +5,12 @@ book:
   title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
   date: "07/03/2023"
+  cover-image: bookcovertemplate.png
+  favicon: bookcovertemplate.png
   chapters:
     - index.qmd
     - 01OverviewOfR.qmd
-#    - 02RPackages.qmd
+    - 02RPackages.qmd
 #    - 03InbuiltRFunctions.qmd
 #    - 04DataStructures.qmd
 #    - 05ReadingData.qmd
@@ -25,7 +27,8 @@ format:
      dark: cosmo
   pdf:
     documentclass: scrreport
-
+    header-includes: |
+      \titlehead{\includegraphics[width=4in]{bookcovertemplate.png}}
 
 editor: visual
 

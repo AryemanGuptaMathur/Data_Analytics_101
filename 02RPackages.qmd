@@ -100,8 +100,6 @@ There are several ways to get help with an R package:
 
 3.  Online: There are many online resources available for assistance with R packages, including blogs, forums, and question-and-answer sites such as Stack Overflow. These resources are useful for locating solutions to specific problems and obtaining general guidance on how to use a package.
 
-
-
 ## References
 
 \[1\]
