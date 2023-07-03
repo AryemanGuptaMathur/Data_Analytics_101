@@ -8,10 +8,10 @@ book:
   chapters:
     - index.qmd
     - 01OverviewOfR.qmd
-    - 02RPackages.qmd
-    - 03InbuiltRFunctions.qmd
-    - 04DataStructures.qmd
-    - 05ReadingData.qmd
+#    - 02RPackages.qmd
+#    - 03InbuiltRFunctions.qmd
+#    - 04DataStructures.qmd
+#    - 05ReadingData.qmd
 #    - 06SummarzingCategoricalData.qmd
 #    - 07SummarizingContinuousData.qmd
 #    - 08SummarizingContinuousData.qmd
