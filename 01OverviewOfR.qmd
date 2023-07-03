@@ -70,7 +70,7 @@ Some notable features of RStudio include:
 
 To install RStudio on your computer, you can follow these simple steps:
 
-1.  Download RStudio: After installing R, go to the RStudio download page ([**https://www.rstudio.com/products/rstudio/download/**](https://www.rstudio.com/products/rstudio/download/)) and choose the version of RStudio that matches your operating system.
+1.  Download RStudio: Visit the RStudio download page and choose the version of RStudio that matches your operating system.
 
 2.  Install RStudio: Once the RStudio installer is downloaded, run it and follow the instructions provided to complete the installation process on your computer.
 

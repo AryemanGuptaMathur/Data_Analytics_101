@@ -4,7 +4,12 @@ project:
 book:
   title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
-  date: "07/03/2023"
+  date: "4 July 2023"
+  page-footer:
+    left: |
+      Data Analysis 101 -- Exploratory Data Analysis using R programming by Sameer Mathur, Aryeman G. Mathur
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
   cover-image: bookcovertemplate.png
   favicon: bookcovertemplate.png
   chapters:
@@ -25,10 +30,17 @@ format:
   html:
     theme:
      dark: cosmo
+    fig-width: 8
+    fig-height: 4
+    code-fold: false
   pdf:
     documentclass: scrreport
     header-includes: |
-      \titlehead{\includegraphics[width=4in]{bookcovertemplate.png}}
+      \titlehead{
+        \begin{center}
+          \includegraphics[width=5in]{bookcovertemplate.png}
+        \end{center}
+      }
 
 editor: visual
 
