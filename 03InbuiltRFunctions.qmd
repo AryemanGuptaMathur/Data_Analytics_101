@@ -24,9 +24,9 @@ exp(2)
 log2(64) + log10(100)
 ```
 
-3.  Other mathematical functions: R has many additional useful mathematical functions. 
+3.  Other mathematical functions: R has many additional useful mathematical functions.
 
-* We can find the absolute value, square roots, remainder on division.
+-   We can find the absolute value, square roots, remainder on division.
 
 ```{r}
 # absolute value of x=-5
@@ -37,7 +37,7 @@ sqrt(70)
 11 %% 3
 ```
 
-* We can round numbers, find their floor, ceiling or up to a number of significant digits
+-   We can round numbers, find their floor, ceiling or up to a number of significant digits
 
 ```{r}
 # Value of pi to 10 decimal places
@@ -59,7 +59,6 @@ floor(pi)
 # For example, signif(pi, 3) returns 3.14.
 signif(pi,3)
 ```
-
 
 4.  Statistical calculations: R has many built-in functions for statistical calculations, such as mean, median, standard deviation, and correlation.
 
@@ -94,6 +93,7 @@ sales = 9
 # multiply sales by 2
 2 * sales
 ```
+
 5.  We can change the value stored in a variable
 
 ```{r}
@@ -116,5 +116,3 @@ price <- 7
 revenue <- price*sales
 revenue
 ```
-
-

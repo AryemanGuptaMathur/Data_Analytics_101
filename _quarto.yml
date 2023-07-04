@@ -12,6 +12,7 @@ website:
         text: Home
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
+      - 03InbuiltRFunctions.qmd
 ### End yaml necessary for Book's Website ###
 ### Begin yaml necessary for Book's PDF ###
 #project:
