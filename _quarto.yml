@@ -13,7 +13,40 @@ website:
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
       - 03InbuiltRFunctions.qmd
+  sidebar:
+#    logo: "images/openscapes_hex.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://docs.google.com/document/d/15Li_DpXPSA6NXyXyCzM3vUu766RBq87W/edit?usp=sharing&ouid=100224206438187222136&rtpof=true&sd=true
+        text: "Aryeman Gupta Mathur"
+      - icon: github
+        href: https://github.com/AryemanGuptaMathur/Data_Analytics_101
+        text: "Quarto website tutorial"
+#      - icon: twitter
+#        href: https://twitter.com/openscapes
+#        text: "Openscapes Twitter"         
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Home
+      - 01OverviewOfR.qmd
+      - 02RPackages.qmd
+      - 03InbuiltRFunctions.qmd
+#      - section: quarto-workflows/index.qmd
+#        contents: 
+#          - quarto-workflows/browser.md
+#          - quarto-workflows/rstudio.qmd
+#          - quarto-workflows/jupyter.md 
+#      - learning-more.qmd
+#      - href: transition-from-rmarkdown.qmd
+#        text: Transition from Rmd
 ### End yaml necessary for Book's Website ###
+
+
 ### Begin yaml necessary for Book's PDF ###
 #project:
 #  type: book
