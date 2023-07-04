@@ -27,4 +27,4 @@ The EDA process is an important precursor to more complex analyses because it al
 
 *We illustrate all of the above using the R programming language.*
 
-*We further illustrate how to use R programming on a real-world dataset. Our dataset concerns the S&P500 stocks. 
+We further illustrate how to use R programming on a real-world dataset. Our dataset concerns the S&P500 stocks. This will demonstrate a practical aspect of using this book.
