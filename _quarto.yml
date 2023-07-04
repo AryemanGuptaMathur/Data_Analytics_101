@@ -1,5 +1,22 @@
+
+### Begin yaml necessary for Book's Website ###
 project:
-  type: book
+  type: website
+  output-dir: docs
+
+website:
+  title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - 01OverviewOfR.qmd
+      - 02RPackages.qmd
+### End yaml necessary for Book's Website ###
+### Begin yaml necessary for Book's PDF ###
+#project:
+#  type: book
+### End yaml necessary for Book's PDF ###
 
 book:
   title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
@@ -30,6 +47,7 @@ format:
   html:
     theme:
      dark: cosmo
+    toc: true # may need to comment this out to revert this back to the book
     fig-width: 8
     fig-height: 4
     code-fold: false
