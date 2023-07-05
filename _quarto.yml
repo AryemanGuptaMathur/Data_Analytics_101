@@ -5,11 +5,11 @@ project:
   output-dir: docs
 
 website:
-  title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
+  title: "Data Analysis 101 -- Exploratory Data Analysis using R"
 #  body-header: | 
 #    by Sameer Mathur and Aryeman Gupta Mathur
   margin-header: |
-    ![](bookcovertemplate.png)  
+    ![](BookCover101.png)  
   page-footer:
     background: "blue"
     center: 
@@ -46,13 +46,15 @@ website:
     style: "docked"
     search: true
     collapse-level: 1
-    footer: "Website by Aryeman"
+    footer: ""
     contents:
       - href: index.qmd
         text: Home
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
       - 03InbuiltRFunctions.qmd
+      - 04DataStructures.qmd
+      - 05ReadingData.qmd
 #      - section: quarto-workflows/index.qmd
 #        contents: 
 #          - quarto-workflows/browser.md
@@ -81,8 +83,8 @@ book:
       Data Analysis 101 -- Exploratory Data Analysis using R programming by Sameer Mathur, Aryeman G. Mathur
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
-  cover-image: bookcovertemplate.png
-  favicon: bookcovertemplate.png
+  cover-image: BookCover101.png
+  favicon: BookCover101.png
   chapters:
     - index.qmd
     - 01OverviewOfR.qmd
@@ -110,7 +112,7 @@ format:
     header-includes: |
       \titlehead{
         \begin{center}
-          \includegraphics[width=5in]{bookcovertemplate.png}
+          \includegraphics[width=5in]{BookCover101.png}
         \end{center}
       }
 
