@@ -1,2 +1,3 @@
 # Data_Analytics_101
-Our book about data analytics. 
+* We provide an accessible and comprehensive guide for those aiming to grasp the science of exploratory data analysis. 
+* We empower readers with the ability to uncover patterns and extract valuable insights from datasets, harnessing the capabilities of the widely-used, open-source programming language: R. 
