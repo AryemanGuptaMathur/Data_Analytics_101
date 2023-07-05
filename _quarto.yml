@@ -1,5 +1,5 @@
 
-### Begin yaml necessary for Book's Website ###
+### BEGIN yaml FOR BOOK'S WEBSITE ###
 project:
   type: website
   output-dir: docs
@@ -44,7 +44,7 @@ website:
 #      - learning-more.qmd
 #      - href: transition-from-rmarkdown.qmd
 #        text: Transition from Rmd
-### End yaml necessary for Book's Website ###
+### END yaml FOR BOOK'S WEBSITE ###
 
 
 ### Begin yaml necessary for Book's PDF ###
@@ -79,7 +79,7 @@ book:
 
 format:
   html:
-    theme:
+    theme: 
      dark: cosmo
     toc: true # may need to comment this out to revert this back to the book
     fig-width: 8

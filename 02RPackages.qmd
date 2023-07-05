@@ -1,5 +1,7 @@
 # R Packages
 
+Version 29
+
 1.  R packages are collections of code, data, and documentation that enhance the capabilities of R, a programming language and software environment used for statistical computing and graphics.
 
 2.  R packages are created by R users and developers and provide additional tools, functions, and datasets that serve various purposes, such as data analysis, visualization, and machine learning.
@@ -84,7 +86,7 @@ As an illustration, here is a sample code for a scatterplot created using the gg
 
 @fig-mpgwt considers the mtcars dataset inbuilt in R and illustrates the relationship between the weight of cars measured in thousands of pounds and the corresponding mileage measured in miles per gallon.
 
-```{r}
+```{r, eval=TRUE,echo=TRUE}
 #| label: fig-mpgwt
 #| fig-cap: "Scatterplot of Car Mileage with Car Weight"
 #| warning: false
