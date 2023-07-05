@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analysis 101 -- Exploratory Data Analysis using R – rpackages</title>
+<title>Data Analysis 101 -- Exploratory Data Analysis using R – summarizingcontinuousdata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02RPackages.html">R Packages</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11SummarizingContinuousData.html">Summarizing and Visualizing Continuous Data (Part 3 of 3)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02RPackages.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Packages</span></a>
   </div>
 </li>
@@ -230,7 +230,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
+  <a href="./11SummarizingContinuousData.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 3 of 3)</span></a>
   </div>
 </li>
@@ -246,143 +246,206 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link active" data-scroll-target="#r-packages">R Packages</a>
+  <li><a href="#summarizing-and-visualizing-continuous-data-part-3-of-3" id="toc-summarizing-and-visualizing-continuous-data-part-3-of-3" class="nav-link active" data-scroll-target="#summarizing-and-visualizing-continuous-data-part-3-of-3">Summarizing and Visualizing Continuous Data (Part 3 of 3)</a>
   <ul class="collapse">
-  <li><a href="#benefits-of-r-packages" id="toc-benefits-of-r-packages" class="nav-link" data-scroll-target="#benefits-of-r-packages">Benefits of R Packages</a></li>
-  <li><a href="#comprehensive-r-archive-network-cran" id="toc-comprehensive-r-archive-network-cran" class="nav-link" data-scroll-target="#comprehensive-r-archive-network-cran">Comprehensive R Archive Network (CRAN)</a></li>
-  <li><a href="#installing-a-r-package" id="toc-installing-a-r-package" class="nav-link" data-scroll-target="#installing-a-r-package">Installing a R Package</a>
+  <li><a href="#overview-of-bivariate-continuous-data" id="toc-overview-of-bivariate-continuous-data" class="nav-link" data-scroll-target="#overview-of-bivariate-continuous-data">Overview of Bivariate Continuous Data</a></li>
+  <li><a href="#bivariate-relationships-between-continuous-data" id="toc-bivariate-relationships-between-continuous-data" class="nav-link" data-scroll-target="#bivariate-relationships-between-continuous-data">Bivariate relationships between Continuous data</a></li>
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot">Scatterplot</a>
   <ul class="collapse">
-  <li><a href="#popular-r-packages" id="toc-popular-r-packages" class="nav-link" data-scroll-target="#popular-r-packages">Popular R Packages</a></li>
+  <li><a href="#scatterplot-using-plot" id="toc-scatterplot-using-plot" class="nav-link" data-scroll-target="#scatterplot-using-plot">Scatterplot using plot()</a></li>
+  <li><a href="#scatterplot-using-ggplot2" id="toc-scatterplot-using-ggplot2" class="nav-link" data-scroll-target="#scatterplot-using-ggplot2">Scatterplot using ggplot2</a></li>
+  <li><a href="#scatterplot-using-lattice" id="toc-scatterplot-using-lattice" class="nav-link" data-scroll-target="#scatterplot-using-lattice">Scatterplot using Lattice</a></li>
   </ul></li>
-  <li><a href="#sample-plot" id="toc-sample-plot" class="nav-link" data-scroll-target="#sample-plot">Sample Plot</a>
+  <li><a href="#scatterplot-matrix" id="toc-scatterplot-matrix" class="nav-link" data-scroll-target="#scatterplot-matrix">Scatterplot Matrix</a>
   <ul class="collapse">
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#scatterplot-matrix-using-pairs" id="toc-scatterplot-matrix-using-pairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</a></li>
+  <li><a href="#scatterplot-matrix-using-ggpairs" id="toc-scatterplot-matrix-using-ggpairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-ggpairs">Scatterplot Matrix Using ggpairs()</a></li>
+  <li><a href="#scatterplot-matrix-using-scatterplotmatrix" id="toc-scatterplot-matrix-using-scatterplotmatrix" class="nav-link" data-scroll-target="#scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</a></li>
+  <li><a href="#scatterplot-matrix-using-pairs.panels" id="toc-scatterplot-matrix-using-pairs.panels" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#scatterplots-broken-down-by-categorical-variables" id="toc-scatterplots-broken-down-by-categorical-variables" class="nav-link" data-scroll-target="#scatterplots-broken-down-by-categorical-variables">Scatterplots broken down by Categorical Variables</a>
+  <ul class="collapse">
+  <li><a href="#scatterplot-with-colored-by-categorical-variable-using-ggplot" id="toc-scatterplot-with-colored-by-categorical-variable-using-ggplot" class="nav-link" data-scroll-target="#scatterplot-with-colored-by-categorical-variable-using-ggplot">Scatterplot with colored by Categorical Variable Using ggplot()</a></li>
+  <li><a href="#scatterplot-with-broken-down-by-categorical-variable-using-ggplot" id="toc-scatterplot-with-broken-down-by-categorical-variable-using-ggplot" class="nav-link" data-scroll-target="#scatterplot-with-broken-down-by-categorical-variable-using-ggplot">Scatterplot with broken down by Categorical Variable Using ggplot()</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02RPackages.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="11SummarizingContinuousData.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="r-packages" class="level1">
-<h1>R Packages</h1>
-<p>Version 29</p>
+<section id="summarizing-and-visualizing-continuous-data-part-3-of-3" class="level1">
+<h1>Summarizing and Visualizing Continuous Data (Part 3 of 3)</h1>
+<section id="overview-of-bivariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-bivariate-continuous-data">Overview of Bivariate Continuous Data</h2>
 <ol type="1">
-<li><p>R packages are collections of code, data, and documentation that enhance the capabilities of R, a programming language and software environment used for statistical computing and graphics.</p></li>
-<li><p>R packages are created by R users and developers and provide additional tools, functions, and datasets that serve various purposes, such as data analysis, visualization, and machine learning.</p></li>
-<li><p>R packages can be obtained from various sources, including the Comprehensive R Archive Network (CRAN), Bioconductor, GitHub, and other online repositories.</p></li>
-<li><p>To utilize R packages, they can be imported into R using the <strong><code>library()</code></strong> function, allowing access to the functions and data within them for use in R scripts and interactive sessions. [1]</p></li>
-</ol>
-<section id="benefits-of-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="benefits-of-r-packages">Benefits of R Packages</h2>
-<p>There are numerous advantages to using R packages:</p>
-<ol type="1">
-<li><p>Reusability: R packages enable users to write code that is readily reusable across applications. Once a package has been created and published, others can install and use it, sparing them time and effort in coding.</p></li>
-<li><p>Collaboration: Individuals or teams can develop packages collaboratively, enabling the sharing of code, data, and ideas. This promotes collaboration within the R community and the creation of new tools and techniques.</p></li>
-<li><p>Standardization: Packages help standardize the code and methodology used for particular duties, making it simpler for users to comprehend and replicate the work of others. This decreases the possibility of errors and improves the dependability of results.</p></li>
-<li><p>Scalability: Packages can manage large data sets and sophisticated analyses, enabling users to scale up their work to larger, more complex problems.</p></li>
-<li><p>Accessibility: R packages are freely available and can be installed on a variety of operating systems, making them accessible to a broad spectrum of users. [1]</p></li>
-</ol>
-</section>
-<section id="comprehensive-r-archive-network-cran" class="level2">
-<h2 class="anchored" data-anchor-id="comprehensive-r-archive-network-cran">Comprehensive R Archive Network (CRAN)</h2>
-<ol type="1">
-<li><p>The Comprehensive R Archive Network (CRAN) is a global network of servers dedicated to maintaining and distributing R packages. These packages consist of code, data, and documentation that enhance the functionality of R.</p></li>
-<li><p>CRAN serves as a centralized and well-organized repository, simplifying the process for users to find, obtain, and install the required packages. With thousands of packages available, users can utilize the install.packages() function in R to download and install them.</p></li>
-<li><p>CRAN categorizes packages into various groups such as graphics, statistics, and machine learning, facilitating easy discovery of relevant packages based on specific needs.</p></li>
-<li><p>CRAN is maintained by the R Development Core Team and is accessible to anyone with an internet connection, ensuring broad availability and accessibility. [2]</p></li>
-</ol>
-</section>
-<section id="installing-a-r-package" class="level2">
-<h2 class="anchored" data-anchor-id="installing-a-r-package">Installing a R Package</h2>
-<ol type="1">
-<li><p>The <code>install.packages()</code> function can be employed to install R packages.</p></li>
-<li><p>For instance, to install the <code>ggplot2</code> package in R, you would execute the following code:</p></li>
+<li>Reading Data and Attaching Data to Memory</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="3" type="1">
-<li><p>Executing the code provided will download and install the <code>ggplot2</code> package, along with any necessary dependencies, on your system.</p></li>
-<li><p>It’s important to remember that a package needs to be installed only once on your system. Once installed, you can easily import the package into your R session using the <code>library()</code> function.</p></li>
-<li><p>For example, to import the <code>ggplot2</code> package in R, you can execute the following code:</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="6" type="1">
-<li>By executing the provided code, you will enable access to the functions and datasets of the <code>ggplot2</code> package for use within your R session.</li>
-</ol>
-<section id="popular-r-packages" class="level3">
-<h3 class="anchored" data-anchor-id="popular-r-packages">Popular R Packages</h3>
-<p>There are several popular R packages useful for summarizing, transforming, manipulating and visualizing data. Here is a list of some commonly used packages along with a brief description of each:</p>
-<ol type="1">
-<li><p><code>dplyr</code>: A grammar of data manipulation, providing a set of functions for easy and efficient data manipulation tasks like filtering, summarizing, and transforming data frames.</p></li>
-<li><p><code>tidyr</code>: Provides tools for tidying data, which involves reshaping data sets to facilitate analysis by ensuring each variable has its own column and each observation has its own row.</p></li>
-<li><p><code>plyr</code>: Offers a set of functions for splitting, applying a function, and combining results, allowing for efficient data manipulation and summarization.</p></li>
-<li><p><code>reshape2</code>: Provides functions for transforming data between different formats, such as converting data from wide to long format and vice versa.</p></li>
-<li><p><code>data.table</code>: A high-performance package for data manipulation, offering fast and memory-efficient tools for tasks like filtering, aggregating, and joining large data sets.</p></li>
-<li><p><code>lubridate</code>: Designed specifically for working with dates and times, it simplifies common tasks like parsing, manipulating, and formatting date-time data.</p></li>
-<li><p><code>stringr</code>: Offers a consistent and intuitive set of functions for working with strings, including pattern matching, string manipulation, and string extraction.</p></li>
-<li><p><code>magrittr</code>: Provides a simple and readable syntax for composing data manipulation and transformation operations, making code more readable and expressive.</p></li>
-<li><p><code>ggplot2</code>: A powerful and flexible package for creating beautiful and customizable data visualizations using a layered grammar of graphics approach.</p></li>
-<li><p><code>plotly</code>: Enables interactive and dynamic data visualizations, allowing users to create interactive plots, charts, and dashboards that can be explored and analyzed. [2]</p></li>
-</ol>
 </section>
+<section id="bivariate-relationships-between-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-relationships-between-continuous-data">Bivariate relationships between Continuous data</h2>
 </section>
-<section id="sample-plot" class="level2">
-<h2 class="anchored" data-anchor-id="sample-plot">Sample Plot</h2>
-<p>As an illustration, here is a sample code for a scatterplot created using the ggplot2 package.</p>
-<p><a href="#fig-mpgwt">Figure&nbsp;1</a> considers the mtcars dataset inbuilt in R and illustrates the relationship between the weight of cars measured in thousands of pounds and the corresponding mileage measured in miles per gallon.</p>
+<section id="scatterplot" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot">Scatterplot</h2>
+<p>A scatter plot is a type of graph used to display the relationship between two continuous variables. It is a graphical representation of a bivariate distribution, where the values of two variables are plotted as points on a two-dimensional coordinate system.</p>
+<p>A scatter plot can be used to identify trends, clusters, outliers, and other patterns in the data. It is also useful for detecting the presence of any outliers or influential observations that may affect the analysis.</p>
+<p>The mtcars data set in R is a built-in data set that contains data on various car models. To create a scatter plot of mpg (miles per gallon) against wt (weight) in the mtcars data set, you can use the following code:</p>
+<section id="scatterplot-using-plot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-plot">Scatterplot using plot()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, mpg)) <span class="sc">+</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">"Scatter Plot of MPG vs. Weight"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"MPG"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-mpgwt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02RPackages_files/figure-html/fig-mpgwt-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Scatterplot of Car Mileage with Car Weight</figcaption>
-</figure>
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<p>This code will first load the mtcars data set, then create a scatter plot of <code>mpg</code> against <code>wt</code> using the <code>plot()</code> function. The main argument adds a title to the plot, the <code>xlab</code> and <code>ylab</code> arguments add axis labels, and the pch argument changes the shape of the points to a solid circle. The resulting scatter plot will show the relationship between <code>mpg</code> and <code>wt</code> in the <code>mtcars</code> data set.</p>
+</section>
+<section id="scatterplot-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-ggplot2">Scatterplot using ggplot2</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggplot2'</code></pre>
 </div>
-<section id="getting-help" class="level3">
-<h3 class="anchored" data-anchor-id="getting-help">Getting help</h3>
-<p>To seek assistance with an R package, you can explore the following avenues:</p>
-<ol type="1">
-<li><p>Documentation: Most R packages come with comprehensive documentation that explains the package’s functions, datasets, and provides usage examples. You can access the documentation by using the <strong><code>help()</code></strong> function or typing <strong><code>?package_name</code></strong> in the R console, where “package_name” is the name of the specific package you want to learn about.</p></li>
-<li><p>Integrated help system: R has an integrated help system that offers documentation and demonstrations for functions and packages. In the R console, you can access the help system by typing <strong><code>help(topic)</code></strong> or <strong><code>?topic</code></strong>, where “topic” represents the name of the function or package you need assistance with.</p></li>
-<li><p>Online Resources: Numerous online resources are available for obtaining help with R packages. Blogs, forums, and question-and-answer platforms like Stack Overflow offer valuable insights and solutions to specific problems. These platforms are particularly helpful for finding answers to specific questions and obtaining general guidance on package usage. [3]</p></li>
-</ol>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'mtcars':
+
+    mpg</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Weight (1000 lbs)"</span>) <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Miles per gallon"</span>) <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatter Plot of Weight vs. MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis. The geom_point() function is used to add the points to the plot, and xlab(), ylab(), and ggtitle() are used to add axis labels and a plot title, respectively. You can adjust the aesthetics of the plot, such as the color and size of the points, by adding additional arguments to the geom_point() function.</p>
+</section>
+<section id="scatterplot-using-lattice" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-lattice">Scatterplot using Lattice</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Lattice package</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xyplot</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> mtcars, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Weight (1000 lbs)"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"Miles per gallon"</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Scatter Plot of Weight vs. MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis using the xyplot() function. The data argument specifies the data frame to use, and xlab, ylab, and main are used to add axis labels and a plot title, respectively. You can also add additional arguments to adjust the aesthetics of the plot, such as the size and color of the points or the type of line connecting the points, depending on your data and preferences.</p>
 </section>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>[1] Hadley, W., &amp; Chang, W. (2018). R Packages. O’Reilly Media.</p>
-<p>Hester, J., &amp; Wickham, H. (2018). R Packages: A guide based on modern practices. O’Reilly Media.</p>
-<p>Wickham, H. (2015). R Packages: Organize, Test, Document, and Share Your Code. O’Reilly Media.</p>
-<p>[2] Wickham, H., François, R., Henry, L., &amp; Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. Retrieved from <a href="https://cran.r-project.org/package=dplyr"><strong>https://CRAN.R-project.org/package=dplyr</strong></a></p>
-<p>Wickham, H., &amp; Henry, L. (2020). tidyr: Tidy Messy Data. R package version 1.1.4. Retrieved from <a href="https://cran.r-project.org/package=tidyr"><strong>https://CRAN.R-project.org/package=tidyr</strong></a></p>
-<p>Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., &amp; Woo, K. (2021). ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. R package version 3.3.5. Retrieved from <a href="https://cran.r-project.org/package=ggplot2"><strong>https://CRAN.R-project.org/package=ggplot2</strong></a></p>
-<p>Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1-29.</p>
-<p>Wickham, H. (2019). reshape2: Flexibly Reshape Data: A Reboot of the Reshape Package. R package version 1.4.4. Retrieved from <a href="https://cran.r-project.org/package=reshape2"><strong>https://CRAN.R-project.org/package=reshape2</strong></a></p>
-<p>Dowle, M., Srinivasan, A., Gorecki, J., Chirico, M., Stetsenko, P., Short, T., ... &amp; Lianoglou, S. (2021). data.table: Extension of <strong><code>data.frame</code></strong>. R package version 1.14.0. Retrieved from <a href="https://cran.r-project.org/package=data.table"><strong>https://CRAN.R-project.org/package=data.table</strong></a></p>
-<p>Grolemund, G., &amp; Wickham, H. (2011). Dates and Times Made Easy with lubridate. Journal of Statistical Software, 40(3), 1-25.</p>
-<p>Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. Retrieved from <a href="https://cran.r-project.org/package=stringr"><strong>https://CRAN.R-project.org/package=stringr</strong></a></p>
-<p>Sievert, C. (2021). plotly: Create Interactive Web Graphics via ‘plotly.js’. R package version 4.10.0. Retrieved from <a href="https://cran.r-project.org/package=plotly"><strong>https://CRAN.R-project.org/package=plotly</strong></a></p>
-<p>Bache, S. M., &amp; Wickham, H. (2014). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. Retrieved from <a href="https://cran.r-project.org/package=magrittr"><strong>https://CRAN.R-project.org/package=magrittr</strong></a></p>
-<p>[3] R Core Team. (2021). Writing R Extensions. Retrieved from <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html"><strong>https://cran.r-project.org/doc/manuals/r-release/R-exts.html</strong></a></p>
-<p>Wickham, H., &amp; Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O’Reilly Media.</p>
-<p>RStudio Team. (2020). RStudio: Integrated Development Environment for R. Retrieved from <a href="https://www.rstudio.com/"><strong>https://www.rstudio.com/</strong></a></p>
+<section id="scatterplot-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot-matrix">Scatterplot Matrix</h2>
+<p>A scatter plot matrix (also called a pairs plot or a SPLOM) is a graphical display of pairwise scatter plots of a set of variables. In a scatter plot matrix, each variable in the dataset is plotted against every other variable in a matrix format. This allows us to visualize the relationships between pairs of variables and explore potential patterns or trends in the data.</p>
+<p>A scatter plot matrix is particularly useful for exploring multivariate datasets, as it allows us to quickly identify which pairs of variables may be strongly correlated, which may have weak or no correlation, and which may exhibit nonlinear relationships. It can also be used to identify outliers or unusual observations, and to visualize clusters or groups of observations based on patterns in the scatter plots.</p>
+<section id="scatterplot-matrix-using-pairs" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix for mpg, wt, hp, drat</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(mtcars[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-matrix-using-ggpairs" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-ggpairs">Scatterplot Matrix Using ggpairs()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the GGally package</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using ggpairs()</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(mtcars[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-matrix-using-scatterplotmatrix" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the car package</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using scatterplotMatrix()</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> mpg <span class="sc">+</span> disp <span class="sc">+</span>drat <span class="sc">+</span>wt, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> mtcars, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-matrix-using-pairs.panels" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the psych package</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using pairs.panels()</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(mtcars[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"Scatterplot Matrix"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="scatterplots-broken-down-by-categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplots-broken-down-by-categorical-variables">Scatterplots broken down by Categorical Variables</h2>
+<section id="scatterplot-with-colored-by-categorical-variable-using-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-with-colored-by-categorical-variable-using-ggplot">Scatterplot with colored by Categorical Variable Using ggplot()</h3>
+<p>This will create a scatterplot of miles per gallon (mpg) against weight, with each point colored according to the number of cylinders in the engine (cyl).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot of mpg vs. wt, colored by cyl</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">color =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Weight (lbs/1000)"</span>, <span class="at">y =</span> <span class="st">"Miles per gallon"</span>) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">"Cylinders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-with-broken-down-by-categorical-variable-using-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-with-broken-down-by-categorical-variable-using-ggplot">Scatterplot with broken down by Categorical Variable Using ggplot()</h3>
+<p>This will create a scatterplot of miles per gallon (mpg) against weight, with each plot faceted by the number of cylinders in the engine (cyl).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using ggplot()</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> disp)) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="11SummarizingContinuousData_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 

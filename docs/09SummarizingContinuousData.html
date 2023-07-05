@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analysis 101 -- Exploratory Data Analysis using R – datastructures</title>
+<title>Data Analysis 101 -- Exploratory Data Analysis using R – summarizingcontinuousdata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04DataStructures.html">Data Structures</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09SummarizingContinuousData.html">Summarizing and Visualizing Continuous Data (Part 1 of 3)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04DataStructures.html" class="sidebar-item-text sidebar-link active">
+  <a href="./04DataStructures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
+  <a href="./09SummarizingContinuousData.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 1 of 3)</span></a>
   </div>
 </li>
@@ -246,281 +246,311 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link active" data-scroll-target="#data-structures">Data Structures</a>
+  <li><a href="#summarizing-and-visualizing-continuous-data-part-1-of-3" id="toc-summarizing-and-visualizing-continuous-data-part-1-of-3" class="nav-link active" data-scroll-target="#summarizing-and-visualizing-continuous-data-part-1-of-3">Summarizing and Visualizing Continuous Data (Part 1 of 3)</a>
   <ul class="collapse">
-  <li><a href="#popular-data-structures" id="toc-popular-data-structures" class="nav-link" data-scroll-target="#popular-data-structures">Popular Data Structures</a></li>
-  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a>
+  <li><a href="#univariate-continuous-data" id="toc-univariate-continuous-data" class="nav-link" data-scroll-target="#univariate-continuous-data">Univariate Continuous Data</a></li>
+  <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency">Measures of Central Tendency</a></li>
+  <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability">Measures of Variability</a></li>
+  <li><a href="#other-functions" id="toc-other-functions" class="nav-link" data-scroll-target="#other-functions">Other functions</a></li>
+  <li><a href="#summarizing-a-data-column" id="toc-summarizing-a-data-column" class="nav-link" data-scroll-target="#summarizing-a-data-column">Summarizing a data column</a>
   <ul class="collapse">
-  <li><a href="#vectors-in-r" id="toc-vectors-in-r" class="nav-link" data-scroll-target="#vectors-in-r">Vectors in R</a></li>
-  <li><a href="#vector-operations" id="toc-vector-operations" class="nav-link" data-scroll-target="#vector-operations">Vector Operations</a></li>
-  <li><a href="#statistical-operations-on-vectors" id="toc-statistical-operations-on-vectors" class="nav-link" data-scroll-target="#statistical-operations-on-vectors">Statistical Operations on Vectors</a></li>
-  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><code>summary()</code></a></li>
+  <li><a href="#describe" id="toc-describe" class="nav-link" data-scroll-target="#describe"><code>describe()</code></a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#visualizing-univariate-continuous-data" id="toc-visualizing-univariate-continuous-data" class="nav-link" data-scroll-target="#visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot">Violin plot</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
+  <li><a href="#density-plot" id="toc-density-plot" class="nav-link" data-scroll-target="#density-plot">Density plot</a></li>
+  <li><a href="#bee-swarm-plot" id="toc-bee-swarm-plot" class="nav-link" data-scroll-target="#bee-swarm-plot">Bee Swarm plot</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="04DataStructures.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="09SummarizingContinuousData.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="data-structures" class="level1">
-<h1>Data Structures</h1>
-<section id="popular-data-structures" class="level2">
-<h2 class="anchored" data-anchor-id="popular-data-structures">Popular Data Structures</h2>
-<p>The R programming language includes a number of data structures that are frequently employed in data analysis and statistical modeling. These are some of the most popular data structures in R:</p>
+<section id="summarizing-and-visualizing-continuous-data-part-1-of-3" class="level1">
+<h1>Summarizing and Visualizing Continuous Data (Part 1 of 3)</h1>
+<section id="univariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="univariate-continuous-data">Univariate Continuous Data</h2>
 <ol type="1">
-<li><p><strong>Vector</strong>: A vector is a one-dimensional array that stores identical data types, such as numeric, character, or logical. The “c()” function can be used to create vectors, and indexing can be used to access individual vector elements.</p></li>
-<li><p><strong>Factor</strong>: A factor is a vector representing categorical data, with each distinct value or category represented as a level. Using indexing, individual levels of a factor can be accessed using the “factor()” function.</p></li>
-<li><p><strong>Dataframe</strong>: Similar to a spreadsheet, a data frame is a two-dimensional table-like structure that can store various types of data in columns. The “data.frame()” function can be used to construct data frames, and individual elements can be accessed using row and column indexing.</p></li>
-<li><p><strong>Matrix</strong>: A matrix is a two-dimensional array of data with identical rows and columns. The “matrix()” function can be used to construct matrices, and individual elements can be accessed using row and column indexing.</p></li>
-<li><p><strong>Array</strong>: An array is a multidimensional data structure that can contain data of the same data type in user-specified dimensions. Arrays can be constructed using the “array()” function, and elements can be accessed using multiple indexing.</p></li>
-<li><p><strong>List</strong>: A list is an object that may comprise elements of various data types, including vectors, matrices, data frames, and even other lists. The “list()” function can be used to construct lists, while indexing can be used to access individual elements.</p></li>
+<li>Reading Data and Attaching Data to Memory</li>
 </ol>
-<p>These data structures are helpful for storing and manipulating data in R, and they can be utilized in numerous applications, such as statistical analysis and data visualization.</p>
-<p>We will focus our attention on Vectors, Factors and Dataframes, since we believe that these are the three most useful data structures. [1]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="vectors" class="level2">
-<h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
-<ol type="1">
-<li><p>A vector is a fundamental data structure in R that can hold a sequence of values of the same data type, such as integers, numeric, character, or logical values.</p></li>
-<li><p>A vector can be created using the <code>c()</code> function.</p></li>
-<li><p>R supports two forms of vectors: atomic vectors and lists. Atomic vectors are limited to containing elements of a single data type, such as numeric or character. Lists, on the other hand, can contain elements of various data types and structures. [1]</p></li>
-</ol>
-<section id="vectors-in-r" class="level3">
-<h3 class="anchored" data-anchor-id="vectors-in-r">Vectors in R</h3>
-<ol type="1">
-<li>The following R code creates a numeric vector, a character vector and a logical vector respectively.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data into vectors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Ashok"</span>, <span class="st">"Bullu"</span>, <span class="st">"Charu"</span>, <span class="st">"Divya"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">49</span>, <span class="dv">46</span>, <span class="dv">42</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>females <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="measures-of-central-tendency" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of Central Tendency</h2>
 <ol start="2" type="1">
-<li>The <code>c()</code> function is employed to combine the four character elements into a single vector.</li>
-<li>Commas separate the elements of the vector within the parentheses.</li>
-<li>Individual elements of the vector can be accessed via indexing, which utilizes square brackets []. For instance, names[1] returns “Ashok”, while names[3] returns “Charu”.</li>
-<li>We can also perform operations such as categorizing and filtering on the entire vector. For instance, <code>sort(names)</code> returns a vector of sorted names, whereas names[names!= “Bullu”] returns a vector of names excluding “Bullu.”</li>
-</ol>
-</section>
-<section id="vector-operations" class="level3">
-<h3 class="anchored" data-anchor-id="vector-operations">Vector Operations</h3>
-<p>Vectors can be used to perform the following vector operations:</p>
-<ol type="1">
-<li><strong>Accessing Elements:</strong> We can use indexing with square brackets to access individual elements of a vector. To access the second element of the “names” vector, for instance, we can use:</li>
+<li><p>In R, we can summarize continuous data using descriptive statistics such as measures of central tendency (mean, median, and mode).</p></li>
+<li><p>Measure the mean and median of the <code>wt</code> of all the cars in the dataframe <code>mtcars</code></p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>names[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean of wt in the mtcars dataframe</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Bullu"</code></pre>
+<pre><code>[1] 3.21725</code></pre>
 </div>
 </div>
-<p>This returns “Bullu”, the second element of the “names” vector.</p>
-<ol start="2" type="1">
-<li><strong>Concatenation:</strong> The “c()” function can be used to combine multiple vectors into a single vector. For instance, to combine the “names” and “ages” vectors into the “people” vector, we can use:</li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>persons <span class="ot">&lt;-</span> <span class="fu">c</span>(names, ages)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>persons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median of wt in the mtcars dataframe</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Ashok" "Bullu" "Charu" "Divya" "72"    "49"    "46"    "42"   </code></pre>
+<pre><code>[1] 3.325</code></pre>
 </div>
 </div>
-<p>This generates an eight-element vector containing the names and ages of the four people.</p>
-<ol start="3" type="1">
-<li><strong>Subsetting:</strong> We can use indexing with a logical condition to construct a new vector that contains a subset of elements from an existing vector. For instance, to construct a new vector named “female_names” containing only the females’ names, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>female_names <span class="ot">&lt;-</span> names[females <span class="sc">==</span> <span class="cn">TRUE</span>]</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>female_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Bullu" "Charu" "Divya"</code></pre>
-</div>
-</div>
-<p>This generates a new vector comprising three elements containing the names of the three females (“Bullu”, “Charu”, and “Divya”).</p>
 <ol start="4" type="1">
-<li><strong>Arithmetic Operations:</strong> We can perform element-wise arithmetic operations on vectors. To calculate the sum of the “ages” vector, for instance, we can use:</li>
+<li><p>In the above code, we calculate the mean and median of the mpg column using the <code>mean()</code> and <code>median()</code> functions, respectively.</p></li>
+<li><p>To calculate the mode of the mpg column, we first load the <code>modeest</code> package using the <code>library()</code> function, and then use the <code>mfv()</code> function to compute the mode.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode of wt in the mtcars dataframe</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modeest)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mfv</span>(mtcars<span class="sc">$</span>mpg) <span class="co"># Mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 209</code></pre>
-</div>
-</div>
-<p>This returns 209, the sum of the four ages.</p>
-<ol start="5" type="1">
-<li><strong>Logical Operations:</strong> We can perform logical operations on vectors, which are also executed element-by-element. To create a new vector titled “middle_age” that indicates whether each individual is 45 to 55 years old, for instance, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>middle_age <span class="ot">&lt;-</span> (ages <span class="sc">&gt;=</span> <span class="dv">45</span>) <span class="sc">&amp;</span> (ages <span class="sc">&lt;=</span> <span class="dv">55</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>middle_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE FALSE</code></pre>
-</div>
-</div>
-<p>This generates a new vector with four elements containing logical values indicating whether each person is between 45 and 55 years of age.</p>
-<p>To test whether any of the elements in the “ages” vector are greater than 50, we can use:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(ages <span class="sc">&gt;</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>[1] 10.4 15.2 19.2 21.0 21.4 22.8 30.4</code></pre>
 </div>
 </div>
 <ol start="6" type="1">
-<li><strong>Unique Values:</strong> We can find the unique values in a vector using the “unique()” function. For example, to find the unique values in the “ages” vector, we can use:</li>
+<li>Note that the mtcars dataset contains continuous data, and so it does not have a well-defined mode in the traditional sense. The <code>mfv()</code> function computes the mode using a kernel density estimator, which may not always correspond to a single value in the dataset.</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 72 49 46 42</code></pre>
-</div>
-</div>
-<ol start="7" type="1">
-<li><strong>Sorting:</strong> We can sort a vector in ascending or descending order using the “sort()” function. For example, to sort the “ages” vector in descending order, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(ages, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 72 49 46 42</code></pre>
-</div>
-</div>
 </section>
-<section id="statistical-operations-on-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="statistical-operations-on-vectors">Statistical Operations on Vectors</h3>
+<section id="measures-of-variability" class="level2">
+<h2 class="anchored" data-anchor-id="measures-of-variability">Measures of Variability</h2>
 <ol type="1">
-<li><strong>Length</strong>: The length represents the count of the number of elements in a vector.</li>
+<li><p>In R, we can calculate measures of variability (range, interquartile range, variance, and standard deviation).</p></li>
+<li><p>To calculate these statistics, we can use built-in functions in R such as <code>range()</code>, <code>IQR()</code>, <code>var()</code>, and <code>sd()</code>.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard Deviation of wt in the mtcars dataframe</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 0.9784574</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li><p><strong>Maximum</strong> and <strong>Minimum</strong>: The maximum and minimum values are the vector’s greatest and smallest values, respectively.</p></li>
-<li><p><strong>Range</strong>: The range is a measure of the spread that represents the difference between the maximum and minimum values in a vector.</p></li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance of wt in the mtcars dataframe</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 42</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 72</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 42 72</code></pre>
+<pre><code>[1] 0.957379</code></pre>
 </div>
 </div>
-<ol start="4" type="1">
-<li><p><strong>Mean</strong>: The mean is a central tendency measure that represents the average value of a vector’s elements.</p></li>
-<li><p><strong>Standard Deviation</strong>: The standard deviation is a measure of dispersion that reflects the amount of variation in a vector’s elements.</p></li>
-<li><p><strong>Variance</strong>: The variance is another measure of the spread. It is square of the Standard Deviation.</p></li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Range of wt in the mtcars dataframe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 52.25</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 13.47529</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 181.5833</code></pre>
+<pre><code>[1] 1.513 5.424</code></pre>
 </div>
 </div>
-<ol start="7" type="1">
-<li><strong>Median</strong>: The median is a measure of central tendency that represents the middle value of a sorted vector.</li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inter-Quartile Range of wt in the mtcars dataframe</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.5</code></pre>
+<pre><code>[1] 1.02875</code></pre>
 </div>
 </div>
-<ol start="8" type="1">
-<li><strong>Quantiles</strong>: The quantiles are a set of cut-off points that divide a sorted vector into equal-sized groups.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   0%   25%   50%   75%  100% 
-42.00 45.00 47.50 54.75 72.00 </code></pre>
-</div>
-</div>
-<p>This will return a set of five values, representing the minimum, first quartile, median, third quartile, and maximum of the four ages.</p>
-<p>Thus, we note that the R programming language provides a wide range of statistical operations that can be performed on vectors for data analysis and modeling. Vectors are clearly a potent and versatile data structure that can be utilized in a variety of ways.</p>
-</section>
-<section id="strings" class="level3">
-<h3 class="anchored" data-anchor-id="strings">Strings</h3>
-<p>Here are some common string operations that can be conducted using the provided vector examples.</p>
-<ol type="1">
-<li><strong>Substring</strong>: The <code>substr()</code> function can be used to extract a substring from a character vector. To extract the first three characters of each name in the “names” vector, for instance, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(names, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Ash" "Bul" "Cha" "Div"</code></pre>
-</div>
-</div>
-<p>This returns a new character vector containing the initial three letters of each name (“Ash”, “Bul”, “Cha”, and “Div”).</p>
-<ol start="2" type="1">
-<li><strong>Concatenation</strong>: Using the <code>paste()</code> function, we can concatenate two or more character vectors into a singular vector. To create a new vector containing the names and ages of the individuals, for instance, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>persons <span class="ot">&lt;-</span> <span class="fu">paste</span>(names, ages)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>persons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Ashok 72" "Bullu 49" "Charu 46" "Divya 42"</code></pre>
-</div>
-</div>
-<p>This will generate a new eight-element character vector containing the name and age of each individual, separated by a space.</p>
 <ol start="3" type="1">
-<li><strong>Case Conversion:</strong> The <code>toupper()</code> and <code>tolower()</code> functions can be used to convert the case of characters within a character vector. To convert the “names” vector to uppercase letters, for instance, we can use:</li>
+<li>Note that the range() function returns the minimum and maximum values in the dataset, while the IQR() function returns the difference between the 75th and 25th percentiles.</li>
+</ol>
+</section>
+<section id="other-functions" class="level2">
+<h2 class="anchored" data-anchor-id="other-functions">Other functions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Minimum wt in the mtcars dataframe</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum wt in the mtcars dataframe</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 33.9</code></pre>
+</div>
+</div>
+</section>
+<section id="summarizing-a-data-column" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-a-data-column">Summarizing a data column</h2>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary"><code>summary()</code></h3>
+<ol type="1">
+<li>Display a summary of <code>mpg</code> in the dataframe mtcars using <code>summary()</code></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "ASHOK" "BULLU" "CHARU" "DIVYA"</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.40   15.43   19.20   20.09   22.80   33.90 </code></pre>
 </div>
 </div>
-<p>This will generate a new character vector with all of the names converted to uppercase.</p>
-<ol start="4" type="1">
-<li><strong>Pattern Matching:</strong> Using the <code>grep()</code> and <code>grepl()</code> functions, we can search for a pattern within the elements of a character vector. To find the names in the “names” vector that contain the letter “a”, for instance, we can use:</li>
+</section>
+<section id="describe" class="level3">
+<h3 class="anchored" data-anchor-id="describe"><code>describe()</code></h3>
+<ol start="2" type="1">
+<li>Display a summary of the <code>mpg</code> in the dataframe mtcars using <code>describe()</code></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"a"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'psych':
+  method         from  
+  plot.residuals rmutil</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3 4</code></pre>
+<pre><code>   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
+X1    1 32 20.09 6.03   19.2    19.7 5.41 10.4 33.9  23.5 0.61    -0.37 1.07</code></pre>
 </div>
 </div>
-<p>This returns a vector containing the indexes of the “names” vector elements that contain the letter “a.”</p>
-<ol start="5" type="1">
-<li><strong>Regular Expressions:</strong> We can use regular expressions with the <code>grep()</code> and <code>grepl()</code> functions to search for patterns in the elements of a character vector. To find the names in the “names” vector that begin with the letter “C”, for instance, we can use:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"^C"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<p>This returns a vector containing the indexes of the elements in “names” that begin with the letter “C.” [1]</p>
 </section>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>[1]</p>
-<p>R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. <strong>https://www.R-project.org/</strong></p>
-<p>R Core Team. (2022). Vectors, Lists, and Arrays. R Documentation. https://cran.r-project.org/doc/manuals/r-release/R-intro.html#vectors-lists-and-arrays</p>
-<p>Wickham, H., &amp; Grolemund, G. (2016). R for data science: Import, tidy, transform, visualize, and model data. O’Reilly Media, Inc.</p>
+<section id="visualizing-univariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</h2>
+</section>
+<section id="boxplot" class="level2">
+<h2 class="anchored" data-anchor-id="boxplot">Boxplot</h2>
+<ol type="1">
+<li><p>A boxplot is a graphical representation of the distribution of continuous data.</p></li>
+<li><p>Display the Boxplot of the <code>wt</code> of the cars in the <code>mtcars</code> dataset</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mtcars<span class="sc">$</span>wt, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Boxplot"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Weight"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Weight (wt)"</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="09SummarizingContinuousData_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>The resulting boxplot will display the median, quartiles, and any outliers in the data.</p></li>
+<li><p>The box represents the interquartile range, which contains the middle 50% of the data.</p></li>
+<li><p>The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.</p></li>
+<li><p>Any points outside of the whiskers are considered outliers and are plotted individually.</p></li>
+</ol>
+</section>
+<section id="violin-plot" class="level2">
+<h2 class="anchored" data-anchor-id="violin-plot">Violin plot</h2>
+<ol type="1">
+<li><p>A violin plot is similar to a boxplot, but instead of just showing the quartiles, it displays the full distribution of the data using a kernel density estimate.</p></li>
+<li><p>We can create a violin plot in R using the violinplot() function from the vioplot package.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the vioplot package</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vioplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: sm</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package 'sm', version 2.2-5.7: type help(sm) for summary information</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a violin plot of mpg column</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Violin Plot of MPG"</span>, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="09SummarizingContinuousData_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>In the above code, we create a violin plot of the <code>mpg</code> column using the <code>vioplot()</code> function. The <code>main</code> argument is used to specify the title of the plot, and the <code>ylab</code> argument is used to specify the label for the y-axis.</p></li>
+<li><p>The resulting plot will display the full distribution of the <code>mpg</code> data using a kernel density estimate, with thicker sections indicating a higher density of data points.</p></li>
+<li><p>The plot also shows the median, quartiles, and any outliers in the data.</p></li>
+</ol>
+</section>
+<section id="histogram" class="level2">
+<h2 class="anchored" data-anchor-id="histogram">Histogram</h2>
+<ol type="1">
+<li><p>A histogram is a plot that shows the frequency of each value or range of values in a dataset.</p></li>
+<li><p>It can be useful for showing the shape of the distribution of the data. We can create a histogram in R using the <code>hist()</code> function.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of MPG"</span>, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="09SummarizingContinuousData_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>We create a histogram of the <code>mpg</code> column using the <code>hist()</code> function. The main argument is used to specify the title of the plot, and the xlab argument is used to specify the label for the x-axis.</p></li>
+<li><p>The <code>col</code> argument is used to set the color of the bars in the histogram, and the border argument is used to set the color of the border around the bars.</p></li>
+<li><p>The resulting histogram will display the frequency of <code>mpg</code> values in the dataset, with the bars representing the number of observations falling within a specific range of values.</p></li>
+</ol>
+</section>
+<section id="density-plot" class="level2">
+<h2 class="anchored" data-anchor-id="density-plot">Density plot</h2>
+<ol type="1">
+<li>A density plot is similar to a histogram, but instead of displaying the frequency of each value, it shows the probability density of the data.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot of mpg column</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(mtcars<span class="sc">$</span>mpg), </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Density Plot of MPG"</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="09SummarizingContinuousData_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p>In the above code, we create a density plot of the mpg column using the <code>density()</code> function.</p></li>
+<li><p>The <code>plot()</code> function is used to plot the resulting density object.</p></li>
+<li><p>The <code>main</code> argument is used to specify the title of the plot, and the <code>xlab</code> argument is used to specify the label for the x-axis.</p></li>
+<li><p>The <code>col</code> argument is used to set the color of the plot line.</p></li>
+<li><p>The resulting plot will display the probability density of <code>mpg</code> values in the dataset, with the curve representing the distribution of the data.</p></li>
+</ol>
+</section>
+<section id="bee-swarm-plot" class="level2">
+<h2 class="anchored" data-anchor-id="bee-swarm-plot">Bee Swarm plot</h2>
+<ol type="1">
+<li><p>A bee swarm plot is a plot that displays all of the individual data points along with a visual representation of their distribution.</p></li>
+<li><p>It can be useful for displaying the distribution of small datasets.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the beeswarm package</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beeswarm)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of mpg column</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(mtcars<span class="sc">$</span>mpg, </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of MPG"</span>, </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>, </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex=</span><span class="fl">1.2</span>, </span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="09SummarizingContinuousData_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>In the above code, we load the <code>beeswarm</code> package using the <code>library()</code> function.</p></li>
+<li><p>We then create a bee swarm plot of the <code>mpg</code> column using the <code>beeswarm()</code> function.</p></li>
+<li><p>The <code>main</code> argument is used to specify the title of the plot.</p></li>
+<li><p>The <code>pch</code> argument is used to set the type of points to be plotted, and the <code>cex</code> argument is used to set the size of the points.</p></li>
+<li><p>The <code>col</code> argument is used to set the color of the points.</p></li>
+<li><p>The resulting plot will display the individual <code>mpg</code> values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.</p></li>
+</ol>
 
 
 </section>

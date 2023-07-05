@@ -55,6 +55,12 @@ website:
       - 03InbuiltRFunctions.qmd
       - 04DataStructures.qmd
       - 05ReadingData.qmd
+      - 06ExploringDataframes.qmd
+      - 07SummarzingCategoricalData.qmd
+      - 08ExploringTibbles.qmd
+      - 09SummarizingContinuousData.qmd
+      - 10SummarizingContinuousData.qmd
+      - 11SummarizingContinuousData.qmd
 #      - section: quarto-workflows/index.qmd
 #        contents: 
 #          - quarto-workflows/browser.md

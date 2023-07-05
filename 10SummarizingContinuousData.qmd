@@ -1,0 +1,115 @@
+# Summarizing and Visualizing Continuous Data (Part 2 of 3)
+
+## Overview of Bivariate Continuous Data
+
+1.  Reading Data and Attaching Data to Memory
+
+```{r echo=TRUE, eval=TRUE}
+data(mtcars)
+attach(mtcars)
+```
+
+## Bivariate Continuous and Categorical data
+
+1.  Bivariate Relationship between Weight (wt) and Transmission (am)
+
+2.  Display a summary table showing the descriptive statistics of weight of the cars broken down by transmission (am=1 or am=0)
+
+### aggregate()
+
+```{r}
+aggregate(mtcars$wt, 
+          by = list("am" = mtcars$am), 
+          mean)
+aggregate(mtcars$wt, 
+          by = list("am" = mtcars$am), 
+          sd)
+```
+
+### tapply()
+
+```{r}
+tapply(mtcars$wt, mtcars$am, mean)
+tapply(mtcars$wt, mtcars$am, sd)
+```
+
+## Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
+
+```{r}
+library(gplots)
+plotmeans(wt ~ am
+          ,data = mtcars
+          ,mean.labels = TRUE
+          ,digits=3
+          ,main = "Mean (wt) by am = {0,1} "
+          )
+```
+
+## Visualizing Median using Box Plot -- median weight of the cars broken down by transmission (am=1 & am=0)
+
+```{r}
+boxplot(wt~am
+        , xlab = "am"
+        , ylab = "Weight"
+        , horizontal = TRUE
+        )
+```
+
+## Bivariate Relationship between Weight (wt) and Cylinders (cyl)
+
+Display a summary table showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
+
+```{r}
+psych::describeBy(wt, cyl)
+```
+
+## Show a mean plot showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
+
+```{r}
+library(gplots)
+plotmeans(wt ~ cyl, 
+          data = mtcars
+          , mean.labels = TRUE
+          , digits=2
+          , main = "Mean (wt) by cyl = {4,6,8} ")
+```
+
+## Show a box plot showing the median weight of the cars broken down by cylinders (cyl=4,6,8)
+
+```{r}
+boxplot(wt ~ cyl, 
+        xlab = "cyl", ylab = "Weight"
+        )
+```
+
+## Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
+
+```{r}
+aggregate(wt, 
+          by = list("am" =am, "cyl" = cyl),
+          mean)
+```
+
+## Visualization - Show a box plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
+
+```{r}
+boxplot(wt ~ am:cyl
+        , xlab = "cyl"
+        , ylab = "Weight"
+        )
+```
+
+## Visualization - Show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
+
+```{r warning=FALSE, message=FALSE}
+library(gplots)
+plotmeans(wt ~ interaction(am, cyl, sep = ", ")
+          , data = mtcars
+          , mean.labels = TRUE
+          , digits=2
+          , connect = FALSE
+          , main = "Mean (wt) by cyl = {4,6,8} & am = {0,1}"
+          , xlab= "cyl = {4,6,8} & am = {0,1}"
+          , ylab="Average Weight"
+          )
+```
