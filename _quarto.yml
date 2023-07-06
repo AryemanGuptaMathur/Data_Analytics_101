@@ -107,8 +107,8 @@ book:
 
 format:
   html:
-    theme: 
-     dark: cosmo
+    theme: cosmo
+#     dark: cosmo
     toc: true # may need to comment this out to revert this back to the book
     fig-width: 8
     fig-height: 4
