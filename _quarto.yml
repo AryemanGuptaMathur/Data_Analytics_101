@@ -1,13 +1,12 @@
 
 ### BEGIN yaml FOR BOOK'S WEBSITE ###
-project:
-  type: website
-  output-dir: docs
+#project:
+#  type: website
+#  output-dir: docs
 
 website:
   title: "Data Analytics 101 -- Exploratory Data Analysis using R"
-#  body-header: | 
-#    by Sameer Mathur and Aryeman Gupta Mathur
+
   margin-header: |
     ![](FINALIZED BOOK COVER.png)  
   page-footer:
@@ -73,8 +72,8 @@ website:
 
 
 ### Begin yaml necessary for Book's PDF ###
-#project:
-#  type: book
+project:
+  type: book
 ### End yaml necessary for Book's PDF ###
 
 
@@ -95,13 +94,15 @@ book:
     - index.qmd
     - 01OverviewOfR.qmd
     - 02RPackages.qmd
-#    - 03InbuiltRFunctions.qmd
-#    - 04DataStructures.qmd
-#    - 05ReadingData.qmd
-#    - 06SummarzingCategoricalData.qmd
-#    - 07SummarizingContinuousData.qmd
-#    - 08SummarizingContinuousData.qmd
-#    - 09SummarizingContinuousData.qmd
+    - 03InbuiltRFunctions.qmd
+    - 04DataStructures.qmd
+    - 05ReadingData.qmd
+    - 06ExploringDataframes.qmd
+    - 07SummarzingCategoricalData.qmd
+    - 08ExploringTibbles.qmd
+    - 09SummarizingContinuousData.qmd
+    - 10SummarizingContinuousData.qmd
+    - 11SummarizingContinuousData.qmd
 #    - references.qmd
 #bibliography: references.bib
 
