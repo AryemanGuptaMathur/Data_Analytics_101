@@ -5,7 +5,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Data Analysis 101 -- Exploratory Data Analysis using R"
+  title: "Data Analytics 101 -- Exploratory Data Analysis using R"
 #  body-header: | 
 #    by Sameer Mathur and Aryeman Gupta Mathur
   margin-header: |
@@ -81,12 +81,12 @@ website:
 
 
 book:
-  title: "Data Analysis 101 -- Exploratory Data Analysis using R programming."
+  title: "Data Analytics 101 -- Exploratory Data Analysis using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
   date: "4 July 2023"
   page-footer:
     left: |
-      Data Analysis 101 -- Exploratory Data Analysis using R programming by Sameer Mathur, Aryeman G. Mathur
+      Data Analytics 101 -- Exploratory Data Analysis using R programming by Sameer Mathur, Aryeman G. Mathur
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
   cover-image: BookCover101.png
