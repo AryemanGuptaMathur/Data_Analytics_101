@@ -1,8 +1,8 @@
 
 ### BEGIN yaml FOR BOOK'S WEBSITE ###
-#project:
-#  type: website
-#  output-dir: docs
+project:
+  type: website
+  output-dir: docs
 
 website:
   title: "Data Analytics 101 -- Exploratory Data Analysis using R"
@@ -33,13 +33,10 @@ website:
         href: https://github.com/AryemanGuptaMathur/Data_Analytics_101
         text: "Book's Github"
         target: "_blank"
-#    left:
-#      - href: index.qmd
-#        text: H
-#      - 01OverviewOfR.qmd
+
   sidebar:
-#    logo: "images/openscapes_hex.png"
-#    background: "black"
+    logo: "images/openscapes_hex.png"
+    background: "#FEC20C"
     pinned: true
     align: center
     style: "docked"
@@ -72,8 +69,8 @@ website:
 
 
 ### Begin yaml necessary for Book's PDF ###
-project:
-  type: book
+#project:
+#  type: book
 ### End yaml necessary for Book's PDF ###
 
 
@@ -119,7 +116,7 @@ format:
     header-includes: |
       \titlehead{
         \begin{center}
-          \includegraphics[width=5in]{BookCover101.png}
+          \includegraphics[width=5in]{FINALIZED BOOK COVER.png}
         \end{center}
       }
 
