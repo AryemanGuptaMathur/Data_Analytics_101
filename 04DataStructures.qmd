@@ -198,7 +198,7 @@ This returns a vector containing the indexes of the "names" vector elements that
 grep("^C", names)
 ```
 
-This returns a vector containing the indexes of the elements in "names" that begin with the letter "C." [1]
+This returns a vector containing the indexes of the elements in "names" that begin with the letter "C." \[1\]
 
 ## References
 
@@ -209,5 +209,3 @@ R Core Team. (2021). R: A Language and Environment for Statistical Computing. R 
 R Core Team. (2022). Vectors, Lists, and Arrays. R Documentation. https://cran.r-project.org/doc/manuals/r-release/R-intro.html#vectors-lists-and-arrays
 
 Wickham, H., & Grolemund, G. (2016). R for data science: Import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.
-
-
