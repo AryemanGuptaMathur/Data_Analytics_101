@@ -1,4 +1,4 @@
-# Summarizing and Visualizing Continuous Data (Part 3 of 3)
+# Continuous Data (3 of 3)
 
 ## Overview of Bivariate Continuous Data
 

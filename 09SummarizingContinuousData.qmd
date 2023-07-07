@@ -1,4 +1,4 @@
-# Summarizing and Visualizing Continuous Data (Part 1 of 3)
+# Continuous Data (1 of 3)
 
 ## Univariate Continuous Data
 

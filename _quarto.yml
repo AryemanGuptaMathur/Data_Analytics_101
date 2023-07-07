@@ -48,7 +48,7 @@ website:
         text: Home
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
-      - 03InbuiltRFunctions.qmd
+#      - 03InbuiltRFunctions.qmd
       - 04DataStructures.qmd
       - 05ReadingData.qmd
       - 06ExploringDataframes.qmd

@@ -1,6 +1,6 @@
-# Summarizing and Visualizing Categorical Data
+# Categorical Data
 
-## Categorical Data
+## Overview
 
 1.  Categorical data is a type of data that can be divided into categories or groups.
 
@@ -51,9 +51,9 @@ t0
 summary(cyl)
 ```
 
-## 4. Frequency Table for More than One Variable
+## Frequency Table for More than One Variable
 
-### 4a) table()
+### table()
 
 ```{r}
 t1 = table(am, cyl)
@@ -62,7 +62,7 @@ t1
 
 In this example, a two-way frequency table of am and cyl is created using the table() function. The frequency of each grouping of categories is displayed in the table that results. As an illustration, there are 8 cars with a manual gearbox and 4 cylinders, while 3 have an automatic transmission and 3.
 
-### 4b) xtabs()
+### xtabs()
 
 ```{r}
 t1 =xtabs(~ cyl + gear
@@ -72,7 +72,7 @@ t1
 
 In this example, we generate a two-way contingency table of am and cyl using the xtab() method. The frequency of each grouping of categories is displayed in the table that results. As an illustration, there are 8 cars with a manual gearbox and 4 cylinders, while 3 have an automatic transmission and 3. Observe that the table() function used in the preceding example and the xtab() function both yield the same outcome.
 
-### 4c) ftable()
+### ftable()
 
 ```{r}
 t2 = ftable(gear ~ cyl
@@ -82,8 +82,9 @@ t2
 
 In this example, a two-way contingency table of gear and cyl is created using the ftable() function. The frequency of each grouping of categories is displayed in the table that results. As an illustration, there are 12 automobiles with 8 cylinders and 3 speeds as well as 1 car with 4 cylinders.
 
-## 5. `prop.table` Proportions Table for One Variable
+## Proportions Table for One Variable
 
+-   `prop.table`
 -   Unlike table(), which delivers the count, this function returns the proportions of each category.
 
 ```{r}
@@ -93,7 +94,9 @@ p0
 
 The prop.table() function is used in this example to determine the percentage of each category in the cyl variable of the mtcars dataset. The fraction of cars with 4, 6, and 8 cylinders, respectively, is represented in the resulting vector p0. For instance, the dataset contains cars with 4 cylinders in 34.375% of the cases.
 
-## 6. `prop.table` Proportions Table for More than One Variable
+## Proportions Table for More than One Variable
+
+`prop.table`
 
 ```{r}
 t1 = table(am, cyl)
@@ -103,7 +106,11 @@ p1
 
 In this example, we generate a frequency table (t1) of the variables am and cyl from the mtcars dataset using the table() method. The frequency of each grouping of categories is displayed in the table that results. 12 automobiles, for instance, have a V-shaped engine, a manual transmission, and 8 cylinders. The same data are then used to generate a proportion table (p1) using the prop.table() function. The percentage of each combination of categories is displayed in the following table. For instance, the dataset contains 56.25% of vehicles with a manual transmission, a V-shaped engine, and 8 cylinders.
 
-## 7. `round()`: This function is used to set the width of decimal numbers
+## Rounding
+
+## This function is used to set the width of decimal numbers
+
+round()
 
 ```{r}
 r1 = round(p0*100,2)
@@ -114,7 +121,9 @@ r2
 
 In this example, we round the proportion tables p0 and p1 to two decimal places using the round() method. The proportion of each category or group of categories, rounded to two decimal places, is presented in the ensuing tables r1 and r2. For instance, 56.25% of automobiles have an automated transmission and 8 cylinders.
 
-## 8. `addmargins()`: The row and column sums of a matrix or table are calculated using the addmargins() function in R, and the sums are then added as new rows and columns to the original matrix or table.
+## `addmargins()`
+
+The row and column sums of a matrix or table are calculated using the addmargins() function in R, and the sums are then added as new rows and columns to the original matrix or table.
 
 ```{r}
 r2 = round(p1*100,2)
@@ -124,9 +133,9 @@ m1
 
 In this illustration, we add row and column margins to the rounded proportion table r2 using the addmargins() function. The proportion of each category or group of categories, rounded to two decimal places, is included in the resulting table m1, along with row and column margins that display the sums for each row and column. For example, the total proportion of cars with 8 cylinders is 60.42%.
 
-## 9. Three Way Relationship
+## Three Way Relationship
 
-### 9a) table()
+### table()
 
 ```{r}
 table(cyl
@@ -137,7 +146,7 @@ table(cyl
 
 In this example, a three-way contingency table of cyl, gear, and am is created using the table() function. The frequency of each grouping of categories is displayed in the table that results. One vehicle has four cylinders, three gears, and an automatic transmission, whereas eight vehicles have four cylinders, four gears, and manual transmissions. The resulting table, which has a two-dimensional table for each level of the am variable, is three-dimensional.
 
-### 9b) xtabs()
+### xtabs()
 
 ```{r}
 xtabs(~ cyl + gear + am
@@ -148,7 +157,7 @@ xtabs(~ cyl + gear + am
 
 In this example, a three-way contingency table of cyl, gear, and am is created using the xtabs() function. The frequency of each grouping of categories is displayed in the table that results. One vehicle has four cylinders, three gears, and an automatic transmission, whereas eight vehicles have four cylinders, four gears, and manual transmissions. The resulting table, which has a two-dimensional table for each level of the am variable, is three-dimensional. The output table matches the one created by the table() function used in the preceding example exactly.
 
-### 9c) ftable()
+### ftable()
 
 ```{r}
 ftable(gear + cyl ~ am
@@ -158,7 +167,7 @@ ftable(gear + cyl ~ am
 
 In this example, a three-way contingency table of gear, cyl, and am is created using the ftable() function. The frequency of each grouping of categories is displayed in the table that results. One car has four cylinders, three gears, and an automatic gearbox, whereas there are eight cars with four cylinders, four speeds, and manual transmissions. One table exists for each level of the am variable, resulting in a two-dimensional table. Similar to the table created by the xtabs() function used in the preceding example, the output table is produced.
 
-## 10. Four Way Relationship
+## Four Way Relationship
 
 ```{r}
 ftable(am + cyl ~ gear + vs
