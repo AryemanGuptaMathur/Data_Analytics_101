@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.354">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -184,12 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03InbuiltRFunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Inbuilt R functions</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./04DataStructures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
@@ -209,31 +203,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07SummarzingCategoricalData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Categorical Data</span></a>
+ <span class="menu-text">Categorical Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08ExploringTibbles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Manipulation using dplyr</span></a>
+ <span class="menu-text">Data Manipulation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 1 of 3)</span></a>
+ <span class="menu-text">Continuous Data (1 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 2 of 3)</span></a>
+ <span class="menu-text">Continuous Data (2 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 3 of 3)</span></a>
+ <span class="menu-text">Continuous Data (3 of 3)</span></a>
   </div>
 </li>
     </ul>
@@ -470,69 +464,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>Consider a Google Sheet whose preferences have been set such that anyone can view it using its URL. If this is not done, then some authentication would become necessary.</p></li>
 <li><p>Every Google Sheet is characterized by a unique Sheet ID, embedded within the URL. For example, consider a Google Sheet containing some financial data concerning S&amp;P500 index shares.</p></li>
-<li><p>Suppose the Sheet ID is: <code>1nm688a3GsPM5cadJIwu6zj336WBaduglY9TSTUaM9jk</code></p></li>
+<li><p>Suppose the Sheet ID is: <code>11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM</code></p></li>
 <li><p>We can use the function <code>gsheet2tbl</code> in package <code>gsheet</code> to read the Google Sheet into a dataframe, as demonstrated in the following code.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read recent S&amp;P500 data that is posted in a Google Sheet.</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read S&amp;P500 stock data present in a Google Sheet.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"1nm688a3GsPM5cadJIwu6zj336WBaduglY9TSTUaM9jk"</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>suffix <span class="ot">&lt;-</span> <span class="st">"/edit#gid=0"</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Form the URL to connect to</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix, sheetID, suffix) </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Google Sheet located at the URL into a dataframe called gf</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Form the URL to connect to</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>url500 <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix, sheetID) </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Google Sheet located at the URL into a dataframe called sp500</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>sp500 <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
 </div>
 </div>
 <ul>
 <li><p>The first line imports the <code>gsheet</code> package required to access Google Sheets into R.</p></li>
-<li><p>The following three lines define URL variables for Google Sheets. The <code>prefix</code> variable contains the base URL for accessing Google Sheets, the <code>sheetID</code> variable contains the ID of the desired Google Sheet, and the <code>suffix</code> variable contains the URL’s suffix.</p></li>
-<li><p>The <code>paste()</code> function is used to combine the <code>prefix</code>, <code>sheetID</code>, and <code>suffix</code> variables into a complete URL for accessing the Google Sheet.</p></li>
-<li><p>The <code>gsheet2tbl()</code> function from the <code>gsheet</code> package is then used to read the specified Google Sheet into a dataframe called <code>gf</code>.</p></li>
-<li><p>Once the preceding code is executed, the <code>gf</code> dataframe will contain the Google Sheet data, which can then be analyzed further in R.</p></li>
+<li><p>The following three lines define URL variables for Google Sheets. The <code>prefix</code> variable contains the base URL for accessing Google Sheets, the <code>sheetID</code> variable contains the ID of the desired Google Sheet.</p></li>
+<li><p>The <code>paste()</code> function is used to combine the <code>prefix</code>, <code>sheetID</code> variables into a complete URL for accessing the Google Sheet.</p></li>
+<li><p>The <code>gsheet2tbl()</code> function from the <code>gsheet</code> package is then used to read the specified Google Sheet into a dataframe called <code>sp500</code>, which can then be analyzed further in R.</p></li>
 </ul>
 </section>
 <section id="joining-or-merging-two-dataframes" class="level3">
 <h3 class="anchored" data-anchor-id="joining-or-merging-two-dataframes">Joining or Merging two dataframes</h3>
 <ul>
-<li><p>Suppose we have a second S&amp;P 500 data located in a second Google Sheet and suppose that we would like to join or merge the data in this dataframe with the above dataframe gf.</p></li>
+<li><p>Suppose we have a second S&amp;P 500 data located in a second Google Sheet and suppose that we would like to join or merge the data in this dataframe with the above dataframe sp500.</p></li>
 <li><p>The ID of this second sheet is: <code>1F5KvFATcehrdJuGjYVqppNYC9hEKSww9rXYHCk2g6OA</code></p></li>
 <li><p>We can read the data present in this Google Sheet using the following code, similar to the one discussed above, using the following code.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read additional S&amp;P500 data presend in another Google Sheet.</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read additional S&amp;P500 data that is posted in a Google Sheet.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/"</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"1F5KvFATcehrdJuGjYVqppNYC9hEKSww9rXYHCk2g6OA"</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>suffix <span class="ot">&lt;-</span> <span class="st">"/edit#gid=0"</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Form the URL to connect to</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix, sheetID, suffix) </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Google Sheet located at the URL into a dataframe called tv</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>tv <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"1nm688a3GsPM5cadJIwu6zj336WBaduglY9TSTUaM9jk"</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Form the URL to connect to</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix, sheetID) </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Google Sheet located at the URL into a dataframe called gf</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>gf <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
 </div>
 </div>
 <ul>
-<li><p>We now have two dataframes named <code>tv</code> and <code>gf</code> that we wish to merge or join.</p></li>
-<li><p>The two dataframes have a column named <code>Stock</code> in common, which will serve as the key.</p></li>
+<li><p>We now have two dataframes named <code>sp500</code> and <code>gf</code> that we wish to merge or join.</p></li>
+<li><p>The two dataframes have a column named <code>Stock</code> in common, which will serve as the key, while doing the join.</p></li>
 <li><p>The following code illusrates how to merge two dataframes:</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merging dataframes</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>M.df <span class="ot">&lt;-</span> <span class="fu">merge</span>(tv, gf , <span class="at">id =</span> <span class="st">"Stock"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">merge</span>(sp500, gf , <span class="at">id =</span> <span class="st">"Stock"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>We now have a new dataframe named <code>M.df</code>, which contains the data got from merging the two dataframes <code>tv</code> and <code>gf</code>.</li>
+<li>We now have a new dataframe named <code>df</code>, which contains the data got from merging the two dataframes <code>sp500</code> and <code>gf</code>.</li>
 </ul>
 </section>
 </section>
@@ -651,7 +642,6 @@ Attaching package: 'dplyr'</code></pre>
 <p>[2]</p>
 <p>OpenIntro. (2022). 1.3 RStudio and working directory. In Introductory Statistics with Randomization and Simulation (1st ed.). https://www.openintro.org/book/isrs/</p>
 <p>R Core Team. (2021). getwd(): working directory; setwd(dir): change working directory. In R: A language and environment for statistical computing. R Foundation for Statistical Computing. https://stat.ethz.ch/R-manual/R-devel/library/base/html/getwd.html</p>
-<p>R Core Team. (2021). getwd(): working directory; setwd(dir): change working directory. In R: A language and environment for statistical computing. R Foundation for Statistical Computing. https://stat.ethz.ch/R-manual/R-devel/library/base/html/setwd.html</p>
 
 
 </section>
