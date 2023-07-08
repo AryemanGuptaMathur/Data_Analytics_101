@@ -1,5 +1,7 @@
 # Continuous Data (1 of 3)
 
+*This chapter is incomplete, work-in-progress.*
+
 ## Univariate Continuous Data
 
 1.  Reading Data and Attaching Data to Memory

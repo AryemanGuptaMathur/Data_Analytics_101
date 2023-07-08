@@ -1,5 +1,7 @@
 # Continuous Data (3 of 3)
 
+*This chapter is incomplete, work-in-progress.*
+
 ## Overview of Bivariate Continuous Data
 
 1.  Reading Data and Attaching Data to Memory

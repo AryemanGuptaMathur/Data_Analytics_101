@@ -1,5 +1,7 @@
 # Categorical Data
 
+*This chapter is incomplete, work-in-progress.*
+
 ## Overview
 
 1.  Categorical data is a type of data that can be divided into categories or groups.

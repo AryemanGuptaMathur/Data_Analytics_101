@@ -1,5 +1,7 @@
 # Exploring a Dataframe
 
+*This chapter is incomplete, work-in-progress.*
+
 Here's how you can explore the mtcars data frame:
 
 View the data: Use the head() or tail() function to view the first or last few rows of the data frame, respectively. For example:
