@@ -48,10 +48,10 @@ website:
         text: Home
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
-#      - 03InbuiltRFunctions.qmd
-      - 04DataStructures.qmd
-      - 05ReadingData.qmd
-      - 06ExploringDataframes.qmd
+      - 03DataStructures.qmd
+      - 04ReadingData.qmd
+      - 05ExploringDataframes.qmd
+      - 06LiveCase01.qmd
       - 07SummarzingCategoricalData.qmd
       - 08ExploringTibbles.qmd
       - 09SummarizingContinuousData.qmd

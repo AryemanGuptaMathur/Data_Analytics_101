@@ -1,4 +1,4 @@
-# Exploring a Dataframe
+# Exploring Dataframes
 
 *This chapter is incomplete, work-in-progress.*
 

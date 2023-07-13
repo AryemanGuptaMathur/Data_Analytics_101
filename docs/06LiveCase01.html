@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analytics 101 -- Exploratory Data Analysis using R – rpackages</title>
+<title>Data Analytics 101 -- Exploratory Data Analysis using R – livecase01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02RPackages.html">R Packages</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06LiveCase01.html">Case Analysis of SP500</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02RPackages.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Packages</span></a>
   </div>
 </li>
@@ -201,8 +201,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">06LiveCase01.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./06LiveCase01.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Case Analysis of SP500</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07SummarzingCategoricalData.html" class="sidebar-item-text sidebar-link">
@@ -245,140 +248,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link active" data-scroll-target="#r-packages">R Packages</a>
+  <li><a href="#case-analysis-of-sp500" id="toc-case-analysis-of-sp500" class="nav-link active" data-scroll-target="#case-analysis-of-sp500">Case Analysis of SP500</a>
   <ul class="collapse">
-  <li><a href="#benefits-of-r-packages" id="toc-benefits-of-r-packages" class="nav-link" data-scroll-target="#benefits-of-r-packages">Benefits of R Packages</a></li>
-  <li><a href="#comprehensive-r-archive-network-cran" id="toc-comprehensive-r-archive-network-cran" class="nav-link" data-scroll-target="#comprehensive-r-archive-network-cran">Comprehensive R Archive Network (CRAN)</a></li>
-  <li><a href="#installing-a-r-package" id="toc-installing-a-r-package" class="nav-link" data-scroll-target="#installing-a-r-package">Installing a R Package</a>
-  <ul class="collapse">
-  <li><a href="#popular-r-packages" id="toc-popular-r-packages" class="nav-link" data-scroll-target="#popular-r-packages">Popular R Packages</a></li>
-  </ul></li>
-  <li><a href="#sample-plot" id="toc-sample-plot" class="nav-link" data-scroll-target="#sample-plot">Sample Plot</a>
-  <ul class="collapse">
-  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
-  </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#reading-sp500-data-from-a-google-sheet-into-a-tibble" id="toc-reading-sp500-data-from-a-google-sheet-into-a-tibble" class="nav-link" data-scroll-target="#reading-sp500-data-from-a-google-sheet-into-a-tibble">1) Reading S&amp;P500 data from a Google Sheet into a tibble</a></li>
+  <li><a href="#reviewing-the-data" id="toc-reviewing-the-data" class="nav-link" data-scroll-target="#reviewing-the-data">1) Reviewing the data</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02RPackages.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="06LiveCase01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="r-packages" class="level1">
-<h1>R Packages</h1>
-<ol type="1">
-<li><p>R packages are collections of code, data, and documentation that enhance the capabilities of R, a programming language and software environment used for statistical computing and graphics.</p></li>
-<li><p>R packages are created by R users and developers and provide additional tools, functions, and datasets that serve various purposes, such as data analysis, visualization, and machine learning.</p></li>
-<li><p>R packages can be obtained from various sources, including the Comprehensive R Archive Network (CRAN), Bioconductor, GitHub, and other online repositories.</p></li>
-<li><p>To utilize R packages, they can be imported into R using the <strong><code>library()</code></strong> function, allowing access to the functions and data within them for use in R scripts and interactive sessions. [1]</p></li>
-</ol>
-<section id="benefits-of-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="benefits-of-r-packages">Benefits of R Packages</h2>
-<p>There are numerous advantages to using R packages:</p>
-<ol type="1">
-<li><p>Reusability: R packages enable users to write code that is readily reusable across applications. Once a package has been created and published, others can install and use it, sparing them time and effort in coding.</p></li>
-<li><p>Collaboration: Individuals or teams can develop packages collaboratively, enabling the sharing of code, data, and ideas. This promotes collaboration within the R community and the creation of new tools and techniques.</p></li>
-<li><p>Standardization: Packages help standardize the code and methodology used for particular duties, making it simpler for users to comprehend and replicate the work of others. This decreases the possibility of errors and improves the dependability of results.</p></li>
-<li><p>Scalability: Packages can manage large data sets and sophisticated analyses, enabling users to scale up their work to larger, more complex problems.</p></li>
-<li><p>Accessibility: R packages are freely available and can be installed on a variety of operating systems, making them accessible to a broad spectrum of users. [1]</p></li>
-</ol>
-</section>
-<section id="comprehensive-r-archive-network-cran" class="level2">
-<h2 class="anchored" data-anchor-id="comprehensive-r-archive-network-cran">Comprehensive R Archive Network (CRAN)</h2>
-<ol type="1">
-<li><p>The Comprehensive R Archive Network (CRAN) is a global network of servers dedicated to maintaining and distributing R packages. These packages consist of code, data, and documentation that enhance the functionality of R.</p></li>
-<li><p>CRAN serves as a centralized and well-organized repository, simplifying the process for users to find, obtain, and install the required packages. With thousands of packages available, users can utilize the install.packages() function in R to download and install them.</p></li>
-<li><p>CRAN categorizes packages into various groups such as graphics, statistics, and machine learning, facilitating easy discovery of relevant packages based on specific needs.</p></li>
-<li><p>CRAN is maintained by the R Development Core Team and is accessible to anyone with an internet connection, ensuring broad availability and accessibility. [2]</p></li>
-</ol>
-</section>
-<section id="installing-a-r-package" class="level2">
-<h2 class="anchored" data-anchor-id="installing-a-r-package">Installing a R Package</h2>
-<ol type="1">
-<li><p>The <code>install.packages()</code> function can be employed to install R packages.</p></li>
-<li><p>For instance, to install the <code>ggplot2</code> package in R, you would execute the following code:</p></li>
-</ol>
+<section id="case-analysis-of-sp500" class="level1">
+<h1>Case Analysis of SP500</h1>
+<p>We will investigate data related to the S&amp;P500 stocks.</p>
+<p>This is the URL of the data we will use: https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0</p>
+<section id="reading-sp500-data-from-a-google-sheet-into-a-tibble" class="level3">
+<h3 class="anchored" data-anchor-id="reading-sp500-data-from-a-google-sheet-into-a-tibble">1) Reading S&amp;P500 data from a Google Sheet into a tibble</h3>
+<p>The Google Sheet ID is: <code>11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM</code>. We can use the function <code>gsheet2tbl</code> in package <code>gsheet</code> to read the Google Sheet into a dataframe, as demonstrated in the following code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read S&amp;P500 stock data present in a Google Sheet.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gsheet)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>prefix <span class="ot">&lt;-</span> <span class="st">"https://docs.google.com/spreadsheets/d/"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Form the URL to connect to</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>url500 <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix, sheetID) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the Google Sheet located at the URL into a tibble called sp500</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>sp500 <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
 </div>
-<ol start="3" type="1">
-<li><p>Executing the code provided will download and install the <code>ggplot2</code> package, along with any necessary dependencies, on your system.</p></li>
-<li><p>It’s important to remember that a package needs to be installed only once on your system. Once installed, you can easily import the package into your R session using the <code>library()</code> function.</p></li>
-<li><p>For example, to import the <code>ggplot2</code> package in R, you can execute the following code:</p></li>
-</ol>
+</div>
+</section>
+<section id="reviewing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="reviewing-the-data">1) Reviewing the data</h3>
+<p>We run the str() function to better understand the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Classes 'tbl_df', 'tbl' and 'data.frame':   503 obs. of  36 variables:
+ $ Date                                   : chr  "7/13/2023" "7/13/2023" "7/13/2023" "7/13/2023" ...
+ $ Stock                                  : chr  "A" "AAL" "AAP" "AAPL" ...
+ $ Description                            : chr  "Agilent Technologies, Inc." "American Airlines Group, Inc." "Advance Auto Parts Inc." "Apple Inc." ...
+ $ Sector                                 : chr  "Health Technology" "Transportation" "Retail Trade" "Electronic Technology" ...
+ $ Industry                               : chr  "Medical Specialties" "Airlines" "Specialty Stores" "Telecommunications Equipment" ...
+ $ Market.Capitalization                  : num  3.54e+10 1.20e+10 4.19e+09 2.99e+12 2.36e+11 ...
+ $ Price                                  : num  120 18.4 70.5 190.2 133.6 ...
+ $ X52.Week.Low                           : num  113.3 11.7 63.6 124.2 131 ...
+ $ X52.Week.High                          : num  160 19.1 212 194 168 194 116 78.3 328 519 ...
+ $ Return.on.Equity..TTM.                 : num  24.8 NA 14.6 146 51.1 389 16 14.8 30.7 33.7 ...
+ $ Return.on.Assets..TTM.                 : num  12.7 2.64 3.35 27.6 5.43 2.79 7.82 4.98 14.9 17.9 ...
+ $ Return.on.Invested.Capital..TTM.       : num  16.51 5.44 6.17 57.18 9.9 ...
+ $ Gross.Margin..TTM.                     : num  54.1 21.7 43.8 43.2 72.2 ...
+ $ Operating.Margin..TTM.                 : num  23.78 7.3 5.63 29.16 41.07 ...
+ $ Net.Margin..TTM.                       : num  19.19 3.39 3.61 24.49 13.3 ...
+ $ Price.to.Earnings.Ratio..TTM.          : num  26.45 7.23 10.48 32.32 31.46 ...
+ $ Price.to.Book..FY.                     : num  6.68 NA 1.56 59.85 13.7 ...
+ $ Enterprise.Value.EBITDA..TTM.          : num  18.8 7.08 8.85 24.5 9.24 12.8 19.1 NA 17.4 32.7 ...
+ $ EBITDA..TTM.                           : num  1.97e+09 6.02e+09 9.21e+08 1.24e+11 3.18e+10 ...
+ $ EPS.Diluted..TTM.                      : num  4.54 2.54 6.72 5.89 4.25 ...
+ $ EBITDA..TTM.YoY.Growth.                : num  10.52 NA -16 -5.36 10.6 ...
+ $ EBITDA..Quarterly.YoY.Growth.          : num  8.2 NA -39.01 -4.58 11.68 ...
+ $ EPS.Diluted..TTM.YoY.Growth.           : num  9.17 NA -25.21 -4.33 -39.11 ...
+ $ EPS.Diluted..Quarterly.YoY.Growth.     : num  11.69944 NA -68.3683 -0.00656 -94.8904 ...
+ $ Price.to.Free.Cash.Flow..TTM.          : num  30.13 7.03 NA 30.92 10.09 ...
+ $ Free.Cash.Flow..TTM.YoY.Growth.        : num  11.81 NA -100.23 -7.85 6.68 ...
+ $ Free.Cash.Flow..Quarterly.YoY.Growth.  : num  55.7078 648.1481 -176.135 -0.0312 -15.3392 ...
+ $ Debt.to.Equity.Ratio..MRQ.             : num  0.473 NA 1.582 1.763 4.678 ...
+ $ Current.Ratio..MRQ.                    : num  2.37 0.718 1.244 0.94 0.96 ...
+ $ Quick.Ratio..MRQ.                      : num  1.708 0.624 0.238 0.878 0.821 ...
+ $ Dividend.Yield.Forward                 : num  0.75 NA 1.413 0.506 4.386 ...
+ $ Dividends.per.share..Annual.YoY.Growth.: num  8.25 NA 84.62 5.88 7.53 ...
+ $ Price.to.Sales..FY.                    : num  5.257 0.246 0.383 7.875 4.091 ...
+ $ Revenue..TTM.YoY.Growth.               : num  7.8597 50.2948 1.4153 -0.2544 0.0282 ...
+ $ Revenue..Quarterly.YoY.Growth.         : num  6.85 36.97 1.29 -2.51 -9.7 ...
+ $ Technical.Rating                       : chr  "Neutral" "Sell" "Buy" "Sell" ...</code></pre>
 </div>
-<ol start="6" type="1">
-<li>By executing the provided code, you will enable access to the functions and datasets of the <code>ggplot2</code> package for use within your R session.</li>
-</ol>
-<section id="popular-r-packages" class="level3">
-<h3 class="anchored" data-anchor-id="popular-r-packages">Popular R Packages</h3>
-<p>There are several popular R packages useful for summarizing, transforming, manipulating and visualizing data. Here is a list of some commonly used packages along with a brief description of each:</p>
-<ol type="1">
-<li><p><code>dplyr</code>: A grammar of data manipulation, providing a set of functions for easy and efficient data manipulation tasks like filtering, summarizing, and transforming data frames.</p></li>
-<li><p><code>tidyr</code>: Provides tools for tidying data, which involves reshaping data sets to facilitate analysis by ensuring each variable has its own column and each observation has its own row.</p></li>
-<li><p><code>plyr</code>: Offers a set of functions for splitting, applying a function, and combining results, allowing for efficient data manipulation and summarization.</p></li>
-<li><p><code>reshape2</code>: Provides functions for transforming data between different formats, such as converting data from wide to long format and vice versa.</p></li>
-<li><p><code>data.table</code>: A high-performance package for data manipulation, offering fast and memory-efficient tools for tasks like filtering, aggregating, and joining large data sets.</p></li>
-<li><p><code>lubridate</code>: Designed specifically for working with dates and times, it simplifies common tasks like parsing, manipulating, and formatting date-time data.</p></li>
-<li><p><code>stringr</code>: Offers a consistent and intuitive set of functions for working with strings, including pattern matching, string manipulation, and string extraction.</p></li>
-<li><p><code>magrittr</code>: Provides a simple and readable syntax for composing data manipulation and transformation operations, making code more readable and expressive.</p></li>
-<li><p><code>ggplot2</code>: A powerful and flexible package for creating beautiful and customizable data visualizations using a layered grammar of graphics approach.</p></li>
-<li><p><code>plotly</code>: Enables interactive and dynamic data visualizations, allowing users to create interactive plots, charts, and dashboards that can be explored and analyzed. [2]</p></li>
-</ol>
-</section>
-</section>
-<section id="sample-plot" class="level2">
-<h2 class="anchored" data-anchor-id="sample-plot">Sample Plot</h2>
-<p>As an illustration, here is a sample code for a scatterplot created using the ggplot2 package.</p>
-<p><a href="#fig-mpgwt">Figure&nbsp;1</a> considers the mtcars dataset inbuilt in R and illustrates the relationship between the weight of cars measured in thousands of pounds and the corresponding mileage measured in miles per gallon.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(wt, mpg)) <span class="sc">+</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-mpgwt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02RPackages_files/figure-html/fig-mpgwt-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Scatterplot of Car Mileage with Car Weight</figcaption>
-</figure>
 </div>
-</div>
-</div>
-<section id="getting-help" class="level3">
-<h3 class="anchored" data-anchor-id="getting-help">Getting help</h3>
-<p>To seek assistance with an R package, you can explore the following avenues:</p>
-<ol type="1">
-<li><p>Documentation: Most R packages come with comprehensive documentation that explains the package’s functions, datasets, and provides usage examples. You can access the documentation by using the <strong><code>help()</code></strong> function or typing <strong><code>?package_name</code></strong> in the R console, where “package_name” is the name of the specific package you want to learn about.</p></li>
-<li><p>Integrated help system: R has an integrated help system that offers documentation and demonstrations for functions and packages. In the R console, you can access the help system by typing <strong><code>help(topic)</code></strong> or <strong><code>?topic</code></strong>, where “topic” represents the name of the function or package you need assistance with.</p></li>
-<li><p>Online Resources: Numerous online resources are available for obtaining help with R packages. Blogs, forums, and question-and-answer platforms like Stack Overflow offer valuable insights and solutions to specific problems. These platforms are particularly helpful for finding answers to specific questions and obtaining general guidance on package usage. [3]</p></li>
-</ol>
-</section>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>[1] Hadley, W., &amp; Chang, W. (2018). R Packages. O’Reilly Media.</p>
-<p>Hester, J., &amp; Wickham, H. (2018). R Packages: A guide based on modern practices. O’Reilly Media.</p>
-<p>Wickham, H. (2015). R Packages: Organize, Test, Document, and Share Your Code. O’Reilly Media.</p>
-<p>[2] Wickham, H., François, R., Henry, L., &amp; Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. Retrieved from <a href="https://cran.r-project.org/package=dplyr"><strong>https://CRAN.R-project.org/package=dplyr</strong></a></p>
-<p>Wickham, H., &amp; Henry, L. (2020). tidyr: Tidy Messy Data. R package version 1.1.4. Retrieved from <a href="https://cran.r-project.org/package=tidyr"><strong>https://CRAN.R-project.org/package=tidyr</strong></a></p>
-<p>Wickham, H., Chang, W., Henry, L., Pedersen, T. L., Takahashi, K., Wilke, C., &amp; Woo, K. (2021). ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics. R package version 3.3.5. Retrieved from <a href="https://cran.r-project.org/package=ggplot2"><strong>https://CRAN.R-project.org/package=ggplot2</strong></a></p>
-<p>Wickham, H. (2011). The Split-Apply-Combine Strategy for Data Analysis. Journal of Statistical Software, 40(1), 1-29.</p>
-<p>Wickham, H. (2019). reshape2: Flexibly Reshape Data: A Reboot of the Reshape Package. R package version 1.4.4. Retrieved from <a href="https://cran.r-project.org/package=reshape2"><strong>https://CRAN.R-project.org/package=reshape2</strong></a></p>
-<p>Dowle, M., Srinivasan, A., Gorecki, J., Chirico, M., Stetsenko, P., Short, T., ... &amp; Lianoglou, S. (2021). data.table: Extension of <strong><code>data.frame</code></strong>. R package version 1.14.0. Retrieved from <a href="https://cran.r-project.org/package=data.table"><strong>https://CRAN.R-project.org/package=data.table</strong></a></p>
-<p>Grolemund, G., &amp; Wickham, H. (2011). Dates and Times Made Easy with lubridate. Journal of Statistical Software, 40(3), 1-25.</p>
-<p>Wickham, H. (2019). stringr: Simple, Consistent Wrappers for Common String Operations. R package version 1.4.0. Retrieved from <a href="https://cran.r-project.org/package=stringr"><strong>https://CRAN.R-project.org/package=stringr</strong></a></p>
-<p>Sievert, C. (2021). plotly: Create Interactive Web Graphics via ‘plotly.js’. R package version 4.10.0. Retrieved from <a href="https://cran.r-project.org/package=plotly"><strong>https://CRAN.R-project.org/package=plotly</strong></a></p>
-<p>Bache, S. M., &amp; Wickham, H. (2014). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. Retrieved from <a href="https://cran.r-project.org/package=magrittr"><strong>https://CRAN.R-project.org/package=magrittr</strong></a></p>
-<p>[3] R Core Team. (2021). Writing R Extensions. Retrieved from <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html"><strong>https://cran.r-project.org/doc/manuals/r-release/R-exts.html</strong></a></p>
-<p>Wickham, H., &amp; Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O’Reilly Media.</p>
-<p>RStudio Team. (2020). RStudio: Integrated Development Environment for R. Retrieved from <a href="https://www.rstudio.com/"><strong>https://www.rstudio.com/</strong></a></p>
+<p>The <code>str(sp500)</code> output provides valuable insights into the structure and data types of the columns in the <code>sp500</code> tibble. Let’s delve into the details:</p>
+<p>The output reveals that <code>sp500</code> is a tibble with dimensions [503 × 36]. This means it consists of 503 rows, each representing a specific S&amp;P500 stock, and 36 columns containing information about each stock.</p>
+<p>Here’s a breakdown of the information associated with each column:</p>
+<ul>
+<li><p>The columns labeled <code>Date</code>, <code>Stock</code>, <code>Description</code>, <code>Sector</code>, and <code>Industry</code> are character columns. They respectively represent the date, stock ticker symbol, description, sector, and industry of each S&amp;P500 stock.</p></li>
+<li><p>Columns such as <code>Market.Capitalization</code>, <code>Price</code>, <code>X52.Week.Low</code>, <code>X52.Week.High</code>, and other numeric columns contain diverse financial metrics and stock prices related to the S&amp;P500 stocks.</p></li>
+<li><p>The column labeled <code>Technical.Rating</code> is a character column that assigns a technical rating to each stock.</p></li>
+</ul>
+<p>By examining the <code>str(sp500)</code> output, you gain a comprehensive understanding of the data types and column names present in the <code>sp500</code> tibble, enabling you to grasp the structure of the dataset effectively.</p>
 
 
 </section>

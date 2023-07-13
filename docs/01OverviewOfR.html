@@ -150,50 +150,53 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04DataStructures.html" class="sidebar-item-text sidebar-link">
+  <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05ReadingData.html" class="sidebar-item-text sidebar-link">
+  <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06ExploringDataframes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exploring a Dataframe</span></a>
+  <a href="./05ExploringDataframes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring Dataframes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
+ <span class="menu-text">06LiveCase01.qmd</span>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07SummarzingCategoricalData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Categorical Data</span></a>
+ <span class="menu-text">Categorical Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08ExploringTibbles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Manipulation using dplyr</span></a>
+ <span class="menu-text">Data Manipulation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 1 of 3)</span></a>
+ <span class="menu-text">Continuous Data (1 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 2 of 3)</span></a>
+ <span class="menu-text">Continuous Data (2 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Summarizing and Visualizing Continuous Data (Part 3 of 3)</span></a>
+ <span class="menu-text">Continuous Data (3 of 3)</span></a>
   </div>
 </li>
     </ul>
@@ -356,47 +359,47 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li>Arithmetic Operations: R can perform basic arithmetic operations such as addition (+), subtraction (-), multiplication (*), and division (/).</li>
 </ol>
-<pre class="{r} # Addition and Subtraction 5+9-3 # Multiplication and Division (5 + 3) * 7 /2}"><code></code></pre>
+<p><code>{r} # Addition and Subtraction 5+9-3 # Multiplication and Division (5 + 3) * 7 /2}</code></p>
 <ol start="2" type="1">
 <li>Exponentiation and Logarithms: R can raise a number to a power using the ^ or ** operator or take logarithms.</li>
 </ol>
-<p><code>hfy # exponentiation 2^6 # Exponential of x=2 i.e. e^2 exp(2)  # logarithms base 2 and base 10 log2(64) + log10(100)}</code></p>
+<p><code>{r} # exponentiation 2^6 # Exponential of x=2 i.e. e^2 exp(2)  # logarithms base 2 and base 10 log2(64) + log10(100)}</code></p>
 <ol start="3" type="1">
 <li>Other mathematical functions: R has many additional useful mathematical functions.</li>
 </ol>
 <ul>
 <li>We can find the absolute value, square roots, remainder on division.</li>
 </ul>
-<p><code>hfy # absolute value of x=-5 abs(-9)  # square root of x=70 sqrt(70) # remainder of the division of 11/3 11 %% 3}</code></p>
+<p><code>{r} # absolute value of x=-5 abs(-9)  # square root of x=70 sqrt(70) # remainder of the division of 11/3 11 %% 3}</code></p>
 <ul>
 <li>We can round numbers, find their floor, ceiling or up to a number of significant digits</li>
 </ul>
-<p><code>hfy # Value of pi to 10 decimal places pi = 3.1415926536  # round(): This function rounds a number to the given number of decimal places # For example, round(pi, 3) returns 3.142 round(pi,3)  # ceiling(): This function rounds a number up to the nearest integer.  # For example, ceiling(pi) returns 4 ceiling(pi)   # floor(): This function rounds a number down to the nearest integer.  # For example, floor(pi) returns 3. floor(pi)  # signif(): This function rounds a number to a specified number of significant digits.  # For example, signif(pi, 3) returns 3.14. signif(pi,3)}</code></p>
+<p><code>{r} # Value of pi to 10 decimal places pi = 3.1415926536  # round(): This function rounds a number to the given number of decimal places # For example, round(pi, 3) returns 3.142 round(pi,3)  # ceiling(): This function rounds a number up to the nearest integer.  # For example, ceiling(pi) returns 4 ceiling(pi)   # floor(): This function rounds a number down to the nearest integer.  # For example, floor(pi) returns 3. floor(pi)  # signif(): This function rounds a number to a specified number of significant digits.  # For example, signif(pi, 3) returns 3.14. signif(pi,3)}</code></p>
 <ol start="4" type="1">
 <li>Statistical calculations: R has many built-in functions for statistical calculations, such as mean, median, standard deviation, and correlation.</li>
 </ol>
-<pre class="{r} x <- c(0, 1, 1, 2, 3, 5, 8)   # create a vector of 7 Fibonacci numbers length(x) # count how many numbers do we have mean(x)   # calculate the mean median(x) # calculate the median sd(x)     # calculate the standard deviation y <- c(1, 2, 3, 4, 5, 6, 7) # create a new vector of positive integers cor(x,y)  # calculate the correlation between x and y}"><code></code></pre>
+<p><code>{r} x &lt;- c(0, 1, 1, 2, 3, 5, 8)   # create a vector of 7 Fibonacci numbers length(x) # count how many numbers do we have mean(x)   # calculate the mean median(x) # calculate the median sd(x)     # calculate the standard deviation y &lt;- c(1, 2, 3, 4, 5, 6, 7) # create a new vector of positive integers cor(x,y)  # calculate the correlation between x and y}</code></p>
 </section>
 <section id="assigning-values-to-variables" class="level3">
 <h3 class="anchored" data-anchor-id="assigning-values-to-variables">Assigning values to variables</h3>
 <ol type="1">
 <li>A variable can be used to store a value. For example, the R code below will store the sales in a variable, say “sales”:</li>
 </ol>
-<p><code>hfy # use the assignment operator &lt;- sales &lt;- 9 # alternately, use = sales = 9}</code></p>
+<p><code>{r} # use the assignment operator &lt;- sales &lt;- 9 # alternately, use = sales = 9}</code></p>
 <ol start="2" type="1">
 <li><p>It is possible to use &lt;- or = for variable assignments.</p></li>
 <li><p>R is case-sensitive. This means that <code>Sales</code> is different from <code>sales</code></p></li>
 <li><p>It is possible to perform some operations with it.</p></li>
 </ol>
-<pre class="{r} # multiply sales by 2 2 * sales}"><code></code></pre>
+<p><code>{r} # multiply sales by 2 2 * sales}</code></p>
 <ol start="5" type="1">
 <li>We can change the value stored in a variable</li>
 </ol>
-<pre class="{r} # change the value sales <- 15 # display the revised sales sales}"><code></code></pre>
+<p><code>{r} # change the value sales &lt;- 15 # display the revised sales sales}</code></p>
 <ol start="6" type="1">
 <li>The following R code creates two variables holding the sales and the price of a product and we can use them to compute the revenue.</li>
 </ol>
-<pre class="{r} # sales sales <- 5  # price price <- 7  # Calculate the revenue revenue <- price*sales revenue}"><code></code></pre>
+<p><code>{r} # sales sales &lt;- 5  # price price &lt;- 7  # Calculate the revenue revenue &lt;- price*sales revenue}</code></p>
 </section>
 </section>
 <section id="references" class="level2">
