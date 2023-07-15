@@ -61,11 +61,12 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: united
     toc: true # may need to comment this out to revert this back to the book
     fig-width: 8
     fig-height: 4
     code-fold: false
+    prefer-html: true
   pdf:
     documentclass: scrreport
     header-includes: |

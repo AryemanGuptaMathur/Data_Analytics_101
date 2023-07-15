@@ -261,7 +261,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rename-data-columns" id="toc-rename-data-columns" class="nav-link" data-scroll-target="#rename-data-columns">3) Rename Data Columns</a></li>
   <li><a href="#review-the-data-again-after-renaming-columns" id="toc-review-the-data-again-after-renaming-columns" class="nav-link" data-scroll-target="#review-the-data-again-after-renaming-columns">4) Review the data again after renaming columns</a></li>
   <li><a href="#understand-the-data-columns-indepth" id="toc-understand-the-data-columns-indepth" class="nav-link" data-scroll-target="#understand-the-data-columns-indepth">5) Understand the Data Columns indepth</a></li>
-  <li><a href="#convert-columns-to-factor" id="toc-convert-columns-to-factor" class="nav-link" data-scroll-target="#convert-columns-to-factor">6) Convert columns to factor()</a></li>
+  <li><a href="#remove-rows-containing-no-data-or-null" id="toc-remove-rows-containing-no-data-or-null" class="nav-link" data-scroll-target="#remove-rows-containing-no-data-or-null">6) Remove Rows containing no data or null</a></li>
+  <li><a href="#sector-as-a-factor-variable" id="toc-sector-as-a-factor-variable" class="nav-link" data-scroll-target="#sector-as-a-factor-variable">6) Sector as a factor() variable</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -274,6 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="case-study-analyze-recent-sp500-data" class="level1">
 <h1>Case Study: Analyze recent S&amp;P500 Data</h1>
+<p>July 15, 2023 V19</p>
 <section id="sp-500" class="level2">
 <h2 class="anchored" data-anchor-id="sp-500">S&amp;P 500</h2>
 <p>The S&amp;P 500, also called the Standard &amp; Poor’s 500, is a stock market index that tracks the performance of 500 major publicly traded companies listed on U.S. stock exchanges. It serves as a widely accepted benchmark for assessing the overall health and performance of the U.S. stock market.</p>
@@ -400,7 +402,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>In this case, a formula <code>~ new_names</code> is used as the first argument of <code>rename_with()</code>. This formula indicates that the new names for the columns should be sourced from the <code>new_names</code> vector.</p></li>
 <li><p>The second argument, <code>everything()</code>, specifies that the renaming should be applied to all columns in the <code>sp500</code> tibble.</p></li>
 <li><p>Finally, the resulting tibble with the renamed columns is assigned back to the <code>sp500</code> variable, effectively updating the tibble with the new column names.</p></li>
+<li><p>We could also use the following code to rename the columns.</p></li>
 </ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns using the new_names vector</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500) <span class="ot">&lt;-</span> new_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>In essence, the code uses the <code>new_names</code> vector as a mapping to assign new column names to the <code>sp500</code> tibble, ensuring that each column is given the desired new name specified in <code>new_names</code>.</p>
 </section>
 <section id="review-the-data-again-after-renaming-columns" class="level3">
@@ -409,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We review the column names again after renaming them, using the <code>colnames()</code> function can help.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Date"                  "Stock"                 "StockName"            
  [4] "Sector"                "Industry"              "MarketCap"            
@@ -433,7 +440,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>We reorganize the column names into eight tables, labeled Table 1a, 1b.. 1h.</p></li>
 </ol>
 <ol type="a">
-<li>The column names described in Table 1a. concern basic information about each stock.</li>
+<li>The column names described in Table 1a. concern basic <strong>Company Information</strong> of each stock.</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -445,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1a: Basic Information
+Table 1a: Data Columns giving basic Company Information
 </div></th>
 </tr>
 <tr class="odd">
@@ -489,7 +496,7 @@ Table 1a: Basic Information
 </div>
 </div>
 <ol start="2" type="a">
-<li>The column names described in Table 1b. have Technical information about each stock, including the 52-Week High and Low prices.</li>
+<li>The column names described in Table 1b. are related to <strong>Technical Analysis</strong> of each stock, including the 52-Week High and Low prices.</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
@@ -501,7 +508,7 @@ Table 1a: Basic Information
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1b: Price and Technical Analysis
+Table 1b: Data Columns related to Pricing and Technical Analysis
 </div></th>
 </tr>
 <tr class="odd">
@@ -541,7 +548,7 @@ Table 1b: Price and Technical Analysis
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1c: Profitability
+Table 1c: Data Columns related to Profitability
 </div></th>
 </tr>
 <tr class="odd">
@@ -580,7 +587,7 @@ Table 1c: Profitability
 
 </div>
 </div>
-<p>The column names described in Table 1d concern basic information about each stock.</p>
+<p>The column names described in Table 1d are related to the <strong>Earnings</strong> of each stock.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
@@ -591,7 +598,7 @@ Table 1c: Profitability
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1d: Earnings
+Table 1d: Data Columns related to Earnings
 </div></th>
 </tr>
 <tr class="odd">
@@ -642,7 +649,7 @@ Table 1d: Earnings
 
 </div>
 </div>
-<p>The column names described in Table 1e concern basic information about each stock.</p>
+<p>The column names described in Table 1e are related to the <strong>Free Cash Flow</strong> of each stock.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
@@ -653,7 +660,7 @@ Table 1d: Earnings
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1e: Free Cash Flow
+Table 1e: Data Columns related to Free Cash Flow
 </div></th>
 </tr>
 <tr class="odd">
@@ -680,7 +687,7 @@ Table 1e: Free Cash Flow
 
 </div>
 </div>
-<p>The column names described in Table 1f concern basic information about each stock.</p>
+<p>The column names described in Table 1f concern the <strong>Liquidity</strong> of each stock.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
@@ -691,7 +698,7 @@ Table 1e: Free Cash Flow
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1f: Liquidiy
+Table 1f: Data Columns related to Liquidiy
 </div></th>
 </tr>
 <tr class="odd">
@@ -718,7 +725,7 @@ Table 1f: Liquidiy
 
 </div>
 </div>
-<p>The column names described in Table 1g concern basic information about each stock.</p>
+<p>The column names described in Table 1g are related to the <strong>Revenue</strong> of each stock.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small" data-quarto-postprocess="true">
@@ -729,41 +736,7 @@ Table 1f: Liquidiy
 <thead>
 <tr class="header">
 <th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1g: Dividend
-</div></th>
-</tr>
-<tr class="odd">
-<th style="text-align: left;" data-quarto-table-cell-role="th">ColumnName</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">DividendYield</td>
-<td style="text-align: left;">Dividend Yield</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">DividendsPerShare_YOY</td>
-<td style="text-align: left;">Annual Dividends per Share Year-over-Year Growth</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-<p>The column names described in Table 1h concern basic information about each stock.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
-Table 1h: Revenue
+Table 1g: Data Columns related to Revenue
 </div></th>
 </tr>
 <tr class="odd">
@@ -790,13 +763,142 @@ Table 1h: Revenue
 
 </div>
 </div>
+<p>The column names described in Table 1h are related to the <strong>Dividends</strong> of each stock.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-bottom: hidden; padding-bottom: 0; padding-left: 3px; padding-right: 3px;"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Table 1h: Data Columns related to Dividends
+</div></th>
+</tr>
+<tr class="odd">
+<th style="text-align: left;" data-quarto-table-cell-role="th">ColumnName</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DividendYield</td>
+<td style="text-align: left;">Dividend Yield</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DividendsPerShare_YOY</td>
+<td style="text-align: left;">Annual Dividends per Share Year-over-Year Growth</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
 </section>
-<section id="convert-columns-to-factor" class="level3">
-<h3 class="anchored" data-anchor-id="convert-columns-to-factor">6) Convert columns to factor()</h3>
-<p>code using base R to change the data type of the “Sector” and “Industry” columns in the sp500 tibble to factor variables:</p>
-<blockquote class="blockquote">
-<p>This is the end of the data column discussion.</p>
-</blockquote>
+<section id="remove-rows-containing-no-data-or-null" class="level3">
+<h3 class="anchored" data-anchor-id="remove-rows-containing-no-data-or-null">6) Remove Rows containing no data or null</h3>
+<ol type="1">
+<li>The following code checks if the “Stock” column in the sp500 dataframe contains any null or blank values. If there are null or blank values present, it removes the corresponding rows from the sp500 dataframe, resulting in a filtered dataframe without null or blank values in the “Stock” column.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    sp500 <span class="ot">&lt;-</span> sp500[<span class="sc">!</span>(<span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock) <span class="sc">|</span> sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span>), ]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s an alternate code using <code>dplyr</code> to achieve the same result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock) <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock)))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  sp500 <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">is.null</span>(Stock) <span class="sc">|</span> Stock <span class="sc">==</span> <span class="st">""</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the filtered dataframe</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 502</code></pre>
+</div>
+</div>
+<p>Thus, we have 502 stocks of the S&amp;P500 in our dataset.</p>
+</section>
+<section id="sector-as-a-factor-variable" class="level3">
+<h3 class="anchored" data-anchor-id="sector-as-a-factor-variable">6) Sector as a factor() variable</h3>
+<p>The S&amp;P500 shares are divided into multiple Sectors. The unique() function allows us to to review them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Health Technology"      "Transportation"         "Retail Trade"          
+ [4] "Electronic Technology"  "Distribution Services"  "Finance"               
+ [7] "Technology Services"    "Process Industries"     "Utilities"             
+[10] "Producer Manufacturing" "Energy Minerals"        "Consumer Non-Durables" 
+[13] "Consumer Services"      "Industrial Services"    "Health Services"       
+[16] "Commercial Services"    "Consumer Durables"      "Non-Energy Minerals"   
+[19] "Communications"        </code></pre>
+</div>
+</div>
+<p>It makes sense to convert Sector to a factor variable, since there are 19 distinct Sectors in the S&amp;P500 and each stock belongs to a unique sector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sp500<span class="sc">$</span>Sector <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We confirm that Sector is now modelled as a factor variable, by running the str() function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Factor w/ 19 levels "Commercial Services",..: 11 18 16 7 11 6 11 9 17 17 ...</code></pre>
+</div>
+</div>
+<p>Now that Sectors is a factor variable, we can use the levels() function to review the different levels it can take.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Commercial Services"    "Communications"         "Consumer Durables"     
+ [4] "Consumer Non-Durables"  "Consumer Services"      "Distribution Services" 
+ [7] "Electronic Technology"  "Energy Minerals"        "Finance"               
+[10] "Health Services"        "Health Technology"      "Industrial Services"   
+[13] "Non-Energy Minerals"    "Process Industries"     "Producer Manufacturing"
+[16] "Retail Trade"           "Technology Services"    "Transportation"        
+[19] "Utilities"             </code></pre>
+</div>
+</div>
+<p>The table() function allows us to count how many stocks are part of each sector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Commercial Services         Communications      Consumer Durables 
+                    14                      3                     12 
+ Consumer Non-Durables      Consumer Services  Distribution Services 
+                    31                     29                      9 
+ Electronic Technology        Energy Minerals                Finance 
+                    49                     16                     90 
+       Health Services      Health Technology    Industrial Services 
+                    12                     47                      9 
+   Non-Energy Minerals     Process Industries Producer Manufacturing 
+                     7                     24                     31 
+          Retail Trade    Technology Services         Transportation 
+                    23                     50                     15 
+             Utilities 
+                    31 </code></pre>
+</div>
+</div>
+<p>Thus, we can see how many stocks are part of each one of the 19 sectors.</p>
+<p>We can sum them to confirm that they add up to 502.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">table</span>(sp500<span class="sc">$</span>Sector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 502</code></pre>
+</div>
+</div>
+<p>This completes our review of the Sector variable.</p>
 
 
 </section>
