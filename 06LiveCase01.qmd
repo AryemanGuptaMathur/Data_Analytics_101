@@ -7,38 +7,43 @@ The S&P 500, also called the Standard & Poor's 500, is a stock market index that
 
 S&P Dow Jones Indices, a division of S&P Global, is responsible for maintaining the index. The selection of companies included in the S&P 500 is determined by a committee, considering factors such as market capitalization, liquidity, and industry representation.
 
+The S&P is a float-weighted index, meaning the market capitalizations of the companies in the index are adjusted by the number of shares available for public trading. https://www.investopedia.com/terms/s/sp500.asp
+
 The performance of the S&P 500 is frequently used to gauge the broader stock market and is commonly referenced by investors, analysts, and financial media. It provides a snapshot of how large-cap U.S. stocks are faring and is considered a reliable indicator of overall market sentiment.
+
+Typically, the S&P 500 index consists of 500 stocks. However, in reality, there are actually 503 stocks included. This discrepancy arises because three of the listed companies have multiple share classes, and each class is considered a separate stock that needs to be included in the index.
+
+Among these 503 stocks, Apple, the technology giant, holds the top position with a market capitalization of $2.35 billion. Following Apple, Microsoft and Amazon.com rank as the second and third largest stocks in the S&P 500, respectively. The next positions are held by Nvidia Corp, Tesla, Berkshire Hathaway, and two classes of shares from Google's parent company, Alphabet..
 
 
 ## S&P 500 Data
 
-We will analyze a real-world dataset.
+We will analyze a real-world, recent dataset containing information about the S&P500 stocks. The dataset is located in a 
+<a href="https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0" target="_blank">Google Sheet</a>
 
-The dataset is located in a Google Sheet.
-This is the URL of the data we will use: https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0
-
-The data is disorganized and challenging to understand.
-
-We will review the data and proceed in a step-by-step manner.
+The data is disorganized and challenging to understand. We will review the data and proceed in a step-by-step manner.
 
 
 
-### 1) Read the S&P500 data from a Google Sheet
+### 1) Read the S&P500 data from a Google Sheet into a tibble dataframe.
 
-The Google Sheet ID is: `11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM`. We can use the function `gsheet2tbl` in package `gsheet` to read the Google Sheet into a tibble or dataframe, as demonstrated in the following code.
+1. The complete URL is  
+<a href="https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0" target="_blank">https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/</a>
+
+2. The Google Sheet ID is: `11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM`. We can use the function `gsheet2tbl` in package `gsheet` to read the Google Sheet into a tibble or dataframe, as demonstrated in the following code.
 
 ```{r, warning=FALSE}
 # Read S&P500 stock data present in a Google Sheet.
 library(gsheet)
 prefix <- "https://docs.google.com/spreadsheets/d/"
 sheetID <- "11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM"
-url500 <- paste(prefix, sheetID) # Form the URL to connect to
+url500 <- paste(prefix,sheetID) # Form the URL to connect to
 sp500 <- gsheet2tbl(url500) # Read it into a tibble called sp500
 ```
 
 ### 2) Review the data
 
-We want to understand the different data columns and their data structure.
+1. We want to understand the different data columns and their data structure.
 For this purpose, we run the `str()` function.
 
 
@@ -46,11 +51,11 @@ For this purpose, we run the `str()` function.
 str(sp500)
 ```
 
-The `str(sp500)` output provides valuable insights into the structure and data types of the columns in the `sp500` tibble. Let's delve into the details.
+2. The `str(sp500)` output provides valuable insights into the structure and data types of the columns in the `sp500` tibble. Let's delve into the details.
 
-The output reveals that `sp500` is a tibble with dimensions \[503 × 36\]. This means it consists of 503 rows, each representing a specific S&P500 stock, and 36 columns containing information about each stock.
+3. The output reveals that `sp500` is a tibble with dimensions \[503 × 36\]. This means it consists of 503 rows, each representing a specific S&P500 stock, and 36 columns containing information about each stock.
 
-Here is a preliminary breakdown of the information associated with each column:
+4. Here is a preliminary breakdown of the information associated with each column:
 
 -   The columns labeled `Date`, `Stock`, `Description`, `Sector`, and `Industry` are character columns. They respectively represent the date, stock ticker symbol, description, sector, and industry of each S&P500 stock.
 
@@ -58,12 +63,13 @@ Here is a preliminary breakdown of the information associated with each column:
 
 -   The column labeled `Technical.Rating` is a character column that assigns a technical rating to each stock.
 
-By examining the `str(sp500)` output, we gain a preliminary understanding of the data types and column names present in the `sp500` tibble, enabling us to grasp the structure of the dataset.
+5. By examining the `str(sp500)` output, we gain a preliminary understanding of the data types and column names present in the `sp500` tibble, enabling us to grasp the structure of the dataset.
 
 ### 3) Rename Data Columns
 
-The names of the data columns are lengthy and confusing. 
-We will rename the data columns to make it easier to work with the data.
+1. The names of the data columns are lengthy and confusing. 
+
+2. We will rename the data columns to make it easier to work with the data, using the `rename_with()` function. 
 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
@@ -84,7 +90,7 @@ new_names <- c(
   "FCF_QYOY", "DebtToEquity", "CurrentRatio", 
   "QuickRatio", "DividendYield", 
   "DividendsPerShare_YOY", "PS", 
-  "Revenue_YOY", "Revenue_QYOY", "TechRating"
+  "Revenue_YOY", "Revenue_QYOY", "Rating"
 )
 # Rename the columns using the new_names vector
 sp500 <- sp500 %>% 
@@ -108,29 +114,19 @@ This code is designed to rename the columns of the `sp500` tibble using a predef
 
 In essence, the code uses the `new_names` vector as a mapping to assign new column names to the `sp500` tibble, ensuring that each column is given the desired new name specified in `new_names`.
 
-
-
-
 ### 4) Review the data again after renaming columns
 
-We will review the column names again after the renaming.
-For this purpose, we run the `colnames()` function can help.
-
+1. We review the column names again after renaming them, using the `colnames()` function can help.
 
 ```{r, warning=FALSE}
 colnames(sp500)
 ```
 
+### 5) Understand the Data Columns indepth
 
+1. The complete data has 36 columns. Our goal is to gain a deeper understanding of what the data columns mean.
 
-
-### 5. Understand the Data Columns indepth
-
-The data has 36 columns.
-We need to understand what they mean. 
-We will reorganize the column names and gain a deeper understanding of what they mean.
-
-The following table lists all the data columns.
+2. We  reorganize the column names into eight tables, labeled Table 1a, 1b.. 1h.
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 library(tibble)
@@ -146,7 +142,7 @@ new_names <- c(
   "FCF_QYOY", "DebtToEquity", "CurrentRatio", 
   "QuickRatio", "DividendYield", 
   "DividendsPerShare_YOY", "PS", 
-  "Revenue_YOY", "Revenue_QYOY", "TechRating"
+  "Revenue_YOY", "Revenue_QYOY", "Rating"
 )
 
 descriptions <- c(
@@ -191,20 +187,6 @@ descriptions <- c(
 column_info <- tibble(ColumnName = new_names, Description = descriptions)
 ```
 
-
-```{r, warning=FALSE, eval=TRUE, echo=FALSE}
-
-#suppressPackageStartupMessages(library(kableExtra))
-
-#column_table <- knitr::kable(column_info, "html")  %>% 
-#  kable_styling() 
-# %>%
-# add_header_above(c("Table 1: Desription of Column Names" = ncol(column_info)))
-
-#column_table
-```
-
-
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 # Create different Tables explaining different columns in the data
 library(dplyr)
@@ -217,13 +199,6 @@ liquidityCols = slice(column_info, c(28:30))
 dividendCols = slice(column_info, c(31:32))
 revenueCols = slice(column_info, c(33:35))
 ```
-
-
-```{r, warning=FALSE, eval=TRUE, echo=FALSE}
-# DEBUG
-#print(fcfCols)
-```
-
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 
@@ -239,21 +214,20 @@ table1h <- knitr::kable(revenueCols, "html")  %>% kable_styling() %>% add_header
 ```
 
 
-The column names described in Table 1a concern basic information about each stock. 
+a. The column names described in Table 1a. concern basic information about each stock. 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 table1a 
 ```
 
 
-The column names described in Table 1b concern basic information about each stock. 
+b. The column names described in Table 1b. have Technical information about each stock, including the 52-Week High and Low prices.
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 table1b
 ```
 
-
-The column names described in Table 1c concern basic information about each stock. 
+c. The column names described in Table 1c. are related to the **Profitability** of each stock. 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 table1c
@@ -297,6 +271,14 @@ table1h
 ```
 
 
+### 6) Convert columns to factor()
+
+code using base R to change the data type of the "Sector" and "Industry" columns in the sp500 tibble to factor variables:
+
+```{r, warning=FALSE, eval=TRUE, echo=FALSE}
+sp500$Sector <- as.factor(sp500$Sector)
+sp500$Industry <- as.factor(sp500$Industry)
+```
 
 
 >This is the end of the data column discussion.
