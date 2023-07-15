@@ -1,28 +1,46 @@
-# Case Analysis of SP500
+# Case Study: Analyze recent S&P500 Data
 
-We will investigate data related to the S&P500 stocks.
 
+## S&P 500
+
+The S&P 500, also called the Standard & Poor's 500, is a stock market index that tracks the performance of 500 major publicly traded companies listed on U.S. stock exchanges. It serves as a widely accepted benchmark for assessing the overall health and performance of the U.S. stock market.
+
+S&P Dow Jones Indices, a division of S&P Global, is responsible for maintaining the index. The selection of companies included in the S&P 500 is determined by a committee, considering factors such as market capitalization, liquidity, and industry representation.
+
+The performance of the S&P 500 is frequently used to gauge the broader stock market and is commonly referenced by investors, analysts, and financial media. It provides a snapshot of how large-cap U.S. stocks are faring and is considered a reliable indicator of overall market sentiment.
+
+
+## S&P 500 Data
+
+We will analyze a real-world dataset.
+
+The dataset is located in a Google Sheet.
 This is the URL of the data we will use: https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0
 
-### 1) Read S&P500 data from a Google Sheet into a tibble
+The data is disorganized and challenging to understand.
 
-The Google Sheet ID is: `11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM`. We can use the function `gsheet2tbl` in package `gsheet` to read the Google Sheet into a dataframe, as demonstrated in the following code.
+We will review the data and proceed in a step-by-step manner.
+
+
+
+### 1) Read the S&P500 data from a Google Sheet
+
+The Google Sheet ID is: `11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM`. We can use the function `gsheet2tbl` in package `gsheet` to read the Google Sheet into a tibble or dataframe, as demonstrated in the following code.
 
 ```{r, warning=FALSE}
 # Read S&P500 stock data present in a Google Sheet.
 library(gsheet)
-
 prefix <- "https://docs.google.com/spreadsheets/d/"
 sheetID <- "11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM"
-# Form the URL to connect to
-url500 <- paste(prefix, sheetID) 
-# Read the Google Sheet located at the URL into a tibble called sp500
-sp500 <- gsheet2tbl(url500)
+url500 <- paste(prefix, sheetID) # Form the URL to connect to
+sp500 <- gsheet2tbl(url500) # Read it into a tibble called sp500
 ```
 
 ### 2) Review the data
 
-We run the str() function to better understand the data.
+We want to understand the different data columns and their data structure.
+For this purpose, we run the `str()` function.
+
 
 ```{r, warning=FALSE}
 str(sp500)
@@ -32,7 +50,7 @@ The `str(sp500)` output provides valuable insights into the structure and data t
 
 The output reveals that `sp500` is a tibble with dimensions \[503 × 36\]. This means it consists of 503 rows, each representing a specific S&P500 stock, and 36 columns containing information about each stock.
 
-Here's a breakdown of the information associated with each column:
+Here is a preliminary breakdown of the information associated with each column:
 
 -   The columns labeled `Date`, `Stock`, `Description`, `Sector`, and `Industry` are character columns. They respectively represent the date, stock ticker symbol, description, sector, and industry of each S&P500 stock.
 
@@ -40,22 +58,23 @@ Here's a breakdown of the information associated with each column:
 
 -   The column labeled `Technical.Rating` is a character column that assigns a technical rating to each stock.
 
-By examining the `str(sp500)` output, you gain a comprehensive understanding of the data types and column names present in the `sp500` tibble, enabling you to grasp the structure of the dataset effectively.
+By examining the `str(sp500)` output, we gain a preliminary understanding of the data types and column names present in the `sp500` tibble, enabling us to grasp the structure of the dataset.
 
 ### 3) Rename Data Columns
+
+The names of the data columns are lengthy and confusing. 
+We will rename the data columns to make it easier to work with the data.
+
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 suppressPackageStartupMessages(library(dplyr))
 ```
 
-```{r, warning=FALSE, eval=FALSE, echo=TRUE}
-library(dplyr)
-```
 
 ```{r, warning=FALSE}
 # Define a mapping of new column names
 new_names <- c(
-  "Date", "Stock", "Desc", "Sector", "Industry", 
+  "Date", "Stock", "StockName", "Sector", "Industry", 
   "MarketCap", "Price", "Low52Wk", "High52Wk", 
   "ROE", "ROA", "ROIC", "GrossMargin", 
   "OperatingMargin", "NetMargin", "PE", 
@@ -79,7 +98,7 @@ This code is designed to rename the columns of the `sp500` tibble using a predef
 
 2.  The `%>%` operator, often referred to as the pipe operator, is used to pass the `sp500` tibble to the subsequent operation in a more readable and concise manner.
 
-3.  The `rename_with()` function from the `dplyr` package is applied to the `sp500` tibble. This function allows you to rename columns based on a specified function or formula.
+3.  The `rename_with()` function from the `dplyr` package is applied to the `sp500` tibble. This function allows us to rename columns based on a specified function or formula.
 
 4.  In this case, a formula `~ new_names` is used as the first argument of `rename_with()`. This formula indicates that the new names for the columns should be sourced from the `new_names` vector.
 
@@ -89,13 +108,35 @@ This code is designed to rename the columns of the `sp500` tibble using a predef
 
 In essence, the code uses the `new_names` vector as a mapping to assign new column names to the `sp500` tibble, ensuring that each column is given the desired new name specified in `new_names`.
 
-### Review Data Columns
+
+
+
+### 4) Review the data again after renaming columns
+
+We will review the column names again after the renaming.
+For this purpose, we run the `colnames()` function can help.
+
+
+```{r, warning=FALSE}
+colnames(sp500)
+```
+
+
+
+
+### 5. Understand the Data Columns indepth
+
+The data has 36 columns.
+We need to understand what they mean. 
+We will reorganize the column names and gain a deeper understanding of what they mean.
+
+The following table lists all the data columns.
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 library(tibble)
 
 new_names <- c(
-  "Date", "Stock", "Desc", "Sector", "Industry", 
+  "Date", "Stock", "StockName", "Sector", "Industry", 
   "MarketCap", "Price", "Low52Wk", "High52Wk", 
   "ROE", "ROA", "ROIC", "GrossMargin", 
   "OperatingMargin", "NetMargin", "PE", 
@@ -109,24 +150,24 @@ new_names <- c(
 )
 
 descriptions <- c(
-  "Date of the observation",
-  "Stock ticker symbol",
-  "Description of the stock",
-  "Sector the stock belongs to",
-  "Industry the stock belongs to",
+  "Date (e.g. \"7/15/2023\")",
+  "Stock Ticker (e.g. AAL)",
+  "Name of the company (e.g \"American Airlines Group, Inc.\")",
+  "Sector the stock belongs to (e.g. \"Transportation\")",
+  "Industry the stock belongs to (e.g \"Airlines\")",
   "Market capitalization of the company",
-  "Stock price",
-  "52-week low price",
-  "52-week high price",
+  "Recent Stock Price",
+  "52-Week Low Price",
+  "52-Week High Price",
   "Return on Equity",
   "Return on Assets",
   "Return on Invested Capital",
-  "Gross Margin",
-  "Operating Margin",
-  "Net Margin",
+  "Gross Profit Margin",
+  "Operating Profit Margin",
+  "Net Profit Margin",
   "Price-to-Earnings Ratio",
   "Price-to-Book Ratio",
-  "Enterprise Value to EBITDA",
+  "Enterprise Value to EBITDA Ratio",
   "EBITDA",
   "Earnings per Share",
   "EBITDA Year-over-Year Growth",
@@ -147,24 +188,21 @@ descriptions <- c(
   "Technical Rating"
 )
 
-column_info <- tibble(Name = new_names, Description = descriptions)
-
+column_info <- tibble(ColumnName = new_names, Description = descriptions)
 ```
 
-### Data Description
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 
-suppressPackageStartupMessages(library(kableExtra))
+#suppressPackageStartupMessages(library(kableExtra))
 
-column_table <- knitr::kable(column_info, "html")  %>% 
-  kable_styling() 
+#column_table <- knitr::kable(column_info, "html")  %>% 
+#  kable_styling() 
 # %>%
 # add_header_above(c("Table 1: Desription of Column Names" = ncol(column_info)))
 
 #column_table
 ```
-
 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
@@ -181,6 +219,10 @@ revenueCols = slice(column_info, c(33:35))
 ```
 
 
+```{r, warning=FALSE, eval=TRUE, echo=FALSE}
+# DEBUG
+#print(fcfCols)
+```
 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
@@ -207,7 +249,7 @@ table1a
 The column names described in Table 1b concern basic information about each stock. 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
-table1b 
+table1b
 ```
 
 
@@ -232,13 +274,11 @@ table1e
 ```
 
 
-
 The column names described in Table 1f concern basic information about each stock. 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 table1f
 ```
-
 
 
 The column names described in Table 1g concern basic information about each stock. 
@@ -250,7 +290,7 @@ table1g
 
 
 
-The column names described in Table 1g concern basic information about each stock. 
+The column names described in Table 1h concern basic information about each stock. 
 
 ```{r, warning=FALSE, eval=TRUE, echo=FALSE}
 table1h
@@ -259,14 +299,5 @@ table1h
 
 
 
-
-
-
-
-
-
-
-
-
-
+>This is the end of the data column discussion.
 
