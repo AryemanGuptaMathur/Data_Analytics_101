@@ -1,6 +1,6 @@
-# Exploring Dataframes
+# 5. Exploring Dataframes
 
-July 16, 2023 V1 *This chapter is incomplete, work-in-progress.*
+*July 17, 2023 V1*  *This chapter is incomplete, work-in-progress.*
 
 Here's how you can explore the mtcars data frame:
 

@@ -1,6 +1,6 @@
-# Reading Data
+# 4. Reading Data
 
-July 16, 2023 V4
+*July 17, 2023 V1*
 
 Dataframes and Tibbles are frequently employed data structures in R for storing and manipulating data. They facilitate the organization, exploration, and analysis of data.
 

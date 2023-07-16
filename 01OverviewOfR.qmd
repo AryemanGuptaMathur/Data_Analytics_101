@@ -1,6 +1,6 @@
-# Getting Started
+# 1. Getting Started
 
-July 16, 2023 V5
+*July 17, 2023 V1*
 
 ## Overview of R programming
 

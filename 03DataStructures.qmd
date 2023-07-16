@@ -1,6 +1,6 @@
-# Data Structures
+# 3. Data Structures
 
-July 16, 2023 V6
+*July 17, 2023 V1*
 
 ## Popular Data Structures
 

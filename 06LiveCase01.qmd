@@ -1,4 +1,6 @@
-# Case Study: Analyze S&P500 Data
+# 6. Case Study: Analyze S&P500 Data (1)
+
+*July 17, 2023 V1*
 
 ## S&P 500.
 
