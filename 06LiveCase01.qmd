@@ -1,8 +1,6 @@
-# Case Study: Analyze recent S&P500 Data
+# Case Study: Analyze S&P500 Data
 
-July 15, 2023 V19
-
-## S&P 500
+## S&P 500.
 
 The S&P 500, also called the Standard & Poor's 500, is a stock market index that tracks the performance of 500 major publicly traded companies listed on U.S. stock exchanges. It serves as a widely accepted benchmark for assessing the overall health and performance of the U.S. stock market.
 
@@ -286,26 +284,24 @@ if (hasNull) {
 # View the filtered dataframe
 nrow(sp500)
 ```
+
 Thus, we have 502 stocks of the S&P500 in our dataset.
 
-### 7) Sector 
+### 7) Sector
 
-The S&P500 shares are divided into multiple Sectors. 
-Each stock belongs to a unique sector.
-Thus, it makes sense to model Sector as a factor() variable. 
+The S&P500 shares are divided into multiple Sectors. Each stock belongs to a unique sector. Thus, it makes sense to model Sector as a factor() variable.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 sp500$Sector <- as.factor(sp500$Sector)
 ```
 
-It makes sense to convert Sector to a factor variable, since there are 19 distinct Sectors in the S&P500 and each stock belongs to a unique sector.
-We confirm that Sector is now modelled as a factor variable, by running the str() function.
+It makes sense to convert Sector to a factor variable, since there are 19 distinct Sectors in the S&P500 and each stock belongs to a unique sector. We confirm that Sector is now modelled as a factor variable, by running the str() function.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 str(sp500$Sector)
 ```
 
-Now that Sectors is a factor variable, we can use the levels() function to review the different levels it can take. 
+Now that Sectors is a factor variable, we can use the levels() function to review the different levels it can take.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 levels(sp500$Sector)
@@ -319,20 +315,17 @@ table(sp500$Sector)
 
 Thus, we can see how many stocks are part of each one of the 19 sectors.
 
-We can sum them to confirm that they add up to 502. 
+We can sum them to confirm that they add up to 502.
+
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 sum(table(sp500$Sector))
 ```
 
 This completes our review of the Sector variable.
 
+### 8) Rating
 
-
-
-### 8) Rating 
-
-In the data, the S&P500 shares have Technical Ratings such as {Buy, Sell, ..}. 
-Since each Stock has a unique Technical Rating, it makes sense to model the data column Rating as a factor() variable. 
+In the data, the S&P500 shares have Technical Ratings such as {Buy, Sell, ..}. Since each Stock has a unique Technical Rating, it makes sense to model the data column Rating as a factor() variable.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 sp500$Rating <- as.factor(sp500$Rating)
@@ -344,7 +337,7 @@ We confirm that Rating is now modelled as a factor variable, by running the str(
 str(sp500$Rating)
 ```
 
-We can use the levels() function to review the different levels it can take. 
+We can use the levels() function to review the different levels it can take.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 levels(sp500$Rating)
@@ -356,12 +349,11 @@ The table() function allows us to count how many stocks have each Rating.
 table(sp500$Rating)
 ```
 
-Thus, we can see how many stocks have ratings ranging from "Strong Sell" to "Strong Buy".
-This completes our review of Technical Rating.
-
+Thus, we can see how many stocks have ratings ranging from "Strong Sell" to "Strong Buy". This completes our review of Technical Rating.
 
 ### Summary
-We believe this dataset of S&P500 shares is now ready for futher analysis. We end this stage of our analysis in this chapter, by running the str() function to review the data columns. 
+
+We believe this dataset of S&P500 shares is now ready for futher analysis. We end this stage of our analysis in this chapter, by running the str() function to review the data columns.
 
 ```{r, warning=FALSE, eval=TRUE, echo=TRUE}
 str(sp500)

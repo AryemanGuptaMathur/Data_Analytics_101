@@ -1,24 +1,26 @@
 # Data Structures
 
+July 16, 2023 V5
+
 ## Popular Data Structures
 
 The R programming language includes a number of data structures that are frequently employed in data analysis and statistical modeling. These are some of the most popular data structures in R:
 
-1.  **Vector**: A vector is a one-dimensional array that stores identical data types, such as numeric, character, or logical. The "c()" function can be used to create vectors, and indexing can be used to access individual vector elements.
+1.  **Vector**: A vector is a one-dimensional array that stores identical data types, such as numeric, character, or logical. The `c()` function can be used to create vectors, and indexing can be used to access individual vector elements.
 
-2.  **Factor**: A factor is a vector representing categorical data, with each distinct value or category represented as a level. Using indexing, individual levels of a factor can be accessed using the "factor()" function.
+2.  **Factor**: A factor is a vector representing **categorical** data, with each distinct value or category represented as a level. Using indexing, individual levels of a factor can be accessed using the `factor()` function.
 
-3.  **Dataframe**: Similar to a spreadsheet, a data frame is a two-dimensional table-like structure that can store various types of data in columns. The "data.frame()" function can be used to construct data frames, and individual elements can be accessed using row and column indexing.
+3.  **Dataframe**: A data frame is a two-dimensional table-like structure similar to a spreadsheet, that can store various types of data in columns. The `data.frame()` function can be used to construct data frames, and individual elements can be accessed using row and column indexing.
 
-4.  **Matrix**: A matrix is a two-dimensional array of data with identical rows and columns. The "matrix()" function can be used to construct matrices, and individual elements can be accessed using row and column indexing.
+4.  **Matrix**: A matrix is a two-dimensional array of data with identical rows and columns. The `matrix()` function can be used to construct matrices, and individual elements can be accessed using row and column indexing.
 
-5.  **Array**: An array is a multidimensional data structure that can contain data of the same data type in user-specified dimensions. Arrays can be constructed using the "array()" function, and elements can be accessed using multiple indexing.
+5.  **Array**: An array is a multidimensional data structure that can contain data of the same data type in user-specified dimensions. Arrays can be constructed using the `array()` function, and elements can be accessed using multiple indexing.
 
-6.  **List**: A list is an object that may comprise elements of various data types, including vectors, matrices, data frames, and even other lists. The "list()" function can be used to construct lists, while indexing can be used to access individual elements.
+6.  **List**: A list is an object that may comprise elements of various data types, including vectors, matrices, data frames, and even other lists. The `list()` function can be used to construct lists, while indexing can be used to access individual elements.
 
-These data structures are helpful for storing and manipulating data in R, and they can be utilized in numerous applications, such as statistical analysis and data visualization.
+These data structures are helpful for storing and manipulating data in R, and they can be utilized in numerous applications, such as statistical analysis and data visualization. We will focus our attention on Vectors, Factors and Dataframes, since we believe that these are the three most useful data structures.
 
-We will focus our attention on Vectors, Factors and Dataframes, since we believe that these are the three most useful data structures. \[1\]
+\[1\]
 
 ## Vectors
 
@@ -131,21 +133,18 @@ range(ages)
 
 5.  **Standard Deviation**: The standard deviation is a measure of dispersion that reflects the amount of variation in a vector's elements.
 
-6.  **Variance**: The variance is another measure of the spread. It is square of the Standard Deviation.
-
 ```{r}
 mean(ages)
 sd(ages)
-var(ages)
 ```
 
-7.  **Median**: The median is a measure of central tendency that represents the middle value of a sorted vector.
+6.  **Median**: The median is a measure of central tendency that represents the middle value of a sorted vector.
 
 ```{r}
 median(ages)
 ```
 
-8.  **Quantiles**: The quantiles are a set of cut-off points that divide a sorted vector into equal-sized groups.
+7.  **Quantiles**: The quantiles are a set of cut-off points that divide a sorted vector into equal-sized groups.
 
 ```{r}
 quantile(ages)

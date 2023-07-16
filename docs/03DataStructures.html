@@ -200,39 +200,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Exploring Dataframes</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
- <span class="menu-text">06LiveCase01.qmd</span>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./07SummarzingCategoricalData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Categorical Data</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./08ExploringTibbles.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Manipulation</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./09SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (1 of 3)</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (2 of 3)</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11SummarizingContinuousData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (3 of 3)</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -267,19 +234,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="data-structures" class="level1">
 <h1>Data Structures</h1>
+<p>July 16, 2023 V5</p>
 <section id="popular-data-structures" class="level2">
 <h2 class="anchored" data-anchor-id="popular-data-structures">Popular Data Structures</h2>
 <p>The R programming language includes a number of data structures that are frequently employed in data analysis and statistical modeling. These are some of the most popular data structures in R:</p>
 <ol type="1">
-<li><p><strong>Vector</strong>: A vector is a one-dimensional array that stores identical data types, such as numeric, character, or logical. The “c()” function can be used to create vectors, and indexing can be used to access individual vector elements.</p></li>
-<li><p><strong>Factor</strong>: A factor is a vector representing categorical data, with each distinct value or category represented as a level. Using indexing, individual levels of a factor can be accessed using the “factor()” function.</p></li>
-<li><p><strong>Dataframe</strong>: Similar to a spreadsheet, a data frame is a two-dimensional table-like structure that can store various types of data in columns. The “data.frame()” function can be used to construct data frames, and individual elements can be accessed using row and column indexing.</p></li>
-<li><p><strong>Matrix</strong>: A matrix is a two-dimensional array of data with identical rows and columns. The “matrix()” function can be used to construct matrices, and individual elements can be accessed using row and column indexing.</p></li>
-<li><p><strong>Array</strong>: An array is a multidimensional data structure that can contain data of the same data type in user-specified dimensions. Arrays can be constructed using the “array()” function, and elements can be accessed using multiple indexing.</p></li>
-<li><p><strong>List</strong>: A list is an object that may comprise elements of various data types, including vectors, matrices, data frames, and even other lists. The “list()” function can be used to construct lists, while indexing can be used to access individual elements.</p></li>
+<li><p><strong>Vector</strong>: A vector is a one-dimensional array that stores identical data types, such as numeric, character, or logical. The <code>c()</code> function can be used to create vectors, and indexing can be used to access individual vector elements.</p></li>
+<li><p><strong>Factor</strong>: A factor is a vector representing <strong>categorical</strong> data, with each distinct value or category represented as a level. Using indexing, individual levels of a factor can be accessed using the <code>factor()</code> function.</p></li>
+<li><p><strong>Dataframe</strong>: A data frame is a two-dimensional table-like structure similar to a spreadsheet, that can store various types of data in columns. The <code>data.frame()</code> function can be used to construct data frames, and individual elements can be accessed using row and column indexing.</p></li>
+<li><p><strong>Matrix</strong>: A matrix is a two-dimensional array of data with identical rows and columns. The <code>matrix()</code> function can be used to construct matrices, and individual elements can be accessed using row and column indexing.</p></li>
+<li><p><strong>Array</strong>: An array is a multidimensional data structure that can contain data of the same data type in user-specified dimensions. Arrays can be constructed using the <code>array()</code> function, and elements can be accessed using multiple indexing.</p></li>
+<li><p><strong>List</strong>: A list is an object that may comprise elements of various data types, including vectors, matrices, data frames, and even other lists. The <code>list()</code> function can be used to construct lists, while indexing can be used to access individual elements.</p></li>
 </ol>
-<p>These data structures are helpful for storing and manipulating data in R, and they can be utilized in numerous applications, such as statistical analysis and data visualization.</p>
-<p>We will focus our attention on Vectors, Factors and Dataframes, since we believe that these are the three most useful data structures. [1]</p>
+<p>These data structures are helpful for storing and manipulating data in R, and they can be utilized in numerous applications, such as statistical analysis and data visualization. We will focus our attention on Vectors, Factors and Dataframes, since we believe that these are the three most useful data structures.</p>
+<p>[1]</p>
 </section>
 <section id="vectors" class="level2">
 <h2 class="anchored" data-anchor-id="vectors">Vectors</h2>
@@ -420,7 +388,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li><p><strong>Mean</strong>: The mean is a central tendency measure that represents the average value of a vector’s elements.</p></li>
 <li><p><strong>Standard Deviation</strong>: The standard deviation is a measure of dispersion that reflects the amount of variation in a vector’s elements.</p></li>
-<li><p><strong>Variance</strong>: The variance is another measure of the spread. It is square of the Standard Deviation.</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -431,25 +398,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 13.47529</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 181.5833</code></pre>
 </div>
-</div>
-<ol start="7" type="1">
+<ol start="6" type="1">
 <li><strong>Median</strong>: The median is a measure of central tendency that represents the middle value of a sorted vector.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 47.5</code></pre>
 </div>
 </div>
-<ol start="8" type="1">
+<ol start="7" type="1">
 <li><strong>Quantiles</strong>: The quantiles are a set of cut-off points that divide a sorted vector into equal-sized groups.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(ages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   0%   25%   50%   75%  100% 
 42.00 45.00 47.50 54.75 72.00 </code></pre>
@@ -465,7 +428,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Substring</strong>: The <code>substr()</code> function can be used to extract a substring from a character vector. To extract the first three characters of each name in the “names” vector, for instance, we can use:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(names, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">substr</span>(names, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Ash" "Bul" "Cha" "Div"</code></pre>
 </div>
@@ -475,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Concatenation</strong>: Using the <code>paste()</code> function, we can concatenate two or more character vectors into a singular vector. To create a new vector containing the names and ages of the individuals, for instance, we can use:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>persons <span class="ot">&lt;-</span> <span class="fu">paste</span>(names, ages)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>persons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>persons <span class="ot">&lt;-</span> <span class="fu">paste</span>(names, ages)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>persons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Ashok 72" "Bullu 49" "Charu 46" "Divya 42"</code></pre>
 </div>
@@ -486,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Case Conversion:</strong> The <code>toupper()</code> and <code>tolower()</code> functions can be used to convert the case of characters within a character vector. To convert the “names” vector to uppercase letters, for instance, we can use:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">toupper</span>(names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ASHOK" "BULLU" "CHARU" "DIVYA"</code></pre>
 </div>
@@ -496,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Pattern Matching:</strong> Using the <code>grep()</code> and <code>grepl()</code> functions, we can search for a pattern within the elements of a character vector. To find the names in the “names” vector that contain the letter “a”, for instance, we can use:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"a"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"a"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 4</code></pre>
 </div>
@@ -506,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Regular Expressions:</strong> We can use regular expressions with the <code>grep()</code> and <code>grepl()</code> functions to search for patterns in the elements of a character vector. To find the names in the “names” vector that begin with the letter “C”, for instance, we can use:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"^C"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"^C"</span>, names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
