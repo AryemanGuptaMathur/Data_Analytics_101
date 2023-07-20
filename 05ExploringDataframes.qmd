@@ -189,6 +189,42 @@ For convenience, we will change the base level back to "4".
 mtcars$cyl <- relevel(mtcars$cyl, ref = "4")
 ```
 
+droplevels(): This function is helpful for removing unused factor levels. It removes levels from a factor variable that do not appear in the data, reducing unnecessary levels and ensuring that the factor only includes relevant levels.
+
+```{r}
+# Assuming 'cyl' is a factor variable with levels "4", "6", and "8"
+# Check the levels of 'cyl' before removing unused levels
+levels(mtcars$cyl)
+
+# Remove unused levels from 'cyl'
+mtcars$cyl <- droplevels(mtcars$cyl)
+
+# Check the levels of 'cyl' after removing unused levels
+levels(mtcars$cyl)
+```
+We apply droplevels() to mtcars$cyl to remove any unused levels from the factor variable. This function removes factor levels that are not present in the data. In this case all three levels were present in the data and therefore nothing was removed. 
+
+
+cut(): The cut() function allows you to convert a continuous variable into a factor variable by dividing it into intervals or bins. This is useful when you want to group numeric data into categories or levels.
+
+```{r}
+# Create a new factor variable 'mpg_category' by cutting 'mpg' into intervals
+mtcars$mpg_category <- cut(mtcars$mpg, 
+                           breaks = c(0, 20, 30, Inf), 
+                           labels = c("Low", "Medium", "High"))
+
+# Summarize  the resulting 'mpg_category' variable
+summary(mtcars$mpg_category)
+```
+In the provided code, a new factor variable called mpg_category is generated based on the mpg (miles per gallon) variable from the mtcars dataset. This is achieved using the cut() function, which segments the mpg values into distinct intervals and assigns appropriate factor labels.
+
+The cut() function takes several arguments:
+
+mtcars$mpg represents the variable to be divided.
+
+breaks specifies the cutoff points for interval creation. Here, we define three intervals: values up to 20, values between 20 and 30 (inclusive), and values greater than 30. The breaks argument is defined as c(0, 20, 30, Inf) to indicate these intervals.
+
+labels assigns labels to the resulting factor levels. In this instance, the labels "Low", "Medium", and "High" are provided to correspond with the respective intervals.
 
 
 ## Logical operations
