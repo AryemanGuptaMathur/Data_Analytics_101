@@ -220,7 +220,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#exploring-dataframes" id="toc-exploring-dataframes" class="nav-link active" data-scroll-target="#exploring-dataframes">5. Exploring Dataframes</a>
   <ul class="collapse">
+  <li><a href="#reviewing-a-dataframe" id="toc-reviewing-a-dataframe" class="nav-link" data-scroll-target="#reviewing-a-dataframe">Reviewing a dataframe</a></li>
+  <li><a href="#accessing-data-within-a-dataframe" id="toc-accessing-data-within-a-dataframe" class="nav-link" data-scroll-target="#accessing-data-within-a-dataframe">Accessing data within a dataframe</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
+  <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors">Factors</a></li>
   <li><a href="#logical-operations" id="toc-logical-operations" class="nav-link" data-scroll-target="#logical-operations">Logical operations</a></li>
+  <li><a href="#statistical-functions" id="toc-statistical-functions" class="nav-link" data-scroll-target="#statistical-functions">Statistical functions</a></li>
+  <li><a href="#summarizing-a-dataframe" id="toc-summarizing-a-dataframe" class="nav-link" data-scroll-target="#summarizing-a-dataframe">Summarizing a dataframe</a></li>
   <li><a href="#creating-new-functions-in-r" id="toc-creating-new-functions-in-r" class="nav-link" data-scroll-target="#creating-new-functions-in-r">Creating new functions in R</a></li>
   </ul></li>
   </ul>
@@ -233,35 +239,126 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="exploring-dataframes" class="level1">
 <h1>5. Exploring Dataframes</h1>
-<p><em>July 19, 2023</em> <em>This chapter is incomplete, work-in-progress.</em></p>
-<p>Here’s how you can explore the mtcars data frame:</p>
-<p>View the data: Use the head() or tail() function to view the first or last few rows of the data frame, respectively. For example:</p>
-<ol type="1">
-<li>Find the dimensions (rows and columns) of the dataframe</li>
-</ol>
+<p><em>July 20, 2023</em> V3</p>
+<p>The mtcars dataset is a readily available set in R, originally sourced from the 1974 Motor Trend US magazine. It includes data related to fuel consumption and 10 other factors pertaining to car design and performance, recorded for 32 vehicles from the 1973-74 model years.</p>
+<p>To load the mtcars dataset in R, use this command:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="reviewing-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="reviewing-a-dataframe">Reviewing a dataframe</h2>
+<p>View(): This function opens the dataset in a spreadsheet-style data viewer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>head(): This function prints the first six rows of the dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+</div>
+<p>tail(): This function prints the last six rows of the dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                mpg cyl  disp  hp drat    wt qsec vs am gear carb
+Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+</div>
+</div>
+<p>dim(): This function retrieves the dimensions of a dataframe, i.e., the number of rows and columns.</p>
+<p>nrow(): This function retrieves the number of rows in the dataframe.</p>
+<p>ncol(): This function retrieves the number of columns in the dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 32 11</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
 </div>
-<ol start="2" type="1">
-<li>Retrieve the names of the columns in the dataframe</li>
-</ol>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p>names(): This function retrieves the column names of a dataframe.</p>
+<p>colnames(): This function also retrieves the column names of a dataframe.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
 [11] "carb"</code></pre>
 </div>
 </div>
-<ol start="3" type="1">
-<li>str()</li>
-</ol>
-<p><em>to display the structure of the dataframe, including the data type and the first few rows.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+[11] "carb"</code></pre>
+</div>
+</div>
+</section>
+<section id="accessing-data-within-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-data-within-a-dataframe">Accessing data within a dataframe</h2>
+<p>$: In R, the dollar sign $ is a unique operator that lets us retrieve specific columns from a dataframe or elements from a list.</p>
+<p>For instance, consider the dataframe mtcars. If we wish to fetch the data from the mpg (miles per gallon) column, we would use mtcars$mpg. This action will yield a vector containing the data from the mpg column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the mpg column in mtcars dataframe as a vector</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mpg_vector <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the mpg vector</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mpg_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+[16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+[31] 15.0 21.4</code></pre>
+</div>
+</div>
+<p>This operator offers a simple and readable shortcut for accessing data.</p>
+<p>[[: The usage of $ is limited since it doesn’t support character substitution for dynamic column access inside functions. In such cases, we resort to using double square brackets [[ or single square brackets [.</p>
+<p>As an example, if we have a character string stored in a variable var as var &lt;- “mpg”, using mtcars$var will not return the mpg column. But if we use mtcars[[var]] or mtcars[, var], we will correctly get the mpg column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's say we have a variable var</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="st">"mpg"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can access the mpg column in mtcars dataframe using [[</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>mpg_data1 <span class="ot">&lt;-</span> mtcars[[var]]</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mpg_data1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+[16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+[31] 15.0 21.4</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, we can use [</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mpg_data2 <span class="ot">&lt;-</span> mtcars[, var]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mpg_data2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+[16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+[31] 15.0 21.4</code></pre>
+</div>
+</div>
+</section>
+<section id="data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="data-structures">Data Structures</h2>
+<p>str(): This function displays the internal structure of an R object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -277,101 +374,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 </div>
-<ol start="4" type="1">
-<li>head()</li>
-</ol>
-<p><em>to view the first few rows of the dataframe.</em></p>
+<p>class(): This function is used to determine the class or data type of an object. It returns a character vector specifying the class or classes of the object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)  <span class="co"># Create a numeric vector</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)        <span class="co"># Output: "numeric"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
-Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
-Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+<pre><code>[1] "numeric"</code></pre>
 </div>
 </div>
-<ol start="5" type="1">
-<li>tail()</li>
-</ol>
-<p><em>to view the last few rows of the dataframe.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"Hello, My name is Sameer Mathur!"</span>  <span class="co"># Create a character vector</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)             <span class="co"># Output: "character"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                mpg cyl  disp  hp drat    wt qsec vs am gear carb
-Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
-Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
-Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
-Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
-Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
-Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+<pre><code>[1] "character"</code></pre>
 </div>
 </div>
-<ol start="6" type="1">
-<li>summary()</li>
-</ol>
-<p><em>to generate summary statistics for each column in the dataframe.</em></p>
+<p>class(x) returns “numeric” because x is a numeric vector. Similarly, class(y) returns “character” because y is a character vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])  <span class="co"># Create a data frame</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z) <span class="co"># Output: "data.frame"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      mpg             cyl             disp             hp       
- Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
- 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
- Median :19.20   Median :6.000   Median :196.3   Median :123.0  
- Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
- 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
- Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
-      drat             wt             qsec             vs        
- Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
- 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
- Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
- Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
- 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
- Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
-       am              gear            carb      
- Min.   :0.0000   Min.   :3.000   Min.   :1.000  
- 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
- Median :0.0000   Median :4.000   Median :2.000  
- Mean   :0.4062   Mean   :3.688   Mean   :2.812  
- 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
- Max.   :1.0000   Max.   :5.000   Max.   :8.000  </code></pre>
+<pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
-<ol start="7" type="1">
-<li>table()</li>
-</ol>
-<p><em>to generate a frequency table for a categorical variable.</em></p>
+<p>class(z) returns “data.frame” because z is a data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mtcars, class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
- 4  6  8 
-11  7 14 </code></pre>
+<pre><code>      mpg       cyl      disp        hp      drat        wt      qsec        vs 
+"numeric" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" "numeric" 
+       am      gear      carb 
+"numeric" "numeric" "numeric" </code></pre>
 </div>
 </div>
-<ol start="8" type="1">
-<li>unique()</li>
-</ol>
-<p>to find unique values in a column of the dataframe.</p>
+</section>
+<section id="factors" class="level2">
+<h2 class="anchored" data-anchor-id="factors">Factors</h2>
+<p>In R, factors are a specific data type used for representing categorical variables or data with discrete levels or categories. They are employed to store data that has a limited number of distinct values, such as “male” or “female,” “red,” “green,” or “blue,” or “low,” “medium,” or “high.”</p>
+<p>Factors in R consist of both values and levels. The values represent the actual data, while the levels correspond to the distinct categories or levels within the factor. Factors are particularly useful for statistical analysis as they facilitate the representation and analysis of categorical data efficiently.</p>
+<p>To change the data type of the am, cyl, vs, and gear variables in the mtcars dataset to factors, you can utilize the factor() function. Here’s an example demonstrating how to achieve this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(mtcars<span class="sc">$</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert variables to factors</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>am)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>vs)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">factor</span>(mtcars<span class="sc">$</span>gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code above applies the factor() function to each variable, thereby converting them to factors. By assigning the result back to the respective variables, we effectively change their data type to factors. This conversion retains the original values while establishing levels based on the distinct values present in each variable.</p>
+<p>After executing this code, the am, cyl, vs, and gear variables in the mtcars dataset will be of the factor data type. And we can verify this by re-running the str() function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6 4 8</code></pre>
+<pre><code>'data.frame':   32 obs. of  11 variables:
+ $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl : Factor w/ 3 levels "4","6","8": 2 2 1 2 3 2 3 1 1 2 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : Factor w/ 2 levels "0","1": 1 1 2 2 1 2 1 2 2 2 ...
+ $ am  : Factor w/ 2 levels "0","1": 2 2 2 1 1 1 1 1 1 1 ...
+ $ gear: Factor w/ 3 levels "3","4","5": 2 2 2 1 1 1 1 2 2 2 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 </div>
+<p>When the cyl variable in the mtcars dataset is converted to a factor, the levels() function can be used to extract the distinct levels or categories of that factor. By executing levels(mtcars$cyl), you will receive an output that reveals the levels present in the cyl variable.</p>
+<p>For example, if the cyl variable has been transformed into a factor with levels “4”, “6”, and “8”, the result of levels(mtcars$cyl) will be a character vector displaying these three levels:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(mtcars<span class="sc">$</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "4" "6" "8"</code></pre>
+</div>
+</div>
+<p>It is important to note that the order of the levels in the output corresponds to their appearance in the original data.</p>
+<p>Utilizing the levels() function on factor variables in R allows you to examine the particular categories or levels present within a factor, aiding in understanding the data’s composition and facilitating operations that target specific levels if necessary.</p>
+<p>To change the base level of a factor variable in R, you can use the relevel() function. This function allows you to reassign a new base level by rearranging the order of the levels in the factor variable.</p>
+<p>Here’s an example of how you can change the base level of a factor variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'cyl' is a factor variable with levels "4", "6", and "8"</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">relevel</span>(mtcars<span class="sc">$</span>cyl, <span class="at">ref =</span> <span class="st">"6"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the code above, we apply the relevel() function to the cyl variable, specifying ref = “6” to set “6” as the new base level.</p>
+<p>After executing this code, the levels of the mtcars$cyl factor variable will be reordered, with “6” becoming the new base level. The order of the levels will be “6”, “4”, and “8” instead of the original order.</p>
+<p>Changing the base level can be particularly useful when conducting statistical modeling or interpreting the effects of categorical variables in regression models. By selecting a specific level as the base, we can compare the effects of the other levels relative to the chosen base level, facilitating more meaningful analysis and interpretation.</p>
+<p>For convenience, we will change the base level back to “4”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'cyl' is a factor variable with levels "4", "6", and "8"</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">relevel</span>(mtcars<span class="sc">$</span>cyl, <span class="at">ref =</span> <span class="st">"4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="logical-operations" class="level2">
 <h2 class="anchored" data-anchor-id="logical-operations">Logical operations</h2>
-<p>Here are some examples of logical operations functions in R using the mtcars dataset:</p>
-<ol type="1">
-<li>Subsetting based on a condition:</li>
-</ol>
-<p>The logical expression [] and square bracket notation can be used to subset the mtcars dataset according to a criterion. For instance, to only choose the rows where the mpg is higher than 20:</p>
+<p>Here are some logical operations functions in R.</p>
+<p>subset(): This function returns a subset of a data frame according to condition(s).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset mtcars based on mpg &gt; 20</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mtcars_subset <span class="ot">&lt;-</span> mtcars[mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>mtcars_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars that have cyl = 4 and mpg &lt; 28</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">&amp;</span> mpg <span class="sc">&lt;</span> <span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Volvo 142E    21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find cars that have wt &gt; 5 or mpg &lt; 15</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(mtcars, wt <span class="sc">&gt;</span> <span class="dv">5</span> <span class="sc">|</span> mpg <span class="sc">&lt;</span> <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Duster 360          14.3   8  360 245 3.21 3.570 15.84  0  0    3    4
+Cadillac Fleetwood  10.4   8  472 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8  460 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8  440 230 3.23 5.345 17.42  0  0    3    4
+Camaro Z28          13.3   8  350 245 3.73 3.840 15.41  0  0    3    4</code></pre>
+</div>
+</div>
+<p>which(): This function returns the indexes of a vector’s members that satisfy a condition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of rows where mpg &gt; 20</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>indices <span class="ot">&lt;-</span> <span class="fu">which</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>indices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  8  9 18 19 20 21 26 27 28 32</code></pre>
+</div>
+</div>
+<p>ifelse(): This function applies a logical condition to a vector and returns a new vector with values depending on whether the condition is TRUE or FALSE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column "high_mpg" based on mpg &gt; 20</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>high_mpg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Dropping a column: We can drop a column by setting it to NULL.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the column "high_mpg"</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>high_mpg <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>all(): If every element in a vector satisfies a logical criterion, this function returns TRUE; otherwise, it returns FALSE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if all values in mpg column are greater than 20</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>any(): If at least one element in a vector satisfies a logical criterion, this function returns TRUE; otherwise, it returns FALSE.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if any of the values in the mpg column are greater than 20</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Subsetting based on a condition:</p>
+<p>The logical expression [] and square bracket notation can be used to subset the mtcars dataset according to one or more conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset mtcars based on mpg &gt; 20</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>mtcars_subset <span class="ot">&lt;-</span> mtcars[mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>mtcars_subset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4      21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
@@ -390,114 +546,235 @@ Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li>The which() function:</li>
-</ol>
-<p>The which() function returns the indexes of the vector’s members that adhere to a predicate. To determine the indices of the rows where mpg is larger than 20 for instance:</p>
+<p>sort(): This function arranges a vector in an increasing or decreasing sequence.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the indices of rows where mpg &gt; 20</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>indices <span class="ot">&lt;-</span> <span class="fu">which</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>indices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(mtcars<span class="sc">$</span>mpg) <span class="co"># increasing order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  8  9 18 19 20 21 26 27 28 32</code></pre>
+<pre><code> [1] 10.4 10.4 13.3 14.3 14.7 15.0 15.2 15.2 15.5 15.8 16.4 17.3 17.8 18.1 18.7
+[16] 19.2 19.2 19.7 21.0 21.0 21.4 21.4 21.5 22.8 22.8 24.4 26.0 27.3 30.4 30.4
+[31] 32.4 33.9</code></pre>
 </div>
-</div>
-<ol start="3" type="1">
-<li>The ifelse() function:</li>
-</ol>
-<p>The ifelse() function applies a logical condition to a vector and returns a new vector with values depending on whether the condition is TRUE or FALSE. It is a vectorized version of the if-else statement. For instance, to add a new column called high mpg that shows whether or not the mpg value is more than 20:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column "high_mpg" based on mpg &gt; 20</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>high_mpg <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>The all() and any() functions:</li>
-</ol>
-<p>If every element in a vector satisfies a logical criterion, the all() function returns TRUE; otherwise, it returns FALSE. If at least one element in a vector satisfies a logical criterion, the any() method returns TRUE; otherwise, it returns FALSE. To determine whether every value in the mpg column is larger than 20, for instance:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if all values in mpg column are greater than 20</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(mtcars<span class="sc">$</span>mpg, <span class="at">decreasing =</span> <span class="cn">TRUE</span>) <span class="co"># decreasing order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
+<pre><code> [1] 33.9 32.4 30.4 30.4 27.3 26.0 24.4 22.8 22.8 21.5 21.4 21.4 21.0 21.0 19.7
+[16] 19.2 19.2 18.7 18.1 17.8 17.3 16.4 15.8 15.5 15.2 15.2 15.0 14.7 14.3 13.3
+[31] 10.4 10.4</code></pre>
 </div>
 </div>
-<p>And to check if at least one value in the mpg column is greater than 20:</p>
-<p>Check if any value in mpg column is greater than 20</p>
+<p>order(): This function provides an arrangement which sorts its initial argument into ascending or descending order.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(mtcars<span class="sc">$</span>mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">order</span>(mtcars<span class="sc">$</span>mpg), ] <span class="co"># ascending order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>mtcars[<span class="fu">order</span>(<span class="sc">-</span>mtcars<span class="sc">$</span>mpg), ] <span class="co"># descending order</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4</code></pre>
+</div>
+</div>
+</section>
+<section id="statistical-functions" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-functions">Statistical functions</h2>
+<p>mean(): This function computes the arithmetic mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20.09062</code></pre>
+</div>
+</div>
+<p>median(): This function computes the median.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19.2</code></pre>
+</div>
+</div>
+<p>sd(): This function computes the standard deviation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.026948</code></pre>
+</div>
+</div>
+<p>var(): This function computes the variance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 36.3241</code></pre>
+</div>
+</div>
+<p>cor(): This function computes the correlation between variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8676594</code></pre>
+</div>
+</div>
+<p>unique(): This function extracts the unique elements of a vector.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 21.0 22.8 21.4 18.7 18.1 14.3 24.4 19.2 17.8 16.4 17.3 15.2 10.4 14.7 32.4
+[16] 30.4 33.9 21.5 15.5 13.3 27.3 26.0 15.8 19.7 15.0</code></pre>
+</div>
+</div>
+</section>
+<section id="summarizing-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-a-dataframe">Summarizing a dataframe</h2>
+<p>summary(): This function is a convenient tool to generate basic descriptive statistics for your dataset. It provides a succinct snapshot of the distribution characteristics of your data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.40   15.43   19.20   20.09   22.80   33.90 </code></pre>
+</div>
+</div>
+<p>When applied to a vector or a specific column in a dataframe, it generates the following:</p>
+<p>Min: This represents the smallest recorded value in the mpg column.</p>
+<p>1st Qu: This indicates the first quartile or the 25th percentile of the mpg column. It implies that 25% of all mpg values fall below this threshold.</p>
+<p>Median: This value signifies the median or the middle value of the mpg column, also known as the 50th percentile. Half of the mpg values are less than this value.</p>
+<p>Mean: This denotes the average value of the mpg column.</p>
+<p>3rd Qu: This represents the third quartile or the 75th percentile of the mpg column. It shows that 75% of all mpg values are less than this value.</p>
+<p>Max: This indicates the highest value observed in the mpg column.</p>
+<p>When we use summary(mtcars$mpg), it returns these six statistics for the mpg (miles per gallon) column in the mtcars dataset.</p>
+<p>When used with an entire dataframe, it applies to each column individually and provides a quick overview of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 4  6  8 
+11  7 14 </code></pre>
+</div>
+</div>
+<p>The output of summary(mtcars$cyl) displays the frequency distribution of the levels within the cyl factor variable. It shows the count or frequency of each level, which in this case are “4”, “6”, and “8”. The summary will provide a concise overview of the distribution of these levels within the dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg        cyl         disp             hp             drat      
+ Min.   :10.40   4:11   Min.   : 71.1   Min.   : 52.0   Min.   :2.760  
+ 1st Qu.:15.43   6: 7   1st Qu.:120.8   1st Qu.: 96.5   1st Qu.:3.080  
+ Median :19.20   8:14   Median :196.3   Median :123.0   Median :3.695  
+ Mean   :20.09          Mean   :230.7   Mean   :146.7   Mean   :3.597  
+ 3rd Qu.:22.80          3rd Qu.:326.0   3rd Qu.:180.0   3rd Qu.:3.920  
+ Max.   :33.90          Max.   :472.0   Max.   :335.0   Max.   :4.930  
+       wt             qsec       vs     am     gear        carb      
+ Min.   :1.513   Min.   :14.50   0:18   0:19   3:15   Min.   :1.000  
+ 1st Qu.:2.581   1st Qu.:16.89   1:14   1:13   4:12   1st Qu.:2.000  
+ Median :3.325   Median :17.71                 5: 5   Median :2.000  
+ Mean   :3.217   Mean   :17.85                        Mean   :2.812  
+ 3rd Qu.:3.610   3rd Qu.:18.90                        3rd Qu.:4.000  
+ Max.   :5.424   Max.   :22.90                        Max.   :8.000  </code></pre>
 </div>
 </div>
 </section>
 <section id="creating-new-functions-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="creating-new-functions-in-r">Creating new functions in R</h2>
-<ol type="1">
-<li>Function to calculate average mileage:</li>
-</ol>
+<p>We illustrate how to create a custom function in R that computes the mean of any given numeric column in the mtcars dataframe:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>avg_mileage <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>mpg)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_mileage</span>(mtcars) <span class="co"># Returns the average mileage of all cars in the dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function creation</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>compute_average <span class="ot">&lt;-</span> <span class="cf">function</span>(df, column) {</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute the average of the specified column</span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  average_val <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[[column]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return the computed average</span></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(average_val)</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilize the created function</span></span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>average_mpg <span class="ot">&lt;-</span> <span class="fu">compute_average</span>(mtcars, <span class="st">"mpg"</span>)</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(average_mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20.09062</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>average_hp <span class="ot">&lt;-</span> <span class="fu">compute_average</span>(mtcars, <span class="st">"hp"</span>)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(average_hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 146.6875</code></pre>
 </div>
-<ol start="2" type="1">
-<li>Function to plot a scatter plot of horsepower vs.&nbsp;miles per gallon:</li>
-</ol>
+</div>
+<p>In the above code, compute_average is a custom function which takes two arguments: a dataframe (df) and a column name (as a string) column. The function computes the mean of the specified column in the provided dataframe, with na.rm = TRUE ensuring that NA values (if any) are removed before the mean calculation.</p>
+<p>After defining the function, we utilize it to calculate the average values of the “mpg” and “hp” columns in the mtcars dataframe. These computed averages are then printed.</p>
+<p>This demonstrates a simple way to create a custom function in R.</p>
+<p>Function to calculate average mileage for cars with a specific number of cylinders:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_horsepower_vs_mpg <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(data<span class="sc">$</span>hp, data<span class="sc">$</span>mpg, <span class="at">xlab =</span> <span class="st">"Horsepower"</span>, <span class="at">ylab =</span> <span class="st">"Miles per gallon"</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_horsepower_vs_mpg</span>(mtcars) <span class="co"># Plots a scatter plot of horsepower vs. miles per gallon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05ExploringDataframes_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Function to calculate average mileage for cars with a specific number of cylinders:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>avg_mileage_by_cyl <span class="ot">&lt;-</span> <span class="cf">function</span>(data, cyl) {</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>mpg[data<span class="sc">$</span>cyl <span class="sc">==</span> cyl])</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average mileage of cars with 4 cylinders</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_mileage_by_cyl</span>(mtcars, <span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>avg_mileage_by_cyl <span class="ot">&lt;-</span> <span class="cf">function</span>(data, cyl) {</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>mpg[data<span class="sc">$</span>cyl <span class="sc">==</span> cyl])</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage</span></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average mileage of cars with 4 cylinders</span></span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_mileage_by_cyl</span>(mtcars, <span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 26.66364</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average mileage of cars with 6 cylinders</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_mileage_by_cyl</span>(mtcars, <span class="dv">6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average mileage of cars with 6 cylinders</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_mileage_by_cyl</span>(mtcars, <span class="dv">6</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19.74286</code></pre>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Function to calculate average horsepower for cars with a specific number of gears:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>avg_hp_by_gear <span class="ot">&lt;-</span> <span class="cf">function</span>(data, gear) {</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>hp[data<span class="sc">$</span>gear <span class="sc">==</span> gear])</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average horsepower of cars with 3 gears</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_hp_by_gear</span>(mtcars, <span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 176.1333</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the average horsepower of cars with 4 gears</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">avg_hp_by_gear</span>(mtcars, <span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 89.5</code></pre>
 </div>
 </div>
 
