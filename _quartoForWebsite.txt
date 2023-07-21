@@ -45,27 +45,28 @@ website:
     footer: ""
     contents:
       - href: index.qmd
-        text: Home
+        text: Welcome
       - 01OverviewOfR.qmd
       - 02RPackages.qmd
-      - 03InbuiltRFunctions.qmd
-      - 04DataStructures.qmd
-      - 05ReadingData.qmd
-      - 06ExploringDataframes.qmd
-      - 07SummarzingCategoricalData.qmd
-      - 08ExploringTibbles.qmd
-      - 09SummarizingContinuousData.qmd
-      - 10SummarizingContinuousData.qmd
-      - 11SummarizingContinuousData.qmd
+      - 03DataStructures.qmd
+      - 04ReadingData.qmd
+      - 05ExploringDataframes.qmd
+      - 06LiveCase01.qmd
+#      - 07SummarzingCategoricalData.qmd
+#      - 08ExploringTibbles.qmd
+#      - 09SummarizingContinuousData.qmd
+#      - 10SummarizingContinuousData.qmd
+#      - 11SummarizingContinuousData.qmd
 ### END yaml FOR BOOK'S WEBSITE ###
 
 format:
   html:
-    theme: cosmo
+    theme: united
     toc: true # may need to comment this out to revert this back to the book
     fig-width: 8
     fig-height: 4
     code-fold: false
+    prefer-html: true
   pdf:
     documentclass: scrreport
     header-includes: |

@@ -1,4 +1,4 @@
-# 5. Exploring Dataframes
+# Exploring Dataframes
 
 *July 21, 2023*
 
@@ -224,8 +224,14 @@ mtcars$mpg represents the variable to be divided.
 
 breaks specifies the cutoff points for interval creation. Here, we define three intervals: values up to 20, values between 20 and 30 (inclusive), and values greater than 30. The breaks argument is defined as c(0, 20, 30, Inf) to indicate these intervals.
 
-labels assigns labels to the resulting factor levels. In this instance, the labels "Low", "Medium", and "High" are provided to correspond with the respective intervals.
+`labels` assigns labels to the resulting factor levels. In this instance, the labels "Low", "Medium", and "High" are provided to correspond with the respective intervals.
 
+Having demonstrated how to create the new colums `mpg_category`, we will now drop this column from the dataframe.
+
+```{r}
+# drop the column `mpg_category`
+mtcars$mpg_category = NULL
+```
 
 ## Logical operations
 

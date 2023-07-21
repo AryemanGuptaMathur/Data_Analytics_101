@@ -1,4 +1,4 @@
-# 4. Reading Data
+# Reading Data
 
 *July 21, 2023*
 

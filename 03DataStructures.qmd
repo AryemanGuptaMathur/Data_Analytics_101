@@ -1,4 +1,4 @@
-# 3. Data Structures
+# Data Structures
 
 *July 21, 2023*
 

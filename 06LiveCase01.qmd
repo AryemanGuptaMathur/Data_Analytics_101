@@ -1,4 +1,4 @@
-# 6. Case Study: Analyze S&P500 Data (1)
+# Case Study: Analyze S&P500 Data (1)
 
 *July 21, 2023*
 
@@ -16,13 +16,13 @@ Typically, the S&P 500 index consists of 500 stocks. However, in reality, there 
 
 Among these 503 stocks, Apple, the technology giant, holds the top position with a market capitalization of \$2.35 billion. Following Apple, Microsoft and Amazon.com rank as the second and third largest stocks in the S&P 500, respectively. The next positions are held by Nvidia Corp, Tesla, Berkshire Hathaway, and two classes of shares from Google's parent company, Alphabet..
 
-## S&P 500 Data
+## S&P 500 Data - Preliminary Analysis
 
 We will analyze a real-world, recent dataset containing information about the S&P500 stocks. The dataset is located in a <a href="https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0" target="_blank">Google Sheet</a>
 
 The data is disorganized and challenging to understand. We will review the data and proceed in a step-by-step manner.
 
-### 1) Read the S&P500 data from a Google Sheet into a tibble dataframe.
+### Read the S&P500 data from a Google Sheet into a tibble dataframe.
 
 1.  The complete URL is\
     <a href="https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/edit#gid=0" target="_blank">https://docs.google.com/spreadsheets/d/11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM/</a>
@@ -38,7 +38,7 @@ url500 <- paste(prefix,sheetID) # Form the URL to connect to
 sp500 <- gsheet2tbl(url500) # Read it into a tibble called sp500
 ```
 
-### 2) Review the data
+## Review the data
 
 1.  We want to understand the different data columns and their data structure. For this purpose, we run the `str()` function.
 
@@ -60,7 +60,7 @@ str(sp500)
 
 5.  By examining the `str(sp500)` output, we gain a preliminary understanding of the data types and column names present in the `sp500` tibble, enabling us to grasp the structure of the dataset.
 
-### 3) Rename Data Columns
+### Rename Data Columns
 
 1.  The names of the data columns are lengthy and confusing.
 
@@ -114,7 +114,7 @@ colnames(sp500) <- new_names
 
 In essence, the code uses the `new_names` vector as a mapping to assign new column names to the `sp500` tibble, ensuring that each column is given the desired new name specified in `new_names`.
 
-### 4) Review the data again after renaming columns
+### Review the data again after renaming columns
 
 1.  We review the column names again after renaming them, using the `colnames()` function can help.
 
@@ -122,7 +122,7 @@ In essence, the code uses the `new_names` vector as a mapping to assign new colu
 colnames(sp500)
 ```
 
-### 5) Understand the Data Columns indepth
+### Understand the Data Columns
 
 1.  The complete data has 36 columns. Our goal is to gain a deeper understanding of what the data columns mean.
 
@@ -257,7 +257,7 @@ The column names described in Table 1h are related to the **Dividends** of each 
 table1h
 ```
 
-### 6) Remove Rows containing no data or null
+### Remove Rows containing no data or Null values
 
 1.  The following code checks if the "Stock" column in the sp500 dataframe contains any null or blank values. If there are null or blank values present, it removes the corresponding rows from the sp500 dataframe, resulting in a filtered dataframe without null or blank values in the "Stock" column.
 
@@ -289,7 +289,7 @@ nrow(sp500)
 
 Thus, we have 502 stocks of the S&P500 in our dataset.
 
-### 7) Sector
+### S&P500 Sector
 
 The S&P500 shares are divided into multiple Sectors. Each stock belongs to a unique sector. Thus, it makes sense to model Sector as a factor() variable.
 
@@ -325,7 +325,7 @@ sum(table(sp500$Sector))
 
 This completes our review of the Sector variable.
 
-### 8) Rating
+### Stock Ratings
 
 In the data, the S&P500 shares have Technical Ratings such as {Buy, Sell, ..}. Since each Stock has a unique Technical Rating, it makes sense to model the data column Rating as a factor() variable.
 
