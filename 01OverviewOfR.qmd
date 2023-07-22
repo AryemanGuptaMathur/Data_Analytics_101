@@ -165,8 +165,6 @@ R is a powerful programming language for performing mathematical operations and 
 # Multiplication and Division (5 + 3) * 7 /2
 ```
 
-
-
 2.  Exponentiation and Logarithms: R can raise a number to a power using the \^ or \*\* operator or take logarithms.
 
 `{r} # exponentiation 2^6 # Exponential of x=2 i.e. e^2 exp(2)  # logarithms base 2 and base 10 log2(64) + log10(100)}`
