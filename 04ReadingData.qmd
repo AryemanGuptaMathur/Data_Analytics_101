@@ -243,7 +243,7 @@ df <- merge(sp500, gf , id = "Stock")
 6.  Here is an example of using the tibble() function in dplyr to construct a tibble:
 
 ```{r}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 
 # Create a tibble
 my_tibble <- tibble(
@@ -306,7 +306,7 @@ my_df
 
 ## References
 
-\[1\]
+\[1\] 
 
 R Core Team. (2021). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. **https://www.R-project.org/**
 
@@ -314,9 +314,10 @@ R Core Team. (2022). Vectors, Lists, and Arrays. R Documentation. https://cran.r
 
 Wickham, H., & Grolemund, G. (2016). R for data science: Import, tidy, transform, visualize, and model data. O'Reilly Media, Inc.
 
-R Core Team. (2022, March 2). Data Frames. R Documentation. https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/data.frame
+R Core Team. (2022, March 2). Data Frames. R Documentation.
+https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/data.frame
 
-\[2\]
+\[2\] 
 
 OpenIntro. (2022). 1.3 RStudio and working directory. In Introductory Statistics with Randomization and Simulation (1st ed.). https://www.openintro.org/book/isrs/
 
