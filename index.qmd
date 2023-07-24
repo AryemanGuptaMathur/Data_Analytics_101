@@ -1,6 +1,6 @@
 # Welcome {.unnumbered}
 
-*July 22, 2023 V2*
+*July 24, 2023*
 
 Exploratory Data Analysis (EDA) is an approach to analyzing data sets to summarize their main characteristics, often using statistical graphics and other data visualization methods. EDA is primarily for seeing what the data can tell us beyond the formal modeling or hypothesis testing tasks.
 
@@ -18,15 +18,13 @@ The EDA approach can be broken down into the following steps:
 
 **Insight Generation:** After visualizations and some statistical tests, analysts will generate insights that could lead to further questions, hypotheses, and model building.
 
-The EDA process is an important precursor to more complex analyses because it allows for the researcher to confirm or invalidate some initial hypotheses and to formulate a more precise question or hypothesis that can lead to further statistical analysis and testing.
+The EDA process is an important precursor to more complex analyses because it allows us to confirm or invalidate some initial hypotheses and to formulate a more precise question or hypothesis that can lead to further statistical analysis and testing.
 
 ## Our focus
 
 -   We ignore the Data Cleaning step, although we acknowledge it's practical relevance. We assume that we are working with a clean dataset.
--   We emphasize Univariate and Bivariate Analysis of data and the corresponding Data Visualization.
--   We cover some basic Multivariate Analysis.
--   We emphasize Insight Generation.
+-   We emphasize Exploratory Univariate and Bivariate Analysis of data and the corresponding Data Visualization.
 
 *We illustrate all of the above using the R programming language.*
 
-We further illustrate how to use R programming on a real-world dataset. Our dataset concerns the S&P500 stocks. This will demonstrate a practical aspect of using this book. We have many sample codes regarding this, using real-world data.. We will explore financial metrics such as the Return on Equity , Return on Assets, Return on Invested Capital of S&P500 shares.
+We further illustrate how to use R programming in the form of a live project implemented on a real-world dataset. Our dataset concerns the S&P500 stocks. This will demonstrate a practical aspect of using this book. We have many sample codes regarding this, using real-world data.. We will explore financial metrics such as Return on Equity, Return on Assets and Return on Invested Capital of S&P500 shares.

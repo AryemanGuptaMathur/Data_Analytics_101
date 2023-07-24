@@ -4,7 +4,7 @@ prefer-html: true
 book:
   title: "Data Analytics 101 -- Exploratory Data Analysis using R programming."
   author: "Sameer Mathur, Aryeman Gupta Mathur"
-  date: "4 July 2023"
+  date: "24 July 2023"
   page-footer:
     left: |
       Data Analytics 101 -- Exploratory Data Analysis using R programming by Sameer Mathur, Aryeman G. Mathur
@@ -14,7 +14,7 @@ book:
   favicon: BookCover.png
   chapters:
     - index.qmd
-    - 01OverviewOfR.qmd
+    - 01GettingStarted.qmd
     - 02RPackages.qmd
     - 03DataStructures.qmd
     - 04ReadingData.qmd

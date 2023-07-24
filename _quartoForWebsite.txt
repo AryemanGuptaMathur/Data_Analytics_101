@@ -46,7 +46,7 @@ website:
     contents:
       - href: index.qmd
         text: Welcome
-      - 01OverviewOfR.qmd
+      - 01GettingStarted.qmd
       - 02RPackages.qmd
       - 03DataStructures.qmd
       - 04ReadingData.qmd

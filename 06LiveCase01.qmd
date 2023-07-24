@@ -1,6 +1,6 @@
-# Case Study: Analyze S&P500 Data (1)
+# Live Case: S&P500 (1 of 3)
 
-*July 22 , 2023*
+*July 24, 2023*
 
 ## S&P 500.
 

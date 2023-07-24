@@ -1,6 +1,6 @@
 # Categorical Data
 
-*This chapter is incomplete, work-in-progress.*
+*July 23, 2023*
 
 ## Overview
 

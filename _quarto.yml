@@ -24,7 +24,7 @@ website:
       - icon: globe
         href: https://www.qatar.cmu.edu/directory/sameer-mathur/
         text: "Sameer Mathur"
-        target: "_blank"
+        target: "_blank"  
       - icon: globe
         href: https://docs.google.com/document/d/15Li_DpXPSA6NXyXyCzM3vUu766RBq87W/edit?usp=sharing&ouid=100224206438187222136&rtpof=true&sd=true
         text: "Aryeman Gupta Mathur"
@@ -46,17 +46,18 @@ website:
     contents:
       - href: index.qmd
         text: Welcome
-      - 01OverviewOfR.qmd
+      - 01GettingStarted.qmd
       - 02RPackages.qmd
       - 03DataStructures.qmd
       - 04ReadingData.qmd
       - 05ExploringDataframes.qmd
       - 06LiveCase01.qmd
-#      - 07SummarzingCategoricalData.qmd
-#      - 08ExploringTibbles.qmd
-#      - 09SummarizingContinuousData.qmd
+      - 07ExploringTibbles.qmd
+#      - 08SummarzingCategoricalData.qmd
+#      - 09LiveCase02.qmd
 #      - 10SummarizingContinuousData.qmd
 #      - 11SummarizingContinuousData.qmd
+#      - 12SummarizingContinuousData.qmd
 ### END yaml FOR BOOK'S WEBSITE ###
 
 format:
