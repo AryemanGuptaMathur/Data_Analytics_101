@@ -104,8 +104,7 @@ If you require assistance with an R package, there are several avenues you can e
 
 1.  **Documentation**: Most R packages include comprehensive documentation that covers functions, datasets, and usage examples. To access the documentation, you can use the `help()` function or type `?package_name` directly in the R console, replacing `package_name` with the specific package you want to learn more about.
 
-2.  **Integrated help system:** 
-R provides an integrated help system that offers documentation and demonstrations for functions and packages. To access this help system, you can use the commands `help(topic)` or `?topic` in the R console, where `topic` represents the name of the function or package you require assistance with.
+2.  **Integrated help system:** R provides an integrated help system that offers documentation and demonstrations for functions and packages. To access this help system, you can use the commands `help(topic)` or `?topic` in the R console, where `topic` represents the name of the function or package you require assistance with.
 
 3.  **Online Resources:** Numerous online resources are available for obtaining help with R packages. Blogs, forums, and question-and-answer platforms like Stack Overflow offer valuable insights and solutions to specific problems. These platforms are particularly helpful for finding answers to specific questions and obtaining general guidance on package usage. \[3\]
 

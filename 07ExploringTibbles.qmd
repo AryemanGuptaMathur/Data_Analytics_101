@@ -1,6 +1,6 @@
 # Exploring Tibbles
 
-*July 24, 2023 V2 (Work in progress)*
+*July 24, 2023 V3 (Work in progress)*
 
 The
 
