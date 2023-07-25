@@ -53,7 +53,7 @@ website:
       - 05ExploringDataframes.qmd
       - 06LiveCase01.qmd
       - 07ExploringTibbles.qmd
-#      - 08SummarzingCategoricalData.qmd
+      - 08SummarzingCategoricalData.qmd
 #      - 09LiveCase02.qmd
 #      - 10SummarizingContinuousData.qmd
 #      - 11SummarizingContinuousData.qmd

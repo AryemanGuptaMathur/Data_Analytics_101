@@ -1,6 +1,6 @@
 # Exploring *tibbles* & *dplyr*
 
-*July 25, 2023 V6 (Work in progress)*
+*July 25, 2023*
 
 
 ## **tibbles**
@@ -38,18 +38,16 @@ Moreover, one of the significant advantages of `dplyr` is the ability to chain t
 
 ## The pipe operator **%>%**
 
-As regular users of R, we often utilize the `%>%` operator, colloquially known as the "pipe" operator, which plays a vital role in the `dplyr` package. The purpose of this operator is to facilitate a more readable and understandable chaining of multiple operations. Although this operator was originally introduced by the `magrittr` package, it has since become extensively adopted in `dplyr` and other tidyverse packages.
+The `%>%` operator, colloquially known as the "pipe" operator, plays a vital role in enhancing the effectiveness of the `dplyr` package. The purpose of this operator is to facilitate a more readable and understandable chaining of multiple operations. Although this operator was originally introduced by the `magrittr` package, it has since become extensively adopted in `dplyr` and other tidyverse packages.
 
 In a typical scenario in R, when we need to carry out multiple operations on a data frame, each function call must be nested within another. This could lead to codes that are difficult to comprehend due to their complex and nested structure. However, the pipe operator comes to our rescue here. It allows us to rewrite these nested operations in a linear, straightforward manner, greatly enhancing the readability of our code. [3]
-
-
 
 
 ## Illustration: Using dplyr on mtcars data
 
 We will now illustrate the crucial functions from the `dplyr` package, on the `mtcars` dataset.
 
-### 1. Loading required R packages
+### Loading required R packages
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -57,21 +55,21 @@ library(dplyr)
 library(tibble) 
 ```
 
-*Aside:* When we load the `dplyr` package using `library(dplyr)`, R will display messages indicating that certain functions from dplyr are masking functions from the stats and base packages. We could instead use the `suppressPackageStartupMessages()` function to prevent the display of package startup messages.
+*Aside:* When we load the `dplyr` package using `library(dplyr)`, R displays messages indicating that certain functions from `dplyr` are masking functions from the `stats` and `base` packages. We could instead prevent the display of package startup messages by using the `suppressPackageStartupMessages()`.
 
 ```{r, warning=FALSE, eval=FALSE}
 # Load the required libraries, suppressing annoying startup messages
 suppressPackageStartupMessages(library(dplyr))
 ```
 
-### 2. Reading the mtcars dataset as a tibble
+### Reading and Viewing the mtcars dataset as a tibble
 
 ```{r, warning=FALSE}
 # Read the mtcars dataset into a tibble called tb
 tb <- as_tibble(mtcars)
 ```
 
-**Creating a tibble**: The `as_tibble` function is used to convert the built-in `mtcars` dataset into a tibble object, which we're naming `tb`. 
+Here the `as_tibble()` function is used to convert the built-in `mtcars` dataset into a tibble object, named `tb`. 
 
 ```{r, warning=FALSE}
 # Display the first few rows of the dataset
@@ -104,29 +102,81 @@ glimpse(tb)
 
 Notice that the datatypes are now modified and the tibble is ready for futher exploration.
 
+### Using `dplyr` to explore the `mtcars` tibble
 
-
-### 3. Using `dplyr` to explore the `mtcars` tibble
-
-* **`filter()`:**  Recall that this function is used to select subsets of rows in a data frame. It takes logical conditions as inputs and returns rows where the conditions hold true. Suppose we want to filter the mtcars dataset for rows where the mpg is greater than 20.
+1. **`filter()`:**  Recall that this function is used to select subsets of rows in a tibble. It takes logical conditions as inputs and returns only those rows where the conditions hold true. Suppose we wanted to filter the `mtcars` dataset for rows where the `mpg` is greater than 25.
 
 ```{r, warning=FALSE}
-filtered_data <- tb %>% filter(mpg > 20)
+filtered_data <- tb %>% filter(mpg > 25)
 filtered_data
 ```
 
-The tibble 'filtered_data' contains only the rows where the miles per gallon (mpg) are greater than 20.
+The tibble 'filtered_data' contains only the rows where the miles per gallon (mpg) are greater than 25.
 
-* **`select()`:**: Recall that this function is used to select specific columns. Suppose we want to select 'mpg' and 'hp' columns from mtcars dataset
+2. Suppose we want to filter cars where the miles per gallon (mpg) are greater than 25 AND number of gears is equal to 5. 
 
 ```{r, warning=FALSE}
-selected_data <- tb %>% select(mpg, hp)
+filtered_data2 <- tb %>% filter(mpg > 25 & gear == 5)
+filtered_data2
+```
+Thus, we can impose more than one logical conddition in the filter. 
+
+3. **`select()`**: Recall that this function is used to select specific columns. Suppose we want to select `mpg`, `hp`, `cyl` and `am` columns from mtcars dataset.
+
+```{r, warning=FALSE}
+selected_data <- tb %>% select(mpg, hp, cyl, am)
 selected_data
 ```
 
-The tibble 'selected_data' will only contain the 'mpg' (miles per gallon) and 'hp' (horsepower) columns from the mtcars dataset.
+The tibble `selected_data` will only contain the `mpg` (miles per gallon), `hp` (horsepower), `cyl` (cylinders) and `am` transmission columns from the mtcars dataset.
 
-* **`arrange()`:** Recall that this function is used to reorder rows in a data frame by one or more variables. By default, it arranges rows in ascending order. Suppose we want to select only the mpg and hp columns from the mtcars data and sort it in descending order of mpg
+4. Now suppose we wanted to both filter and select. 
+Specificially, suppose we want to: 
+
+* filter cars where the miles per gallon (mpg) are greater than 20 AND number of gears is equal to 5
+* select `mpg`, `hp`, `cyl` and `am` columns for these cars.
+
+
+```{r, warning=FALSE}
+filterAndSelect <- tb %>% filter(mpg > 20 & gear == 5) %>% select(mpg, hp, cyl, am)
+filterAndSelect
+```
+
+Here, we have written code that utilizes two primary functions from the dplyr package, filter() and select(). These two functions, in concert with the pipe operator (%>%), create a pipeline of operations for data transformation. Breaking this down, we observe a two-step process:
+
+* `filter(mpg > 25 & gear == 5)`: Here, we are utilizing the filter() function to sift through the dataset tb and retain only those rows where mpg (miles per gallon) is more than 25 and gear is equal to 5. This application effectively creates a subset of tb that satisfies these conditions (Wickham & Francois, 2016).
+
+* `select(mpg, hp, cyl, am)`: This function is then invoked to choose specific columns from our filtered dataset. In this instance, we have picked the columns mpg, hp (horsepower), cyl (cylinders), and am (transmission type). The resulting dataset, therefore, contains only these four columns from the filtered data
+
+
+
+5. Suppose we wanted to select all the columns within a range. Specifically, suppose we wanted to select all the columns within cyl and wt, excluding all other columns. Recall that the original mtcars tibble has the following data columns. 
+
+```{r, warning=FALSE}
+colnames(tb)
+```
+
+```{r, warning=FALSE}
+selected_data2 <- tb %>% select(cyl:wt)
+selected_data2
+```
+
+* `select(cyl:wt)`: This instruction tells R to select all columns in the tb dataframe starting from cyl up to and including wt. Only the five columns {cyl, disp, hp, drat, wt} get selected. This is a particularly useful feature when dealing with dataframes that have a large number of columns, and we are interested in a contiguous subset of those columns 
+
+
+6. Alternately, suppose instead that we wanted to select all columns except those within the range of cyl and wt. 
+
+```{r, warning=FALSE}
+selected_data3 <- tb %>% select(-cyl:wt)
+selected_data3
+```
+`select(-cyl:wt)`: The - sign preceding the cyl:wt range denotes exclusion. Consequently, this command tells R to select all columns in the tb dataframe, excluding those from cyl to wt inclusive. 
+
+As can be seen, the six columns excluding those within the range of cyl and wt, are selected. 
+
+
+
+7. **`arrange()`:** Recall that this function is used to reorder rows in a tibble by one or more variables. By default, it arranges rows in ascending order. Suppose we want to select only the `mpg` and `hp` columns from the `mtcars` data and sort it in descending order of `mpg`.
 
 ```{r, warning=FALSE}
 
@@ -136,68 +186,16 @@ arranged_data
 
 The steps in the code can be broken down as follows:
 
-`arranged_data <- tb %>% select(mpg, hp)`: The select function is used here to extract only the mpg and hp columns from the tb dataframe. The %>% operator is the pipe operator, which is used to chain multiple operations together in a readable manner. This part of the code will create a new dataframe containing only the mpg and hp columns.
+`arranged_data <- tb %>% select(mpg, hp)`: The select function is used here to extract only the `mpg` and `hp` columns from the `tb` dataframe. The `%>%` operator is the pipe operator, which is used to chain multiple operations together in a readable manner. This part of the code will create a new dataframe containing only the `mpg` and `hp` columns.
 
-`arrange(desc(mpg))`: The arrange function is then used to order the rows in the newly created dataframe in descending order (desc) based on the mpg column.
-
-* **`mutate()`:** Recall that this function is used to create new variables (columns) or modify existing ones. Suppose we want to create a new column named 'efficiency', defined as the ratio of mpg to hp in the mtcars dataset.
+`arrange(desc(mpg))`: The arrange function is then used to order the rows in the newly created dataframe in descending order (`desc`) based on the `mpg` column.
 
 
-```{r, warning=FALSE}
-mutated_data <- tb %>% mutate(efficiency = mpg / hp)
-mutated_data
-```
+8. **Benefit from using %>%**: Suppose we wanted to subset the data as follows. 
 
-The tibble 'mutated_data' will contain a new column 'efficiency', which is the ratio of 'mpg' to 'hp'. The original data columns in `tb` will be retained. 
-
-Remember that these functions do not modify the original dataset, they create new objects with the results. If we want to modify the original dataset, we would need to save the result back to the original variable, or use the mutate_at, mutate_all, mutate_if functions to modify specific columns directly.
-
-
-
-* **`summarise()`:**: Recall that this function is used to create summaries of data. It collapses a tibble to a single row. Suppose we want to calculate the mean of 'mpg' in the mtcars dataset
-
-```{r, warning=FALSE}
-summary_data <- tb %>% summarise(mean_mpg = mean(mpg))
-summary_data
-```
-
-The tibble 'summary_data' will contain a single row with the mean value of 'mpg' in the mtcars dataset.
-
-To include additional statistical measures such as median, quartiles, minimum, and maximum in your summary data, we can use respective R functions within the `summarise()` function. 
-
-```{r, warning=FALSE}
-summary_data <- tb %>% summarise(
-  N = n(),
-  Mean = mean(mpg),
-  SD = sd(mpg),
-  Median = median(mpg),
-  Q1 = quantile(mpg, 0.25),
-  Q3 = quantile(mpg, 0.75),
-  Min = min(mpg),
-  Max = max(mpg)
-)
-summary_data
-```
-We could convert this back into a standard dataframe and display it.
-
-```{r, warning=FALSE}
-summary_df <- as.data.frame(summary_data)
-print(summary_df)
-```
-
-If we wanted to display only two decimal places, we could try
-
-```{r, warning=FALSE}
-summary_df %>% round(2)
-```
-
-
-
-**Illustration of %>%**: Using the `mtcars` dataset suppose we want to:
-
-* Select cars with 6 cylinders (cyl == 6).
-* Choose only the mpg (miles per gallon),  hp (horsepower) and wt (weight) columns.
-* Arrange in descending order by mpg.
+* Select cars with 6 cylinders (`cyl` == 6).
+* Choose only the `mpg` (miles per gallon),  `hp` (horsepower) and `wt` (weight) columns.
+* Arrange in descending order by `mpg`.
 
 Without the pipe operator, we would have to nest your operations like this:
 
@@ -218,13 +216,65 @@ Here's what each line is doing:
 
 `tb %>%` sends the mtcars data frame into the `filter()` function.
 
-`filter(cyl == 6) %>%` filters the data frame to include only rows where cyl is equal to 6, then sends this filtered data frame to the `select()` function.
+`filter(cyl == 6) %>%` filters the data frame to include only rows where `cyl` is equal to 6, then sends this filtered data frame to the `select()` function.
 
-`select(mpg, hp) %>%` selects only the mpg and hp columns from the data frame, then sends this subset of the data to the `arrange()` function.
+`select(mpg, hp) %>%` selects only the `mpg` and `hp` columns from the data frame, then sends this subset of the data to the `arrange()` function.
 
 `arrange(desc(mpg))` arranges the rows of the data frame in descending order based on the mpg column.
 
 This way, the pipe operator makes the code more readable and the sequence of operations is easier to follow.
+
+
+
+9. **`mutate()`:** Recall that this function is used to create new variables (columns) or modify existing ones. Suppose we want to create a new column named 'efficiency', defined as the ratio of mpg to hp in the mtcars dataset.
+
+```{r, warning=FALSE}
+mutated_data <- tb %>% mutate(efficiency = mpg / hp)
+mutated_data
+```
+
+The tibble `mutated_data` will contain a new column `efficiency`, which is the ratio of `mpg` to `hp`. The original data columns in `tb` will be retained. 
+
+Remember that these functions do not modify the original dataset, they create new objects with the results. If we want to modify the original dataset, we would need to save the result back to the original variable, or use the mutate_at, mutate_all, mutate_if functions to modify specific columns directly.
+
+10. **`summarise()`:**: Recall that this function is used to create summaries of data. It collapses a tibble to a single row. Suppose we want to calculate the mean of `mpg` in the `mtcars` dataset
+
+```{r, warning=FALSE}
+summary_data <- tb %>% summarise(mean_mpg = mean(mpg))
+summary_data
+```
+
+The tibble `summary_data` will contain a single row with the mean value of `mpg` in the mtcars dataset.
+
+11. To include additional statistical measures such as median, quartiles, minimum, and maximum in your summary data, we can use respective R functions within the `summarise()` function. 
+
+```{r, warning=FALSE}
+summary_data <- tb %>% summarise(
+  N = n(),
+  Mean = mean(mpg),
+  SD = sd(mpg),
+  Median = median(mpg),
+  Q1 = quantile(mpg, 0.25),
+  Q3 = quantile(mpg, 0.75),
+  Min = min(mpg),
+  Max = max(mpg)
+)
+summary_data
+```
+12. We could convert this back into a standard dataframe and display it.
+
+```{r, warning=FALSE}
+summary_df <- as.data.frame(summary_data)
+print(summary_df)
+```
+
+And if we wanted to display only two decimal places, we could code
+
+```{r, warning=FALSE}
+summary_df %>% round(2)
+```
+
+
 
 
 ## Additional functions in the **dplyr** package
@@ -243,73 +293,73 @@ This way, the pipe operator makes the code more readable and the sequence of ope
 
 
 
-### 4. Using `dplyr` to explore the `mtcars` tibble
+### Using `dplyr` to explore the `mtcars` tibble more
 
-* **`rename()`:** Remember that this function is helpful in changing column names in our data. For instance, let's modify the name of the mpg column to MPG in the mtcars dataset.
+1. **`rename()`:** Remember that this function is helpful in changing column names in our data. For instance, let us modify the name of the `mpg` column to `MPG` in the mtcars dataset.
 
 ```{r, warning=FALSE}
-renamed_data <- mtcars %>% rename(MGP = mpg)
+renamed_data <- tb %>% rename(MPG = mpg)
 renamed_data
 ```
 
-The dataframe renamed_data now includes the MPG column, which was previously named mpg.
+The dataframe renamed_data now includes the `MPG` column, which was previously named `mpg`.
 
-* **`group_by()`:** This function is key for performing operations within distinct groups of our data. For example, let's group the mtcars dataset by the cyl (number of cylinders) column.
+2. **`group_by()`:** This function is key for performing operations within distinct groups of our data. For example, let us group the `mtcars` dataset by the `cyl` (number of cylinders) column.
 
 ```{r, warning=FALSE}
-grouped_data <- mtcars %>% group_by(cyl)
+grouped_data <- tb %>% group_by(cyl)
 grouped_data
 ```
 
-The grouped_data dataframe is now grouped by the cyl column, which enables us to carry out operations on each group separately.
+The grouped_data dataframe is now grouped by the `cyl` column, which enables us to carry out operations on each group separately.
 
-* **`slice()`:** Remember that this function is beneficial when we wish to choose rows based on their positions. For example, let's select the first three rows of the mtcars dataset.
+3. **`slice()`:** Remember that this function is beneficial when we wish to choose rows based on their positions. For example, let's select the first three rows of the `mtcars` dataset.
 
 ```{r, warning=FALSE}
-sliced_data <- mtcars %>% slice(1:3)
+sliced_data <- tb %>% slice(1:3)
 sliced_data
 ```
 
-In this sliced_data dataframe, only the first three rows from the mtcars dataset are included.
+In this `sliced_data` tibble, only the first three rows from the mtcars dataset are included.
 
-* **`transmute()`:** Recall that if we desire to create new variables and keep only these variables, we apply the transmute() function. Suppose we want to create a new variable that is the ratio of horsepower (hp) to weight (wt), and keep only this new variable.
+4. **`transmute()`:** Recall that if we desire to create new variables and keep only these variables, we apply the `transmute()` function. Suppose we want to create a new variable that is the ratio of horsepower (`hp`) to weight (`wt`), and keep only this new variable.
 
 ```{r, warning=FALSE}
-transmuted_data <- mtcars %>% transmute(hp_to_wt = hp/wt) %>% head()
+transmuted_data <- tb %>% transmute(hp_to_wt = hp/wt) %>% head()
 transmuted_data
 ```
 
-The transmuted_data dataframe now includes the newly created hp_to_wt variable, while the other columns have been removed.
+The `transmuted_data` tibble now includes the newly created `hp_to_wt` variable, while the other columns have been removed.
 
-* **`pull()`:**: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let's isolate the mpg (miles per gallon) variable from the mtcars dataset.
+5. **`pull()`:**: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let us isolate the `mpg` (miles per gallon) variable from the `mtcars` dataset.
 
 ```{r, warning=FALSE}
-pulled_data <- mtcars %>% pull(mpg)
+pulled_data <- tb %>% pull(mpg)
 pulled_data
 ```
 
-In the pulled_data vector, only the values from the mpg variable are retained.
+In the `pulled_data` vector, only the values from the `mpg` variable are retained.
 
-* **`n_distinct():**: Recall that this function is used to count the distinct values in a column or vector. Let's count the number of distinct values in the cyl (cylinders) column from the mtcars dataset.
+6. **`n_distinct():**: Recall that this function is used to count the distinct values in a column or vector. Let us count the number of distinct values in the `cyl` (cylinders) column from the `mtcars` dataset.
 
 ```{r, warning=FALSE}
-distinct_count <- mtcars %>% summarise(n_distinct_cyl = n_distinct(cyl))
+distinct_count <- tb %>% summarise(n_distinct_cyl = n_distinct(cyl))
 distinct_count
 ```
 
-The distinct_count dataframe shows the number of unique values in the cyl column of the mtcars dataset.
+The `distinct_count` dataframe shows the number of unique values in the `cyl` column of the `mtcars` dataset.
 
 ## Summary
 
-The chapter has introduced and provided a detailed overview of `tibbles` and the `dplyr` package in the R programming language. 
+This chapter has provided an overview of the `tibble` data structure and the `dplyr` package in the R programming language. 
 
-It started with an introduction to `tibbles`, a data structure in R that is an updated version of data frames with enhanced features for flexible and effective data management. These benefits include more user-friendly printing, reliable subsetting behavior, transparent handling of data types, and support for non-syntactic column names.
+We started with an introduction to `tibble`, a data structure in R that is an updated version of data frames with enhanced features for flexible and effective data management. These benefits include more user-friendly printing, reliable subsetting behavior, transparent handling of data types, and support for non-syntactic column names.
 
-Subsequently, the chapter shifted focus to the `dplyr` package, which has been explained as a powerful tool for data manipulation in R. This package offers a cohesive set of functions, often referred to as "verbs", which allow for efficient and straightforward manipulation of data. The key "verbs" in `dplyr`—`filter()`, `select()`, `arrange()`, `mutate()`, and `summarise()`— have been explained and illustrated with examples.
+Subsequently, we shifted focus to the `dplyr` package, which is a powerful tool for data manipulation in R. This package offers a cohesive set of functions, often referred to as "verbs", which allow for efficient and straightforward manipulation of data. The key "verbs" in `dplyr`—`filter()`, `select()`, `arrange()`, `mutate()`, and `summarise()`— have been explained and illustrated with examples.
 
-An integral component of the `dplyr` package, the pipe operator `%>%`, has also been discussed in detail. This operator allows for a more readable and understandable chaining of multiple operations in R, leading to cleaner and more straightforward code.
+An integral component of the `dplyr` package, the pipe operator `%>%`, has also been discussed. This operator allows for a more readable and understandable chaining of multiple operations in R, leading to cleaner and more straightforward code.
 
-The chapter has given a comprehensive illustration of using `dplyr` on the `mtcars` dataset. This practical demonstration has involved applying `dplyr` functions to a real dataset and explaining the process and results.
+The chapter has given a comprehensive illustration of using `dplyr` on the `mtcars` dataset. This practical demonstration has involved applying `dplyr` functions to a dataset and explaining the process and results.
 
 In addition to the basics, the chapter has also touched upon additional `dplyr` functions such as `rename()`, `group_by()`, and `slice()`, enriching readers' understanding and competency in data manipulation using R. 
 
@@ -327,9 +377,13 @@ Müller, K., & Wickham, H. (2021). tibble: Simple Data Frames. R package version
 Wickham, H., François, R., Henry, L., & Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
 
 [3]
-Bache, S. M., & Wickham, H. (2020). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. https://CRAN.R-project.org/package=magrittr
+Bache, S. M., & Wickham, H. (2020). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. 
 
-Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23. https://www.jstatsoft.org/article/view/v059i10
+https://CRAN.R-project.org/package=magrittr
+
+Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23. 
+
+https://www.jstatsoft.org/article/view/v059i10
 
 Grolemund, G., & Wickham, H. (2017). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data. O'Reilly Media, Inc.
 
