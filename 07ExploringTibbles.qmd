@@ -1,129 +1,214 @@
-# Exploring Tibbles
+# Exploring *tibbles* & *dplyr*
 
-*July 24, 2023 V3 (Work in progress)*
+*July 25, 2023 V5 (Work in progress)*
 
-The
 
-Dataframes and Tibbles are frequently employed data structures in R for storing and manipulating data. They facilitate the organization, exploration, and analysis of data.
+## **tibbles**
 
-## Dataframes
+A `tibble` is essentially an updated version of the conventional data frame, providing more flexible and effective data management features (Müller & Wickham, 2021).
 
-1.  A dataframe is a two-dimensional table-like data structure in R that stores data in rows and columns, with distinct data types for each column.
+`Tibbles`, also recognized as `tbl_df`, are a component of the tidyverse suite, a collection of R packages geared towards making data science more straightforward. They share many properties with regular data frames but also offer unique benefits that enhance our ability to work with data.
 
-2.  Similar to a spreadsheet or a SQL table, it is one of the most frequently employed data structures in R. Each column in a data.frame is a constant-length vector, and each row represents an observation or case.
+1. **Printing:** When a `tibble` is printed, only the initial ten rows and the number of columns that fit within our screen's width are displayed. This feature becomes particularly useful when dealing with extensive datasets having multiple columns, enhancing the data's readability.
 
-3.  Using the `data.frame()` function or by importing data from external sources such as CSV files, Excel spreadsheets, or databases, dataframe objects can be created in R.
+2. **Subsetting:** Unlike conventional data frames, subsetting a `tibble` always maintains its original structure. Consequently, even when we pull out a single column, it remains as a one-column `tibble`, ensuring a consistent output type.
 
-4.  dataframe objects have many useful built-in methods and functions for manipulating and summarizing data, including subsetting, merging, filtering, and aggregation. \[1\]
+3. **Data types:** `tibbles` offer a transparent approach towards data types. They avoid hidden conversions, ensuring that the output aligns with our expectations.
 
-### Creating a dataframe using raw data
+4. **Non-syntactic names:** `tibbles` support columns having non-syntactic names (those not following R's standard naming rules), which is not always the case with standard data frames.
 
-5.  The following code generates a data.frame named `df` containing three columns - `names`, `ages`, and `heights`, and four rows of data for each individual.
+We consider `tibbles` to be a vital part of our data manipulation arsenal, especially when working within the `tidyverse` ecosystem [1].
 
-```{r}
-# Create input data as vectors
-names <- c("Ashok", "Bullu", "Charu", "Divya")
-ages <- c(72, 49, 46, 42)
-heights <- c(170, 167, 160, 166)
 
-# Combine input data into a data.frame
-people <- data.frame(Name = names, Age = ages, Height = heights)
+## The **dplyr** package
 
-# Print the resulting dataframe
-print(people)
+The `dplyr` package is very useful when we are dealing with data manipulation tasks (Wickham et al., 2021). This package offers us a cohesive set of functions, frequently referred to as "verbs," that are designed to facilitate common data manipulation activities. Below, we review some of the key "verbs" provided by the `dplyr` package:
+
+1. **`filter()`:** When we want to restrict our data to specific conditions, we can use `filter()`. For instance, this function allows us to include only those rows in our dataset that fulfill a condition we specify.
+
+2. **`select()`:** If we are interested in retaining specific variables (columns) in our data, `select()` is our function of choice. It is particularly useful when we have datasets with many variables, but we only need a select few.
+
+3. **`arrange()`:** If we wish to reorder the rows in our dataset based on our selected variables, we can use `arrange()`. By default, `arrange()` sorts in ascending order. However, we can use the `desc()` function to sort in descending order.
+
+4. **`mutate()`:** To create new variables from existing ones, we utilize the `mutate()` function. It is particularly helpful when we need to conduct transformations or generate new variables that are functions of existing ones.
+
+5. **`summarise()`:** To produce summary statistics of various variables, we use `summarise()`. We frequently use it with `group_by()`, enabling us to calculate these summary statistics for distinct groups within our data.
+
+Moreover, one of the significant advantages of `dplyr` is the ability to chain these functions together using the pipe operator `%>%` for a more streamlined and readable data manipulation workflow. [2]
+
+
+## Loading required R packages
+
+```{r, warning=FALSE}
+# Load the required libraries, suppressing annoying startup messages
+library(dplyr) 
+library(tibble) 
 ```
 
-## Reading Inbuilt datasets in R
+*Aside:* When we load the `dplyr` package using `library(dplyr)`, R will display messages indicating that certain functions from dplyr are masking functions from the stats and base packages. We could instead use the `suppressPackageStartupMessages()` function to prevent the display of package startup messages.
 
-1.  R contains a number of built-in datasets that can be accessed without downloading or integrating from external sources. Here are some of the most frequently used built-in datasets in R:
-
--   `women`: This dataset includes the heights and weights of a sample of 15,000 women.
-
--   `mtcars`: This dataset contains information on 32 distinct automobile models, including the number of cylinders, engine displacement, horsepower, and weight.
-
--   `diamonds`: This dataset includes the prices and characteristics of approximately 54,000 diamonds, including carat weight, cut, color, and clarity.
-
--   `iris`: This data set measures the sepal length, sepal width, petal length, and petal breadth of 150 iris flowers from three distinct species.
-
-### The `women` dataset
-
-As an illustration, consider the `women` dataset inbuilt in R, which contains information about the heights and weights of women. It has just two variables:
-
-1.  `height`: Height of each woman in inches
-
-2.  `weight`: Weight of each woman in pounds
-
-3.  The `data()` function is used to import any inbuilt dataset into R. The `data(women)` command in R loads the `women` dataset
-
-```{r}
-data(women)
+```{r, warning=FALSE, eval=FALSE}
+# Load the required libraries, suppressing annoying startup messages
+suppressPackageStartupMessages(library(dplyr))
 ```
 
-4.  The `str()` function gives the dimensions and data types and also previews the data.
+## Reading the mtcars dataset as a tibble
 
-```{r}
-str(women)
+```{r, warning=FALSE}
+# Read the mtcars dataset into a tibble called tb
+tb <- as_tibble(mtcars)
 ```
 
-5.  The `summary()` function gives some summary statistics.
+**Creating a tibble**: The `as_tibble` function is used to convert the built-in `mtcars` dataset into a tibble object, which we're naming `tb`. 
 
-```{r}
-summary(women)
+```{r, warning=FALSE}
+# Display the first few rows of the dataset
+head(tb)
 ```
 
-### The `mtcars` dataset
-
-The `mtcars` dataset inbuilt in R comprises data on the fuel consumption and other characteristics of 32 different automobile models. Here is a concise description of the 11 `mtcars` data columns:
-
-1.  `mpg`: Miles per gallon (fuel efficiency)
-
-2.  `cyl`: Number of cylinders
-
-3.  `disp`: Displacement of the engine (in cubic inches)
-
-4.  `hp`: gross horsepower
-
-5.  `drat`: Back axle ratio wt: Weight (in thousands of pounds)
-
-6.  `wt`: Weight (in thousands of pounds)
-
-7.  `qsec`: 1/4 mile speed (in seconds)
-
-8.  `vs`: Type of engine (0 = V-shaped, 1 = straight)
-
-9.  `am`: Type of transmission (0 for automatic, 1 for manual)
-
-10. `gear`: the number of forward gears
-
-11. `carb`: the number of carburetors
-
-```{r}
-data(mtcars)
-str(mtcars)
+```{r, warning=FALSE}
+# Display the structure of the dataset
+glimpse(tb)
 ```
 
-## Reading different file formats into a dataframe
+**Exploring the data**: The `head()` function is called on `tb` to display the first six rows of the dataset. This is a quick way to visually inspect the first few entries. Then, the `glimpse()` function is used to provide a more detailed view of the tb object, showing the column names and their respective data types, along with a few entries for each column.
 
-1.  We examine how to read data into a dataframe in R when the original data is stored in prominent file formats such as CSV, Excel, and Google Sheets.
-
-2.  Before learning how to accomplish this, it is necessary to comprehend how to configure the Working Directory in R.
-
-### Working Directory
-
-1.  The working directory is the location where R searches for and saves files by default.
-
-2.  By default, when we execute a script or import data into R, R will search the working directory for files.
-
-3.  Using R's `getwd()` function, we can examine our current working directory:
-
-```{r}
-getwd()
+```{r, warning=FALSE}
+# Convert several numeric columns into factor variables
+tb$cyl <- as.factor(tb$cyl)
+tb$vs <- as.factor(tb$vs)
+tb$am <- as.factor(tb$am)
+tb$gear <- as.factor(tb$gear)
 ```
 
-4.  We are running R in the Cloud and hence we are seeing that the working directory is specified as `/cloud/project/DataAnalyticsBook101`. If we are doing R programming on a local computer, and if our working directory is the Desktop, then we may see a different response such as `C:/Users/YourUserName/Desktop`.
+**Changing data types**: The `as.factor()` function is used to convert the 'cyl', 'vs', 'am', and 'gear' columns from numeric data types to factors. Factors are used in statistical modeling to represent categorical variables. In our case, these four variables are better represented as categories rather than numerical values. For instance, 'cyl' represents the number of cylinders in a car's engine, 'vs' is the engine shape, 'am' is the transmission type, and 'gear' is the number of forward gears; all of these are categorical in nature, hence the conversion to factor.
 
-5.  Using R's `setwd()` function, we can change our current working directory. For example, the following code will set our working directory to the Desktop:
+At this point, we can call the `glimpse()` function again to review the data structures. 
 
-```{r eval=FALSE, echo=TRUE}
-setwd("C:/Users/YourUserName/Desktop")
+```{r, warning=FALSE}
+# Display the structure of the dataset, again
+glimpse(tb)
 ```
+
+Notice that the datatypes are now modified and the tibble is ready for futher exploration.
+
+
+
+## Illustration: Using dplyr on mtcars data
+
+Let's dive into these crucial functions from the dplyr package, providing their detailed explanations and illustrating their usage on the mtcars dataset.
+
+filter(): This function is used to select subsets of rows in a data frame. It takes logical conditions as inputs and returns rows where the conditions hold true.
+
+```{r, warning=FALSE}
+# Filter mtcars dataset for rows where mpg is greater than 20
+filtered_data <- mtcars %>% filter(mpg > 20)
+
+# The new dataframe 'filtered_data' contains only the rows where the miles per gallon (mpg) are greater than 20.
+```
+
+arrange(): This function is used to reorder rows in a data frame by one or more variables. By default, it arranges rows in ascending order.
+
+```{r, warning=FALSE}
+# Arrange mtcars dataset in descending order of mpg
+arranged_data <- mtcars %>% arrange(desc(mpg))
+
+# 'arranged_data' will contain the rows of the mtcars dataset, but sorted in descending order of miles per gallon (mpg).
+```
+
+select(): This function is used to select variables (columns) by their names.
+
+```{r, warning=FALSE}
+# Select 'mpg' and 'hp' columns from mtcars dataset
+selected_data <- mtcars %>% select(mpg, hp)
+
+# 'selected_data' will only contain the 'mpg' (miles per gallon) and 'hp' (horsepower) columns from the mtcars dataset.
+```
+
+mutate(): This function is used to create new variables (columns) or modify existing ones.
+
+```{r, warning=FALSE}
+# Create a new column 'efficiency' as ratio of mpg to hp in mtcars dataset
+mutated_data <- mtcars %>% mutate(efficiency = mpg / hp)
+
+# The dataframe 'mutated_data' will contain a new column 'efficiency', which is the ratio of 'mpg' to 'hp'.
+```
+
+transmute(): This function is similar to mutate(), but it only keeps the newly created columns.
+
+```{r, warning=FALSE}
+# Create a new column 'efficiency' as ratio of mpg to hp in mtcars dataset and only keep the new column
+transmuted_data <- mtcars %>% transmute(efficiency = mpg / hp)
+
+# 'transmuted_data' only contains the 'efficiency' column which is the ratio of 'mpg' to 'hp'.
+```
+
+
+summarise(): This function is used to create summaries of your data. It collapses a data frame to a single row.
+
+```{r, warning=FALSE}
+# Find the mean of 'mpg' in the mtcars dataset
+summary_data <- mtcars %>% summarise(mean_mpg = mean(mpg))
+
+# 'summary_data' will contain a single row with the mean value of 'mpg' in the mtcars dataset.
+
+```
+
+Remember that all these functions do not modify the original dataset, they create new objects with the results. If you want to modify the original dataset, you'd need to save the result back to the original variable, or use the mutate_at, mutate_all, mutate_if functions to modify specific columns directly.
+
+
+
+## The pipe operator **%>%**
+
+As regular users of R, we often utilize the `%>%` operator, colloquially known as the "pipe" operator, which plays a vital role in the `dplyr` package. The purpose of this operator is to facilitate a more readable and understandable chaining of multiple operations. Although this operator was originally introduced by the `magrittr` package, it has since become extensively adopted in `dplyr` and other tidyverse packages.
+
+In a typical scenario in R, when we need to carry out multiple operations on a data frame, each function call must be nested within another. This could lead to codes that are difficult to comprehend due to their complex and nested structure. However, the pipe operator comes to our rescue here. It allows us to rewrite these nested operations in a linear, straightforward manner, greatly enhancing the readability of our code. [3]
+
+**Illustration**: This operator is best understood with an illustration. Using the `mtcars` dataset suppose we want to:
+
+* Select cars with 6 cylinders (cyl == 6).
+* Choose only the mpg (miles per gallon),  hp (horsepower) and wt (weight) columns.
+* Arrange in descending order by mpg.
+
+Without the pipe operator, we would have to nest your operations like this:
+
+```{r, warning=FALSE}
+arrange(select(filter(tb, cyl == 6), mpg, hp, wt), desc(mpg))
+```
+
+Here's how we would do the same operations using the pipe operator:
+
+```{r, warning=FALSE}
+tb %>%
+  filter(cyl == 6) %>%
+  select(mpg, hp, wt) %>%
+  arrange(desc(mpg))
+```
+
+Here's what each line is doing:
+
+`tb %>%` sends the mtcars data frame into the `filter()` function.
+
+`filter(cyl == 6) %>%` filters the data frame to include only rows where cyl is equal to 6, then sends this filtered data frame to the `select()` function.
+
+`select(mpg, hp) %>%` selects only the mpg and hp columns from the data frame, then sends this subset of the data to the `arrange()` function.
+
+`arrange(desc(mpg))` arranges the rows of the data frame in descending order based on the mpg column.
+
+This way, the pipe operator makes the code more readable and the sequence of operations is easier to follow.
+
+
+## References
+
+[1]
+Müller, K., & Wickham, H. (2021). tibble: Simple Data Frames. R package version 3.1.3. https://CRAN.R-project.org/package=tibble
+
+[2]
+Wickham, H., François, R., Henry, L., & Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
+
+[3]
+Bache, S. M., & Wickham, H. (2020). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. https://CRAN.R-project.org/package=magrittr
+
+
+
+

@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07ExploringTibbles.html">Exploring Tibbles</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./07ExploringTibbles.html">Exploring <em>tibbles</em> &amp; <em>dplyr</em></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07ExploringTibbles.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Exploring Tibbles</span></a>
+ <span class="menu-text">Exploring <em>tibbles</em> &amp; <em>dplyr</em></span></a>
   </div>
 </li>
     </ul>
@@ -224,21 +224,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploring-tibbles" id="toc-exploring-tibbles" class="nav-link active" data-scroll-target="#exploring-tibbles">Exploring Tibbles</a>
+  <li><a href="#exploring-tibbles-dplyr" id="toc-exploring-tibbles-dplyr" class="nav-link active" data-scroll-target="#exploring-tibbles-dplyr">Exploring <em>tibbles</em> &amp; <em>dplyr</em></a>
   <ul class="collapse">
-  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes">Dataframes</a>
-  <ul class="collapse">
-  <li><a href="#creating-a-dataframe-using-raw-data" id="toc-creating-a-dataframe-using-raw-data" class="nav-link" data-scroll-target="#creating-a-dataframe-using-raw-data">Creating a dataframe using raw data</a></li>
-  </ul></li>
-  <li><a href="#reading-inbuilt-datasets-in-r" id="toc-reading-inbuilt-datasets-in-r" class="nav-link" data-scroll-target="#reading-inbuilt-datasets-in-r">Reading Inbuilt datasets in R</a>
-  <ul class="collapse">
-  <li><a href="#the-women-dataset" id="toc-the-women-dataset" class="nav-link" data-scroll-target="#the-women-dataset">The <code>women</code> dataset</a></li>
-  <li><a href="#the-mtcars-dataset" id="toc-the-mtcars-dataset" class="nav-link" data-scroll-target="#the-mtcars-dataset">The <code>mtcars</code> dataset</a></li>
-  </ul></li>
-  <li><a href="#reading-different-file-formats-into-a-dataframe" id="toc-reading-different-file-formats-into-a-dataframe" class="nav-link" data-scroll-target="#reading-different-file-formats-into-a-dataframe">Reading different file formats into a dataframe</a>
-  <ul class="collapse">
-  <li><a href="#working-directory" id="toc-working-directory" class="nav-link" data-scroll-target="#working-directory">Working Directory</a></li>
-  </ul></li>
+  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles"><strong>tibbles</strong></a></li>
+  <li><a href="#the-dplyr-package" id="toc-the-dplyr-package" class="nav-link" data-scroll-target="#the-dplyr-package">The <strong>dplyr</strong> package</a></li>
+  <li><a href="#loading-required-r-packages" id="toc-loading-required-r-packages" class="nav-link" data-scroll-target="#loading-required-r-packages">Loading required R packages</a></li>
+  <li><a href="#reading-the-mtcars-dataset-as-a-tibble" id="toc-reading-the-mtcars-dataset-as-a-tibble" class="nav-link" data-scroll-target="#reading-the-mtcars-dataset-as-a-tibble">Reading the mtcars dataset as a tibble</a></li>
+  <li><a href="#illustration-using-dplyr-on-mtcars-data" id="toc-illustration-using-dplyr-on-mtcars-data" class="nav-link" data-scroll-target="#illustration-using-dplyr-on-mtcars-data">Illustration: Using dplyr on mtcars data</a></li>
+  <li><a href="#the-pipe-operator" id="toc-the-pipe-operator" class="nav-link" data-scroll-target="#the-pipe-operator">The pipe operator <strong>%&gt;%</strong></a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="07ExploringTibbles.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -248,159 +242,238 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="exploring-tibbles" class="level1">
-<h1>Exploring Tibbles</h1>
-<p><em>July 24, 2023 V3 (Work in progress)</em></p>
-<p>The</p>
-<p>Dataframes and Tibbles are frequently employed data structures in R for storing and manipulating data. They facilitate the organization, exploration, and analysis of data.</p>
-<section id="dataframes" class="level2">
-<h2 class="anchored" data-anchor-id="dataframes">Dataframes</h2>
+<section id="exploring-tibbles-dplyr" class="level1">
+<h1>Exploring <em>tibbles</em> &amp; <em>dplyr</em></h1>
+<p><em>July 25, 2023 V5 (Work in progress)</em></p>
+<section id="tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="tibbles"><strong>tibbles</strong></h2>
+<p>A <code>tibble</code> is essentially an updated version of the conventional data frame, providing more flexible and effective data management features (Müller &amp; Wickham, 2021).</p>
+<p><code>Tibbles</code>, also recognized as <code>tbl_df</code>, are a component of the tidyverse suite, a collection of R packages geared towards making data science more straightforward. They share many properties with regular data frames but also offer unique benefits that enhance our ability to work with data.</p>
 <ol type="1">
-<li><p>A dataframe is a two-dimensional table-like data structure in R that stores data in rows and columns, with distinct data types for each column.</p></li>
-<li><p>Similar to a spreadsheet or a SQL table, it is one of the most frequently employed data structures in R. Each column in a data.frame is a constant-length vector, and each row represents an observation or case.</p></li>
-<li><p>Using the <code>data.frame()</code> function or by importing data from external sources such as CSV files, Excel spreadsheets, or databases, dataframe objects can be created in R.</p></li>
-<li><p>dataframe objects have many useful built-in methods and functions for manipulating and summarizing data, including subsetting, merging, filtering, and aggregation. [1]</p></li>
+<li><p><strong>Printing:</strong> When a <code>tibble</code> is printed, only the initial ten rows and the number of columns that fit within our screen’s width are displayed. This feature becomes particularly useful when dealing with extensive datasets having multiple columns, enhancing the data’s readability.</p></li>
+<li><p><strong>Subsetting:</strong> Unlike conventional data frames, subsetting a <code>tibble</code> always maintains its original structure. Consequently, even when we pull out a single column, it remains as a one-column <code>tibble</code>, ensuring a consistent output type.</p></li>
+<li><p><strong>Data types:</strong> <code>tibbles</code> offer a transparent approach towards data types. They avoid hidden conversions, ensuring that the output aligns with our expectations.</p></li>
+<li><p><strong>Non-syntactic names:</strong> <code>tibbles</code> support columns having non-syntactic names (those not following R’s standard naming rules), which is not always the case with standard data frames.</p></li>
 </ol>
-<section id="creating-a-dataframe-using-raw-data" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-dataframe-using-raw-data">Creating a dataframe using raw data</h3>
-<ol start="5" type="1">
-<li>The following code generates a data.frame named <code>df</code> containing three columns - <code>names</code>, <code>ages</code>, and <code>heights</code>, and four rows of data for each individual.</li>
+<p>We consider <code>tibbles</code> to be a vital part of our data manipulation arsenal, especially when working within the <code>tidyverse</code> ecosystem [1].</p>
+</section>
+<section id="the-dplyr-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-dplyr-package">The <strong>dplyr</strong> package</h2>
+<p>The <code>dplyr</code> package is very useful when we are dealing with data manipulation tasks (Wickham et al., 2021). This package offers us a cohesive set of functions, frequently referred to as “verbs,” that are designed to facilitate common data manipulation activities. Below, we review some of the key “verbs” provided by the <code>dplyr</code> package:</p>
+<ol type="1">
+<li><p><strong><code>filter()</code>:</strong> When we want to restrict our data to specific conditions, we can use <code>filter()</code>. For instance, this function allows us to include only those rows in our dataset that fulfill a condition we specify.</p></li>
+<li><p><strong><code>select()</code>:</strong> If we are interested in retaining specific variables (columns) in our data, <code>select()</code> is our function of choice. It is particularly useful when we have datasets with many variables, but we only need a select few.</p></li>
+<li><p><strong><code>arrange()</code>:</strong> If we wish to reorder the rows in our dataset based on our selected variables, we can use <code>arrange()</code>. By default, <code>arrange()</code> sorts in ascending order. However, we can use the <code>desc()</code> function to sort in descending order.</p></li>
+<li><p><strong><code>mutate()</code>:</strong> To create new variables from existing ones, we utilize the <code>mutate()</code> function. It is particularly helpful when we need to conduct transformations or generate new variables that are functions of existing ones.</p></li>
+<li><p><strong><code>summarise()</code>:</strong> To produce summary statistics of various variables, we use <code>summarise()</code>. We frequently use it with <code>group_by()</code>, enabling us to calculate these summary statistics for distinct groups within our data.</p></li>
 </ol>
+<p>Moreover, one of the significant advantages of <code>dplyr</code> is the ability to chain these functions together using the pipe operator <code>%&gt;%</code> for a more streamlined and readable data manipulation workflow. [2]</p>
+</section>
+<section id="loading-required-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="loading-required-r-packages">Loading required R packages</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input data as vectors</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Ashok"</span>, <span class="st">"Bullu"</span>, <span class="st">"Charu"</span>, <span class="st">"Divya"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">49</span>, <span class="dv">46</span>, <span class="dv">42</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">170</span>, <span class="dv">167</span>, <span class="dv">160</span>, <span class="dv">166</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine input data into a data.frame</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>people <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> names, <span class="at">Age =</span> ages, <span class="at">Height =</span> heights)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the resulting dataframe</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(people)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Aside:</em> When we load the <code>dplyr</code> package using <code>library(dplyr)</code>, R will display messages indicating that certain functions from dplyr are masking functions from the stats and base packages. We could instead use the <code>suppressPackageStartupMessages()</code> function to prevent the display of package startup messages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(dplyr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reading-the-mtcars-dataset-as-a-tibble" class="level2">
+<h2 class="anchored" data-anchor-id="reading-the-mtcars-dataset-as-a-tibble">Reading the mtcars dataset as a tibble</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the mtcars dataset into a tibble called tb</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Creating a tibble</strong>: The <code>as_tibble</code> function is used to convert the built-in <code>mtcars</code> dataset into a tibble object, which we’re naming <code>tb</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   Name Age Height
-1 Ashok  72    170
-2 Bullu  49    167
-3 Charu  46    160
-4 Divya  42    166</code></pre>
+<pre><code># A tibble: 6 × 11
+    mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  21       6   160   110  3.9   2.62  16.5     0     1     4     4
+2  21       6   160   110  3.9   2.88  17.0     0     1     4     4
+3  22.8     4   108    93  3.85  2.32  18.6     1     1     4     1
+4  21.4     6   258   110  3.08  3.22  19.4     1     0     3     1
+5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2
+6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the structure of the dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32
+Columns: 11
+$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
+$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
+$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
+$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
+$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
+$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
+$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
+$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
+$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
+$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
+$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+</div>
+</div>
+<p><strong>Exploring the data</strong>: The <code>head()</code> function is called on <code>tb</code> to display the first six rows of the dataset. This is a quick way to visually inspect the first few entries. Then, the <code>glimpse()</code> function is used to provide a more detailed view of the tb object, showing the column names and their respective data types, along with a few entries for each column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert several numeric columns into factor variables</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>cyl)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>vs)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>am)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Changing data types</strong>: The <code>as.factor()</code> function is used to convert the ‘cyl’, ‘vs’, ‘am’, and ‘gear’ columns from numeric data types to factors. Factors are used in statistical modeling to represent categorical variables. In our case, these four variables are better represented as categories rather than numerical values. For instance, ‘cyl’ represents the number of cylinders in a car’s engine, ‘vs’ is the engine shape, ‘am’ is the transmission type, and ‘gear’ is the number of forward gears; all of these are categorical in nature, hence the conversion to factor.</p>
+<p>At this point, we can call the <code>glimpse()</code> function again to review the data structures.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the structure of the dataset, again</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32
+Columns: 11
+$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
+$ cyl  &lt;fct&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
+$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
+$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
+$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
+$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
+$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
+$ vs   &lt;fct&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
+$ am   &lt;fct&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
+$ gear &lt;fct&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
+$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+</div>
+</div>
+<p>Notice that the datatypes are now modified and the tibble is ready for futher exploration.</p>
 </section>
+<section id="illustration-using-dplyr-on-mtcars-data" class="level2">
+<h2 class="anchored" data-anchor-id="illustration-using-dplyr-on-mtcars-data">Illustration: Using dplyr on mtcars data</h2>
+<p>Let’s dive into these crucial functions from the dplyr package, providing their detailed explanations and illustrating their usage on the mtcars dataset.</p>
+<p>filter(): This function is used to select subsets of rows in a data frame. It takes logical conditions as inputs and returns rows where the conditions hold true.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter mtcars dataset for rows where mpg is greater than 20</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The new dataframe 'filtered_data' contains only the rows where the miles per gallon (mpg) are greater than 20.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>arrange(): This function is used to reorder rows in a data frame by one or more variables. By default, it arranges rows in ascending order.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange mtcars dataset in descending order of mpg</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>arranged_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(mpg))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 'arranged_data' will contain the rows of the mtcars dataset, but sorted in descending order of miles per gallon (mpg).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>select(): This function is used to select variables (columns) by their names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select 'mpg' and 'hp' columns from mtcars dataset</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">select</span>(mpg, hp)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 'selected_data' will only contain the 'mpg' (miles per gallon) and 'hp' (horsepower) columns from the mtcars dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>mutate(): This function is used to create new variables (columns) or modify existing ones.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column 'efficiency' as ratio of mpg to hp in mtcars dataset</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mutated_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">efficiency =</span> mpg <span class="sc">/</span> hp)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The dataframe 'mutated_data' will contain a new column 'efficiency', which is the ratio of 'mpg' to 'hp'.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>transmute(): This function is similar to mutate(), but it only keeps the newly created columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new column 'efficiency' as ratio of mpg to hp in mtcars dataset and only keep the new column</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>transmuted_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">transmute</span>(<span class="at">efficiency =</span> mpg <span class="sc">/</span> hp)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 'transmuted_data' only contains the 'efficiency' column which is the ratio of 'mpg' to 'hp'.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>summarise(): This function is used to create summaries of your data. It collapses a data frame to a single row.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the mean of 'mpg' in the mtcars dataset</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">mean_mpg =</span> <span class="fu">mean</span>(mpg))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 'summary_data' will contain a single row with the mean value of 'mpg' in the mtcars dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remember that all these functions do not modify the original dataset, they create new objects with the results. If you want to modify the original dataset, you’d need to save the result back to the original variable, or use the mutate_at, mutate_all, mutate_if functions to modify specific columns directly.</p>
 </section>
-<section id="reading-inbuilt-datasets-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="reading-inbuilt-datasets-in-r">Reading Inbuilt datasets in R</h2>
-<ol type="1">
-<li>R contains a number of built-in datasets that can be accessed without downloading or integrating from external sources. Here are some of the most frequently used built-in datasets in R:</li>
-</ol>
+<section id="the-pipe-operator" class="level2">
+<h2 class="anchored" data-anchor-id="the-pipe-operator">The pipe operator <strong>%&gt;%</strong></h2>
+<p>As regular users of R, we often utilize the <code>%&gt;%</code> operator, colloquially known as the “pipe” operator, which plays a vital role in the <code>dplyr</code> package. The purpose of this operator is to facilitate a more readable and understandable chaining of multiple operations. Although this operator was originally introduced by the <code>magrittr</code> package, it has since become extensively adopted in <code>dplyr</code> and other tidyverse packages.</p>
+<p>In a typical scenario in R, when we need to carry out multiple operations on a data frame, each function call must be nested within another. This could lead to codes that are difficult to comprehend due to their complex and nested structure. However, the pipe operator comes to our rescue here. It allows us to rewrite these nested operations in a linear, straightforward manner, greatly enhancing the readability of our code. [3]</p>
+<p><strong>Illustration</strong>: This operator is best understood with an illustration. Using the <code>mtcars</code> dataset suppose we want to:</p>
 <ul>
-<li><p><code>women</code>: This dataset includes the heights and weights of a sample of 15,000 women.</p></li>
-<li><p><code>mtcars</code>: This dataset contains information on 32 distinct automobile models, including the number of cylinders, engine displacement, horsepower, and weight.</p></li>
-<li><p><code>diamonds</code>: This dataset includes the prices and characteristics of approximately 54,000 diamonds, including carat weight, cut, color, and clarity.</p></li>
-<li><p><code>iris</code>: This data set measures the sepal length, sepal width, petal length, and petal breadth of 150 iris flowers from three distinct species.</p></li>
+<li>Select cars with 6 cylinders (cyl == 6).</li>
+<li>Choose only the mpg (miles per gallon), hp (horsepower) and wt (weight) columns.</li>
+<li>Arrange in descending order by mpg.</li>
 </ul>
-<section id="the-women-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="the-women-dataset">The <code>women</code> dataset</h3>
-<p>As an illustration, consider the <code>women</code> dataset inbuilt in R, which contains information about the heights and weights of women. It has just two variables:</p>
-<ol type="1">
-<li><p><code>height</code>: Height of each woman in inches</p></li>
-<li><p><code>weight</code>: Weight of each woman in pounds</p></li>
-<li><p>The <code>data()</code> function is used to import any inbuilt dataset into R. The <code>data(women)</code> command in R loads the <code>women</code> dataset</p></li>
-</ol>
+<p>Without the pipe operator, we would have to nest your operations like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(women)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>The <code>str()</code> function gives the dimensions and data types and also previews the data.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(women)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(<span class="fu">select</span>(<span class="fu">filter</span>(tb, cyl <span class="sc">==</span> <span class="dv">6</span>), mpg, hp, wt), <span class="fu">desc</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   15 obs. of  2 variables:
- $ height: num  58 59 60 61 62 63 64 65 66 67 ...
- $ weight: num  115 117 120 123 126 129 132 135 139 142 ...</code></pre>
+<pre><code># A tibble: 7 × 3
+    mpg    hp    wt
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  21.4   110  3.22
+2  21     110  2.62
+3  21     110  2.88
+4  19.7   175  2.77
+5  19.2   123  3.44
+6  18.1   105  3.46
+7  17.8   123  3.44</code></pre>
 </div>
 </div>
-<ol start="5" type="1">
-<li>The <code>summary()</code> function gives some summary statistics.</li>
-</ol>
+<p>Here’s how we would do the same operations using the pipe operator:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(women)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cyl <span class="sc">==</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, hp, wt) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     height         weight     
- Min.   :58.0   Min.   :115.0  
- 1st Qu.:61.5   1st Qu.:124.5  
- Median :65.0   Median :135.0  
- Mean   :65.0   Mean   :136.7  
- 3rd Qu.:68.5   3rd Qu.:148.0  
- Max.   :72.0   Max.   :164.0  </code></pre>
+<pre><code># A tibble: 7 × 3
+    mpg    hp    wt
+  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  21.4   110  3.22
+2  21     110  2.62
+3  21     110  2.88
+4  19.7   175  2.77
+5  19.2   123  3.44
+6  18.1   105  3.46
+7  17.8   123  3.44</code></pre>
 </div>
 </div>
+<p>Here’s what each line is doing:</p>
+<p><code>tb %&gt;%</code> sends the mtcars data frame into the <code>filter()</code> function.</p>
+<p><code>filter(cyl == 6) %&gt;%</code> filters the data frame to include only rows where cyl is equal to 6, then sends this filtered data frame to the <code>select()</code> function.</p>
+<p><code>select(mpg, hp) %&gt;%</code> selects only the mpg and hp columns from the data frame, then sends this subset of the data to the <code>arrange()</code> function.</p>
+<p><code>arrange(desc(mpg))</code> arranges the rows of the data frame in descending order based on the mpg column.</p>
+<p>This way, the pipe operator makes the code more readable and the sequence of operations is easier to follow.</p>
 </section>
-<section id="the-mtcars-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="the-mtcars-dataset">The <code>mtcars</code> dataset</h3>
-<p>The <code>mtcars</code> dataset inbuilt in R comprises data on the fuel consumption and other characteristics of 32 different automobile models. Here is a concise description of the 11 <code>mtcars</code> data columns:</p>
-<ol type="1">
-<li><p><code>mpg</code>: Miles per gallon (fuel efficiency)</p></li>
-<li><p><code>cyl</code>: Number of cylinders</p></li>
-<li><p><code>disp</code>: Displacement of the engine (in cubic inches)</p></li>
-<li><p><code>hp</code>: gross horsepower</p></li>
-<li><p><code>drat</code>: Back axle ratio wt: Weight (in thousands of pounds)</p></li>
-<li><p><code>wt</code>: Weight (in thousands of pounds)</p></li>
-<li><p><code>qsec</code>: 1/4 mile speed (in seconds)</p></li>
-<li><p><code>vs</code>: Type of engine (0 = V-shaped, 1 = straight)</p></li>
-<li><p><code>am</code>: Type of transmission (0 for automatic, 1 for manual)</p></li>
-<li><p><code>gear</code>: the number of forward gears</p></li>
-<li><p><code>carb</code>: the number of carburetors</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   32 obs. of  11 variables:
- $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
- $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
- $ disp: num  160 160 108 258 360 ...
- $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
- $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
- $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
- $ qsec: num  16.5 17 18.6 19.4 17 ...
- $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
- $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
- $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
- $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="reading-different-file-formats-into-a-dataframe" class="level2">
-<h2 class="anchored" data-anchor-id="reading-different-file-formats-into-a-dataframe">Reading different file formats into a dataframe</h2>
-<ol type="1">
-<li><p>We examine how to read data into a dataframe in R when the original data is stored in prominent file formats such as CSV, Excel, and Google Sheets.</p></li>
-<li><p>Before learning how to accomplish this, it is necessary to comprehend how to configure the Working Directory in R.</p></li>
-</ol>
-<section id="working-directory" class="level3">
-<h3 class="anchored" data-anchor-id="working-directory">Working Directory</h3>
-<ol type="1">
-<li><p>The working directory is the location where R searches for and saves files by default.</p></li>
-<li><p>By default, when we execute a script or import data into R, R will search the working directory for files.</p></li>
-<li><p>Using R’s <code>getwd()</code> function, we can examine our current working directory:</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "/cloud/project"</code></pre>
-</div>
-</div>
-<ol start="4" type="1">
-<li><p>We are running R in the Cloud and hence we are seeing that the working directory is specified as <code>/cloud/project/DataAnalyticsBook101</code>. If we are doing R programming on a local computer, and if our working directory is the Desktop, then we may see a different response such as <code>C:/Users/YourUserName/Desktop</code>.</p></li>
-<li><p>Using R’s <code>setwd()</code> function, we can change our current working directory. For example, the following code will set our working directory to the Desktop:</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourUserName/Desktop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>[1] Müller, K., &amp; Wickham, H. (2021). tibble: Simple Data Frames. R package version 3.1.3. https://CRAN.R-project.org/package=tibble</p>
+<p>[2] Wickham, H., François, R., Henry, L., &amp; Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr</p>
+<p>[3] Bache, S. M., &amp; Wickham, H. (2020). magrittr: A Forward-Pipe Operator for R. R package version 2.0.1. https://CRAN.R-project.org/package=magrittr</p>
 
 
-</section>
 </section>
 </section>
 

@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="live-case-sp500-1-of-3" class="level1">
 <h1>Live Case: S&amp;P500 (1 of 3)</h1>
-<p><em>July 24, 2023 V2</em></p>
+<p><em>July 25, 2023</em></p>
 <section id="sp-500." class="level2">
 <h2 class="anchored" data-anchor-id="sp-500.">S&amp;P 500.</h2>
 <p>The S&amp;P 500, also called the Standard &amp; Poor’s 500, is a stock market index that tracks the performance of 500 major publicly traded companies listed on U.S. stock exchanges. It serves as a widely accepted benchmark for assessing the overall health and performance of the U.S. stock market.</p>
@@ -283,9 +283,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sheetID <span class="ot">&lt;-</span> <span class="st">"11ahk9uWxBkDqrhNm7qYmiTwrlSC53N1zvXYfv7ttOCM"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>url500 <span class="ot">&lt;-</span> <span class="fu">paste</span>(prefix,sheetID) <span class="co"># Form the URL to connect to</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sp500 <span class="ot">&lt;-</span> <span class="fu">gsheet2tbl</span>(url500) <span class="co"># Read it into a tibble called sp500</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>No encoding supplied: defaulting to UTF-8.</code></pre>
-</div>
 </div>
 </section>
 </section>
@@ -295,45 +292,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We want to understand the different data columns and their data structure. For this purpose, we run the <code>str()</code> function.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Classes 'tbl_df', 'tbl' and 'data.frame':   503 obs. of  36 variables:
- $ Date                                   : chr  "7/24/2023" "7/24/2023" "7/24/2023" "7/24/2023" ...
- $ Stock                                  : chr  "A" "AAL" "AAP" "AAPL" ...
- $ Description                            : chr  "Agilent Technologies, Inc." "American Airlines Group, Inc." "Advance Auto Parts Inc." "Apple Inc." ...
- $ Sector                                 : chr  "Health Technology" "Transportation" "Retail Trade" "Electronic Technology" ...
- $ Industry                               : chr  "Medical Specialties" "Airlines" "Specialty Stores" "Telecommunications Equipment" ...
- $ Market.Capitalization                  : num  3.73e+10 1.14e+10 4.20e+09 3.04e+12 2.53e+11 ...
- $ Price                                  : num  126.4 17.5 70.7 193 143.6 ...
- $ X52.Week.Low                           : num  113.3 11.7 63.6 124.2 131 ...
- $ X52.Week.High                          : num  160 19.1 212 198 168 195 116 81.9 328 539 ...
- $ Return.on.Equity..TTM.                 : num  24.8 NA 14.6 146 51.1 389 NA 14.8 30.7 33.7 ...
- $ Return.on.Assets..TTM.                 : num  12.7 3.9 3.35 27.6 5.43 2.79 NA 4.98 14.9 17.9 ...
- $ Return.on.Invested.Capital..TTM.       : num  16.51 8.01 6.17 57.18 9.9 ...
- $ Gross.Margin..TTM.                     : num  54.1 23.8 43.8 43.2 72.2 ...
- $ Operating.Margin..TTM.                 : num  23.78 9.39 5.63 29.16 41.07 ...
- $ Net.Margin..TTM.                       : num  19.19 4.98 3.61 24.49 13.3 ...
- $ Price.to.Earnings.Ratio..TTM.          : num  27.86 4.78 10.5 32.8 33.82 ...
- $ Price.to.Book..FY.                     : num  7.04 NA 1.56 60.73 14.73 ...
- $ Enterprise.Value.EBITDA..TTM.          : num  19.5 5.71 8.8 25 9.64 12.9 NA NA 17.3 33.4 ...
- $ EBITDA..TTM.                           : num  1.97e+09 7.16e+09 9.21e+08 1.24e+11 3.18e+10 ...
- $ EPS.Diluted..TTM.                      : num  4.54 3.67 6.72 5.89 4.25 ...
- $ EBITDA..TTM.YoY.Growth.                : num  10.52 1074.1 -16 -5.36 10.6 ...
- $ EBITDA..Quarterly.YoY.Growth.          : num  8.2 72.2 -39.01 -4.58 11.68 ...
- $ EPS.Diluted..TTM.YoY.Growth.           : num  9.17 NA -25.21 -4.33 -39.11 ...
- $ EPS.Diluted..Quarterly.YoY.Growth.     : num  11.69944 154.13308 -68.36829 -0.00656 -94.89037 ...
- $ Price.to.Free.Cash.Flow..TTM.          : num  31.74 7.88 NA 31.38 10.84 ...
- $ Free.Cash.Flow..TTM.YoY.Growth.        : num  11.81 NA -100.23 -7.85 6.68 ...
- $ Free.Cash.Flow..Quarterly.YoY.Growth.  : num  55.7078 -10.2542 -176.1352 -0.0312 -15.3392 ...
- $ Debt.to.Equity.Ratio..MRQ.             : num  0.473 NA 1.582 1.763 4.678 ...
- $ Current.Ratio..MRQ.                    : num  2.37 0.749 1.244 0.94 0.96 ...
- $ Quick.Ratio..MRQ.                      : num  1.708 0.656 0.238 0.878 0.821 ...
- $ Dividend.Yield.Forward                 : num  0.723 NA 1.428 0.497 4.163 ...
- $ Dividends.per.share..Annual.YoY.Growth.: num  8.25 NA 84.62 5.88 7.53 ...
- $ Price.to.Sales..FY.                    : num  5.538 0.235 0.384 7.992 4.399 ...
- $ Revenue..TTM.YoY.Growth.               : num  7.8597 29.9089 1.4153 -0.2544 0.0282 ...
- $ Revenue..Quarterly.YoY.Growth.         : num  6.85 4.72 1.29 -2.51 -9.7 ...
- $ Technical.Rating                       : chr  "Sell" "Buy" "Buy" "Sell" ...</code></pre>
+<pre><code>spc_tbl_ [503 × 36] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Date                                   : chr [1:503] "7/25/2023" "7/25/2023" "7/25/2023" "7/25/2023" ...
+ $ Stock                                  : chr [1:503] "A" "AAL" "AAP" "AAPL" ...
+ $ Description                            : chr [1:503] "Agilent Technologies, Inc." "American Airlines Group, Inc." "Advance Auto Parts Inc." "Apple Inc." ...
+ $ Sector                                 : chr [1:503] "Health Technology" "Transportation" "Retail Trade" "Electronic Technology" ...
+ $ Industry                               : chr [1:503] "Medical Specialties" "Airlines" "Specialty Stores" "Telecommunications Equipment" ...
+ $ Market Capitalization                  : num [1:503] 3.73e+10 1.14e+10 4.20e+09 3.04e+12 2.53e+11 ...
+ $ Price                                  : num [1:503] 126.4 17.5 70.7 193 143.6 ...
+ $ 52 Week Low                            : num [1:503] 113.3 11.7 63.6 124.2 131 ...
+ $ 52 Week High                           : num [1:503] 160 19.1 212 198 168 195 116 81.9 328 539 ...
+ $ Return on Equity (TTM)                 : num [1:503] 24.8 NA 14.6 146 51.1 389 NA 14.8 30.7 33.7 ...
+ $ Return on Assets (TTM)                 : num [1:503] 12.7 3.9 3.35 27.6 5.43 2.79 NA 4.98 14.9 17.9 ...
+ $ Return on Invested Capital (TTM)       : num [1:503] 16.51 8.01 6.17 57.18 9.9 ...
+ $ Gross Margin (TTM)                     : num [1:503] 54.1 23.8 43.8 43.2 72.2 ...
+ $ Operating Margin (TTM)                 : num [1:503] 23.78 9.39 5.63 29.16 41.07 ...
+ $ Net Margin (TTM)                       : num [1:503] 19.19 4.98 3.61 24.49 13.3 ...
+ $ Price to Earnings Ratio (TTM)          : num [1:503] 27.86 4.78 10.5 32.8 33.82 ...
+ $ Price to Book (FY)                     : num [1:503] 7.04 NA 1.56 60.73 14.73 ...
+ $ Enterprise Value/EBITDA (TTM)          : num [1:503] 19.5 5.71 8.8 25 9.64 12.9 NA NA 17.3 33.4 ...
+ $ EBITDA (TTM)                           : num [1:503] 1.97e+09 7.16e+09 9.21e+08 1.24e+11 3.18e+10 ...
+ $ EPS Diluted (TTM)                      : num [1:503] 4.54 3.67 6.72 5.89 4.25 ...
+ $ EBITDA (TTM YoY Growth)                : num [1:503] 10.52 1074.1 -16 -5.36 10.6 ...
+ $ EBITDA (Quarterly YoY Growth)          : num [1:503] 8.2 72.2 -39.01 -4.58 11.68 ...
+ $ EPS Diluted (TTM YoY Growth)           : num [1:503] 9.17 NA -25.21 -4.33 -39.11 ...
+ $ EPS Diluted (Quarterly YoY Growth)     : num [1:503] 11.69944 154.13308 -68.36829 -0.00656 -94.89037 ...
+ $ Price to Free Cash Flow (TTM)          : num [1:503] 31.74 7.88 NA 31.38 10.84 ...
+ $ Free Cash Flow (TTM YoY Growth)        : num [1:503] 11.81 NA -100.23 -7.85 6.68 ...
+ $ Free Cash Flow (Quarterly YoY Growth)  : num [1:503] 55.7078 -10.2542 -176.1352 -0.0312 -15.3392 ...
+ $ Debt to Equity Ratio (MRQ)             : num [1:503] 0.473 NA 1.582 1.763 4.678 ...
+ $ Current Ratio (MRQ)                    : num [1:503] 2.37 0.749 1.244 0.94 0.96 ...
+ $ Quick Ratio (MRQ)                      : num [1:503] 1.708 0.656 0.238 0.878 0.821 ...
+ $ Dividend Yield Forward                 : num [1:503] 0.723 NA 1.428 0.497 4.163 ...
+ $ Dividends per share (Annual YoY Growth): num [1:503] 8.25 NA 84.62 5.88 7.53 ...
+ $ Price to Sales (FY)                    : num [1:503] 5.538 0.235 0.384 7.992 4.399 ...
+ $ Revenue (TTM YoY Growth)               : num [1:503] 7.8597 29.9089 1.4153 -0.2544 0.0282 ...
+ $ Revenue (Quarterly YoY Growth)         : num [1:503] 6.85 4.72 1.29 -2.51 -9.7 ...
+ $ Technical Rating                       : chr [1:503] "Sell" "Buy" "Buy" "Sell" ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Date = col_character(),
+  ..   Stock = col_character(),
+  ..   Description = col_character(),
+  ..   Sector = col_character(),
+  ..   Industry = col_character(),
+  ..   `Market Capitalization` = col_double(),
+  ..   Price = col_double(),
+  ..   `52 Week Low` = col_double(),
+  ..   `52 Week High` = col_double(),
+  ..   `Return on Equity (TTM)` = col_double(),
+  ..   `Return on Assets (TTM)` = col_double(),
+  ..   `Return on Invested Capital (TTM)` = col_double(),
+  ..   `Gross Margin (TTM)` = col_double(),
+  ..   `Operating Margin (TTM)` = col_double(),
+  ..   `Net Margin (TTM)` = col_double(),
+  ..   `Price to Earnings Ratio (TTM)` = col_double(),
+  ..   `Price to Book (FY)` = col_double(),
+  ..   `Enterprise Value/EBITDA (TTM)` = col_double(),
+  ..   `EBITDA (TTM)` = col_double(),
+  ..   `EPS Diluted (TTM)` = col_double(),
+  ..   `EBITDA (TTM YoY Growth)` = col_double(),
+  ..   `EBITDA (Quarterly YoY Growth)` = col_double(),
+  ..   `EPS Diluted (TTM YoY Growth)` = col_double(),
+  ..   `EPS Diluted (Quarterly YoY Growth)` = col_double(),
+  ..   `Price to Free Cash Flow (TTM)` = col_double(),
+  ..   `Free Cash Flow (TTM YoY Growth)` = col_double(),
+  ..   `Free Cash Flow (Quarterly YoY Growth)` = col_double(),
+  ..   `Debt to Equity Ratio (MRQ)` = col_double(),
+  ..   `Current Ratio (MRQ)` = col_double(),
+  ..   `Quick Ratio (MRQ)` = col_double(),
+  ..   `Dividend Yield Forward` = col_double(),
+  ..   `Dividends per share (Annual YoY Growth)` = col_double(),
+  ..   `Price to Sales (FY)` = col_double(),
+  ..   `Revenue (TTM YoY Growth)` = col_double(),
+  ..   `Revenue (Quarterly YoY Growth)` = col_double(),
+  ..   `Technical Rating` = col_character()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 </div>
 <ol start="2" type="1">
@@ -356,23 +393,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>We will rename the data columns to make it easier to work with the data, using the <code>rename_with()</code> function.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a mapping of new column names</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Date"</span>, <span class="st">"Stock"</span>, <span class="st">"StockName"</span>, <span class="st">"Sector"</span>, <span class="st">"Industry"</span>, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MarketCap"</span>, <span class="st">"Price"</span>, <span class="st">"Low52Wk"</span>, <span class="st">"High52Wk"</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ROE"</span>, <span class="st">"ROA"</span>, <span class="st">"ROIC"</span>, <span class="st">"GrossMargin"</span>, </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OperatingMargin"</span>, <span class="st">"NetMargin"</span>, <span class="st">"PE"</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PB"</span>, <span class="st">"EVEBITDA"</span>, <span class="st">"EBITDA"</span>, <span class="st">"EPS"</span>, </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"EBITDA_YOY"</span>, <span class="st">"EBITDA_QYOY"</span>, <span class="st">"EPS_YOY"</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"EPS_QYOY"</span>, <span class="st">"PFCF"</span>, <span class="st">"FCF"</span>, </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FCF_QYOY"</span>, <span class="st">"DebtToEquity"</span>, <span class="st">"CurrentRatio"</span>, </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QuickRatio"</span>, <span class="st">"DividendYield"</span>, </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"DividendsPerShare_YOY"</span>, <span class="st">"PS"</span>, </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Revenue_YOY"</span>, <span class="st">"Revenue_QYOY"</span>, <span class="st">"Rating"</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns using the new_names vector</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>sp500 <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span> </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> new_names, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a mapping of new column names</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Date"</span>, <span class="st">"Stock"</span>, <span class="st">"StockName"</span>, <span class="st">"Sector"</span>, <span class="st">"Industry"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"MarketCap"</span>, <span class="st">"Price"</span>, <span class="st">"Low52Wk"</span>, <span class="st">"High52Wk"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ROE"</span>, <span class="st">"ROA"</span>, <span class="st">"ROIC"</span>, <span class="st">"GrossMargin"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"OperatingMargin"</span>, <span class="st">"NetMargin"</span>, <span class="st">"PE"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"PB"</span>, <span class="st">"EVEBITDA"</span>, <span class="st">"EBITDA"</span>, <span class="st">"EPS"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"EBITDA_YOY"</span>, <span class="st">"EBITDA_QYOY"</span>, <span class="st">"EPS_YOY"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"EPS_QYOY"</span>, <span class="st">"PFCF"</span>, <span class="st">"FCF"</span>, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FCF_QYOY"</span>, <span class="st">"DebtToEquity"</span>, <span class="st">"CurrentRatio"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"QuickRatio"</span>, <span class="st">"DividendYield"</span>, </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"DividendsPerShare_YOY"</span>, <span class="st">"PS"</span>, </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Revenue_YOY"</span>, <span class="st">"Revenue_QYOY"</span>, <span class="st">"Rating"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns using the new_names vector</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>sp500 <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span> new_names, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code is designed to rename the columns of the <code>sp500</code> tibble using a predefined mapping of new column names. Let’s go through the code step by step:</p>
 <ol type="1">
@@ -385,8 +422,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>We could also use the following code to rename the columns.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns using the new_names vector</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500) <span class="ot">&lt;-</span> new_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the columns using the new_names vector</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500) <span class="ot">&lt;-</span> new_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In essence, the code uses the <code>new_names</code> vector as a mapping to assign new column names to the <code>sp500</code> tibble, ensuring that each column is given the desired new name specified in <code>new_names</code>.</p>
 </section>
@@ -396,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We review the column names again after renaming them, using the <code>colnames()</code> function can help.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Date"                  "Stock"                 "StockName"            
  [4] "Sector"                "Industry"              "MarketCap"            
@@ -784,26 +821,26 @@ Table 1h: Data Columns related to Dividends
 <li>The following code checks if the “Stock” column in the sp500 dataframe contains any null or blank values. If there are null or blank values present, it removes the corresponding rows from the sp500 dataframe, resulting in a filtered dataframe without null or blank values in the “Stock” column.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    sp500 <span class="ot">&lt;-</span> sp500[<span class="sc">!</span>(<span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock) <span class="sc">|</span> sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span>), ]</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    sp500 <span class="ot">&lt;-</span> sp500[<span class="sc">!</span>(<span class="fu">is.null</span>(sp500<span class="sc">$</span>Stock) <span class="sc">|</span> sp500<span class="sc">$</span>Stock <span class="sc">==</span> <span class="st">""</span>), ]</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s an alternate code using <code>dplyr</code> to achieve the same result:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock) <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock)))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  sp500 <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">is.null</span>(Stock) <span class="sc">|</span> Stock <span class="sc">==</span> <span class="st">""</span>))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for blank or null values in the "Stock" column</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>hasNull <span class="ot">&lt;-</span> <span class="fu">any</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock) <span class="sc">==</span> <span class="st">""</span> <span class="sc">|</span> <span class="fu">is.null</span>(sp500 <span class="sc">%&gt;%</span> <span class="fu">pull</span>(Stock)))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (hasNull) { </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove rows with null or blank values from the dataframe tibble</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  sp500 <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>(<span class="fu">is.null</span>(Stock) <span class="sc">|</span> Stock <span class="sc">==</span> <span class="st">""</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the filtered dataframe</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the filtered dataframe</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 503</code></pre>
 </div>
@@ -814,18 +851,18 @@ Table 1h: Data Columns related to Dividends
 <h3 class="anchored" data-anchor-id="sp500-sector">S&amp;P500 Sector</h3>
 <p>The S&amp;P500 shares are divided into multiple Sectors. Each stock belongs to a unique sector. Thus, it makes sense to model Sector as a factor() variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sp500<span class="sc">$</span>Sector <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sp500<span class="sc">$</span>Sector <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It makes sense to convert Sector to a factor variable, since there are 19 distinct Sectors in the S&amp;P500 and each stock belongs to a unique sector. We confirm that Sector is now modelled as a factor variable, by running the str() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 19 levels "Commercial Services",..: 11 18 16 7 11 6 11 9 17 17 ...</code></pre>
 </div>
 </div>
 <p>Now that Sectors is a factor variable, we can use the levels() function to review the different levels it can take.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "Commercial Services"    "Communications"         "Consumer Durables"     
  [4] "Consumer Non-Durables"  "Consumer Services"      "Distribution Services" 
@@ -838,7 +875,7 @@ Table 1h: Data Columns related to Dividends
 </div>
 <p>The table() function allows us to count how many stocks are part of each sector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sp500<span class="sc">$</span>Sector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Commercial Services         Communications      Consumer Durables 
@@ -860,7 +897,7 @@ Table 1h: Data Columns related to Dividends
 <p>Thus, we can see how many stocks are part of each one of the 19 sectors.</p>
 <p>We can sum them to confirm that they add up to 502.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">table</span>(sp500<span class="sc">$</span>Sector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">table</span>(sp500<span class="sc">$</span>Sector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 503</code></pre>
 </div>
@@ -871,25 +908,25 @@ Table 1h: Data Columns related to Dividends
 <h3 class="anchored" data-anchor-id="stock-ratings">Stock Ratings</h3>
 <p>In the data, the S&amp;P500 shares have Technical Ratings such as {Buy, Sell, ..}. Since each Stock has a unique Technical Rating, it makes sense to model the data column Rating as a factor() variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sp500<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sp500<span class="sc">$</span>Rating <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We confirm that Rating is now modelled as a factor variable, by running the str() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Factor w/ 5 levels "Buy","Neutral",..: 3 1 1 3 3 3 5 3 1 3 ...</code></pre>
 </div>
 </div>
 <p>We can use the levels() function to review the different levels it can take.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Buy"         "Neutral"     "Sell"        "Strong Buy"  "Strong Sell"</code></pre>
 </div>
 </div>
 <p>The table() function allows us to count how many stocks have each Rating.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sp500<span class="sc">$</span>Rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
         Buy     Neutral        Sell  Strong Buy Strong Sell 
@@ -902,10 +939,10 @@ Table 1h: Data Columns related to Dividends
 <h3 class="anchored" data-anchor-id="summary">Summary</h3>
 <p>We believe this dataset of S&amp;P500 shares is now ready for futher analysis. We end this stage of our analysis in this chapter, by running the str() function to review the data columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(sp500)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tibble [503 × 36] (S3: tbl_df/tbl/data.frame)
- $ Date                 : chr [1:503] "7/24/2023" "7/24/2023" "7/24/2023" "7/24/2023" ...
+<pre><code>spc_tbl_ [503 × 36] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ Date                 : chr [1:503] "7/25/2023" "7/25/2023" "7/25/2023" "7/25/2023" ...
  $ Stock                : chr [1:503] "A" "AAL" "AAP" "AAPL" ...
  $ StockName            : chr [1:503] "Agilent Technologies, Inc." "American Airlines Group, Inc." "Advance Auto Parts Inc." "Apple Inc." ...
  $ Sector               : Factor w/ 19 levels "Commercial Services",..: 11 18 16 7 11 6 11 9 17 17 ...
@@ -940,7 +977,47 @@ Table 1h: Data Columns related to Dividends
  $ PS                   : num [1:503] 5.538 0.235 0.384 7.992 4.399 ...
  $ Revenue_YOY          : num [1:503] 7.8597 29.9089 1.4153 -0.2544 0.0282 ...
  $ Revenue_QYOY         : num [1:503] 6.85 4.72 1.29 -2.51 -9.7 ...
- $ Rating               : Factor w/ 5 levels "Buy","Neutral",..: 3 1 1 3 3 3 5 3 1 3 ...</code></pre>
+ $ Rating               : Factor w/ 5 levels "Buy","Neutral",..: 3 1 1 3 3 3 5 3 1 3 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   Date = col_character(),
+  ..   Stock = col_character(),
+  ..   Description = col_character(),
+  ..   Sector = col_character(),
+  ..   Industry = col_character(),
+  ..   `Market Capitalization` = col_double(),
+  ..   Price = col_double(),
+  ..   `52 Week Low` = col_double(),
+  ..   `52 Week High` = col_double(),
+  ..   `Return on Equity (TTM)` = col_double(),
+  ..   `Return on Assets (TTM)` = col_double(),
+  ..   `Return on Invested Capital (TTM)` = col_double(),
+  ..   `Gross Margin (TTM)` = col_double(),
+  ..   `Operating Margin (TTM)` = col_double(),
+  ..   `Net Margin (TTM)` = col_double(),
+  ..   `Price to Earnings Ratio (TTM)` = col_double(),
+  ..   `Price to Book (FY)` = col_double(),
+  ..   `Enterprise Value/EBITDA (TTM)` = col_double(),
+  ..   `EBITDA (TTM)` = col_double(),
+  ..   `EPS Diluted (TTM)` = col_double(),
+  ..   `EBITDA (TTM YoY Growth)` = col_double(),
+  ..   `EBITDA (Quarterly YoY Growth)` = col_double(),
+  ..   `EPS Diluted (TTM YoY Growth)` = col_double(),
+  ..   `EPS Diluted (Quarterly YoY Growth)` = col_double(),
+  ..   `Price to Free Cash Flow (TTM)` = col_double(),
+  ..   `Free Cash Flow (TTM YoY Growth)` = col_double(),
+  ..   `Free Cash Flow (Quarterly YoY Growth)` = col_double(),
+  ..   `Debt to Equity Ratio (MRQ)` = col_double(),
+  ..   `Current Ratio (MRQ)` = col_double(),
+  ..   `Quick Ratio (MRQ)` = col_double(),
+  ..   `Dividend Yield Forward` = col_double(),
+  ..   `Dividends per share (Annual YoY Growth)` = col_double(),
+  ..   `Price to Sales (FY)` = col_double(),
+  ..   `Revenue (TTM YoY Growth)` = col_double(),
+  ..   `Revenue (Quarterly YoY Growth)` = col_double(),
+  ..   `Technical Rating` = col_character()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
 </div>
 </div>
 
