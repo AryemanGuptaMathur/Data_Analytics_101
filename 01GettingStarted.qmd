@@ -1,6 +1,6 @@
 # Getting Started
 
-*July 25, 2023*
+*July 26, 2023*
 
 ## Overview of R programming
 

@@ -1,8 +1,8 @@
 # Live Case: S&P500 (1 of 3)
 
-*July 25, 2023*
+*July 26, 2023*
 
-## S&P 500.
+## S&P 500
 
 The S&P 500, also called the Standard & Poor's 500, is a stock market index that tracks the performance of 500 major publicly traded companies listed on U.S. stock exchanges. It serves as a widely accepted benchmark for assessing the overall health and performance of the U.S. stock market.
 
