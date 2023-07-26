@@ -1,6 +1,10 @@
 # Categorical Data (2 of 2)
 
-*July 26, 2023 V1.3 (Work in progress)*
+*July 26, 2023 V1.6 (Work in progress)*
+
+
+A contingency table, also known as a cross-tabulation or crosstab, is a type of table in a matrix format that displays the (multivariate) frequency distribution of the variables. In the case of a univariate factor variable, a contingency table is essentially the same as a frequency table, as there's only one variable involved. In more complex analyses involving two or more variables, contingency tables provide a way to examine the interactions between the variables (Agresti, 2007).
+
 
 ## Frequency Table for More than One Variable
 
