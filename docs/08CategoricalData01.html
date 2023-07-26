@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analytics 101 – Exploratory Data Analysis using R</title>
+<title>Data Analytics 101 -- Exploratory Data Analysis using R – categoricaldata01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -105,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08CategoricalData01.html">Categorical Data (1 of 2)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -132,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
@@ -180,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08CategoricalData01.html" class="sidebar-item-text sidebar-link">
+  <a href="./08CategoricalData01.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Categorical Data (1 of 2)</span></a>
   </div>
 </li>
@@ -202,38 +236,188 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#categorical-data-1-of-2" id="toc-categorical-data-1-of-2" class="nav-link active" data-scroll-target="#categorical-data-1-of-2">Categorical Data (1 of 2)</a>
   <ul class="collapse">
-  <li><a href="#our-focus" id="toc-our-focus" class="nav-link" data-scroll-target="#our-focus">Our focus</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#types-of-categorical-data-nominal-ordinal-data" id="toc-types-of-categorical-data-nominal-ordinal-data" class="nav-link" data-scroll-target="#types-of-categorical-data-nominal-ordinal-data">Types of Categorical Data – Nominal, Ordinal Data</a></li>
+  <li><a href="#categorical-data-in-r" id="toc-categorical-data-in-r" class="nav-link" data-scroll-target="#categorical-data-in-r">Categorical Data in R</a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><code>summary()</code></a></li>
+  </ul></li>
+  <li><a href="#proportions-table-for-one-variable" id="toc-proportions-table-for-one-variable" class="nav-link" data-scroll-target="#proportions-table-for-one-variable">Proportions Table for One Variable</a></li>
+  <li><a href="#rounding" id="toc-rounding" class="nav-link" data-scroll-target="#rounding">Rounding</a></li>
+  <li><a href="#this-function-is-used-to-set-the-width-of-decimal-numbers" id="toc-this-function-is-used-to-set-the-width-of-decimal-numbers" class="nav-link" data-scroll-target="#this-function-is-used-to-set-the-width-of-decimal-numbers">This function is used to set the width of decimal numbers</a></li>
+  <li><a href="#visualization-of-categorical-variable" id="toc-visualization-of-categorical-variable" class="nav-link" data-scroll-target="#visualization-of-categorical-variable">Visualization of Categorical Variable</a></li>
+  <li><a href="#pie-chart" id="toc-pie-chart" class="nav-link" data-scroll-target="#pie-chart">Pie chart</a></li>
+  <li><a href="#barplot-for-categorical-data-in-r" id="toc-barplot-for-categorical-data-in-r" class="nav-link" data-scroll-target="#barplot-for-categorical-data-in-r">Barplot for categorical data in R</a>
+  <ul class="collapse">
+  <li><a href="#barplot-for-univariate-case" id="toc-barplot-for-univariate-case" class="nav-link" data-scroll-target="#barplot-for-univariate-case">Barplot for Univariate Case</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="08CategoricalData01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p><em>July 26, 2023.</em></p>
-<p>Exploratory Data Analysis (EDA) is an approach to analyzing data sets to summarize their main characteristics, often using statistical graphics and other data visualization methods. EDA is primarily for seeing what the data can tell us beyond the formal modeling or hypothesis testing tasks.</p>
-<p>The EDA approach can be broken down into the following steps:</p>
-<p><strong>Data Cleaning:</strong> This step includes handling missing data, removing outliers, and other data cleansing processes.</p>
-<p><strong>Univariate Analysis:</strong> Here, each field in the dataset is analyzed independently to better understand its distribution, outliers, and unique values. This could involve statistical plots for measuring central tendency like mean, median, mode, frequency distribution, quartiles, etc.</p>
-<p><strong>Bivariate Analysis:</strong> This step involves the analysis of two variables to determine the empirical relationship between them. It includes techniques such as scatter plots for continuous variables or crosstabs for categorical data.</p>
-<p><strong>Multivariate Analysis:</strong> This is an advanced step, involving analysis with more than two variables. It helps to understand the interactions between different fields in the dataset.</p>
-<p><strong>Data Visualization:</strong> This is the creation of plots such as histograms, box plots, scatter plots, etc., to identify patterns, relationships, or outliers within the dataset. This can be done using visualization tools or libraries.</p>
-<p><strong>Insight Generation:</strong> After visualizations and some statistical tests, analysts will generate insights that could lead to further questions, hypotheses, and model building.</p>
-<p>The EDA process is an important precursor to more complex analyses because it allows us to confirm or invalidate some initial hypotheses and to formulate a more precise question or hypothesis that can lead to further statistical analysis and testing.</p>
-<section id="our-focus" class="level2">
-<h2 class="anchored" data-anchor-id="our-focus">Our focus</h2>
+<section id="categorical-data-1-of-2" class="level1">
+<h1>Categorical Data (1 of 2)</h1>
+<p><em>July 26, 2023 V1.3 (Work in progress)</em></p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<ol type="1">
+<li><p>Categorical data is a type of data that can be divided into categories or groups.</p></li>
+<li><p>Text labels or categorical codes like “male” and “female,” “red,” “green,” and “blue,” or “A,” “B,” and “C” are frequently used to describe category data. There are several typical examples of categorical data.:</p></li>
+</ol>
 <ul>
-<li>We ignore the Data Cleaning step, although we acknowledge it’s practical relevance. We assume that we are working with a clean dataset.</li>
-<li>We emphasize Exploratory Univariate and Bivariate Analysis of data and the corresponding Data Visualization.</li>
+<li>Gender (male, female)</li>
+<li>Marital status (married, single, divorced)</li>
+<li>Education level (high school, college, graduate school)</li>
+<li>Occupation (teacher, doctor, engineer)</li>
+<li>Hair color (brown, blonde, red, black)</li>
+<li>Eye color (brown, blue, green, hazel)</li>
+<li>Type of car (sedan, SUV, truck)</li>
 </ul>
-<p><em>We illustrate all of the above using the R programming language.</em></p>
-<p>We further illustrate how to use R programming in the form of a live project implemented on a real-world dataset. Our dataset concerns the S&amp;P500 stocks. This will demonstrate a practical aspect of using this book. We have many sample codes regarding this, using real-world data.. We will explore financial metrics such as Return on Equity, Return on Assets and Return on Invested Capital of S&amp;P500 shares.</p>
+</section>
+<section id="types-of-categorical-data-nominal-ordinal-data" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-categorical-data-nominal-ordinal-data">Types of Categorical Data – Nominal, Ordinal Data</h2>
+<ol type="1">
+<li><p>Nominal and ordinal data are two types of categorical data.</p></li>
+<li><p>Nominal data is a type of categorical data that has no inherent order or numerical value.</p></li>
+</ol>
+<ul>
+<li>For describing categories or groups that are simply named or labelled, such as hair colour, eye colour, or car type, nominal data is frequently employed.</li>
+<li>Nominal data is usually represented by text labels or categorical codes.</li>
+</ul>
+<ol start="3" type="1">
+<li>Ordinal data is a kind of categorical data that naturally has order, while the distinctions between the categories are not always equal.</li>
+</ol>
+<ul>
+<li>Ordinal data is frequently utilised to describe groups or categories that can be rated or sorted, such as educational level (high school, college, graduate school), or movie reviews (G, PG, PG-13, R, NC-17).</li>
+<li>Ordinal data is usually represented by numerical codes that indicate the order of the categories.</li>
+</ul>
+</section>
+<section id="categorical-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-data-in-r">Categorical Data in R</h2>
+<ol type="1">
+<li><p>There are several ways to summarize categorical data in R.</p></li>
+<li><p><code>table()</code> function: The frequency table for a categorical vector is returned by the table() function.</p></li>
+</ol>
+<ul>
+<li>Frequency Table for One Variable</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">=</span> <span class="fu">table</span>(cyl)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>t0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cyl
+ 4  6  8 
+11  7 14 </code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>As an alternative, you can use the summary() function to create a summary table for categorical data. This function returns a summary table of the frequency counts for each category and accepts a factor or an object of class “table.”</li>
+</ol>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary"><code>summary()</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  4.000   4.000   6.000   6.188   8.000   8.000 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="proportions-table-for-one-variable" class="level2">
+<h2 class="anchored" data-anchor-id="proportions-table-for-one-variable">Proportions Table for One Variable</h2>
+<ul>
+<li><code>prop.table</code></li>
+<li>Unlike table(), which delivers the count, this function returns the proportions of each category.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p0 <span class="ot">=</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(cyl))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cyl
+      4       6       8 
+0.34375 0.21875 0.43750 </code></pre>
+</div>
+</div>
+<p>The prop.table() function is used in this example to determine the percentage of each category in the cyl variable of the mtcars dataset. The fraction of cars with 4, 6, and 8 cylinders, respectively, is represented in the resulting vector p0. For instance, the dataset contains cars with 4 cylinders in 34.375% of the cases.</p>
+</section>
+<section id="rounding" class="level2">
+<h2 class="anchored" data-anchor-id="rounding">Rounding</h2>
+</section>
+<section id="this-function-is-used-to-set-the-width-of-decimal-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="this-function-is-used-to-set-the-width-of-decimal-numbers">This function is used to set the width of decimal numbers</h2>
+<p>round()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">=</span> <span class="fu">round</span>(p0<span class="sc">*</span><span class="dv">100</span>,<span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>r1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cyl
+    4     6     8 
+34.38 21.88 43.75 </code></pre>
+</div>
+</div>
+<p>In this example, we round the proportion tables p0 and p1 to two decimal places using the round() method. The proportion of each category or group of categories, rounded to two decimal places, is presented in the ensuing tables r1 and r2. For instance, 56.25% of automobiles have an automated transmission and 8 cylinders.</p>
+</section>
+<section id="visualization-of-categorical-variable" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-of-categorical-variable">Visualization of Categorical Variable</h2>
+</section>
+<section id="pie-chart" class="level2">
+<h2 class="anchored" data-anchor-id="pie-chart">Pie chart</h2>
+<p>A pie chart is a circular graph with wedges or slices cut out of it, each of which represents a certain percentage of the entire. Each slice’s size reflects the value it represents, while the chart’s overall area reflects the sum of all values.</p>
+<p>Pie charts are frequently used to display percentages or proportions of a whole or the relative sizes of various categories. They are very helpful for displaying data with few categories or when highlighting a single category or value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of cars with each number of cylinders</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cyl_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pie chart</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(cyl_counts, <span class="at">main =</span> <span class="st">"Number of Cylinders in mtcars Dataset"</span>, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"4 cylinders"</span>, <span class="st">"6 cylinders"</span>, <span class="st">"8 cylinders"</span>), </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="08CategoricalData01_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>The occurrences of each value of the cyl variable in the mtcars dataset are counted in this code using the table() function, and the resulting table is saved as cyl counts. The cyl counts variable provides the data for the pie chart, which is subsequently created using the pie() function. The chart’s title is determined by the main argument, while the labels argument assigns unique labels to the chart’s slices. The colours of the slices are specified by the col argument.</p>
+</section>
+<section id="barplot-for-categorical-data-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="barplot-for-categorical-data-in-r">Barplot for categorical data in R</h2>
+<section id="barplot-for-univariate-case" class="level3">
+<h3 class="anchored" data-anchor-id="barplot-for-univariate-case">Barplot for Univariate Case</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the mtcars dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a table of the counts of cars by number of cylinders</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>cyl_table <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a barplot of the table</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(cyl_table, </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Number of cars by cylinder count"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Cylinder count"</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Number of cars"</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="08CategoricalData01_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>By dividing the number of automobiles by the number of cylinders in the mtcars dataset, this code will produce a barplot. The barplot() function is used to generate the actual plot, while the table() function is used to generate a table of counts for the cyl variable in the mtcars dataset. The title and axis labels are added using the main, xlab, and ylab arguments, and the colour of the bars is altered with the col option.</p>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Healy, K., &amp; Lenard, M. T. (2014). A practical guide to creating better looking plots in R. University of Oregon. https://escholarship.org/uc/item/07m6r</p>
+<p>Few, S. (2004). Show me the numbers: Designing tables and graphs to enlighten. Analytics Press.</p>
+<p>Friendly, M. (1994). Mosaic displays for multi-way contingency tables. Journal of the American Statistical Association, 89(425), 190-200.</p>
 
 
 </section>

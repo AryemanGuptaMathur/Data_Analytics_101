@@ -1,0 +1,136 @@
+# Categorical Data (1 of 2)
+
+*July 26, 2023 V1.3 (Work in progress)*
+
+## Overview
+
+1.  Categorical data is a type of data that can be divided into categories or groups.
+
+2.  Text labels or categorical codes like "male" and "female," "red," "green," and "blue," or "A," "B," and "C" are frequently used to describe category data. There are several typical examples of categorical data.:
+
+-   Gender (male, female)
+-   Marital status (married, single, divorced)
+-   Education level (high school, college, graduate school)
+-   Occupation (teacher, doctor, engineer)
+-   Hair color (brown, blonde, red, black)
+-   Eye color (brown, blue, green, hazel)
+-   Type of car (sedan, SUV, truck)
+
+## Types of Categorical Data -- Nominal, Ordinal Data
+
+1.  Nominal and ordinal data are two types of categorical data.
+
+2.  Nominal data is a type of categorical data that has no inherent order or numerical value.
+
+-   For describing categories or groups that are simply named or labelled, such as hair colour, eye colour, or car type, nominal data is frequently employed.
+-   Nominal data is usually represented by text labels or categorical codes.
+
+3.  Ordinal data is a kind of categorical data that naturally has order, while the distinctions between the categories are not always equal.
+
+-   Ordinal data is frequently utilised to describe groups or categories that can be rated or sorted, such as educational level (high school, college, graduate school), or movie reviews (G, PG, PG-13, R, NC-17).
+-   Ordinal data is usually represented by numerical codes that indicate the order of the categories.
+
+## Categorical Data in R
+
+1.  There are several ways to summarize categorical data in R.
+
+2.  `table()` function: The frequency table for a categorical vector is returned by the table() function.
+
+-   Frequency Table for One Variable
+
+```{r}
+data(mtcars)
+attach(mtcars)
+t0 = table(cyl)
+t0
+```
+
+3.  As an alternative, you can use the summary() function to create a summary table for categorical data. This function returns a summary table of the frequency counts for each category and accepts a factor or an object of class "table."
+
+### `summary()`
+
+```{r}
+summary(cyl)
+```
+
+## Proportions Table for One Variable
+
+-   `prop.table`
+-   Unlike table(), which delivers the count, this function returns the proportions of each category.
+
+```{r}
+p0 = prop.table(table(cyl))
+p0
+```
+
+The prop.table() function is used in this example to determine the percentage of each category in the cyl variable of the mtcars dataset. The fraction of cars with 4, 6, and 8 cylinders, respectively, is represented in the resulting vector p0. For instance, the dataset contains cars with 4 cylinders in 34.375% of the cases.
+
+
+
+## Rounding
+
+## This function is used to set the width of decimal numbers
+
+round()
+
+```{r}
+r1 = round(p0*100,2)
+r1
+
+```
+
+In this example, we round the proportion tables p0 and p1 to two decimal places using the round() method. The proportion of each category or group of categories, rounded to two decimal places, is presented in the ensuing tables r1 and r2. For instance, 56.25% of automobiles have an automated transmission and 8 cylinders.
+
+
+
+## Visualization of Categorical Variable
+
+## Pie chart
+
+A pie chart is a circular graph with wedges or slices cut out of it, each of which represents a certain percentage of the entire. Each slice's size reflects the value it represents, while the chart's overall area reflects the sum of all values.
+
+Pie charts are frequently used to display percentages or proportions of a whole or the relative sizes of various categories. They are very helpful for displaying data with few categories or when highlighting a single category or value.
+
+```{r}
+# Count the number of cars with each number of cylinders
+cyl_counts <- table(mtcars$cyl)
+
+# Create a pie chart
+pie(cyl_counts, main = "Number of Cylinders in mtcars Dataset", 
+    labels = c("4 cylinders", "6 cylinders", "8 cylinders"), 
+    col = c("red", "green", "blue"))
+
+```
+
+The occurrences of each value of the cyl variable in the mtcars dataset are counted in this code using the table() function, and the resulting table is saved as cyl counts. The cyl counts variable provides the data for the pie chart, which is subsequently created using the pie() function. The chart's title is determined by the main argument, while the labels argument assigns unique labels to the chart's slices. The colours of the slices are specified by the col argument.
+
+## Barplot for categorical data in R
+
+### Barplot for Univariate Case
+
+```{r}
+# Load the mtcars dataset
+data(mtcars)
+
+# Create a table of the counts of cars by number of cylinders
+cyl_table <- table(mtcars$cyl)
+
+# Create a barplot of the table
+barplot(cyl_table, 
+        main = "Number of cars by cylinder count",
+        xlab = "Cylinder count",
+        ylab = "Number of cars",
+        col = "skyblue")
+```
+
+By dividing the number of automobiles by the number of cylinders in the mtcars dataset, this code will produce a barplot. The barplot() function is used to generate the actual plot, while the table() function is used to generate a table of counts for the cyl variable in the mtcars dataset. The title and axis labels are added using the main, xlab, and ylab arguments, and the colour of the bars is altered with the col option.
+
+
+
+## References
+
+Healy, K., & Lenard, M. T. (2014). A practical guide to creating better looking plots in R. University of Oregon. https://escholarship.org/uc/item/07m6r
+
+Few, S. (2004). Show me the numbers: Designing tables and graphs to enlighten. Analytics Press.
+
+Friendly, M. (1994). Mosaic displays for multi-way contingency tables. Journal of the American Statistical Association, 89(425), 190-200.

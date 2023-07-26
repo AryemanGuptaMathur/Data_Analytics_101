@@ -53,11 +53,12 @@ website:
       - 05ExploringDataframes.qmd
       - 06LiveCase01.qmd
       - 07ExploringTibbles.qmd
-      - 08SummarzingCategoricalData.qmd
-#      - 09LiveCase02.qmd
-#      - 10SummarizingContinuousData.qmd
-#      - 11SummarizingContinuousData.qmd
-#      - 12SummarizingContinuousData.qmd
+      - 08CategoricalData01.qmd
+      - 09CategoricalData02.qmd
+#      - 10LiveCase02.qmd
+#      - 11ContinuousData01.qmd
+#      - 12ContinuousData02.qmd
+#      - 13ContinuousData03.qmd
 ### END yaml FOR BOOK'S WEBSITE ###
 
 format:
