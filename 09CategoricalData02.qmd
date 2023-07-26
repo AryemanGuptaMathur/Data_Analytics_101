@@ -1,7 +1,6 @@
 # Categorical Data (2 of 2)
 
-*July 26, 2023 V1.2 (Work in progress)*
-
+*July 26, 2023 V1.3 (Work in progress)*
 
 ## Frequency Table for More than One Variable
 
@@ -38,7 +37,6 @@ t2
 ```
 
 In this example, a two-way contingency table of gear and cyl is created using the ftable() function. The frequency of each grouping of categories is displayed in the table that results. As an illustration, there are 12 automobiles with 8 cylinders and 3 speeds as well as 1 car with 4 cylinders.
-
 
 ## Proportions Table for More than One Variable
 
@@ -120,9 +118,7 @@ ftable(am + cyl ~ gear + vs
 
 In this example, we establish a four-way contingency table containing am, cyl, gear, and vs using the ftable() function. The frequency of each grouping of categories is displayed in the table that results. There are two vehicles with a 6-cylinder, 3-gear, automatic transmission, and inline engine, for instance, and three vehicles with four cylinders. The resulting table, which has two two-dimensional tables for each level of the am variable, is four-dimensional.
 
-
 ## Visualization of Categorical Variable
-
 
 ### Barplot for Bivariate Case (Grouped Barchart)
 

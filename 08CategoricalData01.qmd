@@ -65,8 +65,6 @@ p0
 
 The prop.table() function is used in this example to determine the percentage of each category in the cyl variable of the mtcars dataset. The fraction of cars with 4, 6, and 8 cylinders, respectively, is represented in the resulting vector p0. For instance, the dataset contains cars with 4 cylinders in 34.375% of the cases.
 
-
-
 ## Rounding
 
 ## This function is used to set the width of decimal numbers
@@ -80,8 +78,6 @@ r1
 ```
 
 In this example, we round the proportion tables p0 and p1 to two decimal places using the round() method. The proportion of each category or group of categories, rounded to two decimal places, is presented in the ensuing tables r1 and r2. For instance, 56.25% of automobiles have an automated transmission and 8 cylinders.
-
-
 
 ## Visualization of Categorical Variable
 
@@ -124,8 +120,6 @@ barplot(cyl_table,
 ```
 
 By dividing the number of automobiles by the number of cylinders in the mtcars dataset, this code will produce a barplot. The barplot() function is used to generate the actual plot, while the table() function is used to generate a table of counts for the cyl variable in the mtcars dataset. The title and axis labels are added using the main, xlab, and ylab arguments, and the colour of the bars is altered with the col option.
-
-
 
 ## References
 
