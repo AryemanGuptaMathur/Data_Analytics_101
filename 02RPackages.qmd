@@ -108,10 +108,9 @@ If you require assistance with an R package, there are several avenues you can e
 
 3.  **Online Resources:** Numerous online resources are available for obtaining help with R packages. Blogs, forums, and question-and-answer platforms like Stack Overflow offer valuable insights and solutions to specific problems. These platforms are particularly helpful for finding answers to specific questions and obtaining general guidance on package usage. \[3\]
 
-
 ## Summary of Chapter 2 -- R Packages
 
-Chapter 2 delves into the world of R packages, explaining what they are, where they can be procured, and how they can be put to use. Defined as clusters of code, data, and relevant documentation, R packages extend the capabilities of R for users. These packages are available from a variety of digital repositories, such as CRAN, Bioconductor, and GitHub, and can be incorporated into R via the `library()` function. 
+Chapter 2 delves into the world of R packages, explaining what they are, where they can be procured, and how they can be put to use. Defined as clusters of code, data, and relevant documentation, R packages extend the capabilities of R for users. These packages are available from a variety of digital repositories, such as CRAN, Bioconductor, and GitHub, and can be incorporated into R via the `library()` function.
 
 The advantages of utilizing R packages are manifold, including the ability to reuse and share code, collaborate on development, standardize methodologies, handle large datasets, and operate across different operating systems.
 
@@ -120,7 +119,6 @@ Special emphasis is given to the Comprehensive R Archive Network (CRAN), a centr
 The chapter also furnishes a list of well-regarded R packages, each catering to a distinct need, from `dplyr` for manipulation of data, `tidyr` for rearranging data, `ggplot2` for designing visualizations, among others. A practical example of using the `ggplot2` package to generate a scatterplot is provided.
 
 For users who encounter challenges, the chapter recommends consulting the documentation that accompanies each package, making use of the help system built into R, or exploring online resources such as blogs, forums, and Q&A websites. For more extensive understanding, several references are suggested.
-
 
 ## References
 

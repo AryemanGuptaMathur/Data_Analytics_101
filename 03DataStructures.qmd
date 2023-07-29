@@ -425,7 +425,6 @@ print(age_category)
 
 Logical Function ifelse(): It evaluates a logical condition and returns values based on the condition. In this example, we use ifelse() to assign the value "Old" to elements in the age_category vector where the corresponding element in ages is greater than 50, and "Young" otherwise.
 
-
 ## Summary of Chapter 3 -- Data Structures in R
 
 Chapter 3 navigates through the fundamental data structure in R, the vector, and elucidates various operations that can be conducted on vectors. Vectors in R, either numeric, character, or logical, hold elements of the same type and are instrumental in performing computations and managing data.
@@ -439,7 +438,6 @@ The chapter presents statistical operations on vectors, describing functions to 
 Towards the end, the chapter discusses the usage of strings in vectors, covering operations such as substring extraction, concatenation, case conversion, and pattern matching. It finally introduces the `nchar()` function to determine the length of strings in a vector.
 
 In essence, Chapter 3 provides a practical exploration of vectors in R, shedding light on their creation, manipulation, and utilization in various operations, from basic mathematical computations to complex statistical functions and string operations. It underscores the versatility of vectors as a vital data structure in R for data analysis and modeling. Further exploration is encouraged with a comprehensive list of references.
-
 
 ## References
 
