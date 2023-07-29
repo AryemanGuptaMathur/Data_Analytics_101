@@ -185,13 +185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures</span></a>
+ <span class="menu-text">Data Structures in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data</span></a>
+ <span class="menu-text">Reading Data in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08CategoricalData01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Categorical Data (1 of 2)</span></a>
+ <span class="menu-text">Categorical Data (1 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -268,14 +268,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="categorical-data-2-of-3" class="level1">
 <h1>Categorical Data (2 of 3)</h1>
-<p><em>July 28, 2023</em></p>
+<p><em>July 29, 2023</em></p>
 <section id="overview-of-bivariate-categorical-data" class="level2">
 <h2 class="anchored" data-anchor-id="overview-of-bivariate-categorical-data">Overview of Bivariate Categorical Data</h2>
 <ol type="1">
-<li><p>Bivariate analysis involves examining the relationship between two variables. For instance, we might examine the relationship between a person’s gender (male, female, or non-binary) and whether they own a car (yes or no). By exploring these two categorical variables together, we can discern potential correlations or associations.</p></li>
-<li><p>On the other hand, multivariate analysis involves the simultaneous observation and analysis of more than two variables. We study this in the next chapter.</p></li>
-<li><p><strong>Contingency Table</strong>: A contingency table, also known as a cross-tabulation or crosstab, is a type of table in a matrix format that displays the frequency distribution of the variables. In the case of a univariate factor variable, a contingency table is essentially the same as a frequency table, as there’s only one variable involved. In more complex analyses involving two or more variables, contingency tables provide a way to examine the interactions between the variables. [(Agresti, 2007). [1]</p></li>
-<li><p>Data: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</p></li>
+<li><p>Bivariate analysis involves examining the <strong>relationship between two variables</strong>. For instance, we might examine the relationship between a person’s gender (male, female, or non-binary) and whether they own a car (yes or no). By exploring these two categorical variables together, we can discern potential correlations or associations.</p></li>
+<li><p>As an extension, multivariate analysis involves the simultaneous observation and analysis of more than two variables. We study multivariate data in the next chapter.</p></li>
+<li><p><strong>Contingency Table</strong>: A contingency table, also known as a <strong>cross-tabulation</strong> or <strong>crosstab</strong>, is a type of table in a matrix format that displays the frequency distribution of the variables. In the case of a univariate factor variable, a contingency table is essentially the same as a frequency table, as there’s only one variable involved. In more complex analyses involving two or more variables, contingency tables provide a way to examine the interactions between the variables. [1]</p></li>
+<li><p><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
@@ -294,10 +294,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="frequency-tables-for-bivariate-categorical-data" class="level3">
 <h3 class="anchored" data-anchor-id="frequency-tables-for-bivariate-categorical-data">Frequency Tables for Bivariate Categorical Data</h3>
 <ol type="1">
-<li><p>As an illustration, let us investigate the bivariate relationship between the number of cylinders (cyl) and whether the car has an automatic (am) or manual (1 = manual, 0 = automatic) transmission.</p></li>
-<li><ul>
-<li><strong>table()</strong>: We can use the <code>table()</code> function to generate a contingency table of these two variables.</li>
-</ul></li>
+<li><p>As an illustration, let us investigate the bivariate relationship between the number of cylinders (<code>cyl</code>) and whether the car has an automatic or manual transmission, (<code>am=1</code> for manual, <code>am=0</code> for automatic).</p></li>
+<li><p><strong><code>table()</code></strong>: We can use this function to generate a contingency table of these two variables.</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -311,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ul>
 <li><p>In this code, a two-way frequency table of <code>am</code> and <code>cyl</code> is created using the <code>table()</code> function. The frequency of each grouping of categories is displayed in the table that results. As an illustration, there are 8 cars with a manual gearbox and 4 cylinders.</p></li>
-<li><p><strong>addmargins()</strong>: The <code>addmargins()</code> function is used to add row and/or column totals to a table.</p></li>
+<li><p><strong><code>addmargins()</code></strong>: The <code>addmargins()</code> function is used to add row and/or column totals to a table.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="fu">table</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am)</span>
@@ -338,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li>In this variation, the 1 in the function call indicates that we want to add row totals. So, this command adds the totals (sum) of each row (representing cyl) to the contingency table <code>t0</code>.</li>
+<li>In this variation, the <code>1</code> in the function call indicates that we want to add row totals. So, this command adds the totals (Sum) of each row as a row in the contingency table.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t0 <span class="ot">&lt;-</span> <span class="fu">table</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am)</span>
@@ -352,10 +350,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li>In this variation, the 2 specifies that we want to add column totals. Thus, it adds the totals (sum) of each column (representing am) to the contingency table <code>t0</code>.</li>
+<li>In this variation, the <code>2</code> specifies that we want to add column totals. Thus, it adds the totals (Sum) of each column to the contingency table.</li>
 </ul>
 <ol start="3" type="1">
-<li><strong>xtabs()</strong>: This function in R provides a more versatile way to generate cross tabulations or contingency tables. It differs from the <code>table()</code> function by allowing the use of weights and formulas. Here’s how we can use it:</li>
+<li><strong><code>xtabs()</code></strong>: This function provides a more versatile way to generate cross tabulations or contingency tables. It differs from the <code>table()</code> function by allowing the use of weights and formulas. Here’s how we can use it:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> cyl <span class="sc">+</span> am, </span>
@@ -369,11 +367,12 @@ cyl  0  1
 </div>
 </div>
 <ul>
-<li><p>In the code, we have used <code>xtabs()</code> to construct a cross-tabulation of <code>am</code> and <code>cyl</code>. The syntax <code>~ cyl + am</code> is interpreted as a formula, signifying that we aim to cross-tabulate these variables. The output is a table akin to what we obtain with table(), but with the added advantage of accommodating more intricate analyses.</p></li>
+<li><p>In the code, we have used <code>xtabs()</code> to construct a cross-tabulation of <code>am</code> and <code>cyl</code>.</p></li>
+<li><p>The syntax <code>~ cyl + am</code> is interpreted as a formula, signifying that we aim to cross-tabulate these variables. The output is a table akin to what we obtain with <code>table()</code>, but with the added advantage of accommodating more intricate analyses.</p></li>
 <li><p>An important advantage of <code>xtabs()</code> over <code>table()</code> is its superior handling of missing values or NAs; it doesn’t automatically exclude them, which is beneficial when dealing with real-world data that often includes missing values. [1]</p></li>
 </ul>
 <ol start="4" type="1">
-<li><strong>ftable()</strong>: The <code>ftable()</code> function in R is a powerful tool that offers an advanced way to create and display contingency tables. Here’s an example of its use:</li>
+<li><strong><code>ftable()</code></strong>: This function is a powerful tool that offers an advanced way to create and display contingency tables. Here’s an example of its use:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -419,7 +418,7 @@ argument.</code></pre>
 <section id="proportions-table-for-bivariate-categorical-data" class="level3">
 <h3 class="anchored" data-anchor-id="proportions-table-for-bivariate-categorical-data">Proportions Table for Bivariate Categorical Data</h3>
 <ol start="6" type="1">
-<li><strong>prop.table()</strong>: The <code>prop.table()</code> function is an advantageous tool in R, particularly when it is necessary to understand the relative proportions rather than raw frequencies. This function converts a contingency table into a table of proportions. Here is how we could utilize this function:</li>
+<li><strong><code>prop.table()</code></strong>: This function is an advantageous tool to understand the relative proportions rather than raw frequencies. It converts a contingency table into a table of proportions. Here is how we could utilize this function:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">table</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am)</span>
@@ -434,7 +433,7 @@ argument.</code></pre>
 </div>
 </div>
 <ul>
-<li><p>In the example above, we first generate a frequency table with the <code>table()</code> function, using <code>cyl</code> and <code>am</code> as our variables. Then, we employ the <code>prop.table()</code> function to convert this frequency table (<code>freq_table</code>) into a proportions table (<code>prop_table</code>).</p></li>
+<li><p>In this code, we first generate a frequency table with the <code>table()</code> function, using <code>cyl</code> and <code>am</code> as our variables. Then, we employ the <code>prop.table()</code> function to convert this frequency table (<code>freq_table</code>) into a proportions table (<code>prop_table</code>).</p></li>
 <li><p>This resulting <code>prop_table</code> reveals the proportion of each combination of <code>cyl</code> and <code>am</code> categories relative to the total number of observations. This can provide insightful context, allowing us to see how each combination fits into the overall distribution. For instance, we could learn what proportion of cars in our dataset have 4 cylinders and a manual transmission.</p></li>
 <li><p>A noteworthy benefit of <code>prop.table()</code> is its ability to normalize the data, providing a perspective based on relative proportions instead of absolute numbers, which can often provide a clearer view of the underlying patterns in the data.</p></li>
 </ul>
@@ -465,8 +464,9 @@ argument.</code></pre>
 </div>
 </div>
 <ul>
-<li><p>In this code, <code>group_by(cyl, am)</code> groups the data by <code>cyl</code> and <code>am</code>, <code>summarise(Frequency = n())</code> calculates the frequency for each group, and <code>mutate(Proportion = Frequency / sum(Frequency))</code> calculates the proportions by dividing each frequency by the total sum of frequencies. The <code>mutate()</code> function adds a new column to the dataframe, keeping the original data intact.</p></li>
-<li><p><strong>Rounding</strong>: If we wanted to round-off the Proportion up to 4 decimal places, we could write the following code.</p></li>
+<li><p>In this code, <code>group_by(cyl, am)</code> groups the data by <code>cyl</code> and <code>am</code>, <code>summarise(Frequency = n())</code> calculates the frequency for each group, and <code>mutate(Proportion = Frequency / sum(Frequency))</code> calculates the proportions by dividing each frequency by the total sum of frequencies.</p></li>
+<li><p>The <code>mutate()</code> function adds a new column to the dataframe, keeping the original data intact.</p></li>
+<li><p><strong>Rounding</strong>: If we wanted to round-off the proportion up to 4 decimal places, we could write the following code.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -495,7 +495,7 @@ argument.</code></pre>
 <section id="margins-in-proportions-tables" class="level3">
 <h3 class="anchored" data-anchor-id="margins-in-proportions-tables">Margins in Proportions Tables</h3>
 <ol type="1">
-<li><p>Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate i) Proportions for Each Cell; (ii) Row-Wise Proportions; (iii) Column-Wise Proportions. This forms a crucial part of exploratory data analysis.</p></li>
+<li><p>Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate the i) Proportions for <strong>Each Cell</strong>; (ii) <strong>Row-Wise* Proportions; (iii) </strong>Column-Wise** Proportions. This forms a crucial part of exploratory data analysis.</p></li>
 <li><p><strong>Proportions for Each Cell</strong>: This calculates the ratio of each cell to the overall total.</p></li>
 </ol>
 <div class="cell">
@@ -534,7 +534,7 @@ argument.</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
-<li><strong>Column-Wise Proportions</strong>: In this step, we determine the proportion of each cell relative to the total of its column.</li>
+<li><strong>Column-Wise Proportions</strong>: Here, we determine the proportion of each cell relative to the total of its column.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute column-wise proportions</span></span>
@@ -837,9 +837,9 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 <p>In this code:</p>
 <ul>
-<li><p>library(vcd) is used to import the vcd package which includes the mosaic() function that is superior to the base R mosaicplot() in its handling of labeling and legends.</p></li>
-<li><p>mosaic(~ cyl + am, data = tb, main = “Mosaic of Cylinder count and Transmission type”) creates a mosaic plot.</p></li>
-<li><p>In this command, the formula ~ cyl + am tells R to plot cyl against am. The argument data = tb specifies that the variables for the plot come from the tb data frame. The main argument sets the title of the plot.</p></li>
+<li><p><code>library(vcd)</code> is used to import the vcd package which includes the mosaic() function that is superior to the base R mosaicplot() in its handling of labeling and legends.</p></li>
+<li><p><code>mosaic(\~ cyl + am, data = tb, main = "Mosaic of Cylinder count and Transmission type")</code> creates a mosaic plot.</p></li>
+<li><p>In this command, the formula <code>~ cyl + am</code> tells R to plot <code>cyl</code> against <code>am</code>. The argument <code>data = tb</code> specifies that the variables for the plot come from the <code>tb</code> data frame. The <code>main</code> argument sets the title of the plot.</p></li>
 <li><p>We can customize the shading color of the mosaic plot by setting the color using the <code>col</code> argument inside the <code>mosaic()</code> function. To specify shades of blue, we can use the <code>RColorBrewer</code> package and its <code>brewer.pal()</code> function to generate a color palette:</p></li>
 </ul>
 <div class="cell">
@@ -897,11 +897,11 @@ Attaching package: 'ggmosaic'</code></pre>
 </div>
 <p>In this code:</p>
 <ul>
-<li><p>geom_mosaic(aes(x = product(cyl, am), fill = cyl)) creates the mosaic plot with cyl and am as the categorical variables.</p></li>
-<li><p>The fill = cyl part means that the color fill will differentiate the categories in the cyl variable.</p></li>
-<li><p>theme_minimal() applies a minimal theme to the plot.</p></li>
-<li><p>labs() is used to specify the labels for the plot, including the title, x-axis label, and y-axis label.</p></li>
-<li><p>scale_fill_brewer(palette = “Blues”) specifies the color palette to be used for the fill color, in this case, a palette of blues.</p></li>
+<li><p><code>geom_mosaic(aes(x = product(cyl, am), fill = cyl))</code> creates the mosaic plot with <code>cyl</code> and <code>am</code> as the categorical variables.</p></li>
+<li><p>The <code>fill = cyl</code> part means that the color fill will differentiate the categories in the <code>cyl</code> variable.</p></li>
+<li><p><code>theme_minimal()</code> applies a minimal theme to the plot.</p></li>
+<li><p><code>labs()</code> is used to specify the labels for the plot, including the <code>title</code>, x-axis label, and y-axis label.</p></li>
+<li><p><code>scale_fill_brewer(palette = "Blues")</code> specifies the color palette to be used for the fill color, in this case, a palette of blues.</p></li>
 </ul>
 </section>
 </section>
@@ -909,8 +909,8 @@ Attaching package: 'ggmosaic'</code></pre>
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>In this chapter, we delve into an extensive exploration of various methods for visualizing bivariate categorical data using R, which include but are not limited to grouped bar plots, stacked bar plots, and mosaic plots.</p>
 <p>An explanation is provided to distinguish between grouped and stacked bar plots, further supported by the inclusion of coding examples and variations in parameters. Both base R functions and the more advanced ggplot2 library serve as instrumental tools to depict these techniques, furnishing readers with a comprehensive understanding of their practical usage.</p>
-<p>The ggplot2 library further elevates the possibilities by offering enhanced customization capabilities and superior control over aesthetics. Detailed coding examples are presented again to explain both the grouped and stacked bar plots within this library.</p>
-<p>The chapter also introduces mosaic plots as another way of visualizing bivariate categorical data and discusses how mosaic plots can provide a visual representation of the frequency or proportion of different categories within variables. The use of the base R mosaicplot() function is exemplified, followed by the demonstration of the mosaic() function in the vcd package and the ggmosaic package, bringing full circle the spectrum of visualizations covered for bivariate categorical data.</p>
+<p>The <code>ggplot2</code> library further elevates the possibilities by offering enhanced customization capabilities and superior control over aesthetics. Detailed coding examples are presented again to explain both the grouped and stacked bar plots within this library.</p>
+<p>The chapter also introduces mosaic plots as another way of visualizing bivariate categorical data and discusses how mosaic plots can provide a visual representation of the frequency or proportion of different categories within variables. The use of the base R <code>mosaicplot()</code> function is exemplified, followed by the demonstration of the <code>mosaic()</code> function in the <code>vcd</code> package and the <code>ggmosaic</code> package, bringing full circle the spectrum of visualizations covered for bivariate categorical data.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="exploring-tibbles-dplyr" class="level1">
 <h1>Exploring <em>tibbles</em> &amp; <em>dplyr</em></h1>
-<p><em>July 26, 2023.</em></p>
+<p><em>July 29, 2023.</em></p>
 <section id="tibbles" class="level2">
 <h2 class="anchored" data-anchor-id="tibbles"><strong>tibbles</strong></h2>
 <p>A <code>tibble</code> is essentially an updated version of the conventional data frame, providing more flexible and effective data management features (Müller &amp; Wickham, 2021).</p>
@@ -797,7 +797,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 <p>The <code>transmuted_data</code> tibble now includes the newly created <code>hp_to_wt</code> variable, while the other columns have been removed.</p>
 <ol start="5" type="1">
-<li><strong><code>pull()</code>:</strong>: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let us isolate the <code>mpg</code> (miles per gallon) variable from the <code>mtcars</code> dataset.</li>
+<li><strong><code>pull()</code></strong>: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let us isolate the <code>mpg</code> (miles per gallon) variable from the <code>mtcars</code> dataset.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pulled_data <span class="ot">&lt;-</span> tb <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mpg)</span>
@@ -810,7 +810,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 <p>In the <code>pulled_data</code> vector, only the values from the <code>mpg</code> variable are retained.</p>
 <ol start="6" type="1">
-<li>**<code>n_distinct():**: Recall that this function is used to count the distinct values in a column or vector. Let us count the number of distinct values in the</code>cyl<code>(cylinders) column from the</code>mtcars` dataset.</li>
+<li><strong><code>n_distinct()</code></strong>: Recall that this function is used to count the distinct values in a column or vector. Let us count the number of distinct values in the<code>cyl</code>(cylinders) column from the<code>mtcars\</code> dataset.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>distinct_count <span class="ot">&lt;-</span> tb <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">n_distinct_cyl =</span> <span class="fu">n_distinct</span>(cyl))</span>

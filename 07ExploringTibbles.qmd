@@ -316,7 +316,7 @@ transmuted_data
 
 The `transmuted_data` tibble now includes the newly created `hp_to_wt` variable, while the other columns have been removed.
 
-5.  **`pull()`:**: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let us isolate the `mpg` (miles per gallon) variable from the `mtcars` dataset.
+5.  **`pull()`**: Recall that this function is employed to remove a single variable from a dataframe as a vector. Let us isolate the `mpg` (miles per gallon) variable from the `mtcars` dataset.
 
 ```{r, warning=FALSE}
 pulled_data <- tb %>% pull(mpg)
@@ -325,7 +325,7 @@ pulled_data
 
 In the `pulled_data` vector, only the values from the `mpg` variable are retained.
 
-6.  \*\*`n_distinct():**: Recall that this function is used to count the distinct values in a column or vector. Let us count the number of distinct values in the`cyl`(cylinders) column from the`mtcars\` dataset.
+6.  **`n_distinct()`**: Recall that this function is used to count the distinct values in a column or vector. Let us count the number of distinct values in the`cyl`(cylinders) column from the`mtcars\` dataset.
 
 ```{r, warning=FALSE}
 distinct_count <- tb %>% summarise(n_distinct_cyl = n_distinct(cyl))
@@ -333,6 +333,8 @@ distinct_count
 ```
 
 The `distinct_count` dataframe shows the number of unique values in the `cyl` column of the `mtcars` dataset.
+
+
 
 ## Summary of Chapter 7 -- Exploring *tibbles* & *dplyr*
 
