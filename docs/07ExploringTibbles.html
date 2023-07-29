@@ -185,13 +185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures</span></a>
+ <span class="menu-text">Data Structures in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data</span></a>
+ <span class="menu-text">Reading Data in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -221,7 +221,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09CategoricalData02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Categorical Data (2 of 2)</span></a>
+ <span class="menu-text">Categorical Data (2 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10CategoricalData03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Categorical Data (3 of 3)</span></a>
   </div>
 </li>
     </ul>
@@ -251,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#using-dplyr-to-explore-the-mtcars-tibble-more" id="toc-using-dplyr-to-explore-the-mtcars-tibble-more" class="nav-link" data-scroll-target="#using-dplyr-to-explore-the-mtcars-tibble-more">Using <code>dplyr</code> to explore the <code>mtcars</code> tibble more</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#summary-of-chapter-7-exploring-tibbles-dplyr" id="toc-summary-of-chapter-7-exploring-tibbles-dplyr" class="nav-link" data-scroll-target="#summary-of-chapter-7-exploring-tibbles-dplyr">Summary of Chapter 7 – Exploring <em>tibbles</em> &amp; <em>dplyr</em></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -819,8 +825,8 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <p>The <code>distinct_count</code> dataframe shows the number of unique values in the <code>cyl</code> column of the <code>mtcars</code> dataset.</p>
 </section>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="summary-of-chapter-7-exploring-tibbles-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-chapter-7-exploring-tibbles-dplyr">Summary of Chapter 7 – Exploring <em>tibbles</em> &amp; <em>dplyr</em></h2>
 <p>This chapter has provided an overview of the <code>tibble</code> data structure and the <code>dplyr</code> package in the R programming language.</p>
 <p>We started with an introduction to <code>tibble</code>, a data structure in R that is an updated version of data frames with enhanced features for flexible and effective data management. These benefits include more user-friendly printing, reliable subsetting behavior, transparent handling of data types, and support for non-syntactic column names.</p>
 <p>Subsequently, we shifted focus to the <code>dplyr</code> package, which is a powerful tool for data manipulation in R. This package offers a cohesive set of functions, often referred to as “verbs”, which allow for efficient and straightforward manipulation of data. The key “verbs” in <code>dplyr</code>—<code>filter()</code>, <code>select()</code>, <code>arrange()</code>, <code>mutate()</code>, and <code>summarise()</code>— have been explained and illustrated with examples.</p>

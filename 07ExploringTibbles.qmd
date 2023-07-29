@@ -1,6 +1,6 @@
 # Exploring *tibbles* & *dplyr*
 
-*July 26, 2023.*
+*July 29, 2023.*
 
 ## **tibbles**
 
@@ -334,7 +334,7 @@ distinct_count
 
 The `distinct_count` dataframe shows the number of unique values in the `cyl` column of the `mtcars` dataset.
 
-## Summary
+## Summary of Chapter 7 -- Exploring *tibbles* & *dplyr*
 
 This chapter has provided an overview of the `tibble` data structure and the `dplyr` package in the R programming language.
 
