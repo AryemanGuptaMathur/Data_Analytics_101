@@ -1,6 +1,6 @@
 # Getting Started
 
-*July 26, 2023.*
+*July 29, 2023.*
 
 ## Overview of R programming
 
@@ -284,6 +284,16 @@ revenue
 ```
 
 R is a powerful and versatile language extensively utilized for data analysis, statistical computing, and creating data visualizations. The provided brief overview aims to acquaint readers with fundamental aspects and capabilities of R, laying the foundation for further exploration and understanding in data analysis and visualization. The ultimate goal is to equip readers with essential knowledge to effectively use R in a variety of data-related tasks and projects.
+
+## Summary of Chapter 1 -- Getting Started
+
+Chapter 1 provides a comprehensive introduction to the R programming language and its applications, particularly in statistical computations and data analysis. The first part of the chapter presents a basic understanding of R, including its history and development, its usage, and the platforms that support its operation. It discusses how to download and install R and RStudio, considering different operating systems, and it also introduces alternatives like Jupyter Notebook and Visual Studio Code. 
+
+The second part delves into the practical aspects of using R, such as conducting mathematical and statistical operations. It provides examples of arithmetic, exponentiation, and logarithmic operations, as well as usage of specific mathematical functions like absolute value, square root, and remainder on division. Moreover, it explains the rounding functions, mean, median, standard deviation, and correlation computations, with examples. The chapter further expounds on the assignment of values to variables in R and the usage of these variables in various operations. 
+
+Throughout, the chapter underlines the importance of R in statistical computing, data analysis, and data visualization, emphasizing its versatility and efficiency. The chapter lists a wide range of references for further reading and exploration. 
+
+To summarize, this chapter introduces the R programming language, its development, usage, installation process, and various supported platforms. It delves into R's practical applications in mathematical and statistical operations, emphasizing its role in statistical computing, data analysis, and visualization.
 
 ## References
 
