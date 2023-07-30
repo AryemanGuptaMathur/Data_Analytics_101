@@ -188,6 +188,7 @@ pie(cyl_counts,
     labels = c("4 cylinders", "6 cylinders", "8 cylinders"), 
     col = c("red", "green", "blue"))
 ```
+
 Alternately, if we wanted to display the percentages, we could write the following code:
 
 ```{r}

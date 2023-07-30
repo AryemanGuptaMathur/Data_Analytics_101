@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#using-ggplot2" id="toc-using-ggplot2" class="nav-link" data-scroll-target="#using-ggplot2">Using <strong>ggplot2</strong></a></li>
   <li><a href="#mosaic-plots-for-bivariate-categorical-data" id="toc-mosaic-plots-for-bivariate-categorical-data" class="nav-link" data-scroll-target="#mosaic-plots-for-bivariate-categorical-data"><strong>Mosaic Plots</strong> for Bivariate Categorical Data</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#summary-of-chapter-9-categorical-data-2-of-3" id="toc-summary-of-chapter-9-categorical-data-2-of-3" class="nav-link" data-scroll-target="#summary-of-chapter-9-categorical-data-2-of-3">Summary of Chapter 9 – Categorical Data (2 of 3)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="categorical-data-2-of-3" class="level1">
 <h1>Categorical Data (2 of 3)</h1>
-<p><em>July 29, 2023</em></p>
+<p><em>July 30, 2023</em></p>
 <section id="overview-of-bivariate-categorical-data" class="level2">
 <h2 class="anchored" data-anchor-id="overview-of-bivariate-categorical-data">Overview of Bivariate Categorical Data</h2>
 <ol type="1">
@@ -495,7 +495,7 @@ argument.</code></pre>
 <section id="margins-in-proportions-tables" class="level3">
 <h3 class="anchored" data-anchor-id="margins-in-proportions-tables">Margins in Proportions Tables</h3>
 <ol type="1">
-<li><p>Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate the i) Proportions for <strong>Each Cell</strong>; (ii) <strong>Row-Wise* Proportions; (iii) </strong>Column-Wise** Proportions. This forms a crucial part of exploratory data analysis.</p></li>
+<li><p>Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate the i) Proportions for <strong>Each Cell</strong>; (ii) <strong>Row-Wise* Proportions; (iii)</strong> Column-Wise** Proportions. This forms a crucial part of exploratory data analysis.</p></li>
 <li><p><strong>Proportions for Each Cell</strong>: This calculates the ratio of each cell to the overall total.</p></li>
 </ol>
 <div class="cell">
@@ -798,8 +798,6 @@ Attaching package: 'ggplot2'</code></pre>
 <h3 class="anchored" data-anchor-id="mosaic-plots-for-bivariate-categorical-data"><strong>Mosaic Plots</strong> for Bivariate Categorical Data</h3>
 <ol type="1">
 <li><p>A mosaic plot is a graphical method for visualizing data from two or more qualitative variables / categorical data. It is a form of area plot that can provide a visual representation of the frequency or proportion of the different categories within the variables.</p></li>
-<li><p>In a mosaic plot, we interpret two categorical variables on two axes. The width of each section on one axis signifies the proportion of that particular category in our dataset. Conversely, the height of a section on the other axis illustrates the proportion of that category, contingent on the specific category from the first variable. Therefore, the area of each rectangle directly corresponds to the frequency or proportion of observations falling within that specific combination of categories (Hartigan &amp; Kleiner, 1981).</p></li>
-<li><p>They can be used to identify breaks in independence or test hypotheses regarding the connections between the variables. They are especially helpful for examining interactions between two or more categorical variables.</p></li>
 <li><p>The following code generates a mosaic plot from a contingency table of two variables: <code>cyl</code> (cylinders) and <code>am</code> (transmission).</p></li>
 </ol>
 <div class="cell">
@@ -812,14 +810,19 @@ Attaching package: 'ggplot2'</code></pre>
 <p><img src="09CategoricalData02_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>In this code:</p>
+<ol start="2" type="1">
+<li><p>In a mosaic plot, we interpret two categorical variables on two axes. The <strong>width</strong> of each section on one axis signifies the proportion of that particular category in our dataset. Conversely, the <strong>height</strong> of a section on the other axis illustrates the proportion of that category, contingent on the specific category from the first variable. Therefore, the <strong>area</strong> of each rectangle directly corresponds to the frequency or proportion of observations falling within that specific combination of categories (Hartigan &amp; Kleiner, 1981).</p></li>
+<li><p>By combining both the height and width of the rectangles, a mosaic plot gives us a visual representation of the joint distribution of the two categorical variables. It helps us to identify patterns, associations, and dependencies between the two variables.</p></li>
+<li><p>In the above code:</p></li>
+</ol>
 <ul>
 <li><p>The <code>table()</code> function is used to create a contingency table of the <code>cyl</code> and <code>am</code> columns of the <code>tb</code> tibble. This contingency table represents the counts of all combinations of <code>cyl</code> and <code>am</code> in the data.</p></li>
 <li><p>The <code>mosaicplot()</code> function then creates a mosaic plot from this contingency table. The <code>main</code>, <code>xlab</code>, and <code>ylab</code> arguments are used to set the main title, x-axis label, and y-axis label of the plot, respectively.</p></li>
 <li><p>This code gives a mosaic plot that visualizes the distribution of the number of cylinders by the type of transmission. Each block’s width in the plot would be proportional to the number of cylinders, and the height would be proportional to the transmission type.</p></li>
 </ul>
 <ol start="5" type="1">
-<li>The <code>vcd</code> package, short for Visualizing Categorical Data, provides alternative visual and analytical methods for categorical data (Meyer, Zeileis, &amp; Hornik, 2020). Following this, a mosaic plot is created from the variables <code>cyl</code> (cylinders) and <code>am</code> (transmission type) using the <code>mosaic()</code> function.</li>
+<li><p>They can be used to identify breaks in independence or test hypotheses regarding the connections between the variables. They are especially helpful for examining interactions between two or more categorical variables.</p></li>
+<li><p>The <code>vcd</code> package, short for Visualizing Categorical Data, provides alternative visual and analytical methods for categorical data (Meyer, Zeileis, &amp; Hornik, 2020). Following this, a mosaic plot is created from the variables <code>cyl</code> (cylinders) and <code>am</code> (transmission type) using the <code>mosaic()</code> function.</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the vcd package</span></span>
@@ -827,7 +830,7 @@ Attaching package: 'ggplot2'</code></pre>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: grid</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a mosaic plot of mpg (miles per gallon) vs. vs (engine shape)</span></span>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a mosaic plot of mpg (miles per gallon) vs. am (transmission)</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>vcd<span class="sc">::</span><span class="fu">mosaic</span>(<span class="sc">~</span> cyl <span class="sc">+</span> am, </span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> tb, </span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Mosaic of Cylinder count and Transmission type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -835,13 +838,17 @@ Attaching package: 'ggplot2'</code></pre>
 <p><img src="09CategoricalData02_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>In this code:</p>
+<ol start="7" type="1">
+<li>In this code:</li>
+</ol>
 <ul>
 <li><p><code>library(vcd)</code> is used to import the vcd package which includes the mosaic() function that is superior to the base R mosaicplot() in its handling of labeling and legends.</p></li>
 <li><p><code>mosaic(\~ cyl + am, data = tb, main = "Mosaic of Cylinder count and Transmission type")</code> creates a mosaic plot.</p></li>
 <li><p>In this command, the formula <code>~ cyl + am</code> tells R to plot <code>cyl</code> against <code>am</code>. The argument <code>data = tb</code> specifies that the variables for the plot come from the <code>tb</code> data frame. The <code>main</code> argument sets the title of the plot.</p></li>
-<li><p>We can customize the shading color of the mosaic plot by setting the color using the <code>col</code> argument inside the <code>mosaic()</code> function. To specify shades of blue, we can use the <code>RColorBrewer</code> package and its <code>brewer.pal()</code> function to generate a color palette:</p></li>
 </ul>
+<ol start="8" type="1">
+<li>We can customize the shading color of the mosaic plot by setting the color using the <code>col</code> argument inside the <code>mosaic()</code> function. To specify shades of blue, we can use the <code>RColorBrewer</code> package and its <code>brewer.pal()</code> function to generate a color palette:</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary packages</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span>
@@ -861,13 +868,15 @@ Attaching package: 'ggplot2'</code></pre>
 <p><img src="09CategoricalData02_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>In this code:</p>
+<ol start="9" type="1">
+<li>In this code:</li>
+</ol>
 <ul>
 <li><p><code>brewer.pal(4, "Blues")</code> creates a color palette of 4 different shades of blue.</p></li>
 <li><p><code>highlighting = "cyl"</code> means that the shading will differentiate the categories in the cyl variable.</p></li>
 <li><p><code>highlighting_fill = cols</code> applies the cols color palette to the shading.</p></li>
 </ul>
-<ol start="6" type="1">
+<ol start="10" type="1">
 <li>We can also recreate the previous mosaic plot using <code>ggplot2</code> and <code>ggmosaic</code> packages. Here is how to do it:</li>
 </ol>
 <div class="cell">
@@ -895,7 +904,9 @@ Attaching package: 'ggmosaic'</code></pre>
 <p><img src="09CategoricalData02_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>In this code:</p>
+<ol start="11" type="1">
+<li>In this code:</li>
+</ol>
 <ul>
 <li><p><code>geom_mosaic(aes(x = product(cyl, am), fill = cyl))</code> creates the mosaic plot with <code>cyl</code> and <code>am</code> as the categorical variables.</p></li>
 <li><p>The <code>fill = cyl</code> part means that the color fill will differentiate the categories in the <code>cyl</code> variable.</p></li>
@@ -905,8 +916,8 @@ Attaching package: 'ggmosaic'</code></pre>
 </ul>
 </section>
 </section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="summary-of-chapter-9-categorical-data-2-of-3" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-chapter-9-categorical-data-2-of-3">Summary of Chapter 9 – Categorical Data (2 of 3)</h2>
 <p>In this chapter, we delve into an extensive exploration of various methods for visualizing bivariate categorical data using R, which include but are not limited to grouped bar plots, stacked bar plots, and mosaic plots.</p>
 <p>An explanation is provided to distinguish between grouped and stacked bar plots, further supported by the inclusion of coding examples and variations in parameters. Both base R functions and the more advanced ggplot2 library serve as instrumental tools to depict these techniques, furnishing readers with a comprehensive understanding of their practical usage.</p>
 <p>The <code>ggplot2</code> library further elevates the possibilities by offering enhanced customization capabilities and superior control over aesthetics. Detailed coding examples are presented again to explain both the grouped and stacked bar plots within this library.</p>

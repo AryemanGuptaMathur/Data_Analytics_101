@@ -1,6 +1,6 @@
 # Categorical Data (2 of 3)
 
-*July 29, 2023*
+*July 30, 2023*
 
 ## Overview of Bivariate Categorical Data
 
@@ -31,7 +31,7 @@ tb$gear <- as.factor(tb$gear)
 
 1.  As an illustration, let us investigate the bivariate relationship between the number of cylinders (`cyl`) and whether the car has an automatic or manual transmission, (`am=1` for manual, `am=0` for automatic).
 
-2. **`table()`**: We can use this function to generate a contingency table of these two variables.
+2.  **`table()`**: We can use this function to generate a contingency table of these two variables.
 
 ```{r}
 table(tb$cyl, tb$am)
@@ -67,9 +67,9 @@ xtabs(~ cyl + am,
       data = tb)
 ```
 
-- In the code, we have used `xtabs()` to construct a cross-tabulation of `am` and `cyl`. 
+-   In the code, we have used `xtabs()` to construct a cross-tabulation of `am` and `cyl`.
 
-- The syntax `~ cyl + am` is interpreted as a formula, signifying that we aim to cross-tabulate these variables. The output is a table akin to what we obtain with `table()`, but with the added advantage of accommodating more intricate analyses.
+-   The syntax `~ cyl + am` is interpreted as a formula, signifying that we aim to cross-tabulate these variables. The output is a table akin to what we obtain with `table()`, but with the added advantage of accommodating more intricate analyses.
 
 -   An important advantage of `xtabs()` over `table()` is its superior handling of missing values or NAs; it doesn't automatically exclude them, which is beneficial when dealing with real-world data that often includes missing values. \[1\]
 
@@ -120,11 +120,11 @@ tb %>%
   mutate(Proportion = Frequency / sum(Frequency)) 
 ```
 
-- In this code, `group_by(cyl, am)` groups the data by `cyl` and `am`, `summarise(Frequency = n())` calculates the frequency for each group, and `mutate(Proportion = Frequency / sum(Frequency))` calculates the proportions by dividing each frequency by the total sum of frequencies. 
+-   In this code, `group_by(cyl, am)` groups the data by `cyl` and `am`, `summarise(Frequency = n())` calculates the frequency for each group, and `mutate(Proportion = Frequency / sum(Frequency))` calculates the proportions by dividing each frequency by the total sum of frequencies.
 
-- The `mutate()` function adds a new column to the dataframe, keeping the original data intact.
+-   The `mutate()` function adds a new column to the dataframe, keeping the original data intact.
 
-- **Rounding**: If we wanted to round-off the proportion up to 4 decimal places, we could write the following code.
+-   **Rounding**: If we wanted to round-off the proportion up to 4 decimal places, we could write the following code.
 
 ```{r}
 library(dplyr)
@@ -136,7 +136,7 @@ tb %>%
 
 ### Margins in Proportions Tables
 
-1.  Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate the i) Proportions for **Each Cell**; (ii) **Row-Wise* Proportions; (iii) **Column-Wise** Proportions. This forms a crucial part of exploratory data analysis.
+1.  Different proportions provide various perspectives on the relationship between categorical variables in our dataset. We can calculate the i) Proportions for **Each Cell**; (ii) **Row-Wise\* Proportions; (iii)** Column-Wise\*\* Proportions. This forms a crucial part of exploratory data analysis.
 
 2.  **Proportions for Each Cell**: This calculates the ratio of each cell to the overall total.
 
@@ -388,11 +388,7 @@ In this code:
 
 1.  A mosaic plot is a graphical method for visualizing data from two or more qualitative variables / categorical data. It is a form of area plot that can provide a visual representation of the frequency or proportion of the different categories within the variables.
 
-2.  In a mosaic plot, we interpret two categorical variables on two axes. The width of each section on one axis signifies the proportion of that particular category in our dataset. Conversely, the height of a section on the other axis illustrates the proportion of that category, contingent on the specific category from the first variable. Therefore, the area of each rectangle directly corresponds to the frequency or proportion of observations falling within that specific combination of categories (Hartigan & Kleiner, 1981).
-
-3.  They can be used to identify breaks in independence or test hypotheses regarding the connections between the variables. They are especially helpful for examining interactions between two or more categorical variables.
-
-4.  The following code generates a mosaic plot from a contingency table of two variables: `cyl` (cylinders) and `am` (transmission).
+2.  The following code generates a mosaic plot from a contingency table of two variables: `cyl` (cylinders) and `am` (transmission).
 
 ```{r}
 # Create a mosaic plot 
@@ -401,8 +397,11 @@ mosaicplot(table(tb$cyl, tb$am),
            xlab = "Cylinders (cyl)",
            ylab = "Transmission (am)")
 ```
+2.  In a mosaic plot, we interpret two categorical variables on two axes. The **width** of each section on one axis signifies the proportion of that particular category in our dataset. Conversely, the **height** of a section on the other axis illustrates the proportion of that category, contingent on the specific category from the first variable. Therefore, the **area** of each rectangle directly corresponds to the frequency or proportion of observations falling within that specific combination of categories (Hartigan & Kleiner, 1981).
 
-In this code:
+3. By combining both the height and width of the rectangles, a mosaic plot gives us a visual representation of the joint distribution of the two categorical variables. It helps us to identify patterns, associations, and dependencies between the two variables.
+
+4. In the above code:
 
 -   The `table()` function is used to create a contingency table of the `cyl` and `am` columns of the `tb` tibble. This contingency table represents the counts of all combinations of `cyl` and `am` in the data.
 
@@ -410,18 +409,20 @@ In this code:
 
 -   This code gives a mosaic plot that visualizes the distribution of the number of cylinders by the type of transmission. Each block's width in the plot would be proportional to the number of cylinders, and the height would be proportional to the transmission type.
 
-5.  The `vcd` package, short for Visualizing Categorical Data, provides alternative visual and analytical methods for categorical data (Meyer, Zeileis, & Hornik, 2020). Following this, a mosaic plot is created from the variables `cyl` (cylinders) and `am` (transmission type) using the `mosaic()` function.
+5.  They can be used to identify breaks in independence or test hypotheses regarding the connections between the variables. They are especially helpful for examining interactions between two or more categorical variables.
+
+6.  The `vcd` package, short for Visualizing Categorical Data, provides alternative visual and analytical methods for categorical data (Meyer, Zeileis, & Hornik, 2020). Following this, a mosaic plot is created from the variables `cyl` (cylinders) and `am` (transmission type) using the `mosaic()` function.
 
 ```{r}
 # Load the vcd package
 library(vcd)
-# Create a mosaic plot of mpg (miles per gallon) vs. vs (engine shape)
+# Create a mosaic plot of mpg (miles per gallon) vs. am (transmission)
 vcd::mosaic(~ cyl + am, 
        data = tb, 
        main = "Mosaic of Cylinder count and Transmission type")
 ```
 
-In this code:
+7. In this code:
 
 -   `library(vcd)` is used to import the vcd package which includes the mosaic() function that is superior to the base R mosaicplot() in its handling of labeling and legends.
 
@@ -429,7 +430,7 @@ In this code:
 
 -   In this command, the formula `~ cyl + am` tells R to plot `cyl` against `am`. The argument `data = tb` specifies that the variables for the plot come from the `tb` data frame. The `main` argument sets the title of the plot.
 
--   We can customize the shading color of the mosaic plot by setting the color using the `col` argument inside the `mosaic()` function. To specify shades of blue, we can use the `RColorBrewer` package and its `brewer.pal()` function to generate a color palette:
+8. We can customize the shading color of the mosaic plot by setting the color using the `col` argument inside the `mosaic()` function. To specify shades of blue, we can use the `RColorBrewer` package and its `brewer.pal()` function to generate a color palette:
 
 ```{r}
 # Load necessary packages
@@ -448,7 +449,7 @@ vcd::mosaic(~ cyl + am,
        highlighting_fill = cols)
 ```
 
-In this code:
+9. In this code:
 
 -   `brewer.pal(4, "Blues")` creates a color palette of 4 different shades of blue.
 
@@ -456,7 +457,7 @@ In this code:
 
 -   `highlighting_fill = cols` applies the cols color palette to the shading.
 
-6.  We can also recreate the previous mosaic plot using `ggplot2` and `ggmosaic` packages. Here is how to do it:
+10.  We can also recreate the previous mosaic plot using `ggplot2` and `ggmosaic` packages. Here is how to do it:
 
 ```{r, warning=FALSE}
 # Load the packages
@@ -472,7 +473,7 @@ ggplot(data = tb) +
   scale_fill_brewer(palette = "Blues")
 ```
 
-In this code:
+11. In this code:
 
 -   `geom_mosaic(aes(x = product(cyl, am), fill = cyl))` creates the mosaic plot with `cyl` and `am` as the categorical variables.
 
@@ -484,7 +485,7 @@ In this code:
 
 -   `scale_fill_brewer(palette = "Blues")` specifies the color palette to be used for the fill color, in this case, a palette of blues.
 
-## Summary
+## Summary of Chapter 9 -- Categorical Data (2 of 3)
 
 In this chapter, we delve into an extensive exploration of various methods for visualizing bivariate categorical data using R, which include but are not limited to grouped bar plots, stacked bar plots, and mosaic plots.
 
