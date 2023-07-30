@@ -1,6 +1,6 @@
 # Continuous Data (1 of 3)
 
-*July 23, 2023*
+*July 30, 2023. -=- This chapter is being heavily edited; It is very much Work in Progress* 
 
 ## Univariate Continuous Data
 
