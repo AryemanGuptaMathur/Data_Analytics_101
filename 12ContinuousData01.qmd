@@ -208,39 +208,6 @@ describe(tb)
 1. In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. Let's take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.
 
 
-### Bee Swarm plot
-
-A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
-
-1.  A bee swarm plot is a plot that displays all of the individual data points along with a visual representation of their distribution.
-
-2.  It can be useful for displaying the distribution of small datasets.
-
-```{r}
-# Load the beeswarm package
-library(beeswarm)
-
-# Create a bee swarm plot of mpg column
-beeswarm(tb$mpg, 
-         main="Bee Swarm Plot of mpg", 
-         pch=16, 
-         cex=1.2, 
-         col="blue")
-```
-
-3.  In the above code, we load the `beeswarm` package using the `library()` function.
-
-4.  We then create a bee swarm plot of the `mpg` column using the `beeswarm()` function.
-
-5.  The `main` argument is used to specify the title of the plot.
-
-6.  The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
-
-7.  The `col` argument is used to set the color of the points.
-
-8.  The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
-
-
 
 ### Stem-and-Leaf Plots
 
@@ -383,6 +350,42 @@ boxplot(tb$mpg,
 5.  The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.
 
 6.  Any points outside of the whiskers are considered outliers and are plotted individually.
+
+
+
+
+### Bee Swarm plot
+
+A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
+
+1.  A bee swarm plot is a plot that displays all of the individual data points along with a visual representation of their distribution.
+
+2.  It can be useful for displaying the distribution of small datasets.
+
+```{r}
+# Load the beeswarm package
+library(beeswarm)
+
+# Create a bee swarm plot of mpg column
+beeswarm(tb$mpg, 
+         main="Bee Swarm Plot of mpg", 
+         pch=16, 
+         cex=1.2, 
+         col="blue")
+```
+
+3.  In the above code, we load the `beeswarm` package using the `library()` function.
+
+4.  We then create a bee swarm plot of the `mpg` column using the `beeswarm()` function.
+
+5.  The `main` argument is used to specify the title of the plot.
+
+6.  The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
+
+7.  The `col` argument is used to set the color of the points.
+
+8.  The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
+
 
 
 
