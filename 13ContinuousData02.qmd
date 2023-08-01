@@ -1,20 +1,14 @@
-# Continuous Data (2 of 3)
+# Continuous Data (2 of 4)
 
-*Aug 1, 2023. V2.2 -=- This chapter is being heavily edited; It is very much Work in Progress*
+*Aug 1, 2023. V3.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
 
+## Using ggplot2 for Visualizing Univariate Continuous Data
 
-## Continuous Data Across Categories: Group-wise Statistics and Data Manipulation
-
-Our second chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
-
-We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
-
-To achieve this, we exemplify the use of libraries such as `dplyr` and `ggplot2`.
-
-Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
+1. In R, we can create these plots using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections. 
 
 
-6. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+
+2. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -29,114 +23,20 @@ tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
 tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
-
-attach(tb)
 ```
 
 
+### Rug Plot using ggplot
 
-
-## Bivariate Continuous and Categorical data
-
-1.  Bivariate Relationship between Weight (wt) and Transmission (am)
-
-2.  Display a summary table showing the descriptive statistics of weight of the cars broken down by transmission (am=1 or am=0)
-
-### aggregate()
+Rug plots are a one-dimensional representation of data where a small vertical line (or a 'tick') is drawn for each data point along the x-axis. They are typically used alongside other plots to better show the distribution of data points (Hassell, 2001). In R, the geom_rug() function from the ggplot2 package creates rug plots.
 
 ```{r}
-aggregate(tb$wt, 
-          by = list("am" = tb$am), 
-          mean)
-aggregate(tb$wt, 
-          by = list("am" = tb$am), 
-          sd)
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
 ```
 
-### tapply()
 
-```{r}
-tapply(tb$wt, tb$am, mean)
-tapply(tb$wt, tb$am, sd)
-```
+## References
 
-## Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
-
-```{r}
-library(gplots)
-plotmeans(wt ~ am
-          ,data = mtcars
-          ,mean.labels = TRUE
-          ,digits=3
-          ,main = "Mean (wt) by am = {0,1} "
-          )
-```
-
-## Visualizing Median using Box Plot -- median weight of the cars broken down by transmission (am=1 & am=0)
-
-```{r}
-boxplot(wt~am
-        , xlab = "am"
-        , ylab = "Weight"
-        , horizontal = TRUE
-        )
-```
-
-## Bivariate Relationship between Weight (wt) and Cylinders (cyl)
-
-Display a summary table showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
-
-```{r}
-psych::describeBy(wt, cyl)
-```
-
-## Show a mean plot showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
-
-```{r}
-library(gplots)
-plotmeans(wt ~ cyl, 
-          data = mtcars
-          , mean.labels = TRUE
-          , digits=2
-          , main = "Mean (wt) by cyl = {4,6,8} ")
-```
-
-## Show a box plot showing the median weight of the cars broken down by cylinders (cyl=4,6,8)
-
-```{r}
-boxplot(wt ~ cyl, 
-        xlab = "cyl", ylab = "Weight"
-        )
-```
-
-## Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
-
-```{r}
-aggregate(wt, 
-          by = list("am" =am, "cyl" = cyl),
-          mean)
-```
-
-## Visualization - Show a box plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
-
-```{r}
-boxplot(wt ~ am:cyl
-        , xlab = "cyl"
-        , ylab = "Weight"
-        )
-```
-
-## Visualization - Show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
-
-```{r warning=FALSE, message=FALSE}
-library(gplots)
-plotmeans(wt ~ interaction(am, cyl, sep = ", ")
-          , data = mtcars
-          , mean.labels = TRUE
-          , digits=2
-          , connect = FALSE
-          , main = "Mean (wt) by cyl = {4,6,8} & am = {0,1}"
-          , xlab= "cyl = {4,6,8} & am = {0,1}"
-          , ylab="Average Weight"
-          )
-```
+[1]
+Hassell, N. (2001). Rug plots. Significance, 44(4), 181-182.

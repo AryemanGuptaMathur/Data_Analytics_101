@@ -1,4 +1,4 @@
-# Continuous Data (1 of 3)
+# Continuous Data (1 of 4)
 
 *Aug 1, 2023. V3.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
 
@@ -424,18 +424,7 @@ qqline(tb$wt)
 ```
 
 
-## Using ggplot2 for Visualizing Univariate Continuous Data
 
-In R, we can create these plots using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections. 
-
-### Rug Plot using ggplot
-
-Rug plots are a one-dimensional representation of data where a small vertical line (or a 'tick') is drawn for each data point along the x-axis. They are typically used alongside other plots to better show the distribution of data points (Hassell, 2001). In R, the geom_rug() function from the ggplot2 package creates rug plots.
-
-```{r}
-library(ggplot2)
-ggplot(tb, aes(x=wt)) + geom_rug()
-```
 
 
 
@@ -467,8 +456,6 @@ Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 60
 Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
 
 Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
-
-Hassell, N. (2001). Rug plots. Significance, 44(4), 181-182.
 
 Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
 
