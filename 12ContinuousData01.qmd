@@ -1,6 +1,6 @@
 # Continuous Data (1 of 4)
 
-*Aug 1, 2023. V3.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
+*Aug 1, 2023*
 
 ## Exploring Univariate Continuous Data: Summarization and Visualization in R
 
@@ -416,14 +416,39 @@ vioplot(tb$mpg,
 
 ### Quantile-Quantile (Q-Q) Plots
 
-Q-Q plots are valuable tools for comparing data distributions. In a Q-Q plot, the quantiles of the data are plotted against the quantiles of a standard statistical distribution, like the normal distribution (Thode Jr, 2002). It helps us assess if the data follows the chosen distribution. Q-Q plots can be created in R using the qqnorm() and qqline() functions.
+1. Quantile-Quantile plots, commonly referred to as Q-Q plots, are a visual tool we use to check if data follows a particular distribution, like a normal distribution.
+
+2. Suppose we order a data column from the smallest to the biggest value, and each data point gets a *score* based on its position. This is what we call a *quantile*. Now, imagine a perfectly normal distribution doing the same thing. In a Q-Q plot, we compare our data's scores to the scores from the ideal normal distribution.
+
+3. If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn't follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not.
+
+4. In R, we can use the `qqnorm()` function to create the plot and the `qqline()` function to add the reference line. If the points lie close to the reference line, it's a good indication that our data is normally distributed. (Thode Jr, 2002)
 
 ```{r}
-qqnorm(tb$wt)
-qqline(tb$wt)
+# Generate a Q-Q plot for 'mpg' column
+qqnorm(tb$mpg)
+# Add a reference line to the plot
+qqline(tb$mpg)
 ```
 
+5. This approach isn't limited to normal distributions. We can compare our data with other distributions too, which makes Q-Q plots a versatile tool for understanding our data's behavior.
 
+
+
+
+## Summary of Chapter 12 -- Continuous Data (1 of 4)
+
+This section of the book examines continuous univariate data, focusing on single variables in the 'mtcars' dataset using R's dplyr and ggplot packages. We employ R's inherent functions and the 'modeest' package to compute the mean, median, and mode, alongside variability measures like range, variance, and standard deviation.
+
+We use R's 'summary()' and the psych package's 'describe()' functions to create succinct and detailed overviews of our data, providing insights into its central tendency, spread, and distribution shape. These functions can also summarise an entire dataframe or tibble, setting the stage for future analysis.
+
+Visualisations are key to understanding data patterns and distributions. We use bee swarm plots, box plots, violin plots, histograms, and density plots. Bee swarm plots, using the `beeswarm()` function, show all data points and their distributions. Stem-and-leaf plots, created using the `stem()` function, provide a quick evaluation of the data's distribution.
+
+Histograms, constructed with the `hist()` function, and density plots, using the `density()` function, display data frequency and smoothed approximations respectively. Cumulative Distribution Function (CDF) plots, via the `ecdf()` function, show the proportion of data points equal to or less than specific values.
+
+Box plots, made with the `boxplot` function, highlight the distribution's center, spread, and outliers. Violin plots, via the `vioplot()` function, merge box plots and kernel density plots to display data density. Lastly, Q-Q plots, created using `qqnorm()` and `qqline()`, verify if data follows a normal distribution.
+
+In sum, this chapter presents key R functions and techniques for visualising continuous univariate data, providing valuable insights into data patterns and distributions.
 
 
 
