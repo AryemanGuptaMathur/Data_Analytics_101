@@ -58,8 +58,9 @@ website:
       - 10CategoricalData03.qmd
       - 11LiveCase02.qmd
       - 12ContinuousData01.qmd
-#      - 13ContinuousData02.qmd
-#      - 14ContinuousData03.qmd
+      - 13ContinuousData02.qmd
+      - 14ContinuousData03.qmd
+      - 15LiveCase03.qmd
 ### END yaml FOR BOOK'S WEBSITE ###
 
 format:

@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./13ContinuousData02.html">Continuous Data (2 of 3)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -185,13 +185,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures</span></a>
+ <span class="menu-text">Data Structures in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data</span></a>
+ <span class="menu-text">Reading Data in R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,18 +215,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08CategoricalData01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Categorical Data (1 of 2)</span></a>
+ <span class="menu-text">Categorical Data (1 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09CategoricalData02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Categorical Data (2 of 2)</span></a>
+ <span class="menu-text">Categorical Data (2 of 3)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">10CategoricalData02.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./10CategoricalData03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Categorical Data (3 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11LiveCase02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Live Case: S&amp;P500 (2 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12ContinuousData01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Data (1 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13ContinuousData02.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Continuous Data (2 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14ContinuousData03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Data (3 of 3)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15LiveCase03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Live Case: S&amp;P500 (3 of 3)</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -241,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#continuous-data-2-of-3" id="toc-continuous-data-2-of-3" class="nav-link active" data-scroll-target="#continuous-data-2-of-3">Continuous Data (2 of 3)</a>
   <ul class="collapse">
-  <li><a href="#overview-of-bivariate-continuous-data" id="toc-overview-of-bivariate-continuous-data" class="nav-link" data-scroll-target="#overview-of-bivariate-continuous-data">Overview of Bivariate Continuous Data</a></li>
+  <li><a href="#continuous-data-across-categories-group-wise-statistics-and-data-manipulation" id="toc-continuous-data-across-categories-group-wise-statistics-and-data-manipulation" class="nav-link" data-scroll-target="#continuous-data-across-categories-group-wise-statistics-and-data-manipulation">Continuous Data Across Categories: Group-wise Statistics and Data Manipulation</a></li>
   <li><a href="#bivariate-continuous-and-categorical-data" id="toc-bivariate-continuous-and-categorical-data" class="nav-link" data-scroll-target="#bivariate-continuous-and-categorical-data">Bivariate Continuous and Categorical data</a>
   <ul class="collapse">
   <li><a href="#aggregate" id="toc-aggregate" class="nav-link" data-scroll-target="#aggregate">aggregate()</a></li>
@@ -266,15 +299,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-2-of-3" class="level1">
 <h1>Continuous Data (2 of 3)</h1>
-<p><em>July 23, 2023</em></p>
-<section id="overview-of-bivariate-continuous-data" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-bivariate-continuous-data">Overview of Bivariate Continuous Data</h2>
-<ol type="1">
-<li>Reading Data and Attaching Data to Memory</li>
+<p><em>Aug 1, 2023. V2.2 -=- This chapter is being heavily edited; It is very much Work in Progress</em></p>
+<section id="continuous-data-across-categories-group-wise-statistics-and-data-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="continuous-data-across-categories-group-wise-statistics-and-data-manipulation">Continuous Data Across Categories: Group-wise Statistics and Data Manipulation</h2>
+<p>Our second chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p>
+<p>We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p>
+<p>To achieve this, we exemplify the use of libraries such as <code>dplyr</code> and <code>ggplot2</code>.</p>
+<p>Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.</p>
+<ol start="6" type="1">
+<li><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(dplyr))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the mtcars dataset into a tibble called tb</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert several numeric columns into factor variables</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>cyl)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>vs)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>am)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from tb (pos = 3):
+
+    am, carb, cyl, disp, drat, gear, hp, mpg, qsec, vs, wt</code></pre>
+</div>
 </div>
 </section>
 <section id="bivariate-continuous-and-categorical-data" class="level2">
@@ -286,17 +340,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="aggregate" class="level3">
 <h3 class="anchored" data-anchor-id="aggregate">aggregate()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(mtcars<span class="sc">$</span>wt, </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span> mtcars<span class="sc">$</span>am), </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span> tb<span class="sc">$</span>am), </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  am        x
 1  0 3.768895
 2  1 2.411000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(mtcars<span class="sc">$</span>wt, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span> mtcars<span class="sc">$</span>am), </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>          sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span> tb<span class="sc">$</span>am), </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>          sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  am         x
 1  0 0.7774001
@@ -307,12 +361,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="tapply" class="level3">
 <h3 class="anchored" data-anchor-id="tapply">tapply()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>am, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tb<span class="sc">$</span>wt, tb<span class="sc">$</span>am, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       0        1 
 3.768895 2.411000 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>am, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tb<span class="sc">$</span>wt, tb<span class="sc">$</span>am, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        0         1 
 0.7774001 0.6169816 </code></pre>
@@ -323,7 +377,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="visualizing-means-mean-plot-showing-the-average-weight-of-the-cars-broken-down-by-transmission-am1-am0" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-means-mean-plot-showing-the-average-weight-of-the-cars-broken-down-by-transmission-am1-am0">Visualizing Means – mean plot showing the average weight of the cars, broken down by transmission (am=1 &amp; am=0)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'gplots'</code></pre>
@@ -333,12 +387,12 @@ Attaching package: 'gplots'</code></pre>
 
     lowess</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> am</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">data =</span> mtcars</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">digits=</span><span class="dv">3</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">main =</span> <span class="st">"Mean (wt) by am = {0,1} "</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> am</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">data =</span> mtcars</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">digits=</span><span class="dv">3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>          ,<span class="at">main =</span> <span class="st">"Mean (wt) by am = {0,1} "</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -347,11 +401,11 @@ Attaching package: 'gplots'</code></pre>
 <section id="visualizing-median-using-box-plot-median-weight-of-the-cars-broken-down-by-transmission-am1-am0" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-median-using-box-plot-median-weight-of-the-cars-broken-down-by-transmission-am1-am0">Visualizing Median using Box Plot – median weight of the cars broken down by transmission (am=1 &amp; am=0)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt<span class="sc">~</span>am</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">xlab =</span> <span class="st">"am"</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        , <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        , <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt<span class="sc">~</span>am</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">xlab =</span> <span class="st">"am"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        , <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        , <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -361,7 +415,7 @@ Attaching package: 'gplots'</code></pre>
 <h2 class="anchored" data-anchor-id="bivariate-relationship-between-weight-wt-and-cylinders-cyl">Bivariate Relationship between Weight (wt) and Cylinders (cyl)</h2>
 <p>Display a summary table showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(wt, cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(wt, cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Descriptive statistics by group 
@@ -382,12 +436,12 @@ X1    1 14    4 0.76   3.76    3.95 0.41 3.17 5.42  2.25 0.99    -0.71 0.2</code
 <section id="show-a-mean-plot-showing-the-mean-weight-of-the-cars-broken-down-by-cylinders-cyl468" class="level2">
 <h2 class="anchored" data-anchor-id="show-a-mean-plot-showing-the-mean-weight-of-the-cars-broken-down-by-cylinders-cyl468">Show a mean plot showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> cyl, </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> mtcars</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (wt) by cyl = {4,6,8} "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> cyl, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> mtcars</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (wt) by cyl = {4,6,8} "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -396,9 +450,9 @@ X1    1 14    4 0.76   3.76    3.95 0.41 3.17 5.42  2.25 0.99    -0.71 0.2</code
 <section id="show-a-box-plot-showing-the-median-weight-of-the-cars-broken-down-by-cylinders-cyl468" class="level2">
 <h2 class="anchored" data-anchor-id="show-a-box-plot-showing-the-median-weight-of-the-cars-broken-down-by-cylinders-cyl468">Show a box plot showing the median weight of the cars broken down by cylinders (cyl=4,6,8)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt <span class="sc">~</span> cyl, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"cyl"</span>, <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt <span class="sc">~</span> cyl, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"cyl"</span>, <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -407,9 +461,9 @@ X1    1 14    4 0.76   3.76    3.95 0.41 3.17 5.42  2.25 0.99    -0.71 0.2</code
 <section id="distribution-of-weight-wt-by-cylinders-cyl-468-and-transmisson-type-am-01" class="level2">
 <h2 class="anchored" data-anchor-id="distribution-of-weight-wt-by-cylinders-cyl-468-and-transmisson-type-am-01">Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(wt, </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span>am, <span class="st">"cyl"</span> <span class="ot">=</span> cyl),</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(wt, </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span>am, <span class="st">"cyl"</span> <span class="ot">=</span> cyl),</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  am cyl        x
 1  0   4 2.935000
@@ -424,10 +478,10 @@ X1    1 14    4 0.76   3.76    3.95 0.41 3.17 5.42  2.25 0.99    -0.71 0.2</code
 <section id="visualization---show-a-box-plot-showing-the-mean-weight-of-the-cars-broken-down-by-transmission-type-am1-am0-cylinders-cyl468" class="level2">
 <h2 class="anchored" data-anchor-id="visualization---show-a-box-plot-showing-the-mean-weight-of-the-cars-broken-down-by-transmission-type-am1-am0-cylinders-cyl468">Visualization - Show a box plot showing the mean weight of the cars broken down by Transmission Type (am=1 &amp; am=0) &amp; cylinders (cyl=4,6,8)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt <span class="sc">~</span> am<span class="sc">:</span>cyl</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">xlab =</span> <span class="st">"cyl"</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        , <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(wt <span class="sc">~</span> am<span class="sc">:</span>cyl</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">xlab =</span> <span class="st">"cyl"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        , <span class="at">ylab =</span> <span class="st">"Weight"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -436,16 +490,16 @@ X1    1 14    4 0.76   3.76    3.95 0.41 3.17 5.42  2.25 0.99    -0.71 0.2</code
 <section id="visualization---show-a-mean-plot-showing-the-mean-weight-of-the-cars-broken-down-by-transmission-type-am1-am0-cylinders-cyl468" class="level2">
 <h2 class="anchored" data-anchor-id="visualization---show-a-mean-plot-showing-the-mean-weight-of-the-cars-broken-down-by-transmission-type-am1-am0-cylinders-cyl468">Visualization - Show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 &amp; am=0) &amp; cylinders (cyl=4,6,8)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (wt) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average Weight"</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(wt <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (wt) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average Weight"</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
 </div>

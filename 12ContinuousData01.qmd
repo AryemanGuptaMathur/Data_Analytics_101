@@ -1,43 +1,76 @@
 # Continuous Data (1 of 3)
 
-*July 30, 2023. -=- This chapter is being heavily edited; It is very much Work in Progress* 
+*Aug 1, 2023. V2.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
 
-## Univariate Continuous Data
+## Exploring Univariate Continuous Data: Summarization and Visualization in R
 
-1.  Reading Data and Attaching Data to Memory
+1. In our exploration of data analysis, we frequently deal with a specific type of data, referred to as `univariate continuous data`. This term implies that our data comes from one feature or variable, which could take on an infinite number of possible values within a designated interval (Moore, McCabe, & Craig, 2012).
 
-```{r echo=TRUE, eval=TRUE}
+2. The term "univariate" highlights our concentration on one distinct variable. Our objective is to uncover patterns and insights related to this individual variable, excluding the potential impact of other variables present in our dataset.
+
+3. Meanwhile, "continuous" in `univariate continuous data` communicates that our variable of interest can take on an endless variety of values within its possible range. For instance, in the `mtcars` dataset in R, variables like 'mpg' (miles per gallon), 'wt' (weight), and 'hp' (horsepower) epitomize continuous data. They are not limited to specific, separate numbers and can encompass any value, including decimal points, within their respective ranges (Triola, 2017).
+
+4. As an illustration, we will work with `mpg`, `wt`, or `hp` columns from the `mtcars` dataset, to demonstrate how to summarize and visulaize `univariate continuous data`. These variables each represent a single attribute and can express a wide spectrum of values within their specific range.
+
+5. We will leverage the capabilities of R programming and the `dplyr` package to compute descriptive statistics that will succinctly represent our data. Further on, the spotlight will be on visualization. With the help of the robust `ggplot` package, we will learn to create histograms, density plots, and box plots. These plots will not only represent our univariate continuous data but also facilitate our understanding of data distribution, outliers, and central tendency.
+
+6. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+
+```{r, warning=FALSE}
+# Load the required libraries, suppressing annoying startup messages
+library(tibble) 
+suppressPackageStartupMessages(library(dplyr))
+# Read the mtcars dataset into a tibble called tb
 data(mtcars)
-attach(mtcars)
+tb <- as_tibble(mtcars)
+attach(tb)
+# Convert several numeric columns into factor variables
+tb$cyl <- as.factor(tb$cyl)
+tb$vs <- as.factor(tb$vs)
+tb$am <- as.factor(tb$am)
+tb$gear <- as.factor(tb$gear)
 ```
+
+The data is in a tibble called `tb`.
 
 ## Measures of Central Tendency
 
-2.  In R, we can summarize continuous data using descriptive statistics such as measures of central tendency (mean, median, and mode).
+1. In our journey of understanding data, we often turn to certain statistical tools, among which, the measures of central tendency play a pivotal role. These measures provide a way to summarize our data with a single value that represents the "center" or the "average" of our data distribution (Gravetter & Wallnau, 2016). 
 
-3.  Measure the mean and median of the `wt` of all the cars in the dataframe `mtcars`
+2. Primarily, there are three measures of central tendency that we often rely on: the mean, median, and mode.
+
+* The `mean`, often referred to as the average, is calculated by summing all values in the dataset and dividing by the count of values. In R, we can use the `mean()` function to compute this.
+
+* The `median` is the middle value in a dataset when the values are sorted in ascending or descending order. If the dataset has an even number of observations, the median is the average of the two middle numbers. In R, the `median()` function helps us find this value.
+
+* The `mode`, on the other hand, represents the most frequently occurring value in a dataset. Unlike mean and median, R does not have a built-in function to calculate mode, but it can be computed using various methods, one of which includes using the `table()` and `which.max()` functions together.
+
+3. Each of these measures has its own strengths and limitations, and the choice of which measure to use largely depends on the nature of our data and the specific requirements of our analysis (Downey, 2014). [2]
+
+4.  In our analysis, we take measures to determine the mean and median of the wt (weight) for all vehicles in our mtcars dataset, which is now in the dplyr tibble named tb. To ascertain  the mean and median of wt, we utilize the following code:
 
 ```{r}
-# Mean of wt in the mtcars dataframe
-mean(mtcars$wt)
+# Calculate mean of wt
+mean(tb$wt)
+```
+```{r}
+# Median of wt
+median(tb$wt)
 ```
 
-```{r}
-# Median of wt in the mtcars dataframe
-median(mtcars$wt)
-```
-
-4.  In the above code, we calculate the mean and median of the mpg column using the `mean()` and `median()` functions, respectively.
-
-5.  To calculate the mode of the mpg column, we first load the `modeest` package using the `library()` function, and then use the `mfv()` function to compute the mode.
+5. For finding the mode of the mpg (miles per gallon) column, we initially activate the `modeest` package with the `library()` function, and then apply the `mfv()` function. 
 
 ```{r}
-# Mode of wt in the mtcars dataframe
+# Calculate mode of mpg
 library(modeest)
-mfv(mtcars$mpg) # Mode
+mfv(tb$mpg) # Mode
 ```
+It's critical to keep in mind that our mtcars dataset comprises continuous data, making the concept of mode less straightforward. The mfv() function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset (Bogaert, 2021) [2]. 
 
-6.  Note that the mtcars dataset contains continuous data, and so it does not have a well-defined mode in the traditional sense. The `mfv()` function computes the mode using a kernel density estimator, which may not always correspond to a single value in the dataset.
+
+
+
+
 
 ## Measures of Variability
 
@@ -47,22 +80,22 @@ mfv(mtcars$mpg) # Mode
 
 ```{r}
 # Standard Deviation of wt in the mtcars dataframe
-sd(mtcars$wt)
+sd(tb$wt)
 ```
 
 ```{r}
 # Variance of wt in the mtcars dataframe
-var(mtcars$wt)
+var(tb$wt)
 ```
 
 ```{r}
 # Range of wt in the mtcars dataframe
-range(mtcars$wt)
+range(tb$wt)
 ```
 
 ```{r}
 # Inter-Quartile Range of wt in the mtcars dataframe
-IQR(mtcars$wt)
+IQR(tb$wt)
 ```
 
 3.  Note that the range() function returns the minimum and maximum values in the dataset, while the IQR() function returns the difference between the 75th and 25th percentiles.
@@ -71,13 +104,18 @@ IQR(mtcars$wt)
 
 ```{r }
 # Minimum wt in the mtcars dataframe
-min(mtcars$mpg)
+min(tb$mpg)
 ```
 
 ```{r}
 # Maximum wt in the mtcars dataframe
-max(mtcars$mpg)
+max(tb$mpg)
 ```
+
+
+
+
+
 
 ## Summarizing a data column
 
@@ -86,7 +124,7 @@ max(mtcars$mpg)
 1.  Display a summary of `mpg` in the dataframe mtcars using `summary()`
 
 ```{r}
-summary(mtcars$mpg)
+summary(tb$mpg)
 ```
 
 ### `describe()`
@@ -95,7 +133,7 @@ summary(mtcars$mpg)
 
 ```{r}
 library(psych)
-describe(mtcars$mpg)
+describe(tb$mpg)
 ```
 
 ## Visualizing Univariate Continuous Data
@@ -107,7 +145,7 @@ describe(mtcars$mpg)
 2.  Display the Boxplot of the `wt` of the cars in the `mtcars` dataset
 
 ```{r}
-boxplot(mtcars$wt, 
+boxplot(tb$wt, 
         xlab = "Boxplot",
         ylab = "Weight",
         main = "Boxplot of Weight (wt)"
@@ -133,7 +171,7 @@ boxplot(mtcars$wt,
 library(vioplot)
 
 # Create a violin plot of mpg column
-vioplot(mtcars$mpg, 
+vioplot(tb$mpg, 
         main="Violin Plot of MPG", 
         ylab="Miles per gallon")
 ```
@@ -152,7 +190,7 @@ vioplot(mtcars$mpg,
 
 ```{r}
 # Create a histogram of mpg column
-hist(mtcars$mpg, 
+hist(tb$mpg, 
      main="Histogram of MPG", 
      xlab="Miles per gallon", 
      col="lightblue", 
@@ -171,7 +209,7 @@ hist(mtcars$mpg,
 
 ```{r}
 # Create a density plot of mpg column
-plot(density(mtcars$mpg), 
+plot(density(tb$mpg), 
      main="Density Plot of MPG", 
      xlab="Miles per gallon", 
      col="blue")
@@ -198,7 +236,7 @@ plot(density(mtcars$mpg),
 library(beeswarm)
 
 # Create a bee swarm plot of mpg column
-beeswarm(mtcars$mpg, 
+beeswarm(tb$mpg, 
          main="Bee Swarm Plot of MPG", 
          pch=16, 
          cex=1.2, 
@@ -216,3 +254,22 @@ beeswarm(mtcars$mpg,
 7.  The `col` argument is used to set the color of the points.
 
 8.  The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
+
+
+
+
+## References
+
+[1]
+Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). Introduction to the Practice of Statistics. Freeman.
+
+Triola, M. (2017). Elementary Statistics. Pearson.
+
+[2]
+
+Gravetter, F. J., & Wallnau, L. B. (2016). Statistics for the Behavioral Sciences. Cengage Learning.
+
+Downey, A. B. (2014). Think Stats: Exploratory Data Analysis. O'Reilly Media.
+
+Bogaert, P. (2021). "A Comparison of Kernel Density Estimators." Computational Statistics & Data Analysis, 77, 402-413.
+

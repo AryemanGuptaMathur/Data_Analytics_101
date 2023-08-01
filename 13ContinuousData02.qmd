@@ -1,15 +1,40 @@
 # Continuous Data (2 of 3)
 
-*July 23, 2023*
+*Aug 1, 2023. V2.2 -=- This chapter is being heavily edited; It is very much Work in Progress*
 
-## Overview of Bivariate Continuous Data
 
-1.  Reading Data and Attaching Data to Memory
+## Continuous Data Across Categories: Group-wise Statistics and Data Manipulation
 
-```{r echo=TRUE, eval=TRUE}
+Our second chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
+
+We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
+
+To achieve this, we exemplify the use of libraries such as `dplyr` and `ggplot2`.
+
+Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
+
+
+6. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+
+```{r, warning=FALSE}
+# Load the required libraries, suppressing annoying startup messages
+library(tibble) 
+suppressPackageStartupMessages(library(dplyr))
+# Read the mtcars dataset into a tibble called tb
 data(mtcars)
-attach(mtcars)
+tb <- as_tibble(mtcars)
+attach(tb)
+# Convert several numeric columns into factor variables
+tb$cyl <- as.factor(tb$cyl)
+tb$vs <- as.factor(tb$vs)
+tb$am <- as.factor(tb$am)
+tb$gear <- as.factor(tb$gear)
+
+attach(tb)
 ```
+
+
+
 
 ## Bivariate Continuous and Categorical data
 
@@ -20,19 +45,19 @@ attach(mtcars)
 ### aggregate()
 
 ```{r}
-aggregate(mtcars$wt, 
-          by = list("am" = mtcars$am), 
+aggregate(tb$wt, 
+          by = list("am" = tb$am), 
           mean)
-aggregate(mtcars$wt, 
-          by = list("am" = mtcars$am), 
+aggregate(tb$wt, 
+          by = list("am" = tb$am), 
           sd)
 ```
 
 ### tapply()
 
 ```{r}
-tapply(mtcars$wt, mtcars$am, mean)
-tapply(mtcars$wt, mtcars$am, sd)
+tapply(tb$wt, tb$am, mean)
+tapply(tb$wt, tb$am, sd)
 ```
 
 ## Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
