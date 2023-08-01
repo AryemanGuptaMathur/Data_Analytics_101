@@ -4,7 +4,7 @@
 
 ## Using ggplot2 for Visualizing Univariate Continuous Data
 
-1. In R, we can create these plots using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections. 
+1. In R, we can create these plots for Visualizing Univariate Continuous Data using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections. 
 
 
 
@@ -23,6 +23,72 @@ tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
 tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
+```
+
+
+### Bee Swarm plot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Stem-and-Leaf plot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Histogram using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Probability Density Function (PDF) plot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Cumulative Distribution Function (CDF) Plot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Boxplot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, 
+       aes(y = mpg)) + 
+  geom_boxplot()
+```
+
+
+### Violin plot using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
+```
+
+
+### Quantile-Quantile (Q-Q) Plots using ggplot
+
+```{r}
+library(ggplot2)
+ggplot(tb, aes(x=wt)) + geom_rug()
 ```
 
 
