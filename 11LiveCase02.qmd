@@ -190,3 +190,58 @@ table(sp500$Rating)
 Thus, we can see how many stocks have ratings ranging from "Strong Sell" to "Strong Buy". This completes our review of Technical Rating.
 
 
+
+### Filter the data by sector Technology Services, and display the number of stocks in the sector 
+
+```{r warning=FALSE, eval=TRUE, echo=TRUE}
+ts <- sp500 %>%
+		filter(Sector=='Technology Services')
+
+nrow(ts)
+```
+
+There are 50 number of of stocks in the sector Technology Services
+
+
+### Select the Specific Coulumns from the filtered dataframe `ts` (Technology Services)
+
+```{r warning=FALSE, eval=TRUE, echo=TRUE}
+ts2 <- ts %>%
+		select(Date, Stock, StockName,Sector,  Industry, MarketCap, Price,Low52Wk, High52Wk,
+		       ROE, ROA,ROIC,GrossMargin, GrossMargin, 
+		       NetMargin, Rating)
+
+colnames(ts2)
+```
+
+### Arrange the Dataframe by ROE
+
+```{r warning=FALSE, eval=TRUE, echo=TRUE}
+ts3 <- ts2 %>% arrange(desc(ROE))
+```
+
+### Top 10 Shares in Sector Technology Services Based on ROE
+
+```{r warning=FALSE, eval=TRUE, echo=TRUE}
+head(ts3,10)
+```
+
+### Mutate a data column called (Low52WkPerc), then show top 10 ROE stocks
+
+```{r  warning=FALSE, eval=TRUE, echo=TRUE}
+ts4 <- ts3 %>% mutate(Low52WkPerc = round((Price - Low52Wk)*100 / Low52Wk,2))
+head(ts4[,c(1:3,10,16)],10)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+

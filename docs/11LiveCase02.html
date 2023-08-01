@@ -262,6 +262,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#review-the-data-again-after-renaming-columns" id="toc-review-the-data-again-after-renaming-columns" class="nav-link" data-scroll-target="#review-the-data-again-after-renaming-columns">Review the data again after renaming columns</a></li>
   <li><a href="#understand-the-data-columns" id="toc-understand-the-data-columns" class="nav-link" data-scroll-target="#understand-the-data-columns">Understand the Data Columns</a></li>
   <li><a href="#remove-rows-containing-no-data-or-null-values" id="toc-remove-rows-containing-no-data-or-null-values" class="nav-link" data-scroll-target="#remove-rows-containing-no-data-or-null-values">Remove Rows containing no data or Null values</a></li>
+  <li><a href="#filter-the-data-by-sector-technology-services-and-display-the-number-of-stocks-in-the-sector" id="toc-filter-the-data-by-sector-technology-services-and-display-the-number-of-stocks-in-the-sector" class="nav-link" data-scroll-target="#filter-the-data-by-sector-technology-services-and-display-the-number-of-stocks-in-the-sector">Filter the data by sector Technology Services, and display the number of stocks in the sector</a></li>
+  <li><a href="#select-the-specific-coulumns-from-the-filtered-dataframe-ts-technology-services" id="toc-select-the-specific-coulumns-from-the-filtered-dataframe-ts-technology-services" class="nav-link" data-scroll-target="#select-the-specific-coulumns-from-the-filtered-dataframe-ts-technology-services">Select the Specific Coulumns from the filtered dataframe <code>ts</code> (Technology Services)</a></li>
+  <li><a href="#arrange-the-dataframe-by-roe" id="toc-arrange-the-dataframe-by-roe" class="nav-link" data-scroll-target="#arrange-the-dataframe-by-roe">Arrange the Dataframe by ROE</a></li>
+  <li><a href="#top-10-shares-in-sector-technology-services-based-on-roe" id="toc-top-10-shares-in-sector-technology-services-based-on-roe" class="nav-link" data-scroll-target="#top-10-shares-in-sector-technology-services-based-on-roe">Top 10 Shares in Sector Technology Services Based on ROE</a></li>
+  <li><a href="#mutate-a-data-column-called-low52wkperc" id="toc-mutate-a-data-column-called-low52wkperc" class="nav-link" data-scroll-target="#mutate-a-data-column-called-low52wkperc">Mutate a data column called (Low52WkPerc)</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -441,6 +446,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Thus, we can see how many stocks have ratings ranging from “Strong Sell” to “Strong Buy”. This completes our review of Technical Rating.</p>
+</section>
+<section id="filter-the-data-by-sector-technology-services-and-display-the-number-of-stocks-in-the-sector" class="level3">
+<h3 class="anchored" data-anchor-id="filter-the-data-by-sector-technology-services-and-display-the-number-of-stocks-in-the-sector">Filter the data by sector Technology Services, and display the number of stocks in the sector</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ts <span class="ot">&lt;-</span> sp500 <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(Sector<span class="sc">==</span><span class="st">'Technology Services'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50</code></pre>
+</div>
+</div>
+<p>There are 50 number of of stocks in the sector Technology Services</p>
+</section>
+<section id="select-the-specific-coulumns-from-the-filtered-dataframe-ts-technology-services" class="level3">
+<h3 class="anchored" data-anchor-id="select-the-specific-coulumns-from-the-filtered-dataframe-ts-technology-services">Select the Specific Coulumns from the filtered dataframe <code>ts</code> (Technology Services)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ts2 <span class="ot">&lt;-</span> ts <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(Date, Stock, StockName,Sector,  Industry, MarketCap, Price,Low52Wk, High52Wk,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               ROE, ROA,ROIC,GrossMargin, GrossMargin, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>               NetMargin, Rating)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ts2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Date"        "Stock"       "StockName"   "Sector"      "Industry"   
+ [6] "MarketCap"   "Price"       "Low52Wk"     "High52Wk"    "ROE"        
+[11] "ROA"         "ROIC"        "GrossMargin" "NetMargin"   "Rating"     </code></pre>
+</div>
+</div>
+</section>
+<section id="arrange-the-dataframe-by-roe" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-the-dataframe-by-roe">Arrange the Dataframe by ROE</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ts3 <span class="ot">&lt;-</span> ts2 <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(ROE))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="top-10-shares-in-sector-technology-services-based-on-roe" class="level3">
+<h3 class="anchored" data-anchor-id="top-10-shares-in-sector-technology-services-based-on-roe">Top 10 Shares in Sector Technology Services Based on ROE</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ts3,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 15
+   Date   Stock StockName Sector Industry MarketCap Price Low52Wk High52Wk   ROE
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1 7/31/… FTNT  Fortinet… Techn… Informa…   6.03e10  76.8    42.6     81.2 844  
+ 2 7/31/… IT    Gartner,… Techn… Interne…   2.77e10 351.    261.     378   315  
+ 3 7/31/… GEN   Gen Digi… Techn… Package…   1.25e10  19.5    15.4     26.8 128  
+ 4 7/31/… ADSK  Autodesk… Techn… Package…   4.48e10 210.    180.     235   106  
+ 5 7/31/… ADP   Automati… Techn… Data Pr…   1.04e11 251.    201.     275   101  
+ 6 7/31/… CDW   CDW Corp… Techn… Informa…   2.51e10 186.    148.     215    88.9
+ 7 7/31/… VRSK  Verisk A… Techn… Data Pr…   3.36e10 232.    163.     239    58.5
+ 8 7/31/… PAYX  Paychex,… Techn… Data Pr…   4.56e10 127.    104.     139    47.3
+ 9 7/31/… MSFT  Microsof… Techn… Package…   2.52e12 338.    213.     367    38.8
+10 7/31/… FDS   FactSet … Techn… Data Pr…   1.67e10 437.    378.     474    34.6
+# ℹ 5 more variables: ROA &lt;dbl&gt;, ROIC &lt;dbl&gt;, GrossMargin &lt;dbl&gt;,
+#   NetMargin &lt;dbl&gt;, Rating &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="mutate-a-data-column-called-low52wkperc" class="level3">
+<h3 class="anchored" data-anchor-id="mutate-a-data-column-called-low52wkperc">Mutate a data column called (Low52WkPerc)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>ts4 <span class="ot">&lt;-</span> ts3 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Low52WkPerc =</span> <span class="fu">round</span>((Price <span class="sc">-</span> Low52Wk)<span class="sc">*</span><span class="dv">100</span> <span class="sc">/</span> Low52Wk,<span class="dv">2</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ts4 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 16
+   Date   Stock StockName Sector Industry MarketCap Price Low52Wk High52Wk   ROE
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;
+ 1 7/31/… FTNT  Fortinet… Techn… Informa…   6.03e10  76.8    42.6     81.2 844  
+ 2 7/31/… IT    Gartner,… Techn… Interne…   2.77e10 351.    261.     378   315  
+ 3 7/31/… GEN   Gen Digi… Techn… Package…   1.25e10  19.5    15.4     26.8 128  
+ 4 7/31/… ADSK  Autodesk… Techn… Package…   4.48e10 210.    180.     235   106  
+ 5 7/31/… ADP   Automati… Techn… Data Pr…   1.04e11 251.    201.     275   101  
+ 6 7/31/… CDW   CDW Corp… Techn… Informa…   2.51e10 186.    148.     215    88.9
+ 7 7/31/… VRSK  Verisk A… Techn… Data Pr…   3.36e10 232.    163.     239    58.5
+ 8 7/31/… PAYX  Paychex,… Techn… Data Pr…   4.56e10 127.    104.     139    47.3
+ 9 7/31/… MSFT  Microsof… Techn… Package…   2.52e12 338.    213.     367    38.8
+10 7/31/… FDS   FactSet … Techn… Data Pr…   1.67e10 437.    378.     474    34.6
+# ℹ 40 more rows
+# ℹ 6 more variables: ROA &lt;dbl&gt;, ROIC &lt;dbl&gt;, GrossMargin &lt;dbl&gt;,
+#   NetMargin &lt;dbl&gt;, Rating &lt;fct&gt;, Low52WkPerc &lt;dbl&gt;</code></pre>
+</div>
+</div>
 
 
 </section>

@@ -361,15 +361,12 @@ We believe this dataset of S&P500 shares is now ready for futher analysis. We en
 str(sp500)
 ```
 
-
 ## Summary of Chapter 6 -- Exploring S&P500 Data
 
 Chapter 6, titled "Live Case: S&P500 (1 of 3)," embarks on an exploration of the S&P500, a significant stock market index encompassing 500 major publicly traded companies in the U.S. The chapter introduces the index's role as a benchmark for assessing the overall health and performance of the U.S. stock market, maintained by S&P Dow Jones Indices.
 
 Part 1 of the chapter delves into a real-world dataset containing information about S&P500 stocks. The data is loaded into a tibble using the R package `gsheet`, and its structure is examined using the `str()` function. To facilitate data management, column names are renamed using the `rename_with()` function from `dplyr`, and a detailed breakdown of column information is presented across eight tables.
 
-Part 2 addresses data quality, ensuring a cleaner dataset by removing rows with null or blank values in the "Stock" column. Additionally, the "Sector" and "Rating" columns are transformed into factor variables, reflecting the distinct sectors and technical ratings each stock holds. The distribution of sectors and ratings is analyzed using various functions. After data preparation, the dataset is considered ready for further analysis. 
+Part 2 addresses data quality, ensuring a cleaner dataset by removing rows with null or blank values in the "Stock" column. Additionally, the "Sector" and "Rating" columns are transformed into factor variables, reflecting the distinct sectors and technical ratings each stock holds. The distribution of sectors and ratings is analyzed using various functions. After data preparation, the dataset is considered ready for further analysis.
 
 Chapter 6 skillfully guides readers through the intricacies of exploring S&P500 data, employing practical examples and R code to foster a deeper understanding of the dataset's structure and content. Further exploration is encouraged with a wealth of references for continued learning and analysis.
-
-
