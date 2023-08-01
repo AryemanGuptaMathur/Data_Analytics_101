@@ -1,6 +1,6 @@
 # Continuous Data (1 of 3)
 
-*Aug 1, 2023. V2.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
+*Aug 1, 2023. V3.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
 
 ## Exploring Univariate Continuous Data: Summarization and Visualization in R
 
@@ -32,6 +32,9 @@ tb$gear <- as.factor(tb$gear)
 ```
 
 The data is in a tibble called `tb`.
+
+
+
 
 ## Measures of Central Tendency
 
@@ -65,42 +68,24 @@ median(tb$wt)
 library(modeest)
 mfv(tb$mpg) # Mode
 ```
-It's critical to keep in mind that our mtcars dataset comprises continuous data, making the concept of mode less straightforward. The mfv() function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset (Bogaert, 2021) [2]. 
-
-
-
-
+6. It's critical to keep in mind that our mtcars dataset comprises continuous data, making the concept of mode less straightforward. The mfv() function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset (Bogaert, 2021) [2]. 
 
 
 ## Measures of Variability
 
-1.  In R, we can calculate measures of variability (range, interquartile range, variance, and standard deviation).
+1. In our exploration of continuous data, we also consider measures of variability. These statistical measures provide insight into the spread or dispersion of our data points (Gravetter & Wallnau, 2016).
+To further illustrate the concepts we've discussed, we'll apply these measures of variability to the 'wt' column from the mtcars dataset.
 
-2.  To calculate these statistics, we can use built-in functions in R such as `range()`, `IQR()`, `var()`, and `sd()`.
+2. Range: The first measure we'll discuss is the `range`. This is the difference between the highest and the lowest value in our data set. However, while `range` is easy to calculate and understand, it is sensitive to outliers, so we must interpret it carefully.
 
-```{r}
-# Standard Deviation of wt in the mtcars dataframe
-sd(tb$wt)
-```
-
-```{r}
-# Variance of wt in the mtcars dataframe
-var(tb$wt)
-```
+3. The range() function in R provides the minimum and maximum 'wt', effectively giving us the range of 'wt' values in the mtcars dataset.
 
 ```{r}
 # Range of wt in the mtcars dataframe
 range(tb$wt)
 ```
 
-```{r}
-# Inter-Quartile Range of wt in the mtcars dataframe
-IQR(tb$wt)
-```
-
-3.  Note that the range() function returns the minimum and maximum values in the dataset, while the IQR() function returns the difference between the 75th and 25th percentiles.
-
-## Other functions
+4. Min and Max: We can off course measure the minimum and maximum values, using the following simple code.
 
 ```{r }
 # Minimum wt in the mtcars dataframe
@@ -112,33 +97,83 @@ min(tb$mpg)
 max(tb$mpg)
 ```
 
-
-
-
-
-
-## Summarizing a data column
-
-### `summary()`
-
-1.  Display a summary of `mpg` in the dataframe mtcars using `summary()`
+5. Variance:  It is calculated as the average of the squared deviations from the mean. Larger variances suggest that the data points are more spread out around the mean. One limitation of the variance is that its units are the square of the original data's units, which can make interpretation difficult. We use the var() function to compute the variance.
 
 ```{r}
+# Variance of 'wt' in the mtcars dataframe
+var(tb$wt)
+```
+
+6. Standard Deviation: This leads us to the `standard deviation` (computed as `sd` in `R`), which is simply the square root of the variance. Because it is in the same units as the original data, it is often easier to interpret than the variance. A larger standard deviation indicates a greater spread of data around the mean.
+
+```{r}
+# Standard Deviation of 'wt' in the mtcars dataframe
+sd(tb$wt)
+```
+
+7. `Interquartile Range` (IQR): It is another measure of dispersion, especially useful when we have skewed data or outliers. It represents the range within which the central 50% of our data falls. It can be calculated in `R` using the `IQR()` function. This measure is less sensitive to extreme values than the range, variance, or standard deviation. To find the interquartile range (IQR), which provides the spread of the middle 50% of our 'wt' values, we use the IQR() function.
+
+```{r}
+# Inter-Quartile Range of wt in the mtcars dataframe
+IQR(tb$wt)
+```
+
+8. `Skewness` and `Kurtosis`:  
+
+* `Skewness` is a measure of the asymmetry of our data. Positive skewness indicates a distribution with a long right tail, while negative skewness indicates a distribution with a long left tail. 
+
+* `Kurtosis`, on the other hand, measures the "tailedness" of the distribution. A distribution with high kurtosis exhibits a distinct peak and heavy tails, while low kurtosis corresponds to a flatter shape. 
+
+These two measures can be computed in `R` using the `skewness()` and `kurtosis()` functions from the `moments` package.
+
+```{r}
+# Load moments package
+library(moments)
+
+# Skewness of 'wt' in the mtcars dataframe
+skewness(tb$wt)
+
+# Kurtosis of 'wt' in the mtcars dataframe
+kurtosis(tb$wt)
+```
+
+9. To summarize, these measures of variability help us quantify the dispersion and shape of our data, offering a more complete picture when combined with measures of central tendency. [2]
+
+## Summarizing data columns
+
+1. Our primary objective in summarizing data is to gain an initial overview or snapshot of the data set we're dealing with. This fundamental analysis provides us a sense of the data's central tendency, spread, and distribution shape, which in turn guides our decision-making process for subsequent stages of data analysis. 
+
+2. In this context, the R functions `summary()` and `describe()` are extremely beneficial, even though the information they provide varies.
+
+3. In R, the `summary()` function offers a succinct summary of the selected data object. When applied to a numeric vector such as mpg from the mtcars dataset, it yields the minimum and maximum values, the first quartile (25th percentile), the median (50th percentile), the third quartile (75th percentile), and the mean (Gravetter & Wallnau, 2016). Here is the code:
+
+```{r}
+# A summary of 'mpg' in the mtcars dataframe using summary()
 summary(tb$mpg)
 ```
 
-### `describe()`
-
-2.  Display a summary of the `mpg` in the dataframe mtcars using `describe()`
+4. The `describe()`  function, part of the psych package, goes a step further by providing a more comprehensive summary of the data. It includes additional statistics like the number of valid (non-missing) observations, the standard deviation, and metrics of skewness and kurtosis. By delivering a wider range of statistics, describe() offers us a more detailed understanding of our data distribution (Field, Miles, & Field, 2012). Here's how to use the describe() function:
 
 ```{r}
+# Loading the psych package
 library(psych)
+
+# A summary of 'mpg' in the mtcars dataframe using describe()
 describe(tb$mpg)
 ```
 
+
+
+
 ## Visualizing Univariate Continuous Data
 
-## Boxplot
+In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. Let's take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.
+
+
+### Boxplot
+
+Box plots, or box-and-whisker plots, are standard tools for visualizing a distribution's center and spread, along with any potential outliers (McGill, Tukey, & Larsen, 1978). The box represents the interquartile range (IQR), containing the middle 50% of the data. The line inside the box indicates the median, and the "whiskers" extend to the smallest and largest observations within 1.5 times the IQR.
+
 
 1.  A boxplot is a graphical representation of the distribution of continuous data.
 
@@ -160,72 +195,16 @@ boxplot(tb$wt,
 
 6.  Any points outside of the whiskers are considered outliers and are plotted individually.
 
-## Violin plot
 
-1.  A violin plot is similar to a boxplot, but instead of just showing the quartiles, it displays the full distribution of the data using a kernel density estimate.
 
-2.  We can create a violin plot in R using the violinplot() function from the vioplot package.
 
-```{r}
-# Load the vioplot package
-library(vioplot)
 
-# Create a violin plot of mpg column
-vioplot(tb$mpg, 
-        main="Violin Plot of MPG", 
-        ylab="Miles per gallon")
-```
 
-3.  In the above code, we create a violin plot of the `mpg` column using the `vioplot()` function. The `main` argument is used to specify the title of the plot, and the `ylab` argument is used to specify the label for the y-axis.
 
-4.  The resulting plot will display the full distribution of the `mpg` data using a kernel density estimate, with thicker sections indicating a higher density of data points.
 
-5.  The plot also shows the median, quartiles, and any outliers in the data.
+### Bee Swarm plot
 
-## Histogram
-
-1.  A histogram is a plot that shows the frequency of each value or range of values in a dataset.
-
-2.  It can be useful for showing the shape of the distribution of the data. We can create a histogram in R using the `hist()` function.
-
-```{r}
-# Create a histogram of mpg column
-hist(tb$mpg, 
-     main="Histogram of MPG", 
-     xlab="Miles per gallon", 
-     col="lightblue", 
-     border="white")
-```
-
-3.  We create a histogram of the `mpg` column using the `hist()` function. The main argument is used to specify the title of the plot, and the xlab argument is used to specify the label for the x-axis.
-
-4.  The `col` argument is used to set the color of the bars in the histogram, and the border argument is used to set the color of the border around the bars.
-
-5.  The resulting histogram will display the frequency of `mpg` values in the dataset, with the bars representing the number of observations falling within a specific range of values.
-
-## Density plot
-
-1.  A density plot is similar to a histogram, but instead of displaying the frequency of each value, it shows the probability density of the data.
-
-```{r}
-# Create a density plot of mpg column
-plot(density(tb$mpg), 
-     main="Density Plot of MPG", 
-     xlab="Miles per gallon", 
-     col="blue")
-```
-
-2.  In the above code, we create a density plot of the mpg column using the `density()` function.
-
-3.  The `plot()` function is used to plot the resulting density object.
-
-4.  The `main` argument is used to specify the title of the plot, and the `xlab` argument is used to specify the label for the x-axis.
-
-5.  The `col` argument is used to set the color of the plot line.
-
-6.  The resulting plot will display the probability density of `mpg` values in the dataset, with the curve representing the distribution of the data.
-
-## Bee Swarm plot
+A Bee Swarm plot, on the other hand, is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller datasets.
 
 1.  A bee swarm plot is a plot that displays all of the individual data points along with a visual representation of their distribution.
 
@@ -258,6 +237,100 @@ beeswarm(tb$mpg,
 
 
 
+
+
+
+### Violin plot
+
+Violin plots are another useful visualization tool that combines the benefits of box plots and kernel density plots. They offer a more nuanced view of the distribution, displaying its probability density at different values (Hintze & Nelson, 1998). The plot's width represents the density or frequency of data points, with the wider sections indicating a higher density of data points.
+
+
+1.  A violin plot is similar to a boxplot, but instead of just showing the quartiles, it displays the full distribution of the data using a kernel density estimate.
+
+2.  We can create a violin plot in R using the violinplot() function from the vioplot package.
+
+```{r}
+# Load the vioplot package
+library(vioplot)
+
+# Create a violin plot of mpg column
+vioplot(tb$mpg, 
+        main="Violin Plot of MPG", 
+        ylab="Miles per gallon")
+```
+
+3.  In the above code, we create a violin plot of the `mpg` column using the `vioplot()` function. The `main` argument is used to specify the title of the plot, and the `ylab` argument is used to specify the label for the y-axis.
+
+4.  The resulting plot will display the full distribution of the `mpg` data using a kernel density estimate, with thicker sections indicating a higher density of data points.
+
+5.  The plot also shows the median, quartiles, and any outliers in the data.
+
+
+
+
+
+
+
+### Histogram
+
+Histograms are arguably the most familiar tool for visualizing univariate continuous data. They divide the data into bins of equal width, and the height of each bar corresponds to the frequency of data points in each bin (Scott, 1979). They offer an intuitive representation of data distribution and help identify patterns such as skewness and kurtosis.
+
+
+1.  A histogram is a plot that shows the frequency of each value or range of values in a dataset.
+
+2.  It can be useful for showing the shape of the distribution of the data. We can create a histogram in R using the `hist()` function.
+
+```{r}
+# Create a histogram of mpg column
+hist(tb$mpg, 
+     main="Histogram of MPG", 
+     xlab="Miles per gallon", 
+     col="lightblue", 
+     border="white")
+```
+
+3.  We create a histogram of the `mpg` column using the `hist()` function. The main argument is used to specify the title of the plot, and the xlab argument is used to specify the label for the x-axis.
+
+4.  The `col` argument is used to set the color of the bars in the histogram, and the border argument is used to set the color of the border around the bars.
+
+5.  The resulting histogram will display the frequency of `mpg` values in the dataset, with the bars representing the number of observations falling within a specific range of values.
+
+### Density plot
+
+Lastly, density plots are smoothed versions of histograms, providing an estimate of the underlying continuous probability distribution of the data (Wand & Jones, 1995). They can be more accurate and aesthetically pleasing than histograms and do not depend on the choice of bins.
+
+1.  A density plot is similar to a histogram, but instead of displaying the frequency of each value, it shows the probability density of the data.
+
+```{r}
+# Create a density plot of mpg column
+plot(density(tb$mpg), 
+     main="Density Plot of MPG", 
+     xlab="Miles per gallon", 
+     col="blue")
+```
+
+2.  In the above code, we create a density plot of the mpg column using the `density()` function.
+
+3.  The `plot()` function is used to plot the resulting density object.
+
+4.  The `main` argument is used to specify the title of the plot, and the `xlab` argument is used to specify the label for the x-axis.
+
+5.  The `col` argument is used to set the color of the plot line.
+
+6.  The resulting plot will display the probability density of `mpg` values in the dataset, with the curve representing the distribution of the data.
+
+
+
+
+
+
+## Using ggplot2 for Visualizing Univariate Continuous Data
+
+In R, we can create these plots using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections. 
+
+
+
+
 ## References
 
 [1]
@@ -272,4 +345,20 @@ Gravetter, F. J., & Wallnau, L. B. (2016). Statistics for the Behavioral Science
 Downey, A. B. (2014). Think Stats: Exploratory Data Analysis. O'Reilly Media.
 
 Bogaert, P. (2021). "A Comparison of Kernel Density Estimators." Computational Statistics & Data Analysis, 77, 402-413.
+
+Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
+
+[3]
+
+Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
+
+Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
+
+Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
+
+McGill, R., Tukey, J. W., & Larsen, W. A. (1978). Variations of Box Plots. The American Statistician, 32(1), 12-16.
+
+Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
+
+Wand, M. P., & Jones, M. C. (1995). Kernel Smoothing. Chapman and Hall/CRC.
 
