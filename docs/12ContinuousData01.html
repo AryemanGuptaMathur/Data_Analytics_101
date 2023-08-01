@@ -727,14 +727,25 @@ carb      1.26  0.29</code></pre>
 </section>
 <section id="cumulative-distribution-function-cdf-plot" class="level3">
 <h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf-plot">Cumulative Distribution Function (CDF) Plot</h3>
-<p>CDF plots offer a comprehensive representation of your data by showing the proportion of data points less than or equal to a specific value on the x-axis (Hyndman &amp; Fan, 1996). They provide a holistic view of the entire data range and can easily show the median, percentiles, and spread. In R, the ecdf() function can be used to create a CDF plot.</p>
+<ol type="1">
+<li><p>CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis (Hyndman &amp; Fan, 1996).</p></li>
+<li><p>They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread.</p></li>
+<li><p>In R, we can employ the <code>ecdf()</code> function to generate a CDF plot.</p></li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a CDF plot of wt column</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(tb<span class="sc">$</span>wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a CDF plot of mpg column</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(tb<span class="sc">$</span>mpg),</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CDF of Miles Per Gallon (mpg)"</span>,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles Per Gallon (mpg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<ol start="4" type="1">
+<li><p>In this code snippet, the <code>ecdf()</code> function is used to construct a CDF plot for the <code>mpg</code> column.</p></li>
+<li><p>The main argument assigns the title to the plot, while the <code>xlab</code> argument labels the x-axis.</p></li>
+<li><p>The resulting plot gives us an overview of how the <code>mpg</code> data points accumulate across the range of values, providing a complete picture of the data distribution.</p></li>
+</ol>
 </section>
 <section id="boxplot" class="level3">
 <h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>

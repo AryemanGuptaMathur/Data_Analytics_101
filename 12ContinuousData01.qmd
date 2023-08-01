@@ -342,12 +342,23 @@ plot(density(tb$mpg),
 
 ### Cumulative Distribution Function (CDF) Plot
 
-CDF plots offer a comprehensive representation of your data by showing the proportion of data points less than or equal to a specific value on the x-axis (Hyndman & Fan, 1996). They provide a holistic view of the entire data range and can easily show the median, percentiles, and spread. In R, the ecdf() function can be used to create a CDF plot.
+1. CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis (Hyndman & Fan, 1996). 
+
+2. They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread. 
+
+3. In R, we can employ the `ecdf()` function to generate a CDF plot.
 
 ```{r}
-# Create a CDF plot of wt column
-plot(ecdf(tb$wt))
+# Create a CDF plot of mpg column
+plot(ecdf(tb$mpg),
+     main = "CDF of Miles Per Gallon (mpg)",
+     xlab = "Miles Per Gallon (mpg)")
 ```
+4. In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column. 
+
+5. The main argument assigns the title to the plot, while the `xlab` argument labels the x-axis. 
+
+6. The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
 
 
 ### Boxplot
