@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Analytics 101 -- Exploratory Data Analysis using R – continuousdata03</title>
+<title>Data Analytics 101 -- Exploratory Data Analysis using R – continuousdata05</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,8 +93,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -141,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14ContinuousData03.html">Continuous Data (3 of 5)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16ContinuousData05.html">Continuous Data (5 of 5)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -252,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14ContinuousData03.html" class="sidebar-item-text sidebar-link active">
+  <a href="./14ContinuousData03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Continuous Data (3 of 5)</span></a>
   </div>
 </li>
@@ -264,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16ContinuousData05.html" class="sidebar-item-text sidebar-link">
+  <a href="./16ContinuousData05.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Continuous Data (5 of 5)</span></a>
   </div>
 </li>
@@ -286,38 +284,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#continuous-data-3-of-5" id="toc-continuous-data-3-of-5" class="nav-link active" data-scroll-target="#continuous-data-3-of-5">Continuous Data (3 of 5)</a>
+  <li><a href="#continuous-data-5-of-5" id="toc-continuous-data-5-of-5" class="nav-link active" data-scroll-target="#continuous-data-5-of-5">Continuous Data (5 of 5)</a>
   <ul class="collapse">
-  <li><a href="#continuous-data-across-categories-group-wise-statistics-and-data-manipulation" id="toc-continuous-data-across-categories-group-wise-statistics-and-data-manipulation" class="nav-link" data-scroll-target="#continuous-data-across-categories-group-wise-statistics-and-data-manipulation">Continuous Data Across Categories: Group-wise Statistics and Data Manipulation</a></li>
-  <li><a href="#summarizing-continuous-data-by-one-factor" id="toc-summarizing-continuous-data-by-one-factor" class="nav-link" data-scroll-target="#summarizing-continuous-data-by-one-factor">Summarizing Continuous Data by one Factor</a></li>
-  <li><a href="#summarizing-continuous-data-by-two-factors" id="toc-summarizing-continuous-data-by-two-factors" class="nav-link" data-scroll-target="#summarizing-continuous-data-by-two-factors">Summarizing Continuous Data by two Factors</a></li>
-  <li><a href="#visualizing-continuous-data-by-one-factor" id="toc-visualizing-continuous-data-by-one-factor" class="nav-link" data-scroll-target="#visualizing-continuous-data-by-one-factor">Visualizing Continuous Data by one Factor</a>
+  <li><a href="#bivariate-relationships-between-continuous-data" id="toc-bivariate-relationships-between-continuous-data" class="nav-link" data-scroll-target="#bivariate-relationships-between-continuous-data">Bivariate relationships between Continuous data</a></li>
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot">Scatterplot</a>
   <ul class="collapse">
-  <li><a href="#box-plot-of-continuous-data-by-one-factor" id="toc-box-plot-of-continuous-data-by-one-factor" class="nav-link" data-scroll-target="#box-plot-of-continuous-data-by-one-factor">Box Plot of Continuous Data by one Factor</a></li>
-  <li><a href="#means-plot-of-continuous-data-by-one-factor" id="toc-means-plot-of-continuous-data-by-one-factor" class="nav-link" data-scroll-target="#means-plot-of-continuous-data-by-one-factor">Means Plot of Continuous Data by one Factor</a></li>
-  <li><a href="#means-plot-of-continuous-data-by-two-factors" id="toc-means-plot-of-continuous-data-by-two-factors" class="nav-link" data-scroll-target="#means-plot-of-continuous-data-by-two-factors">Means Plot of Continuous Data by two Factors</a></li>
-  <li><a href="#stem-and-leaf-plot-of-continuous-data-by-one-factor" id="toc-stem-and-leaf-plot-of-continuous-data-by-one-factor" class="nav-link" data-scroll-target="#stem-and-leaf-plot-of-continuous-data-by-one-factor">Stem-and-Leaf Plot of Continuous Data by one Factor</a></li>
+  <li><a href="#scatterplot-using-plot" id="toc-scatterplot-using-plot" class="nav-link" data-scroll-target="#scatterplot-using-plot">Scatterplot using plot()</a></li>
+  <li><a href="#scatterplot-using-ggplot2" id="toc-scatterplot-using-ggplot2" class="nav-link" data-scroll-target="#scatterplot-using-ggplot2">Scatterplot using ggplot2</a></li>
+  <li><a href="#scatterplot-using-lattice" id="toc-scatterplot-using-lattice" class="nav-link" data-scroll-target="#scatterplot-using-lattice">Scatterplot using Lattice</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#scatterplot-matrix" id="toc-scatterplot-matrix" class="nav-link" data-scroll-target="#scatterplot-matrix">Scatterplot Matrix</a>
+  <ul class="collapse">
+  <li><a href="#scatterplot-matrix-using-pairs" id="toc-scatterplot-matrix-using-pairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</a></li>
+  <li><a href="#scatterplot-matrix-using-ggpairs" id="toc-scatterplot-matrix-using-ggpairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-ggpairs">Scatterplot Matrix Using ggpairs()</a></li>
+  <li><a href="#scatterplot-matrix-using-scatterplotmatrix" id="toc-scatterplot-matrix-using-scatterplotmatrix" class="nav-link" data-scroll-target="#scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</a></li>
+  <li><a href="#scatterplot-matrix-using-pairs.panels" id="toc-scatterplot-matrix-using-pairs.panels" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</a></li>
+  </ul></li>
+  <li><a href="#scatterplots-broken-down-by-categorical-variables" id="toc-scatterplots-broken-down-by-categorical-variables" class="nav-link" data-scroll-target="#scatterplots-broken-down-by-categorical-variables">Scatterplots broken down by Categorical Variables</a>
+  <ul class="collapse">
+  <li><a href="#scatterplot-with-colored-by-categorical-variable-using-ggplot" id="toc-scatterplot-with-colored-by-categorical-variable-using-ggplot" class="nav-link" data-scroll-target="#scatterplot-with-colored-by-categorical-variable-using-ggplot">Scatterplot with colored by Categorical Variable Using ggplot()</a></li>
+  <li><a href="#scatterplot-with-broken-down-by-categorical-variable-using-ggplot" id="toc-scatterplot-with-broken-down-by-categorical-variable-using-ggplot" class="nav-link" data-scroll-target="#scatterplot-with-broken-down-by-categorical-variable-using-ggplot">Scatterplot with broken down by Categorical Variable Using ggplot()</a></li>
+  </ul></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="14ContinuousData03.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="16ContinuousData05.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
 
-<section id="continuous-data-3-of-5" class="level1">
-<h1>Continuous Data (3 of 5)</h1>
-<p><em>Aug 2, 2023. V1.7 -=- This chapter is being heavily edited – very much Work in Progress</em></p>
-<section id="continuous-data-across-categories-group-wise-statistics-and-data-manipulation" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-data-across-categories-group-wise-statistics-and-data-manipulation">Continuous Data Across Categories: Group-wise Statistics and Data Manipulation</h2>
-<ol type="1">
-<li><p>This chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p></li>
-<li><p>We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p></li>
-<li><p>To achieve this, we exemplify the use of libraries such as <code>dplyr</code> and <code>ggplot2</code>. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.</p></li>
-<li><p><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</p></li>
+<section id="continuous-data-5-of-5" class="level1">
+<h1>Continuous Data (5 of 5)</h1>
+<p><em>Aug 2, 2023. V1.1 -=- This chapter is being heavily edited; It is very much Work in Progress</em></p>
+<ol start="2" type="1">
+<li><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
@@ -340,248 +341,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     am, carb, cyl, disp, drat, gear, hp, mpg, qsec, vs, wt</code></pre>
 </div>
 </div>
+<section id="bivariate-relationships-between-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="bivariate-relationships-between-continuous-data">Bivariate relationships between Continuous data</h2>
 </section>
-<section id="summarizing-continuous-data-by-one-factor" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-continuous-data-by-one-factor">Summarizing Continuous Data by one Factor</h2>
-<ol type="1">
-<li>Using <code>aggregate()</code></li>
-</ol>
-<ul>
-<li>We investigate the bivariate Relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>). The following code will display a summary table showing the descriptive statistics of mileage of the cars broken down by number of cylinders (<code>cyl</code> = 4, 6, 8) using <code>aggregate()</code>.</li>
-</ul>
+<section id="scatterplot" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot">Scatterplot</h2>
+<p>A scatter plot is a type of graph used to display the relationship between two continuous variables. It is a graphical representation of a bivariate distribution, where the values of two variables are plotted as points on a two-dimensional coordinate system.</p>
+<p>A scatter plot can be used to identify trends, clusters, outliers, and other patterns in the data. It is also useful for detecting the presence of any outliers or influential observations that may affect the analysis.</p>
+<p>The mtcars data set in R is a built-in data set that contains data on various car models. To create a scatter plot of mpg (miles per gallon) against wt (weight) in the mtcars data set, you can use the following code:</p>
+<section id="scatterplot-using-plot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-plot">Scatterplot using plot()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"cyl"</span> <span class="ot">=</span> tb<span class="sc">$</span>cyl), </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN =</span> mean)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cylinders"</span>, <span class="st">"Avg MPG"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>agg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Cylinders  Avg MPG
-1         4 26.66364
-2         6 19.74286
-3         8 15.10000</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Discussion:</li>
-</ol>
-<ul>
-<li><p>The first argument in <code>aggregate()</code> is <code>tb$mpg</code>, which is the data vector we want to apply the function to.</p></li>
-<li><p>The second argument, <code>by</code>, denotes a list of variables to group by. Here, we’ve supplied <code>tb$cyl</code>, implying that we wish to partition our data based on the unique values of <code>cyl</code>.</p></li>
-<li><p>The third argument, FUN, is the function we want to apply to each subset of data. We’re using mean here, meaning we’re calculating the average mpg for each unique cyl value.</p></li>
-<li><p>The output of aggregate(), a data frame, is then stored in a new variable, agg.</p></li>
-</ul>
-<p>Next, we utilize the names() function to rename the columns in the agg data frame. [1]</p>
-<ol start="3" type="1">
-<li>Using tapply()</li>
-</ol>
-<ul>
-<li>The tapply() function is a convenient tool that allows us to apply a function to subsets of a vector, as grouped by some factors.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>cyl, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       4        6        8 
-26.66364 19.74286 15.10000 </code></pre>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Discussion:</li>
-</ol>
-<ul>
-<li><p>In this case, tapply(tb<span class="math inline">\(mpg, tb\)</span>cyl, mean) is using the tapply() function to calculate the average miles per gallon (mpg) for each unique number of cylinders (cyl) within our tb tibble.</p></li>
-<li><p>tb$mpg represents the vector to which we want to apply the function. This is the mpg column in our tb tibble.</p></li>
-<li><p>tb$cyl serves as our grouping factor. We are partitioning our data based on the unique values within the cyl column in our tb tibble.</p></li>
-<li><p>mean is the function that we’re applying to each subset of our data. Here, we’re calculating the mean mpg for each unique cyl value.</p></li>
-<li><p>The result will be a vector where each element is the average mpg for a unique number of cylinders (cyl), as determined by the unique values of tb$cyl. [1]</p></li>
-</ul>
-<ol start="5" type="1">
-<li>Using psych::describeBy()</li>
-</ol>
-<ul>
-<li><p>The library(psych) command instructs R to load the psych package. This is an extensive collection of functions for performing psychological, psychometric, and psychophysical research, and it provides a wide variety of statistical procedures not available in base R.</p></li>
-<li><p>The describeBy() function comes from the psych package. It is used to compute descriptive statistics of a numeric variable (or a group of numeric variables), broken down by levels of a grouping variable.</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(mpg, cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
- Descriptive statistics by group 
-group: 4
-   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
-X1    1 11 26.66 4.51     26   26.44 6.52 21.4 33.9  12.5 0.26    -1.65 1.36
------------------------------------------------------------- 
-group: 6
-   vars n  mean   sd median trimmed  mad  min  max range  skew kurtosis   se
-X1    1 7 19.74 1.45   19.7   19.74 1.93 17.8 21.4   3.6 -0.16    -1.91 0.55
------------------------------------------------------------- 
-group: 8
-   vars  n mean   sd median trimmed  mad  min  max range  skew kurtosis   se
-X1    1 14 15.1 2.56   15.2   15.15 1.56 10.4 19.2   8.8 -0.36    -0.57 0.68</code></pre>
-</div>
-</div>
-<ol start="6" type="1">
-<li>Discussion:</li>
-</ol>
-<ul>
-<li><p>describeBy(mpg, cyl) computes descriptive statistics of the mpg (miles per gallon) variable, broken down by the unique values in the cyl (number of cylinders) variable.</p></li>
-<li><p>In other words, it’s calculating statistics such as the mean, standard deviation, and quartiles for mpg, separately for each unique number of cylinders (cyl). [2]</p></li>
-</ul>
-</section>
-<section id="summarizing-continuous-data-by-two-factors" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-continuous-data-by-two-factors">Summarizing Continuous Data by two Factors</h2>
-<ol type="1">
-<li>Using <code>aggregate()</code></li>
-</ol>
-<p>Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(wt, </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span>am, <span class="st">"cyl"</span> <span class="ot">=</span> cyl),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  am cyl        x
-1  0   4 2.935000
-2  1   4 2.042250
-3  0   6 3.388750
-4  1   6 2.755000
-5  0   8 4.104083
-6  1   8 3.370000</code></pre>
-</div>
-</div>
-</section>
-<section id="visualizing-continuous-data-by-one-factor" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-continuous-data-by-one-factor">Visualizing Continuous Data by one Factor</h2>
-<section id="box-plot-of-continuous-data-by-one-factor" class="level3">
-<h3 class="anchored" data-anchor-id="box-plot-of-continuous-data-by-one-factor">Box Plot of Continuous Data by one Factor</h3>
-<p>Visualizing Median using Box Plot – median weight of the cars broken down by cylinders (cyl=4,6,8)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">~</span>cyl</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        , <span class="at">ylab =</span> <span class="st">"cyl"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        , <span class="at">xlab =</span> <span class="st">"Mileage (mpg)"</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        , <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tb<span class="sc">$</span>wt, tb<span class="sc">$</span>mpg, <span class="at">main =</span> <span class="st">"Scatter Plot of MPG vs. Weight"</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"MPG"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<p>This code will first load the mtcars data set, then create a scatter plot of <code>mpg</code> against <code>wt</code> using the <code>plot()</code> function. The main argument adds a title to the plot, the <code>xlab</code> and <code>ylab</code> arguments add axis labels, and the pch argument changes the shape of the points to a solid circle. The resulting scatter plot will show the relationship between <code>mpg</code> and <code>wt</code> in the <code>mtcars</code> data set.</p>
 </section>
-<section id="means-plot-of-continuous-data-by-one-factor" class="level3">
-<h3 class="anchored" data-anchor-id="means-plot-of-continuous-data-by-one-factor">Means Plot of Continuous Data by one Factor</h3>
-<p>Visualizing Means – mean plot showing the average weight of the cars, broken down by transmission (am=1 &amp; am=0)</p>
+<section id="scatterplot-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-ggplot2">Scatterplot using ggplot2</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: 'gplots'</code></pre>
+Attaching package: 'ggplot2'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
+<pre><code>The following object is masked from 'tb':
 
-    lowess</code></pre>
+    mpg</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(<span class="at">data =</span> mtcars,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          mpg <span class="sc">~</span> cyl, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">3</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Mean(mpg) by cyl = {4,6,8}"</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Weight (1000 lbs)"</span>) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Miles per gallon"</span>) <span class="sc">+</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Scatter Plot of Weight vs. MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<p>This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis. The geom_point() function is used to add the points to the plot, and xlab(), ylab(), and ggtitle() are used to add axis labels and a plot title, respectively. You can adjust the aesthetics of the plot, such as the color and size of the points, by adding additional arguments to the geom_point() function.</p>
 </section>
-<section id="means-plot-of-continuous-data-by-two-factors" class="level3">
-<h3 class="anchored" data-anchor-id="means-plot-of-continuous-data-by-two-factors">Means Plot of Continuous Data by two Factors</h3>
-<p>We show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 &amp; am=0) &amp; cylinders (cyl=4,6,8).</p>
+<section id="scatterplot-using-lattice" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-using-lattice">Scatterplot using Lattice</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(mpg <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (mpg) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average MPG"</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Lattice package</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xyplot</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> tb, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Weight (1000 lbs)"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"Miles per gallon"</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Scatter Plot of Weight vs. MPG"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<p>This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis using the xyplot() function. The data argument specifies the data frame to use, and xlab, ylab, and main are used to add axis labels and a plot title, respectively. You can also add additional arguments to adjust the aesthetics of the plot, such as the size and color of the points or the type of line connecting the points, depending on your data and preferences.</p>
 </section>
-<section id="stem-and-leaf-plot-of-continuous-data-by-one-factor" class="level3">
-<h3 class="anchored" data-anchor-id="stem-and-leaf-plot-of-continuous-data-by-one-factor">Stem-and-Leaf Plot of Continuous Data by one Factor</h3>
-<ol type="1">
-<li>The provided R code first selects the mpg and cyl columns from tb, then it segments the data into groups based on cyl values, and lastly, it generates a stem-and-leaf plot for the mpg values in each separate group.</li>
-</ol>
+</section>
+<section id="scatterplot-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot-matrix">Scatterplot Matrix</h2>
+<p>A scatter plot matrix (also called a pairs plot or a SPLOM) is a graphical display of pairwise scatter plots of a set of variables. In a scatter plot matrix, each variable in the dataset is plotted against every other variable in a matrix format. This allows us to visualize the relationships between pairs of variables and explore potential patterns or trends in the data.</p>
+<p>A scatter plot matrix is particularly useful for exploring multivariate datasets, as it allows us to quickly identify which pairs of variables may be strongly correlated, which may have weak or no correlation, and which may exhibit nonlinear relationships. It can also be used to identify outliers or unusual observations, and to visualize clusters or groups of observations based on patterns in the scatter plots.</p>
+<section id="scatterplot-matrix-using-pairs" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tb3 <span class="ot">&lt;-</span> <span class="fu">select</span>(tb, mpg, cyl)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>tb_split <span class="ot">&lt;-</span> <span class="fu">split</span>(tb3, tb3<span class="sc">$</span>cyl)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a function to each subset of 'tb_split' using 'lapply()'. </span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(tb_split, </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x) </span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stem</span>(x<span class="sc">$</span>mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-  The decimal point is 1 digit(s) to the right of the |
-
-  2 | 12334
-  2 | 67
-  3 | 0024
-
-
-  The decimal point is at the |
-
-  17 | 8
-  18 | 1
-  19 | 27
-  20 | 
-  21 | 004
-
-
-  The decimal point is at the |
-
-  10 | 44
-  12 | 3
-  14 | 3702258
-  16 | 43
-  18 | 72</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$`4`
-NULL
-
-$`6`
-NULL
-
-$`8`
-NULL</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix for mpg, wt, hp, drat</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Here is how it works:</li>
-</ol>
-<ul>
-<li><p><code>tb3 &lt;- select(tb, mpg, cyl)</code>: In this line, we’re using the <code>select()</code> function from the <code>dplyr</code> package to pick out the <code>mpg</code> and <code>cyl</code> columns from the tibble <code>tb</code>. We then store this newly created subset of the original tibble into a new tibble <code>tb3</code>.</p></li>
-<li><p><code>tb_split &lt;- split(tb3, tb3$cyl)</code>: With the <code>split()</code> function, we’re segmenting the <code>tb3</code> tibble into subsets based on the <code>cyl</code> column. This action groups all rows with identical <code>cyl</code> values together into the same subset. We then store this list of new, smaller tibbles as <code>tb_split</code>.</p></li>
-<li><p><code>lapply(tb_split, function(x) stem(x$mpg))</code>: Here we employ the <code>lapply()</code> function to apply a specified function to each element within a list. The function we’ve elected to apply is <code>function(x) stem(x$mpg)</code>, which plots a stem-and-leaf display for the mpg column of each tibble <code>x</code> in <code>tb_split</code>. As <code>tb_split</code> is a list of tibbles that have been grouped according to <code>cyl</code> values, this step will generate a separate stem-and-leaf plot for each group of <code>cyl</code> values.</p></li>
-</ul>
+</section>
+<section id="scatterplot-matrix-using-ggpairs" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-ggpairs">Scatterplot Matrix Using ggpairs()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the GGally package</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using ggpairs()</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-matrix-using-scatterplotmatrix" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the car package</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using scatterplotMatrix()</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> mpg <span class="sc">+</span> disp <span class="sc">+</span>drat <span class="sc">+</span>wt, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> tb, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-matrix-using-pairs.panels" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the psych package</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using pairs.panels()</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"Scatterplot Matrix"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
 </section>
 </section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>[1] R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.</p>
-<p>Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Edition. Thousand Oaks CA: Sage.</p>
-<p>[2] Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.9. https://CRAN.R-project.org/package=psych</p>
-<p>[10] Chambers, J. M., Freeny, A. E., &amp; Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp.&nbsp;145–193). Pacific Grove, CA: Wadsworth &amp; Brooks/Cole.</p>
+<section id="scatterplots-broken-down-by-categorical-variables" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplots-broken-down-by-categorical-variables">Scatterplots broken down by Categorical Variables</h2>
+<section id="scatterplot-with-colored-by-categorical-variable-using-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-with-colored-by-categorical-variable-using-ggplot">Scatterplot with colored by Categorical Variable Using ggplot()</h3>
+<p>This will create a scatterplot of miles per gallon (mpg) against weight, with each point colored according to the number of cylinders in the engine (cyl).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot of mpg vs. wt, colored by cyl</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg, <span class="at">color =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Weight (lbs/1000)"</span>, <span class="at">y =</span> <span class="st">"Miles per gallon"</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">"Cylinders"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+</section>
+<section id="scatterplot-with-broken-down-by-categorical-variable-using-ggplot" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-with-broken-down-by-categorical-variable-using-ggplot">Scatterplot with broken down by Categorical Variable Using ggplot()</h3>
+<p>This will create a scatterplot of miles per gallon (mpg) against weight, with each plot faceted by the number of cylinders in the engine (cyl).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the ggplot2 package</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using ggplot()</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> disp)) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 
