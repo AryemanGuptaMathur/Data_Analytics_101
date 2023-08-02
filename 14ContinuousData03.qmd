@@ -1,20 +1,16 @@
 # Continuous Data (3 of 4)
 
-*Aug 1, 2023. V2.2 -=- This chapter is being heavily edited; It is very much Work in Progress*
-
+*Aug 2, 2023. V1.5 -=- This chapter is being heavily edited -- very much Work in Progress*
 
 ## Continuous Data Across Categories: Group-wise Statistics and Data Manipulation
 
-Our second chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
+1. This chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
-We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
+2. We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
 
-To achieve this, we exemplify the use of libraries such as `dplyr` and `ggplot2`.
+3. To achieve this, we exemplify the use of libraries such as `dplyr` and `ggplot2`. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
 
-Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
-
-
-6. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+4. **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -36,80 +32,56 @@ attach(tb)
 
 
 
-## Bivariate Continuous and Categorical data
 
-1.  Bivariate Relationship between Weight (wt) and Transmission (am)
 
-2.  Display a summary table showing the descriptive statistics of weight of the cars broken down by transmission (am=1 or am=0)
+## Summarizing Continuous Data by one Factor
 
-### aggregate()
 
-```{r}
-aggregate(tb$wt, 
-          by = list("am" = tb$am), 
-          mean)
-aggregate(tb$wt, 
-          by = list("am" = tb$am), 
-          sd)
-```
-
-### tapply()
+1. We investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`). The following code will display a summary table showing the descriptive statistics of mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
 
 ```{r}
-tapply(tb$wt, tb$am, mean)
-tapply(tb$wt, tb$am, sd)
+agg <- aggregate(tb$mpg, 
+          by = list("cyl" = tb$cyl), 
+          FUN = mean)
+names(agg) <- c("Cylinders", "Avg MPG")
+agg
 ```
 
-## Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
+2. Here is how it works:
+
+* The first argument in `aggregate()` is `tb$mpg`, which is the data vector we want to apply the function to.
+
+* The second argument, `by`, denotes a list of variables to group by. Here, we've supplied `tb$cyl`, implying that we wish to partition our data based on the unique values of `cyl`.
+
+* The third argument, FUN, is the function we want to apply to each subset of data. We're using mean here, meaning we're calculating the average mpg for each unique cyl value.
+
+* The output of aggregate(), a data frame, is then stored in a new variable, agg.
+
+Next, we utilize the names() function to rename the columns in the agg data frame. [1]
+
+
+
+
+3. Using tapply()
 
 ```{r}
-library(gplots)
-plotmeans(wt ~ am
-          ,data = mtcars
-          ,mean.labels = TRUE
-          ,digits=3
-          ,main = "Mean (wt) by am = {0,1} "
-          )
+tapply(tb$mpg, tb$cyl, mean)
 ```
 
-## Visualizing Median using Box Plot -- median weight of the cars broken down by transmission (am=1 & am=0)
-
-```{r}
-boxplot(wt~am
-        , xlab = "am"
-        , ylab = "Weight"
-        , horizontal = TRUE
-        )
-```
-
-## Bivariate Relationship between Weight (wt) and Cylinders (cyl)
+4. Using psych::describeBy() Bivariate Relationship between Weight (wt) and Cylinders (cyl) 
 
 Display a summary table showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
 
 ```{r}
-psych::describeBy(wt, cyl)
+psych::describeBy(mpg, cyl)
 ```
 
-## Show a mean plot showing the mean weight of the cars broken down by cylinders (cyl=4,6,8)
 
-```{r}
-library(gplots)
-plotmeans(wt ~ cyl, 
-          data = mtcars
-          , mean.labels = TRUE
-          , digits=2
-          , main = "Mean (wt) by cyl = {4,6,8} ")
-```
 
-## Show a box plot showing the median weight of the cars broken down by cylinders (cyl=4,6,8)
 
-```{r}
-boxplot(wt ~ cyl, 
-        xlab = "cyl", ylab = "Weight"
-        )
-```
+## Summarizing Continuous Data by two Factors
 
-## Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
+Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
 
 ```{r}
 aggregate(wt, 
@@ -117,26 +89,99 @@ aggregate(wt,
           mean)
 ```
 
-## Visualization - Show a box plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
+
+
+
+
+
+
+
+## Visualizing Continuous Data by one Factor
+
+
+### Box Plot of Continuous Data by one Factor
+
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (cyl=4,6,8)
 
 ```{r}
-boxplot(wt ~ am:cyl
-        , xlab = "cyl"
-        , ylab = "Weight"
+boxplot(mpg~cyl
+        , ylab = "cyl"
+        , xlab = "Mileage (mpg)"
+        , horizontal = TRUE
         )
 ```
 
-## Visualization - Show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8)
+
+
+
+### Means Plot of Continuous Data by one Factor
+
+Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
+
+```{r}
+library(gplots)
+plotmeans(data = mtcars,
+          mpg ~ cyl, 
+          mean.labels = TRUE,
+          digits=3,
+          main = "Mean(mpg) by cyl = {4,6,8}"
+          )
+```
+
+### Means Plot of Continuous Data by two Factors
+
+We show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8).
 
 ```{r warning=FALSE, message=FALSE}
 library(gplots)
-plotmeans(wt ~ interaction(am, cyl, sep = ", ")
+plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
           , data = mtcars
           , mean.labels = TRUE
           , digits=2
           , connect = FALSE
-          , main = "Mean (wt) by cyl = {4,6,8} & am = {0,1}"
+          , main = "Mean (mpg) by cyl = {4,6,8} & am = {0,1}"
           , xlab= "cyl = {4,6,8} & am = {0,1}"
-          , ylab="Average Weight"
+          , ylab="Average MPG"
           )
 ```
+
+### Stem-and-Leaf Plot of Continuous Data by one Factor
+
+1. The provided R code first selects the mpg and cyl columns from tb, then it segments the data into groups based on cyl values, and lastly, it generates a stem-and-leaf plot for the mpg values in each separate group.
+
+```{r warning=FALSE, message=FALSE}
+# Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.
+tb3 <- select(tb, mpg, cyl)
+
+# Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.
+tb_split <- split(tb3, tb3$cyl)
+
+# Apply a function to each subset of 'tb_split' using 'lapply()'. 
+# The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.
+lapply(tb_split, 
+       function(x) 
+         stem(x$mpg))
+```
+2. Here is how it works:
+
+* `tb3 <- select(tb, mpg, cyl)`: In this line, we're using the `select()` function from the `dplyr` package to pick out the `mpg` and `cyl` columns from the tibble `tb`. We then store this newly created subset of the original tibble into a new tibble `tb3`.
+
+* `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
+
+* `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
+
+
+
+## References
+
+[1]
+R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+
+Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Edition. Thousand Oaks CA: Sage.
+
+
+[10]
+
+Chambers, J. M., Freeny, A. E., & Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp. 145–193). Pacific Grove, CA: Wadsworth & Brooks/Cole.
+
+

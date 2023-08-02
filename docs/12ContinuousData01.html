@@ -280,11 +280,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#continuous-data-1-of-4" id="toc-continuous-data-1-of-4" class="nav-link active" data-scroll-target="#continuous-data-1-of-4">Continuous Data (1 of 4)</a>
   <ul class="collapse">
-  <li><a href="#exploring-univariate-continuous-data-summarization-and-visualization-in-r" id="toc-exploring-univariate-continuous-data-summarization-and-visualization-in-r" class="nav-link" data-scroll-target="#exploring-univariate-continuous-data-summarization-and-visualization-in-r">Exploring Univariate Continuous Data: Summarization and Visualization in R</a></li>
+  <li><a href="#exploring-univariate-continuous-data-summarization-and-visualization-in-r" id="toc-exploring-univariate-continuous-data-summarization-and-visualization-in-r" class="nav-link" data-scroll-target="#exploring-univariate-continuous-data-summarization-and-visualization-in-r">Exploring Univariate Continuous Data: Summarization and Visualization in R</a>
+  <ul class="collapse">
   <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency">Measures of Central Tendency</a></li>
   <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability">Measures of Variability</a></li>
-  <li><a href="#summarizing-data-columns" id="toc-summarizing-data-columns" class="nav-link" data-scroll-target="#summarizing-data-columns">Summarizing data columns</a></li>
+  </ul></li>
+  <li><a href="#summarizing-univariate-continuous-data" id="toc-summarizing-univariate-continuous-data" class="nav-link" data-scroll-target="#summarizing-univariate-continuous-data">Summarizing Univariate Continuous Data</a>
+  <ul class="collapse">
   <li><a href="#summarizing-a-dataframe-or-tibble" id="toc-summarizing-a-dataframe-or-tibble" class="nav-link" data-scroll-target="#summarizing-a-dataframe-or-tibble">Summarizing a dataframe or tibble</a></li>
+  </ul></li>
   <li><a href="#visualizing-univariate-continuous-data" id="toc-visualizing-univariate-continuous-data" class="nav-link" data-scroll-target="#visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</a>
   <ul class="collapse">
   <li><a href="#stem-and-leaf-plots" id="toc-stem-and-leaf-plots" class="nav-link" data-scroll-target="#stem-and-leaf-plots">Stem-and-Leaf Plots</a></li>
@@ -335,9 +339,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The data is in a tibble called <code>tb</code>.</p>
-</section>
-<section id="measures-of-central-tendency" class="level2">
-<h2 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of Central Tendency</h2>
+<section id="measures-of-central-tendency" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-central-tendency">Measures of Central Tendency</h3>
 <ol type="1">
 <li><p>In our journey of understanding data, we often turn to certain statistical tools, among which, the measures of central tendency play a pivotal role. These measures provide a way to summarize our data with a single value that represents the “center” or the “average” of our data distribution (Gravetter &amp; Wallnau, 2016).</p></li>
 <li><p>Primarily, there are three measures of central tendency that we often rely on: the mean, median, and mode.</p></li>
@@ -380,8 +383,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>It’s critical to keep in mind that our mtcars dataset comprises continuous data, making the concept of mode less straightforward. The mfv() function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset (Bogaert, 2021) [2].</li>
 </ol>
 </section>
-<section id="measures-of-variability" class="level2">
-<h2 class="anchored" data-anchor-id="measures-of-variability">Measures of Variability</h2>
+<section id="measures-of-variability" class="level3">
+<h3 class="anchored" data-anchor-id="measures-of-variability">Measures of Variability</h3>
 <ol type="1">
 <li><p>In our exploration of continuous data, we also consider measures of variability. These statistical measures provide insight into the spread or dispersion of our data points (Gravetter &amp; Wallnau, 2016). To further illustrate the concepts we’ve discussed, we’ll apply these measures of variability to the ‘wt’ column from the mtcars dataset.</p></li>
 <li><p>Range: The first measure we’ll discuss is the <code>range</code>. This is the difference between the highest and the lowest value in our data set. However, while <code>range</code> is easy to calculate and understand, it is sensitive to outliers, so we must interpret it carefully.</p></li>
@@ -476,8 +479,9 @@ Attaching package: 'moments'</code></pre>
 <li>To summarize, these measures of variability help us quantify the dispersion and shape of our data, offering a more complete picture when combined with measures of central tendency. [2]</li>
 </ol>
 </section>
-<section id="summarizing-data-columns" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-data-columns">Summarizing data columns</h2>
+</section>
+<section id="summarizing-univariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-univariate-continuous-data">Summarizing Univariate Continuous Data</h2>
 <ol type="1">
 <li><p>Our primary objective in summarizing data is to gain an initial overview or snapshot of the data set we’re dealing with. This fundamental analysis provides us a sense of the data’s central tendency, spread, and distribution shape, which in turn guides our decision-making process for subsequent stages of data analysis.</p></li>
 <li><p>In this context, the R functions <code>summary()</code> and <code>describe()</code> are extremely beneficial, even though the information they provide varies.</p></li>
@@ -509,9 +513,8 @@ Attaching package: 'moments'</code></pre>
 X1    1 32 20.09 6.03   19.2    19.7 5.41 10.4 33.9  23.5 0.61    -0.37 1.07</code></pre>
 </div>
 </div>
-</section>
-<section id="summarizing-a-dataframe-or-tibble" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-a-dataframe-or-tibble">Summarizing a dataframe or tibble</h2>
+<section id="summarizing-a-dataframe-or-tibble" class="level3">
+<h3 class="anchored" data-anchor-id="summarizing-a-dataframe-or-tibble">Summarizing a dataframe or tibble</h3>
 <ol type="1">
 <li>The function <code>summary()</code> in R can also be employed to summarize the entirety of a dataframe or tibble in a comprehensive manner (R Core Team, 2020). When executed on a dataframe or tibble, <code>summary()</code> generates a quick, complete statistical summary of every column.</li>
 </ol>
@@ -580,6 +583,7 @@ carb      1.26  0.29</code></pre>
 <li><p>For non-numeric or factor columns, the <code>describe()</code> function still provides a count of elements but defaults to ‘NA’ for the rest of the statistics, as these metrics are not applicable.</p></li>
 <li><p>The output of the above code provides an elaborate statistical summary of the tb tibble, offering us a comprehensive overview of our data’s attributes.</p></li>
 </ol>
+</section>
 </section>
 <section id="visualizing-univariate-continuous-data" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</h2>
