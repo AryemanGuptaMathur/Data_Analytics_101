@@ -296,6 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#violin-plot-using-ggplot2" id="toc-violin-plot-using-ggplot2" class="nav-link" data-scroll-target="#violin-plot-using-ggplot2">Violin plot using <code>ggplot2</code></a></li>
   <li><a href="#quantile-quantile-q-q-plots-using-ggplot" id="toc-quantile-quantile-q-q-plots-using-ggplot" class="nav-link" data-scroll-target="#quantile-quantile-q-q-plots-using-ggplot">Quantile-Quantile (Q-Q) Plots using ggplot</a></li>
   </ul></li>
+  <li><a href="#summary-of-chapter-13-continuous-data-2-of-5" id="toc-summary-of-chapter-13-continuous-data-2-of-5" class="nav-link" data-scroll-target="#summary-of-chapter-13-continuous-data-2-of-5">Summary of Chapter 13 – Continuous Data (2 of 5)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -351,6 +352,7 @@ Attaching package: 'ggplot2'</code></pre>
 <li>Let’s take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using the <code>ggplot2</code> and related packages, including</li>
 </ul></li>
 </ol>
+<!-- -->
 <ol type="i">
 <li>Histograms;</li>
 <li>PDF and CDF Density plots;</li>
@@ -582,6 +584,12 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section id="summary-of-chapter-13-continuous-data-2-of-5" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-chapter-13-continuous-data-2-of-5">Summary of Chapter 13 – Continuous Data (2 of 5)</h2>
+<p>In this chapter, we explore how to visualize univariate continuous data using the <code>ggplot2</code> package in R. We use the <code>mtcars</code> data set, converting it to a tibble called <code>tb</code> for easier manipulation.</p>
+<p>The visualization methods we cover include histograms, density plots (Probability Density Function and Cumulative Density Function), box plots, bee swarm plots, violin plots, and Q-Q plots. These are created using functions like <code>geom_histogram()</code>, <code>geom_density()</code>, <code>geom_boxplot()</code>, <code>geom_beeswarm()</code>, <code>geom_violin()</code>, <code>stat_qq()</code>, and <code>stat_qq_line()</code>.</p>
+<p>For the histogram, we can adjust bin width, color, and number of bins, or define custom bin ranges. The density plots provide a visual representation of the distribution of a variable, and we can color the area under the curve. To create the CDF plot, we first arrange our data and calculate the cumulative distribution, which is plotted as a line graph. For the violin plot, we show how to add a box plot within the violin for additional information. Finally, we explore Q-Q plots, which compare the quantiles of our data to a theoretical distribution, useful for assessing if the data follows a certain theoretical distribution.</p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

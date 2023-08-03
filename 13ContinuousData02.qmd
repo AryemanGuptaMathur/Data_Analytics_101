@@ -23,7 +23,7 @@ tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
 ```
 
-3. Let us load the `ggplot2`, `dplyr` and `ggthemes` packages. The package `ggthemes` allows us to use a variety of themes.
+3.  Let us load the `ggplot2`, `dplyr` and `ggthemes` packages. The package `ggthemes` allows us to use a variety of themes.
 
 ```{r}
 library(dplyr)
@@ -31,18 +31,19 @@ library(ggthemes)
 library(ggplot2)
 ```
 
-4. * Let's take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using the `ggplot2` and related packages, including 
-(i) Histograms; 
-(ii) PDF and CDF Density plots; 
-(iii) Box plots; 
-(iv) Bee Swarm plots; 
-(v) Violin plots; 
-(vi) Q-Q plots.
-Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this. 
+4.  
 
+    -   Let's take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using the `ggplot2` and related packages, including
 
-
-
+```{=html}
+<!-- -->
+```
+(i) Histograms;
+(ii) PDF and CDF Density plots;
+(iii) Box plots;
+(iv) Bee Swarm plots;
+(v) Violin plots;
+(vi) Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.
 
 ### Histogram using `ggplot2`
 
@@ -92,11 +93,11 @@ ggplot(tb,
 
 ```
 
-5. Discussion:
+5.  Discussion:
 
-* By replacing `binwidth = 2` with `bins = 12`, we instruct R to create 12 bins of equal width. The bins argument decides the number of bins in the histogram, and the width of the bins is calculated by dividing the range of the data by the number of bins. 
+-   By replacing `binwidth = 2` with `bins = 12`, we instruct R to create 12 bins of equal width. The bins argument decides the number of bins in the histogram, and the width of the bins is calculated by dividing the range of the data by the number of bins.
 
-6. We can specify custom bin ranges in a histogram. We typically use the `breaks` argument within the `geom_histogram()` function. We need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35-40, for the `mpg` variable, we could write the following code:
+6.  We can specify custom bin ranges in a histogram. We typically use the `breaks` argument within the `geom_histogram()` function. We need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35-40, for the `mpg` variable, we could write the following code:
 
 ```{r}
 ggplot(tb, 
@@ -108,13 +109,11 @@ ggplot(tb,
   labs(title = "Histogram of mpg", x = "Miles Per Gallon (mpg)", y = "Frequency")
 ```
 
-* In this code, the `seq()` function is used to generate a sequence of numbers from 5 to 40, with an increment of 5. These numbers serve as the breakpoints for the bins in the histogram. The `breaks` argument then uses these numbers to set the bin ranges. The plot aesthetics remain the same as before.
-
-
+-   In this code, the `seq()` function is used to generate a sequence of numbers from 5 to 40, with an increment of 5. These numbers serve as the breakpoints for the bins in the histogram. The `breaks` argument then uses these numbers to set the bin ranges. The plot aesthetics remain the same as before.
 
 ### Probability Density Function (PDF) plot using `ggplot2`
 
-* Recall that this type of plot shows the distribution of a single variable, and the area under the curve represents the probability of an observation falling within a particular range of values.
+-   Recall that this type of plot shows the distribution of a single variable, and the area under the curve represents the probability of an observation falling within a particular range of values.
 
 ```{r}
 ggplot(tb, 
@@ -125,13 +124,13 @@ ggplot(tb,
   labs(title = "Probability Density Function of Miles Per Gallon (mpg)", x = "Miles Per Gallon (mpg)", y = "Density")
 ```
 
-* We designate our data source and the aesthetic mappings using the `ggplot()` function. The aesthetic mapping for x is `mpg`.
+-   We designate our data source and the aesthetic mappings using the `ggplot()` function. The aesthetic mapping for x is `mpg`.
 
-* Subsequently, we append a density plot to our plot by using the `geom_density()` function. We fill the area under the curve with a light pink color by setting `fill` to "lightpink" and `alpha` to 0.5.
+-   Subsequently, we append a density plot to our plot by using the `geom_density()` function. We fill the area under the curve with a light pink color by setting `fill` to "lightpink" and `alpha` to 0.5.
 
 ### Cumulative Distribution Function (CDF) Plot using `ggplot2`
 
-* We can generate a CDF plot. First, we'll calculate the cumulative distribution. This can be achieved by arranging the data in ascending order, then adding a column representing the proportion of values less than or equal to each value:
+-   We can generate a CDF plot. First, we'll calculate the cumulative distribution. This can be achieved by arranging the data in ascending order, then adding a column representing the proportion of values less than or equal to each value:
 
 ```{r}
 tb <- tb %>%
@@ -139,19 +138,17 @@ tb <- tb %>%
   mutate(cdf = row_number() / n())
 ```
 
-* The `arrange()` function sorts the data, `mutate()` creates a new column, and `row_number()` gives the rank of each row, while `n()` provides the total number of rows. 
+-   The `arrange()` function sorts the data, `mutate()` creates a new column, and `row_number()` gives the rank of each row, while `n()` provides the total number of rows.
 
-* The quotient of these represents the proportion of values less than or equal to each value. 
+-   The quotient of these represents the proportion of values less than or equal to each value.
 
-* Finally, we can create the CDF plot using the following code:
+-   Finally, we can create the CDF plot using the following code:
 
 ```{r}
 ggplot(tb, aes(x = mpg, y = cdf)) +
   geom_line() +
   labs(x = "Miles Per Gallon (mpg)", y = "CDF", title = "Cumulative Distribution Function (CDF) of mpg")
 ```
-
-
 
 ### Boxplots using `ggplot2`
 
@@ -171,9 +168,6 @@ ggplot(tb,
 
 4.  Finally, we're adding some labels to the plot with the `labs()` function.
 
-
-
-
 ### Bee Swarm plot using `ggbeeswarm`
 
 1.  The bee swarm plot is an alternative to the box plot, where each point is plotted in a manner that avoids overlap.
@@ -189,17 +183,15 @@ ggplot(tb,
   labs(title = "Bee Swarm plot of mpg", y = "Miles Per Gallon (mpg)")
 ```
 
-3. Discussion:
+3.  Discussion:
 
-* Initially, we declare our dataset and the aesthetic mappings, defining how variables in the data are visually represented. For the bee swarm plot, we only need a y aesthetic, which is `mpg`. We set the x aesthetic to 1 as a placeholder, because bee swarm plots require an x aesthetic, but we only have one variable.
+-   Initially, we declare our dataset and the aesthetic mappings, defining how variables in the data are visually represented. For the bee swarm plot, we only need a y aesthetic, which is `mpg`. We set the x aesthetic to 1 as a placeholder, because bee swarm plots require an x aesthetic, but we only have one variable.
 
-* Following that, we append a bee swarm plot using the `geom_beeswarm()` function.
+-   Following that, we append a bee swarm plot using the `geom_beeswarm()` function.
 
-* We then adopt a minimalist theme by using `theme_minimal()` to give our plot a sleek and simple look.
+-   We then adopt a minimalist theme by using `theme_minimal()` to give our plot a sleek and simple look.
 
-* We use the `labs()` function to label the plot.
-
-
+-   We use the `labs()` function to label the plot.
 
 ### Violin plot using `ggplot2`
 
@@ -212,11 +204,11 @@ ggplot(tb,
   labs(x = "", y = "Miles Per Gallon (mpg)", title = "Violin Plot of mpg")
 ```
 
-2. Discussion:
+2.  Discussion:
 
-* Here, `aes()` defines aesthetic mappings, mapping `mpg` to the y-axis. 
+-   Here, `aes()` defines aesthetic mappings, mapping `mpg` to the y-axis.
 
-* `geom_violin()` generates the violin plot, and `labs()` adds a title for the plot and labels the y-axis
+-   `geom_violin()` generates the violin plot, and `labs()` adds a title for the plot and labels the y-axis
 
 3.  We can add a boxplot to the violin plot, as follows:
 
@@ -227,13 +219,9 @@ ggplot(tb, aes(x = "", y = mpg)) +
   labs(x = "", y = "Miles Per Gallon (mpg)", title = "Violin Plot with Boxplot of mpg")
 ```
 
-
-
-
-
 ### Quantile-Quantile (Q-Q) Plots using ggplot
 
-* In order to create a Q-Q plot, we use the `ggplot()` function to specify our dataset and aesthetic mappings `aes()`. Subsequently, we use `stat_qq()` to generate the Q-Q plot and `stat_qq_line()` to add the reference line:
+-   In order to create a Q-Q plot, we use the `ggplot()` function to specify our dataset and aesthetic mappings `aes()`. Subsequently, we use `stat_qq()` to generate the Q-Q plot and `stat_qq_line()` to add the reference line:
 
 ```{r}
 ggplot(tb, 
@@ -243,6 +231,13 @@ ggplot(tb,
   labs(x = "Theoretical Quantiles", y = "Sample Quantiles", title = "Q-Q Plot of mpg")
 ```
 
+## Summary of Chapter 13 -- Continuous Data (2 of 5)
+
+In this chapter, we explore how to visualize univariate continuous data using the `ggplot2` package in R. We use the `mtcars` data set, converting it to a tibble called `tb` for easier manipulation.
+
+The visualization methods we cover include histograms, density plots (Probability Density Function and Cumulative Density Function), box plots, bee swarm plots, violin plots, and Q-Q plots. These are created using functions like `geom_histogram()`, `geom_density()`, `geom_boxplot()`, `geom_beeswarm()`, `geom_violin()`, `stat_qq()`, and `stat_qq_line()`.
+
+For the histogram, we can adjust bin width, color, and number of bins, or define custom bin ranges. The density plots provide a visual representation of the distribution of a variable, and we can color the area under the curve. To create the CDF plot, we first arrange our data and calculate the cumulative distribution, which is plotted as a line graph. For the violin plot, we show how to add a box plot within the violin for additional information. Finally, we explore Q-Q plots, which compare the quantiles of our data to a theoretical distribution, useful for assessing if the data follows a certain theoretical distribution.
 
 ## References
 
@@ -255,4 +250,3 @@ Henderson, D. R. (1974). Motor Trend Car Road Tests. Motor Trend, 1974. Data ret
 Eklund, A. (2020). ggbeeswarm: Categorical Scatter (Violin Point) Plots. R package version 0.6.0. https://CRAN.R-project.org/package=ggbeeswarm
 
 Henderson, D. R. (1974). Motor Trend Car Road Tests. Motor Trend, 1974. Data retrieved from R mtcars dataset.
-

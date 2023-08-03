@@ -115,7 +115,7 @@ IQR(tb$mpg)
 
 -   **Kurtosis**, on the other hand, measures the "tailedness" of the distribution. A distribution with high kurtosis exhibits a distinct peak and heavy tails, while low kurtosis corresponds to a flatter shape.
 
-- These two measures can be computed using the `skewness()` and `kurtosis()` functions from the `moments` package.
+-   These two measures can be computed using the `skewness()` and `kurtosis()` functions from the `moments` package.
 
 ```{r}
 # Load moments package
@@ -162,9 +162,9 @@ summary(tb)
 
 2.  In the code snippet provided above, we are invoking the `summary()` function on the `tb` tibble. The function explores each column individually and provides useful summary statistics.
 
-*  For numeric columns, `summary()` delivers a six-number summary that includes minimum, first quartile (Q1 or 25th percentile), median (Q2 or 50th percentile), mean, third quartile (Q3 or 75th percentile), and maximum. This gives a broad understanding of the central tendency and dispersion of the data within each numeric column.
+-   For numeric columns, `summary()` delivers a six-number summary that includes minimum, first quartile (Q1 or 25th percentile), median (Q2 or 50th percentile), mean, third quartile (Q3 or 75th percentile), and maximum. This gives a broad understanding of the central tendency and dispersion of the data within each numeric column.
 
-*  For categorical (factor) columns, `summary()` generates the counts of each category level. The output of this code is essentially a comprehensive snapshot of the `tb` tibble, enabling us to quickly understand the nature of our data. \[2\]
+-   For categorical (factor) columns, `summary()` generates the counts of each category level. The output of this code is essentially a comprehensive snapshot of the `tb` tibble, enabling us to quickly understand the nature of our data. \[2\]
 
 3.  To obtain a more detailed statistical summary of a dataframe or tibble, we can employ the `describe()` function from the psych package \[2\].
 
@@ -176,22 +176,21 @@ library(psych)
 describe(tb)
 ```
 
-* The `describe()` function analyzes each column in the provided tibble individually and outputs a range of useful statistics. For numeric columns, it offers count, mean, standard deviation, trimmed mean, minimum and maximum values, range, skewness, and kurtosis among others.
+-   The `describe()` function analyzes each column in the provided tibble individually and outputs a range of useful statistics. For numeric columns, it offers count, mean, standard deviation, trimmed mean, minimum and maximum values, range, skewness, and kurtosis among others.
 
-* For non-numeric or factor columns, the `describe()` function still provides a count of elements but defaults to `NA` for the rest of the statistics, as these metrics are not applicable.
+-   For non-numeric or factor columns, the `describe()` function still provides a count of elements but defaults to `NA` for the rest of the statistics, as these metrics are not applicable.
 
-* The output of the above code provides an elaborate statistical summary of the `tb` tibble, offering us a comprehensive overview of our data's attributes.
+-   The output of the above code provides an elaborate statistical summary of the `tb` tibble, offering us a comprehensive overview of our data's attributes.
 
 ## Visualizing Univariate Continuous Data
 
-* In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. 
+-   In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.
 
-* Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.
-
+-   Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.
 
 ### Stem-and-Leaf Plots
 
-1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) [7]
+1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) \[7\]
 
 2.  We can utilize the `stem()` function in R to devise stem-and-leaf plots. Here's how we can apply it to the `mpg` column in our `tb` tibble:
 
@@ -207,7 +206,7 @@ stem(tb$mpg)
 
 1.  A histogram is a graphical representation showcasing the frequency of discrete or grouped data points within a dataset.
 
-2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis. [3]
+2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis. \[3\]
 
 3.  It serves as a valuable tool for demonstrating the distribution shape of the data. In R, we can construct a histogram using the `hist()` function.
 
@@ -220,11 +219,11 @@ hist(tb$mpg,
      border="white")
 ```
 
-* This code generates a histogram of the mpg column using the hist() function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
+-   This code generates a histogram of the mpg column using the hist() function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
 
-* We use the `col` argument to specify the color of the histogram bars, and the `border` argument to determine the color of the bar borders.
+-   We use the `col` argument to specify the color of the histogram bars, and the `border` argument to determine the color of the bar borders.
 
-* The final histogram visually depicts the frequency of `mpg` values in the dataset, where each bar represents the count of observations within a specific range of values.
+-   The final histogram visually depicts the frequency of `mpg` values in the dataset, where each bar represents the count of observations within a specific range of values.
 
 4.  We can control the number of bins or the ranges of the bins in a histogram using the `breaks` argument inside the `hist()` function. Here is how we can specify the number of bins:
 
@@ -269,19 +268,19 @@ plot(density(tb$mpg),
      col="blue")
 ```
 
-* In the provided code segment, we make use of the `density()` function to generate a density plot for the `mpg` column.
+-   In the provided code segment, we make use of the `density()` function to generate a density plot for the `mpg` column.
 
-* Here, we utilize the `plot()` function to graph the resulting density object.
+-   Here, we utilize the `plot()` function to graph the resulting density object.
 
-* The `main` argument is implemented to stipulate the title of the plot, and the `xlab` argument designates the label for the x-axis.
+-   The `main` argument is implemented to stipulate the title of the plot, and the `xlab` argument designates the label for the x-axis.
 
-* Through the `col` argument, we determine the color of the plotted line.
+-   Through the `col` argument, we determine the color of the plotted line.
 
-* The final plot displays the probability density of `mpg` values in our dataset, using the curve to signify the data distribution.
+-   The final plot displays the probability density of `mpg` values in our dataset, using the curve to signify the data distribution.
 
 ### Cumulative Distribution Function (CDF) Plot
 
-1.  CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis [3].
+1.  CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis \[3\].
 
 2.  They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread.
 
@@ -294,17 +293,18 @@ plot(ecdf(tb$mpg),
      xlab = "Miles Per Gallon (mpg)")
 ```
 
-* In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column.
+-   In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column.
 
-* The `main` argument assigns the title to the plot, while the `xlab` argument labels the x-axis.
+-   The `main` argument assigns the title to the plot, while the `xlab` argument labels the x-axis.
 
-* The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
+-   The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
 
 ### Boxplot
 
-1.  Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution's center, spread, and potential outliers [5].
+1.  Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution's center, spread, and potential outliers \[5\].
 
-2. Here is sample code to generate a boxplot of `wt` (Weight) of the cars . 
+2.  Here is sample code to generate a boxplot of `wt` (Weight) of the cars .
+
 ```{r}
 boxplot(tb$wt, 
         xlab = "Boxplot",
@@ -323,7 +323,7 @@ boxplot(tb$wt,
 
 ### Bee Swarm plot
 
-1. A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
+1.  A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
 
 2.  It displays all of the individual data points along with a visual representation of their distribution. It can be useful for displaying the distribution of small datasets.
 
@@ -339,23 +339,23 @@ beeswarm(tb$wt,
          col="blue")
 ```
 
-* In the above code, we load the `beeswarm` package using the `library()` function.
+-   In the above code, we load the `beeswarm` package using the `library()` function.
 
-* We then create a bee swarm plot of the `wt` column using the `beeswarm()` function.
+-   We then create a bee swarm plot of the `wt` column using the `beeswarm()` function.
 
-* The `main` argument is used to specify the title of the plot.
+-   The `main` argument is used to specify the title of the plot.
 
-* The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
+-   The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
 
-* The `col` argument is used to set the color of the points.
+-   The `col` argument is used to set the color of the points.
 
-* The resulting plot will display the individual `wt` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
+-   The resulting plot will display the individual `wt` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
 
 ### Violin plot
 
 1.  Violin plots are a compelling tool to merge the benefits of box plots and kernel density plots and enable us to depict a detailed view of data distribution.
 
-2.  These plots exhibit the probability density at different values, where the plot's breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles [5].
+2.  These plots exhibit the probability density at different values, where the plot's breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles \[5\].
 
 3.  The `vioplot()` function, part of the `vioplot` package in R, allows us to create such a violin plot.
 
@@ -369,11 +369,11 @@ vioplot(tb$wt,
         ylab="Weight")
 ```
 
-* In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.
+-   In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.
 
-* The resulting plot unveils the entire `wt` data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
+-   The resulting plot unveils the entire `wt` data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
 
-*  Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.
+-   Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.
 
 ### Quantile-Quantile (Q-Q) Plots
 
@@ -381,7 +381,7 @@ vioplot(tb$wt,
 
 2.  Suppose we order a data column from the smallest to the biggest value, and each data point gets a *score* based on its position. This is what we call a *quantile*. Now, imagine a perfectly normal distribution doing the same thing. In a Q-Q plot, we compare our data's scores to the scores from the ideal normal distribution.
 
-3.  If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn't follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not [7].
+3.  If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn't follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not \[7\].
 
 4.  In R, we can use the `qqnorm()` function to create the plot and the `qqline()` function to add the reference line. If the points lie close to the reference line, it's a good indication that our data is normally distributed.
 
@@ -432,7 +432,6 @@ R Core Team (2020). R: A language and environment for statistical computing. R F
 
 Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.12, https://CRAN.R-project.org/package=psych.
 
-
 \[3\]
 
 Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
@@ -442,7 +441,6 @@ Wand, M. P., & Jones, M. C. (1995). Kernel Smoothing. Chapman and Hall/CRC.
 Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
 
 Hyndman, R. J., & Fan, Y. (1996). Sample quantiles in statistical packages. The American Statistician, 50(4), 361-365.
-
 
 \[4\]
 
@@ -459,5 +457,3 @@ Thode Jr, H. C. (2002). Testing for normality. CRC press.
 \[7\]
 
 Tukey, J. W. (1977). Exploratory data analysis. Addison-Wesley.
-
-

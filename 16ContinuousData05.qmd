@@ -1,6 +1,6 @@
 # Continuous Data (5 of 5)
 
-*Aug 3, 2023. V1.1 -=- This chapter is being heavily edited; It is very much Work in Progress*
+*Aug 3, 2023. V1.1 -=- This chapter is very much Work in Progress*
 
 2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 

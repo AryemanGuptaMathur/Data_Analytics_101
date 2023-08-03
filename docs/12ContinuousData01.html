@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#stem-and-leaf-plots" id="toc-stem-and-leaf-plots" class="nav-link" data-scroll-target="#stem-and-leaf-plots">Stem-and-Leaf Plots</a></li>
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
-  <li><a href="#density-plot" id="toc-density-plot" class="nav-link" data-scroll-target="#density-plot">Density plot</a></li>
+  <li><a href="#probability-density-function-pdf-plot" id="toc-probability-density-function-pdf-plot" class="nav-link" data-scroll-target="#probability-density-function-pdf-plot">Probability Density Function (PDF) plot</a></li>
   <li><a href="#cumulative-distribution-function-cdf-plot" id="toc-cumulative-distribution-function-cdf-plot" class="nav-link" data-scroll-target="#cumulative-distribution-function-cdf-plot">Cumulative Distribution Function (CDF) Plot</a></li>
   <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
   <li><a href="#bee-swarm-plot" id="toc-bee-swarm-plot" class="nav-link" data-scroll-target="#bee-swarm-plot">Bee Swarm plot</a></li>
@@ -594,7 +594,7 @@ carb      1.26  0.29</code></pre>
 <h2 class="anchored" data-anchor-id="visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</h2>
 <ul>
 <li><p>In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.</p></li>
-<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.</p></li>
+<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.</p></li>
 </ul>
 <section id="stem-and-leaf-plots" class="level3">
 <h3 class="anchored" data-anchor-id="stem-and-leaf-plots">Stem-and-Leaf Plots</h3>
@@ -681,12 +681,12 @@ carb      1.26  0.29</code></pre>
 </div>
 </div>
 <ul>
-<li><p>In this variation, the breaks argument uses the seq() function to create a sequence of break points from 10 to 35, with a step of 5.</p></li>
-<li><p>This results in bins with ranges 10-15, 15-20, 20-25, 25-30, and 30-35.</p></li>
+<li><p>In this variation, the breaks argument uses the <code>seq()</code> function to create a sequence of break points from 5 to 35, with a step of 5.</p></li>
+<li><p>This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35.</p></li>
 </ul>
 </section>
-<section id="density-plot" class="level3">
-<h3 class="anchored" data-anchor-id="density-plot">Density plot</h3>
+<section id="probability-density-function-pdf-plot" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-function-pdf-plot">Probability Density Function (PDF) plot</h3>
 <ol type="1">
 <li><p>Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset (Wand &amp; Jones, 1995).</p></li>
 <li><p>Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset.</p></li>

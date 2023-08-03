@@ -1,6 +1,6 @@
 # Continuous Data (4 of 5)
 
-*Aug 3, 2023. V1.1 -=- This chapter is very much Work in Progress*
+*Aug 3, 2023. V1.2 -=- This chapter is very much Work in Progress*
 
 ## Continuous Data Across Categories using ggplot2
 
@@ -24,7 +24,7 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-## Summarizing Continuous Data by one Factor (using ggplot2)
+## Summarizing Continuous Data by one Factor, using ggplot2
 
 1.  We investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) using ggplot2.
 
