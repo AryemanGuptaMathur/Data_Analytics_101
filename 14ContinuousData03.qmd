@@ -1,16 +1,16 @@
 # Continuous Data (3 of 5)
 
-*Aug 2, 2023. V1.7 -=- This chapter is being heavily edited -- very much Work in Progress*
+*Aug 3, 2023. V1.1 -=- This chapter is very much Work in Progress*
 
-## Continuous Data Across Categories: Group-wise Statistics and Data Manipulation
+## Continuous Data Across Categories
 
 1.  This chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
 2.  We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
 
-3.  To achieve this, we exemplify the use of libraries such as `dplyr` and `ggplot2`. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
+3.  To achieve this, we demonstrate the use of libraries such as `dplyr` and `ggplot2`. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
 
-4.  **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we have setup the `mtcars` data in a tibble named `tb`, by running the following code:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -25,7 +25,7 @@ tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
 tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
-
+# Directly access the data columns of tb, without tb$mpg
 attach(tb)
 ```
 
@@ -33,11 +33,11 @@ attach(tb)
 
 1.  Using `aggregate()`
 
--   We investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`). The following code will display a summary table showing the descriptive statistics of mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
+-   We can use the `aggregate()` function to investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`). The following code will display a summary table showing the average mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
 
 ```{r}
 agg <- aggregate(tb$mpg, 
-          by = list("cyl" = tb$cyl), 
+          by = list(tb$cyl), 
           FUN = mean)
 names(agg) <- c("Cylinders", "Avg MPG")
 agg
@@ -49,15 +49,15 @@ agg
 
 -   The second argument, `by`, denotes a list of variables to group by. Here, we've supplied `tb$cyl`, implying that we wish to partition our data based on the unique values of `cyl`.
 
--   The third argument, FUN, is the function we want to apply to each subset of data. We're using mean here, meaning we're calculating the average mpg for each unique cyl value.
+-   The third argument, `FUN`, is the function we want to apply to each subset of data. We are using `mean` here, meaning we're calculating the average mpg for each unique cyl value.
 
--   The output of aggregate(), a data frame, is then stored in a new variable, agg.
+-   The output of `aggregate()` is saved in a new tibble named `agg`. 
 
-Next, we utilize the names() function to rename the columns in the agg data frame. \[1\]
+-   Finally, we utilize the `names()` function to rename the columns and display `agg`. \[1\]
 
-3.  Using tapply()
+3.  Using `tapply()`
 
--   The tapply() function is a convenient tool that allows us to apply a function to subsets of a vector, as grouped by some factors.
+-   The `tapply()` function is a convenient tool to apply a function to subsets of a vector, grouped by some factors.
 
 ```{r}
 tapply(tb$mpg, tb$cyl, mean)
@@ -65,21 +65,19 @@ tapply(tb$mpg, tb$cyl, mean)
 
 4.  Discussion:
 
--   In this case, tapply(tb$mpg, tb$cyl, mean) is using the tapply() function to calculate the average miles per gallon (mpg) for each unique number of cylinders (cyl) within our tb tibble.
+-   In this code, `tapply(tb$mpg, tb$cyl, mean)` calculates the average miles per gallon (`mpg`) for each unique number of cylinders (`cyl`) within the `tb` tibble.
 
--   tb\$mpg represents the vector to which we want to apply the function. This is the mpg column in our tb tibble.
+-   `tb\$mpg` represents the vector to which we want to apply the function. 
 
--   tb\$cyl serves as our grouping factor. We are partitioning our data based on the unique values within the cyl column in our tb tibble.
+-   `tb\$cyl` serves as our grouping factor. We are partitioning our data based on the unique values within the `cyl` column in our `tb` tibble.
 
--   mean is the function that we're applying to each subset of our data. Here, we're calculating the mean mpg for each unique cyl value.
+-   `mean` is the function that we're applying to each subset of our data. 
 
--   The result will be a vector where each element is the average mpg for a unique number of cylinders (cyl), as determined by the unique values of tb\$cyl. \[1\]
+-   The result will be a vector where each element is the average `mpg` for a unique number of cylinders (`cyl`), as determined by the unique values of `tb\$cyl`. \[1\]
 
-5.  Using psych::describeBy()
+5.  Using `describeBy()` from package `psych`
 
--   The library(psych) command instructs R to load the psych package. This is an extensive collection of functions for performing psychological, psychometric, and psychophysical research, and it provides a wide variety of statistical procedures not available in base R.
-
--   The describeBy() function comes from the psych package. It is used to compute descriptive statistics of a numeric variable (or a group of numeric variables), broken down by levels of a grouping variable.
+-   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of a numeric variable, broken down by levels of a grouping variable.
 
 ```{r}
 library(psych)
@@ -88,9 +86,10 @@ describeBy(mpg, cyl)
 
 6.  Discussion:
 
--   describeBy(mpg, cyl) computes descriptive statistics of the mpg (miles per gallon) variable, broken down by the unique values in the cyl (number of cylinders) variable.
+-   `describeBy(mpg, cyl)` computes descriptive statistics of miles per gallon `mpg` variable, broken down by the unique values in the number of cylinders (`cyl`).
 
--   In other words, it's calculating statistics such as the mean, standard deviation, and quartiles for mpg, separately for each unique number of cylinders (cyl). \[2\]
+-   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
+
 
 ## Summarizing Continuous Data by two Factors
 

@@ -363,7 +363,7 @@ str(sp500)
 
 ## Summary of Chapter 6 -- Exploring S&P500 Data
 
-Chapter 6, titled "Live Case: S&P500 (1 of 3)," embarks on an exploration of the S&P500, a significant stock market index encompassing 500 major publicly traded companies in the U.S. The chapter introduces the index's role as a benchmark for assessing the overall health and performance of the U.S. stock market, maintained by S&P Dow Jones Indices.
+Chapter 6 embarks on an exploration of the S&P500, a significant stock market index encompassing 500 major publicly traded companies in the U.S. The chapter introduces the index's role as a benchmark for assessing the overall health and performance of the U.S. stock market, maintained by S&P Dow Jones Indices.
 
 Part 1 of the chapter delves into a real-world dataset containing information about S&P500 stocks. The data is loaded into a tibble using the R package `gsheet`, and its structure is examined using the `str()` function. To facilitate data management, column names are renamed using the `rename_with()` function from `dplyr`, and a detailed breakdown of column information is presented across eight tables.
 

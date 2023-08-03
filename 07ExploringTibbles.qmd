@@ -1,6 +1,6 @@
-# Exploring *tibbles* & *dplyr*
+# Diving Deep into *tibbles* & *dplyr*
 
-*July 29, 2023.*
+*Aug 03, 2023.*
 
 ## **tibbles**
 
@@ -333,8 +333,6 @@ distinct_count
 ```
 
 The `distinct_count` dataframe shows the number of unique values in the `cyl` column of the `mtcars` dataset.
-
-
 
 ## Summary of Chapter 7 -- Exploring *tibbles* & *dplyr*
 

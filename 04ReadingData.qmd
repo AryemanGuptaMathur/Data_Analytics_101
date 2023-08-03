@@ -304,21 +304,19 @@ my_df
 
 -   Fewer surprises: Tibbles have more stringent constraints than data frames, resulting in fewer surprises and unexpected behavior when manipulating data.
 
-
 ## Summary of Chapter 4 -- Reading Data in R
 
-In Chapter 4, we continue our exploration of data frames in R, focusing on reading various file formats into a data frame, managing the working directory, merging data frames, and the concept of tibbles, all with the overall objective of effectively reading data into R, for further analysis. 
+In Chapter 4, we continue our exploration of data frames in R, focusing on reading various file formats into a data frame, managing the working directory, merging data frames, and the concept of tibbles, all with the overall objective of effectively reading data into R, for further analysis.
 
-R uses the concept of a working directory to manage files. By default, R looks for and saves files in the working directory. To check the current working directory, we use the `getwd()` function. We can change the working directory using the `setwd()` function. It's advisable to choose an easily accessible working directory and avoid using spaces, special characters, and non-ASCII characters in file paths. 
+R uses the concept of a working directory to manage files. By default, R looks for and saves files in the working directory. To check the current working directory, we use the `getwd()` function. We can change the working directory using the `setwd()` function. It's advisable to choose an easily accessible working directory and avoid using spaces, special characters, and non-ASCII characters in file paths.
 
-We then learn to read various file formats into a data frame. For a CSV file, we use the `read.csv()` function. Reading an Excel file into a data frame is accomplished using the `read_excel` function from the `readxl` package. We also explored reading data from Google Sheets using the `gsheet2tbl` function in the `gsheet` package. 
+We then learn to read various file formats into a data frame. For a CSV file, we use the `read.csv()` function. Reading an Excel file into a data frame is accomplished using the `read_excel` function from the `readxl` package. We also explored reading data from Google Sheets using the `gsheet2tbl` function in the `gsheet` package.
 
-When dealing with multiple data sources, we may need to merge or join two data frames. R provides the `merge()` function to merge data frames based on a common key. 
+When dealing with multiple data sources, we may need to merge or join two data frames. R provides the `merge()` function to merge data frames based on a common key.
 
-The final concept introduced in this chapter is tibbles. A tibble is a modern reimagining of the data frame, part of the tidyverse collection of packages. Tibbles are created and manipulated using the `dplyr` package. Tibbles have several distinct characteristics, such as unique, non-empty column names, better subsetting behavior, and improved output for large datasets. We learned how to create a tibble using the `tibble()` function, and convert a data frame to a tibble using the `as_tibble()` function, and vice versa with `as.data.frame()`. 
+The final concept introduced in this chapter is tibbles. A tibble is a modern reimagining of the data frame, part of the tidyverse collection of packages. Tibbles are created and manipulated using the `dplyr` package. Tibbles have several distinct characteristics, such as unique, non-empty column names, better subsetting behavior, and improved output for large datasets. We learned how to create a tibble using the `tibble()` function, and convert a data frame to a tibble using the `as_tibble()` function, and vice versa with `as.data.frame()`.
 
-In conclusion, this chapter built upon the concept of data frames and tibbles, showing how they can be used as a versatile tool for reading and  storing  data in various formats and getting ready to further explore the data.
-
+In conclusion, this chapter built upon the concept of data frames and tibbles, showing how they can be used as a versatile tool for reading and storing data in various formats and getting ready to further explore the data.
 
 ## References
 

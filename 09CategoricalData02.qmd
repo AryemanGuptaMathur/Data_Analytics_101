@@ -397,11 +397,12 @@ mosaicplot(table(tb$cyl, tb$am),
            xlab = "Cylinders (cyl)",
            ylab = "Transmission (am)")
 ```
+
 2.  In a mosaic plot, we interpret two categorical variables on two axes. The **width** of each section on one axis signifies the proportion of that particular category in our dataset. Conversely, the **height** of a section on the other axis illustrates the proportion of that category, contingent on the specific category from the first variable. Therefore, the **area** of each rectangle directly corresponds to the frequency or proportion of observations falling within that specific combination of categories (Hartigan & Kleiner, 1981).
 
-3. By combining both the height and width of the rectangles, a mosaic plot gives us a visual representation of the joint distribution of the two categorical variables. It helps us to identify patterns, associations, and dependencies between the two variables.
+3.  By combining both the height and width of the rectangles, a mosaic plot gives us a visual representation of the joint distribution of the two categorical variables. It helps us to identify patterns, associations, and dependencies between the two variables.
 
-4. In the above code:
+4.  In the above code:
 
 -   The `table()` function is used to create a contingency table of the `cyl` and `am` columns of the `tb` tibble. This contingency table represents the counts of all combinations of `cyl` and `am` in the data.
 
@@ -422,7 +423,7 @@ vcd::mosaic(~ cyl + am,
        main = "Mosaic of Cylinder count and Transmission type")
 ```
 
-7. In this code:
+7.  In this code:
 
 -   `library(vcd)` is used to import the vcd package which includes the mosaic() function that is superior to the base R mosaicplot() in its handling of labeling and legends.
 
@@ -430,7 +431,7 @@ vcd::mosaic(~ cyl + am,
 
 -   In this command, the formula `~ cyl + am` tells R to plot `cyl` against `am`. The argument `data = tb` specifies that the variables for the plot come from the `tb` data frame. The `main` argument sets the title of the plot.
 
-8. We can customize the shading color of the mosaic plot by setting the color using the `col` argument inside the `mosaic()` function. To specify shades of blue, we can use the `RColorBrewer` package and its `brewer.pal()` function to generate a color palette:
+8.  We can customize the shading color of the mosaic plot by setting the color using the `col` argument inside the `mosaic()` function. To specify shades of blue, we can use the `RColorBrewer` package and its `brewer.pal()` function to generate a color palette:
 
 ```{r}
 # Load necessary packages
@@ -449,7 +450,7 @@ vcd::mosaic(~ cyl + am,
        highlighting_fill = cols)
 ```
 
-9. In this code:
+9.  In this code:
 
 -   `brewer.pal(4, "Blues")` creates a color palette of 4 different shades of blue.
 
@@ -457,7 +458,7 @@ vcd::mosaic(~ cyl + am,
 
 -   `highlighting_fill = cols` applies the cols color palette to the shading.
 
-10.  We can also recreate the previous mosaic plot using `ggplot2` and `ggmosaic` packages. Here is how to do it:
+10. We can also recreate the previous mosaic plot using `ggplot2` and `ggmosaic` packages. Here is how to do it:
 
 ```{r, warning=FALSE}
 # Load the packages
