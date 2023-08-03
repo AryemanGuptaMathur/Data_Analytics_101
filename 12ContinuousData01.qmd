@@ -186,7 +186,8 @@ describe(tb)
 
 * In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. 
 
-* Let's take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.
+* Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.
+
 
 ### Stem-and-Leaf Plots
 
@@ -250,11 +251,11 @@ hist(tb$mpg,
      border="white")
 ```
 
--   In this variation, the breaks argument uses the seq() function to create a sequence of break points from 10 to 35, with a step of 5.
+-   In this variation, the breaks argument uses the `seq()` function to create a sequence of break points from 5 to 35, with a step of 5.
 
--   This results in bins with ranges 10-15, 15-20, 20-25, 25-30, and 30-35.
+-   This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35.
 
-### Density plot
+### Probability Density Function (PDF) plot
 
 1.  Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset (Wand & Jones, 1995).
 

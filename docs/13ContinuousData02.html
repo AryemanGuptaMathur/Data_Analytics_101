@@ -173,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01GettingStarted.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started</span></a>
+ <span class="menu-text">Diving into R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Packages</span></a>
+ <span class="menu-text">The World of R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -286,14 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#continuous-data-2-of-5" id="toc-continuous-data-2-of-5" class="nav-link active" data-scroll-target="#continuous-data-2-of-5">Continuous Data (2 of 5)</a>
   <ul class="collapse">
-  <li><a href="#using-ggplot2-for-visualizing-univariate-continuous-data" id="toc-using-ggplot2-for-visualizing-univariate-continuous-data" class="nav-link" data-scroll-target="#using-ggplot2-for-visualizing-univariate-continuous-data">Using ggplot2 for Visualizing Univariate Continuous Data</a>
+  <li><a href="#using-the-ggplot2-package-for-visualizing-univariate-continuous-data" id="toc-using-the-ggplot2-package-for-visualizing-univariate-continuous-data" class="nav-link" data-scroll-target="#using-the-ggplot2-package-for-visualizing-univariate-continuous-data">Using the <strong>ggplot2</strong> Package for Visualizing Univariate Continuous Data</a>
   <ul class="collapse">
-  <li><a href="#histogram-using-ggplot" id="toc-histogram-using-ggplot" class="nav-link" data-scroll-target="#histogram-using-ggplot">Histogram using ggplot</a></li>
-  <li><a href="#probability-density-function-pdf-plot-using-ggplot" id="toc-probability-density-function-pdf-plot-using-ggplot" class="nav-link" data-scroll-target="#probability-density-function-pdf-plot-using-ggplot">Probability Density Function (PDF) plot using ggplot</a></li>
-  <li><a href="#cumulative-distribution-function-cdf-plot-using-ggplot" id="toc-cumulative-distribution-function-cdf-plot-using-ggplot" class="nav-link" data-scroll-target="#cumulative-distribution-function-cdf-plot-using-ggplot">Cumulative Distribution Function (CDF) Plot using ggplot</a></li>
-  <li><a href="#boxplot-using-ggplot" id="toc-boxplot-using-ggplot" class="nav-link" data-scroll-target="#boxplot-using-ggplot">Boxplot using ggplot</a></li>
-  <li><a href="#bee-swarm-plot-using-ggplot" id="toc-bee-swarm-plot-using-ggplot" class="nav-link" data-scroll-target="#bee-swarm-plot-using-ggplot">Bee Swarm plot using ggplot</a></li>
-  <li><a href="#violin-plot-using-ggplot" id="toc-violin-plot-using-ggplot" class="nav-link" data-scroll-target="#violin-plot-using-ggplot">Violin plot using ggplot</a></li>
+  <li><a href="#histogram-using-ggplot2" id="toc-histogram-using-ggplot2" class="nav-link" data-scroll-target="#histogram-using-ggplot2">Histogram using <code>ggplot2</code></a></li>
+  <li><a href="#probability-density-function-pdf-plot-using-ggplot2" id="toc-probability-density-function-pdf-plot-using-ggplot2" class="nav-link" data-scroll-target="#probability-density-function-pdf-plot-using-ggplot2">Probability Density Function (PDF) plot using <code>ggplot2</code></a></li>
+  <li><a href="#cumulative-distribution-function-cdf-plot-using-ggplot2" id="toc-cumulative-distribution-function-cdf-plot-using-ggplot2" class="nav-link" data-scroll-target="#cumulative-distribution-function-cdf-plot-using-ggplot2">Cumulative Distribution Function (CDF) Plot using <code>ggplot2</code></a></li>
+  <li><a href="#boxplots-using-ggplot2" id="toc-boxplots-using-ggplot2" class="nav-link" data-scroll-target="#boxplots-using-ggplot2">Boxplots using <code>ggplot2</code></a></li>
+  <li><a href="#bee-swarm-plot-using-ggbeeswarm" id="toc-bee-swarm-plot-using-ggbeeswarm" class="nav-link" data-scroll-target="#bee-swarm-plot-using-ggbeeswarm">Bee Swarm plot using <code>ggbeeswarm</code></a></li>
+  <li><a href="#violin-plot-using-ggplot2" id="toc-violin-plot-using-ggplot2" class="nav-link" data-scroll-target="#violin-plot-using-ggplot2">Violin plot using <code>ggplot2</code></a></li>
   <li><a href="#quantile-quantile-q-q-plots-using-ggplot" id="toc-quantile-quantile-q-q-plots-using-ggplot" class="nav-link" data-scroll-target="#quantile-quantile-q-q-plots-using-ggplot">Quantile-Quantile (Q-Q) Plots using ggplot</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -308,12 +308,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-2-of-5" class="level1">
 <h1>Continuous Data (2 of 5)</h1>
-<p><em>Aug 2, 2023</em></p>
-<section id="using-ggplot2-for-visualizing-univariate-continuous-data" class="level2">
-<h2 class="anchored" data-anchor-id="using-ggplot2-for-visualizing-univariate-continuous-data">Using ggplot2 for Visualizing Univariate Continuous Data</h2>
+<p><em>Aug 3, 2023.</em></p>
+<section id="using-the-ggplot2-package-for-visualizing-univariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-ggplot2-package-for-visualizing-univariate-continuous-data">Using the <strong>ggplot2</strong> Package for Visualizing Univariate Continuous Data</h2>
 <ol type="1">
 <li><p>In R, we can create these plots for Visualizing Univariate Continuous Data using the <code>ggplot2</code> package. For instance, the function <code>geom_boxplot()</code> produces box plots, <code>geom_violin()</code> creates violin plots, and <code>geom_histogram()</code> and <code>geom_density()</code> generate histograms and density plots, respectively. The <code>ggbeeswarm</code> package can be used for creating bee swarm plots with the <code>geom_beeswarm()</code> function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections.</p></li>
-<li><p><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</p></li>
+<li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
@@ -329,7 +329,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>am)</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Let’s load the ggplot2, dplyr libraries. These packages provide tools for creating stunning graphics and managing our data respectively. The package ggthemes allows us to use a variety of themes.</p>
+<ol start="3" type="1">
+<li>Let us load the <code>ggplot2</code>, <code>dplyr</code> and <code>ggthemes</code> packages. The package <code>ggthemes</code> allows us to use a variety of themes.</li>
+</ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
@@ -344,10 +346,23 @@ Attaching package: 'ggplot2'</code></pre>
     mpg</code></pre>
 </div>
 </div>
-<section id="histogram-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="histogram-using-ggplot">Histogram using ggplot</h3>
+<ol start="4" type="1">
+<li><ul>
+<li>Let’s take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using the <code>ggplot2</code> and related packages, including</li>
+</ul></li>
+</ol>
+<ol type="i">
+<li>Histograms;</li>
+<li>PDF and CDF Density plots;</li>
+<li>Box plots;</li>
+<li>Bee Swarm plots;</li>
+<li>Violin plots;</li>
+<li>Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.</li>
+</ol>
+<section id="histogram-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="histogram-using-ggplot2">Histogram using <code>ggplot2</code></h3>
 <ol type="1">
-<li>The following code creates a histogram using the ggplot package:</li>
+<li>The following code creates a histogram using the <code>ggplot2</code> package:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
@@ -378,16 +393,16 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
-<li>Here is how the code works:</li>
+<li>Discussion:</li>
 </ol>
 <ul>
-<li><p>First, we specify our data set and the aesthetic mappings with the ggplot() function. The x aesthetic, which stands for the variable that we’re binning (the mpg variable), is the only requirement for a histogram.</p></li>
-<li><p>Next, we use the geom_histogram() function to draw the histogram. The binwidth argument specifies the width of the bins in the histogram, and we have chosen 2 as an arbitrary width. The fill color of the bars is set to steel blue, and the border color is black.</p></li>
-<li><p>We then apply a minimalist theme to our plot with theme_minimal(), giving it a clean and polished look.</p></li>
-<li><p>Lastly, the labs() function allows us to add a title to our plot and labels for our x and y axes. We have named our plot “Histogram of mpg” and labeled our axes as “Miles Per Gallon (mpg)” and “Frequency”. [1]</p></li>
+<li><p>First, we specify our data set and the aesthetic mappings with the <code>ggplot()</code> function. The x aesthetic, which stands for the variable that we are binning (<code>mpg</code>), is needed for a histogram.</p></li>
+<li><p>Next, we use the <code>geom_histogram()</code> function to draw the histogram. The <code>binwidth</code> argument specifies the width of the bins in the histogram, and we have chosen <code>1</code> as an arbitrary width. The <code>fill</code> color of the bars and border are set to lightblue and black respectively.</p></li>
+<li><p>We apply a minimalist theme to our plot with <code>theme_minimal()</code>, giving it a clean and polished look.</p></li>
+<li><p>Lastly, the <code>labs()</code> function allows us to add a title to our plot and labels for our x and y axes. [1]</p></li>
 </ul>
 <ol start="4" type="1">
-<li>In order to create a histogram with 12 bins of equal width, we need to use the bins argument within the geom_histogram() function instead of binwidth</li>
+<li>We can set the number of bins in the histogram using the <code>bins</code> argument within the <code>geom_histogram()</code> function instead of <code>binwidth</code>. For example, in order to create a histogram with 12 bins of equal width, we can modify the code as follows:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
@@ -402,8 +417,13 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 </div>
 <ol start="5" type="1">
-<li>By replacing binwidth = 2 with bins = 12, we instruct R to create 12 bins of equal width. The bins argument decides the number of bins in the histogram, and the width of the bins is calculated by dividing the range of the data by the number of bins. Here, the range of the mpg variable is divided into 12 bins of equal width.</li>
-<li>To specify custom bin ranges in a histogram, we would typically use the breaks argument within the geom_histogram() function. We would need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 10-15, 15-20, 20-25, 25-30, and 30-35 for the mpg variable, we could write the code:</li>
+<li>Discussion:</li>
+</ol>
+<ul>
+<li>By replacing <code>binwidth = 2</code> with <code>bins = 12</code>, we instruct R to create 12 bins of equal width. The bins argument decides the number of bins in the histogram, and the width of the bins is calculated by dividing the range of the data by the number of bins.</li>
+</ul>
+<ol start="6" type="1">
+<li>We can specify custom bin ranges in a histogram. We typically use the <code>breaks</code> argument within the <code>geom_histogram()</code> function. We need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35-40, for the <code>mpg</code> variable, we could write the following code:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
@@ -417,43 +437,46 @@ Attaching package: 'ggplot2'</code></pre>
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<ol start="7" type="1">
-<li>In this code, the seq() function is used to generate a sequence of numbers from 10 to 35, with an increment (by) of 5. These numbers serve as the breakpoints for the bins in the histogram. The breaks argument then uses these numbers to set the bin ranges. The plot aesthetics remain the same as before.</li>
-</ol>
+<ul>
+<li>In this code, the <code>seq()</code> function is used to generate a sequence of numbers from 5 to 40, with an increment of 5. These numbers serve as the breakpoints for the bins in the histogram. The <code>breaks</code> argument then uses these numbers to set the bin ranges. The plot aesthetics remain the same as before.</li>
+</ul>
 </section>
-<section id="probability-density-function-pdf-plot-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="probability-density-function-pdf-plot-using-ggplot">Probability Density Function (PDF) plot using ggplot</h3>
-<ol type="1">
-<li>This type of plot shows the distribution of a single variable, and the area under the curve represents the probability of an observation falling within a particular range of values.</li>
-</ol>
+<section id="probability-density-function-pdf-plot-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-function-pdf-plot-using-ggplot2">Probability Density Function (PDF) plot using <code>ggplot2</code></h3>
+<ul>
+<li>Recall that this type of plot shows the distribution of a single variable, and the area under the curve represents the probability of an observation falling within a particular range of values.</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"lightpink"</span>, </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Probability Density Function of Miles Per Gallon (mpg)"</span>, <span class="at">x =</span> <span class="st">"Miles Per Gallon (mpg)"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">fill =</span> <span class="st">"lightpink"</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Probability Density Function of Miles Per Gallon (mpg)"</span>, <span class="at">x =</span> <span class="st">"Miles Per Gallon (mpg)"</span>, <span class="at">y =</span> <span class="st">"Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<ol start="2" type="1">
-<li><p>We first designate our data source and the aesthetic mappings using the ggplot() function. The aesthetic mapping for x is the variable we’re plotting, which is mpg.</p></li>
-<li><p>Subsequently, we append a density plot to our plot by using the geom_density() function. We’ve filled the area under the curve with a light pink color by setting fill to “lightpink” and alpha to 0.5.</p></li>
-</ol>
+<ul>
+<li><p>We designate our data source and the aesthetic mappings using the <code>ggplot()</code> function. The aesthetic mapping for x is <code>mpg</code>.</p></li>
+<li><p>Subsequently, we append a density plot to our plot by using the <code>geom_density()</code> function. We fill the area under the curve with a light pink color by setting <code>fill</code> to “lightpink” and <code>alpha</code> to 0.5.</p></li>
+</ul>
 </section>
-<section id="cumulative-distribution-function-cdf-plot-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf-plot-using-ggplot">Cumulative Distribution Function (CDF) Plot using ggplot</h3>
-<ol type="1">
+<section id="cumulative-distribution-function-cdf-plot-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf-plot-using-ggplot2">Cumulative Distribution Function (CDF) Plot using <code>ggplot2</code></h3>
+<ul>
 <li>We can generate a CDF plot. First, we’ll calculate the cumulative distribution. This can be achieved by arranging the data in ascending order, then adding a column representing the proportion of values less than or equal to each value:</li>
-</ol>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> tb <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(mpg) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cdf =</span> <span class="fu">row_number</span>() <span class="sc">/</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ol start="2" type="1">
-<li>The arrange() function sorts the data, mutate() creates a new column, and row_number() gives the rank of each row, while n() provides the total number of rows. The quotient of these represents the proportion of values less than or equal to each value. Finally, we create the plot:</li>
-</ol>
+<ul>
+<li><p>The <code>arrange()</code> function sorts the data, <code>mutate()</code> creates a new column, and <code>row_number()</code> gives the rank of each row, while <code>n()</code> provides the total number of rows.</p></li>
+<li><p>The quotient of these represents the proportion of values less than or equal to each value.</p></li>
+<li><p>Finally, we can create the CDF plot using the following code:</p></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> cdf)) <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
@@ -463,8 +486,8 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 </div>
 </section>
-<section id="boxplot-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot-using-ggplot">Boxplot using ggplot</h3>
+<section id="boxplots-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="boxplots-using-ggplot2">Boxplots using <code>ggplot2</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">y =</span> mpg)) <span class="sc">+</span></span>
@@ -477,38 +500,42 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 <ol type="1">
 <li><p>We’re first specifying the source of our data and the aesthetic mappings, which define how variables in the data are mapped to visual properties. In this case, we’re only specifying the y aesthetic, since a boxplot of a single variable doesn’t need an x aesthetic. The y aesthetic is mapped to the mpg variable.</p></li>
-<li><p>Then, we’re adding a boxplot to the plot. The geom_boxplot() function does this.</p></li>
-<li><p>After this, theme_minimal() is used to apply a minimalistic theme to the plot, which has a clean and professional appearance.</p></li>
-<li><p>Finally, we’re adding some labels to the plot with the labs() function.</p></li>
+<li><p>Then, we add a boxplot using <code>geom_boxplot()</code>.</p></li>
+<li><p>After this, <code>theme_minimal()</code> is used to apply a minimalist theme to the plot, which has a clean and professional appearance.</p></li>
+<li><p>Finally, we’re adding some labels to the plot with the <code>labs()</code> function.</p></li>
 </ol>
 </section>
-<section id="bee-swarm-plot-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="bee-swarm-plot-using-ggplot">Bee Swarm plot using ggplot</h3>
+<section id="bee-swarm-plot-using-ggbeeswarm" class="level3">
+<h3 class="anchored" data-anchor-id="bee-swarm-plot-using-ggbeeswarm">Bee Swarm plot using <code>ggbeeswarm</code></h3>
 <ol type="1">
 <li><p>The bee swarm plot is an alternative to the box plot, where each point is plotted in a manner that avoids overlap.</p></li>
-<li><p>We need to install and load the ggbeeswarm package. Now we create a bee swarm plot using ggplot2 and ggbeeswarm for the mpg column of the tb tibble.</p></li>
+<li><p>We use the <code>ggbeeswarm</code> package on the <code>mpg</code> column of the <code>tb</code> tibble.</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>() <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bee Swarm plot of mpg"</span>, <span class="at">y =</span> <span class="st">"Miles Per Gallon (mpg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bee Swarm plot of mpg"</span>, <span class="at">y =</span> <span class="st">"Miles Per Gallon (mpg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <ol start="3" type="1">
-<li><p>Initially, we declare our dataset and the aesthetic mappings, defining how variables in the data are visually represented. For the bee swarm plot, we only need a y aesthetic, which is the mpg variable. We set the x aesthetic to 1 as a placeholder, because bee swarm plots require an x aesthetic, but we only have one variable.</p></li>
-<li><p>Following that, we append a bee swarm plot using the geom_beeswarm() function.</p></li>
-<li><p>We then adopt a minimalist theme by using theme_minimal() to give our plot a sleek and simple look.</p></li>
-<li><p>To finish, we use the labs() function to label the plot.</p></li>
+<li>Discussion:</li>
 </ol>
+<ul>
+<li><p>Initially, we declare our dataset and the aesthetic mappings, defining how variables in the data are visually represented. For the bee swarm plot, we only need a y aesthetic, which is <code>mpg</code>. We set the x aesthetic to 1 as a placeholder, because bee swarm plots require an x aesthetic, but we only have one variable.</p></li>
+<li><p>Following that, we append a bee swarm plot using the <code>geom_beeswarm()</code> function.</p></li>
+<li><p>We then adopt a minimalist theme by using <code>theme_minimal()</code> to give our plot a sleek and simple look.</p></li>
+<li><p>We use the <code>labs()</code> function to label the plot.</p></li>
+</ul>
 </section>
-<section id="violin-plot-using-ggplot" class="level3">
-<h3 class="anchored" data-anchor-id="violin-plot-using-ggplot">Violin plot using ggplot</h3>
+<section id="violin-plot-using-ggplot2" class="level3">
+<h3 class="anchored" data-anchor-id="violin-plot-using-ggplot2">Violin plot using <code>ggplot2</code></h3>
 <ol type="1">
-<li>We will now generate a violin plot using the ggplot2 package in R for the mpg column</li>
+<li>We will now generate a violin plot using the ggplot2 package for the <code>mpg</code> column</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
@@ -520,8 +547,14 @@ Attaching package: 'ggplot2'</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li><p>In this script, aes() defines aesthetic mappings, mapping mpg to the y-axis. geom_violin() generates the violin plot, and labs() adds a title for the plot and labels the y-axis</p></li>
-<li><p>We can add a boxplot to the violin plot, as follows:</p></li>
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>Here, <code>aes()</code> defines aesthetic mappings, mapping <code>mpg</code> to the y-axis.</p></li>
+<li><p><code>geom_violin()</code> generates the violin plot, and <code>labs()</code> adds a title for the plot and labels the y-axis</p></li>
+</ul>
+<ol start="3" type="1">
+<li>We can add a boxplot to the violin plot, as follows:</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
@@ -535,9 +568,9 @@ Attaching package: 'ggplot2'</code></pre>
 </section>
 <section id="quantile-quantile-q-q-plots-using-ggplot" class="level3">
 <h3 class="anchored" data-anchor-id="quantile-quantile-q-q-plots-using-ggplot">Quantile-Quantile (Q-Q) Plots using ggplot</h3>
-<ol type="1">
-<li>In order to create a Q-Q plot, we will use the ggplot() function to specify our dataset and aesthetic mappings (aes()). Then, we’ll use stat_qq() to generate the Q-Q plot and stat_qq_line() to add the reference line:</li>
-</ol>
+<ul>
+<li>In order to create a Q-Q plot, we use the <code>ggplot()</code> function to specify our dataset and aesthetic mappings <code>aes()</code>. Subsequently, we use <code>stat_qq()</code> to generate the Q-Q plot and <code>stat_qq_line()</code> to add the reference line:</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">sample =</span> mpg)) <span class="sc">+</span></span>
@@ -548,9 +581,6 @@ Attaching package: 'ggplot2'</code></pre>
 <p><img src="13ContinuousData02_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<ol start="2" type="1">
-<li>In this ggplot() command, aes() defines the aesthetic mappings, mapping mpg to the sample data. stat_qq() generates the Q-Q plot, stat_qq_line() adds the reference line, and labs() allows us to add a title for the plot and labels for the axes.</li>
-</ol>
 </section>
 </section>
 <section id="references" class="level2">
@@ -558,11 +588,8 @@ Attaching package: 'ggplot2'</code></pre>
 <p>[1]</p>
 <p>Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.</p>
 <p>Henderson, D. R. (1974). Motor Trend Car Road Tests. Motor Trend, 1974. Data retrieved from R mtcars dataset.</p>
-<p>[2]</p>
-<p>Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York.</p>
 <p>Eklund, A. (2020). ggbeeswarm: Categorical Scatter (Violin Point) Plots. R package version 0.6.0. https://CRAN.R-project.org/package=ggbeeswarm</p>
 <p>Henderson, D. R. (1974). Motor Trend Car Road Tests. Motor Trend, 1974. Data retrieved from R mtcars dataset.</p>
-<p>Hassell, N. (2001). Rug plots. Significance, 44(4), 181-182.</p>
 
 
 </section>

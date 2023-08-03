@@ -173,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01GettingStarted.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started</span></a>
+ <span class="menu-text">Diving into R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">R Packages</span></a>
+ <span class="menu-text">The World of R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -239,30 +239,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12ContinuousData01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (1 of 4)</span></a>
+ <span class="menu-text">Continuous Data (1 of 5)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13ContinuousData02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (2 of 4)</span></a>
+ <span class="menu-text">Continuous Data (2 of 5)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14ContinuousData03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (3 of 4)</span></a>
+ <span class="menu-text">Continuous Data (3 of 5)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15ContinuousData04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (4 of 4)</span></a>
+ <span class="menu-text">Continuous Data (4 of 5)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16LiveCase03.html" class="sidebar-item-text sidebar-link">
+  <a href="./16ContinuousData05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Data (5 of 5)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17LiveCase03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Live Case: S&amp;P500 (3 of 3)</span></a>
   </div>
 </li>
@@ -305,13 +311,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="categorical-data-3-of-3" class="level1">
 <h1>Categorical Data (3 of 3)</h1>
-<p><em>July 30, 2023</em></p>
+<p><em>Aug 3, 2023</em></p>
 <section id="overview-of-multivariate-categorical-variables" class="level2">
 <h2 class="anchored" data-anchor-id="overview-of-multivariate-categorical-variables">Overview of Multivariate Categorical Variables</h2>
 <ol type="1">
 <li><p>Multivariate categorical variables allow us to analyze and comprehend relationships between <strong>three or more</strong> categorical variables respectively.</p></li>
 <li><p>This form of analysis can help <strong>reveal complex interactions and dependencies</strong> between multiple variables that cannot be detected in bivariate analyses. For example, we might want to explore the relationship between a person’s gender, car ownership status, and their level of education (high school, bachelor’s, master’s, etc.). Both bivariate and multivariate analyses are essential in statistical and data analysis as they allow us to uncover relationships and patterns in data</p></li>
-<li><p><strong>Data</strong>: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:</p></li>
+<li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries, suppressing annoying startup messages</span></span>
@@ -320,12 +326,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the mtcars dataset into a tibble called tb</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>tb <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(mtcars)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert several numeric columns into factor variables</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>cyl)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>vs)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>am)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert several numeric columns into factor variables</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>cyl)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>vs <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>vs)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>am)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>tb<span class="sc">$</span>gear <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tb<span class="sc">$</span>gear)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Directly access the data columns of tb, without tb$mpg</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="three-way-relationships" class="level2">
