@@ -1,20 +1,18 @@
 # Continuous Data (1 of 5)
 
-*Aug 1, 2023*
+*Aug 3, 2023*
 
 ## Exploring Univariate Continuous Data: Summarization and Visualization in R
 
-1.  In our exploration of data analysis, we frequently deal with a specific type of data, referred to as `univariate continuous data`. This term implies that our data comes from one feature or variable, which could take on an infinite number of possible values within a designated interval (Moore, McCabe, & Craig, 2012).
+1.  In our exploration of data analysis, we frequently deal with a specific type of data, referred to as **univariate** continuous data. This term implies that our data comes from **one feature or variable**, which could take on an infinite number of possible values, typically within an interval \[1\].
 
-2.  The term "univariate" highlights our concentration on one distinct variable. Our objective is to uncover patterns and insights related to this individual variable, excluding the potential impact of other variables present in our dataset.
+2.  Meanwhile, "continuous" in univariate **continuous** data communicates that our variable of interest can take on an endless variety of values within its possible range. For instance, in the `mtcars` dataset in R, variables like `mpg` (miles per gallon), `wt` (weight), and `hp` (horsepower) epitomize continuous data. They are not limited to specific, separate numbers and can encompass any value, including decimal points, within their respective ranges \[1\].
 
-3.  Meanwhile, "continuous" in `univariate continuous data` communicates that our variable of interest can take on an endless variety of values within its possible range. For instance, in the `mtcars` dataset in R, variables like 'mpg' (miles per gallon), 'wt' (weight), and 'hp' (horsepower) epitomize continuous data. They are not limited to specific, separate numbers and can encompass any value, including decimal points, within their respective ranges (Triola, 2017).
+3.  As an illustration, we work with `mpg`, `wt`, or `hp` columns from the `mtcars` dataset, to demonstrate how to **summarize** and **visulaize** **univariate** **continuous** **data**. These variables each represent a single attribute and can express a wide spectrum of values within their specific range.
 
-4.  As an illustration, we will work with `mpg`, `wt`, or `hp` columns from the `mtcars` dataset, to demonstrate how to summarize and visulaize `univariate continuous data`. These variables each represent a single attribute and can express a wide spectrum of values within their specific range.
+4.  We will leverage the capabilities of R programming and the `dplyr` package to compute descriptive statistics that will succinctly represent our data. Further on, the spotlight will be on visualization. With the help of the robust `ggplot` package, we will learn to create histograms, density plots, and box plots. These plots will not only represent our univariate continuous data but also facilitate our understanding of data distribution, outliers, and central tendency.
 
-5.  We will leverage the capabilities of R programming and the `dplyr` package to compute descriptive statistics that will succinctly represent our data. Further on, the spotlight will be on visualization. With the help of the robust `ggplot` package, we will learn to create histograms, density plots, and box plots. These plots will not only represent our univariate continuous data but also facilitate our understanding of data distribution, outliers, and central tendency.
-
-6.  **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+5.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -31,26 +29,24 @@ tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
 ```
 
-The data is in a tibble called `tb`.
-
 ### Measures of Central Tendency
 
-1.  In our journey of understanding data, we often turn to certain statistical tools, among which, the measures of central tendency play a pivotal role. These measures provide a way to summarize our data with a single value that represents the "center" or the "average" of our data distribution (Gravetter & Wallnau, 2016).
+1.  In our journey of understanding data, we often turn to certain statistical tools, among which, the measures of central tendency play a pivotal role. These measures provide a way to summarize our data with a single value that represents the "center" or the "average" of our data distribution. \[1\]
 
 2.  Primarily, there are three measures of central tendency that we often rely on: the mean, median, and mode.
 
--   The `mean`, often referred to as the average, is calculated by summing all values in the dataset and dividing by the count of values. In R, we can use the `mean()` function to compute this.
+-   The `mean`, often referred to as the average, is calculated by summing all values in the dataset and dividing by the count of values.
 
--   The `median` is the middle value in a dataset when the values are sorted in ascending or descending order. If the dataset has an even number of observations, the median is the average of the two middle numbers. In R, the `median()` function helps us find this value.
+-   The `median` is the middle value in a dataset when the values are sorted in ascending or descending order. If the dataset has an even number of observations, the median is the average of the two middle numbers.
 
--   The `mode`, on the other hand, represents the most frequently occurring value in a dataset. Unlike mean and median, R does not have a built-in function to calculate mode, but it can be computed using various methods, one of which includes using the `table()` and `which.max()` functions together.
+-   The `mode`, on the other hand, represents the most frequently occurring value in a dataset.
 
-3.  Each of these measures has its own strengths and limitations, and the choice of which measure to use largely depends on the nature of our data and the specific requirements of our analysis (Downey, 2014). \[2\]
+3.  Each of these measures has its own strengths and limitations, and the choice of which measure to use largely depends on the nature of our data and the specific requirements of our analysis \[2\].
 
-4.  In our analysis, we take measures to determine the mean and median of the wt (weight) for all vehicles in our mtcars dataset, which is now in the dplyr tibble named tb. To ascertain the mean and median of wt, we utilize the following code:
+4.  In our analysis, we determine the `mean` and `median` of the `wt` (weight) for all vehicles in our `mtcars` dataset, which is now in the `dplyr` tibble named `tb`. To ascertain the mean and median of `wt`, we utilize the following code:
 
 ```{r}
-# Calculate mean of wt
+# Mean of wt
 mean(tb$wt)
 ```
 
@@ -59,7 +55,7 @@ mean(tb$wt)
 median(tb$wt)
 ```
 
-5.  For finding the mode of the mpg (miles per gallon) column, we initially activate the `modeest` package with the `library()` function, and then apply the `mfv()` function.
+5.  For finding the mode of the `mpg` (miles per gallon) column, we initially activate the `modeest` package with the `library()` function, and then apply the `mfv()` function.
 
 ```{r}
 # Calculate mode of mpg
@@ -67,61 +63,59 @@ library(modeest)
 mfv(tb$mpg) # Mode
 ```
 
-6.  It's critical to keep in mind that our mtcars dataset comprises continuous data, making the concept of mode less straightforward. The mfv() function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset (Bogaert, 2021) \[2\].
+6.  The `mfv()` function estimates the mode using a kernel density estimator, which may not always coincide with a specific value in the dataset \[2\].
 
 ### Measures of Variability
 
-1.  In our exploration of continuous data, we also consider measures of variability. These statistical measures provide insight into the spread or dispersion of our data points (Gravetter & Wallnau, 2016). To further illustrate the concepts we've discussed, we'll apply these measures of variability to the 'wt' column from the mtcars dataset.
+1.  In our exploration of continuous data, we also consider measures of variability. These statistical measures provide insight into the spread or dispersion of our data points. To further illustrate the concepts we've discussed, we'll apply these measures of variability to the `mpg` column from the `mtcars` dataset.
 
-2.  Range: The first measure we'll discuss is the `range`. This is the difference between the highest and the lowest value in our data set. However, while `range` is easy to calculate and understand, it is sensitive to outliers, so we must interpret it carefully.
-
-3.  The range() function in R provides the minimum and maximum 'wt', effectively giving us the range of 'wt' values in the mtcars dataset.
+2.  **Range**: This is the difference between the highest and the lowest value in our data set. However, while `range` is easy to calculate and understand, it is sensitive to outliers, so we must interpret it carefully. The `range()` function in R provides the minimum and maximum `mpg`.
 
 ```{r}
-# Range of wt in the mtcars dataframe
-range(tb$wt)
+# Range of mpg
+range(tb$mpg)
 ```
 
-4.  Min and Max: We can off course measure the minimum and maximum values, using the following simple code.
+3.  **Min and Max**: We can off course measure the minimum and maximum values, using the following simple code.
 
 ```{r }
-# Minimum wt in the mtcars dataframe
+# Minimum mpg
 min(tb$mpg)
 ```
 
 ```{r}
-# Maximum wt in the mtcars dataframe
+# Maximum mpg
 max(tb$mpg)
 ```
 
-5.  Variance: It is calculated as the average of the squared deviations from the mean. Larger variances suggest that the data points are more spread out around the mean. One limitation of the variance is that its units are the square of the original data's units, which can make interpretation difficult. We use the var() function to compute the variance.
+4.  **Variance**: It is calculated as the average of the squared deviations from the mean. Larger variances suggest that the data points are more spread out around the mean. One limitation of the variance is that its units are the square of the original data's units, which can make interpretation difficult. We use the var() function to compute the variance.
 
 ```{r}
-# Variance of 'wt' in the mtcars dataframe
-var(tb$wt)
+# Variance of mpg
+var(tb$mpg)
 ```
 
-6.  Standard Deviation: This leads us to the `standard deviation` (computed as `sd` in `R`), which is simply the square root of the variance. Because it is in the same units as the original data, it is often easier to interpret than the variance. A larger standard deviation indicates a greater spread of data around the mean.
+5.  **Standard Deviation:** This is simply the square root of the variance. Because it is in the same units as the original data, it is often easier to interpret than the variance. A larger standard deviation indicates a greater spread of data around the mean.
 
 ```{r}
-# Standard Deviation of 'wt' in the mtcars dataframe
-sd(tb$wt)
+# Standard Deviation of mpg
+sd(tb$mpg)
 ```
 
-7.  `Interquartile Range` (IQR): It is another measure of dispersion, especially useful when we have skewed data or outliers. It represents the range within which the central 50% of our data falls. It can be calculated in `R` using the `IQR()` function. This measure is less sensitive to extreme values than the range, variance, or standard deviation. To find the interquartile range (IQR), which provides the spread of the middle 50% of our 'wt' values, we use the IQR() function.
+6.  **Interquartile Range** **(IQR)**: It is another measure of dispersion, especially useful when we have skewed data or outliers. It represents the range within which the central 50% of our data falls. This measure is less sensitive to extreme values than the range, variance, or standard deviation. To find the interquartile range (IQR), which provides the spread of the middle 50% of the `mpg` values, we use the `IQR()` function.
 
 ```{r}
-# Inter-Quartile Range of wt in the mtcars dataframe
-IQR(tb$wt)
+# Inter-Quartile Range of mpg
+IQR(tb$mpg)
 ```
 
-8.  `Skewness` and `Kurtosis`:
+7.  **Skewness** and **Kurtosis**:
 
--   `Skewness` is a measure of the asymmetry of our data. Positive skewness indicates a distribution with a long right tail, while negative skewness indicates a distribution with a long left tail.
+-   **Skewness** is a measure of the asymmetry of our data. Positive skewness indicates a distribution with a long right tail, while negative skewness indicates a distribution with a long left tail.
 
--   `Kurtosis`, on the other hand, measures the "tailedness" of the distribution. A distribution with high kurtosis exhibits a distinct peak and heavy tails, while low kurtosis corresponds to a flatter shape.
+-   **Kurtosis**, on the other hand, measures the "tailedness" of the distribution. A distribution with high kurtosis exhibits a distinct peak and heavy tails, while low kurtosis corresponds to a flatter shape.
 
-These two measures can be computed in `R` using the `skewness()` and `kurtosis()` functions from the `moments` package.
+- These two measures can be computed using the `skewness()` and `kurtosis()` functions from the `moments` package.
 
 ```{r}
 # Load moments package
@@ -134,22 +128,20 @@ skewness(tb$wt)
 kurtosis(tb$wt)
 ```
 
-9.  To summarize, these measures of variability help us quantify the dispersion and shape of our data, offering a more complete picture when combined with measures of central tendency. \[2\]
+8.  Overall, these measures of variability help us quantify the dispersion and shape of our data, offering a more complete picture when combined with measures of central tendency. \[2\]
 
 ## Summarizing Univariate Continuous Data
 
 1.  Our primary objective in summarizing data is to gain an initial overview or snapshot of the data set we're dealing with. This fundamental analysis provides us a sense of the data's central tendency, spread, and distribution shape, which in turn guides our decision-making process for subsequent stages of data analysis.
 
-2.  In this context, the R functions `summary()` and `describe()` are extremely beneficial, even though the information they provide varies.
-
-3.  In R, the `summary()` function offers a succinct summary of the selected data object. When applied to a numeric vector such as mpg from the mtcars dataset, it yields the minimum and maximum values, the first quartile (25th percentile), the median (50th percentile), the third quartile (75th percentile), and the mean (Gravetter & Wallnau, 2016). Here is the code:
+2.  In R, the `summary()` function offers a succinct summary of the selected data object. When applied to a numeric vector such as mpg from the mtcars dataset, it yields the minimum and maximum values, the first quartile (25th percentile), the median (50th percentile), the third quartile (75th percentile), and the mean.
 
 ```{r}
-# A summary of 'mpg' in the mtcars dataframe using summary()
+# A summary of 'mpg'
 summary(tb$mpg)
 ```
 
-4.  The `describe()` function, part of the psych package, goes a step further by providing a more comprehensive summary of the data. It includes additional statistics like the number of valid (non-missing) observations, the standard deviation, and metrics of skewness and kurtosis. By delivering a wider range of statistics, describe() offers us a more detailed understanding of our data distribution (Field, Miles, & Field, 2012). Here's how to use the `describe()` function:
+3.  The `describe()` function, part of the `psych` package, goes a step further by providing a more comprehensive summary of the data. It includes additional statistics like the number of valid (non-missing) observations, the standard deviation, and metrics of skewness and kurtosis \[2\].
 
 ```{r}
 # Loading the psych package
@@ -159,24 +151,22 @@ library(psych)
 describe(tb$mpg)
 ```
 
-### Summarizing a dataframe or tibble
+### Summarizing an entire dataframe or tibble
 
-1.  The function `summary()` in R can also be employed to summarize the entirety of a dataframe or tibble in a comprehensive manner (R Core Team, 2020). When executed on a dataframe or tibble, `summary()` generates a quick, complete statistical summary of every column.
+1.  The function `summary()` in R can also be employed to summarize the entirety of a dataframe or tibble in a comprehensive manner. When executed on a dataframe or tibble, `summary()` generates a quick, complete statistical summary of every column \[2\].
 
 ```{r}
 # A summary of the tibble tb
 summary(tb)
 ```
 
-2.  In the code snippet provided above, we are invoking the `summary()` function on the `tb` tibble. The function will explore each column individually and provide useful summary statistics.
+2.  In the code snippet provided above, we are invoking the `summary()` function on the `tb` tibble. The function explores each column individually and provides useful summary statistics.
 
-3.  For numeric columns, `summary()` delivers a six-number summary that includes minimum, first quartile (Q1 or 25th percentile), median (Q2 or 50th percentile), mean, third quartile (Q3 or 75th percentile), and maximum. This gives a broad understanding of the central tendency and dispersion of the data within each numeric column.
+*  For numeric columns, `summary()` delivers a six-number summary that includes minimum, first quartile (Q1 or 25th percentile), median (Q2 or 50th percentile), mean, third quartile (Q3 or 75th percentile), and maximum. This gives a broad understanding of the central tendency and dispersion of the data within each numeric column.
 
-4.  For categorical (factor) columns, `summary()` generates the counts of each category level.
+*  For categorical (factor) columns, `summary()` generates the counts of each category level. The output of this code is essentially a comprehensive snapshot of the `tb` tibble, enabling us to quickly understand the nature of our data. \[2\]
 
-5.  The output of this code is essentially a comprehensive snapshot of the `tb` tibble, enabling us to quickly understand the nature of our data. \[2\]
-
-6.  To obtain a more detailed statistical summary of a dataframe or tibble, we can employ the `describe()` function from the psych package (Revelle, 2020).
+3.  To obtain a more detailed statistical summary of a dataframe or tibble, we can employ the `describe()` function from the psych package \[2\].
 
 ```{r}
 # Loading the psych package
@@ -186,21 +176,23 @@ library(psych)
 describe(tb)
 ```
 
-7.  The `describe()` function analyzes each column in the provided tibble individually and outputs a range of useful statistics. For numeric columns, it offers count, mean, standard deviation, trimmed mean, minimum and maximum values, range, skewness, and kurtosis among others.
+* The `describe()` function analyzes each column in the provided tibble individually and outputs a range of useful statistics. For numeric columns, it offers count, mean, standard deviation, trimmed mean, minimum and maximum values, range, skewness, and kurtosis among others.
 
-8.  For non-numeric or factor columns, the `describe()` function still provides a count of elements but defaults to 'NA' for the rest of the statistics, as these metrics are not applicable.
+* For non-numeric or factor columns, the `describe()` function still provides a count of elements but defaults to `NA` for the rest of the statistics, as these metrics are not applicable.
 
-9.  The output of the above code provides an elaborate statistical summary of the tb tibble, offering us a comprehensive overview of our data's attributes.
+* The output of the above code provides an elaborate statistical summary of the `tb` tibble, offering us a comprehensive overview of our data's attributes.
 
 ## Visualizing Univariate Continuous Data
 
-1.  In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. Let's take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.
+* In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data. 
+
+* Let's take a closer look at some of the most effective ways of visualizing univariate continuous data: box plots, bee swarm plots, violin plots, histograms, and density plots.
 
 ### Stem-and-Leaf Plots
 
-1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets (Tukey, 1977). The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s).
+1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) [7]
 
-2.  We can utilize the stem() function in R to devise stem-and-leaf plots. Here's how we can apply it to the `mpg` column in our `tb` tibble:
+2.  We can utilize the `stem()` function in R to devise stem-and-leaf plots. Here's how we can apply it to the `mpg` column in our `tb` tibble:
 
 ```{r}
 stem(tb$mpg)
@@ -214,7 +206,7 @@ stem(tb$mpg)
 
 1.  A histogram is a graphical representation showcasing the frequency of discrete or grouped data points within a dataset.
 
-2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin (Scott, 1979). They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis.
+2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis. [3]
 
 3.  It serves as a valuable tool for demonstrating the distribution shape of the data. In R, we can construct a histogram using the `hist()` function.
 
@@ -227,13 +219,13 @@ hist(tb$mpg,
      border="white")
 ```
 
-4.  This code generates a histogram of the mpg column using the hist() function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
+* This code generates a histogram of the mpg column using the hist() function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
 
-5.  We use the `col` argument to specify the color of the histogram bars, and the `border` argument to determine the color of the bar borders.
+* We use the `col` argument to specify the color of the histogram bars, and the `border` argument to determine the color of the bar borders.
 
-6.  The final histogram visually depicts the frequency of `mpg` values in the dataset, where each bar represents the count of observations within a specific range of values.
+* The final histogram visually depicts the frequency of `mpg` values in the dataset, where each bar represents the count of observations within a specific range of values.
 
-7.  In R, we can control the number of bins or the ranges of the bins in a histogram using the breaks argument inside the hist() function. Here is how we can specify the number of bins:
+4.  We can control the number of bins or the ranges of the bins in a histogram using the `breaks` argument inside the `hist()` function. Here is how we can specify the number of bins:
 
 ```{r}
 # Create a histogram of mpg column with a specific number of bins of equal width
@@ -246,7 +238,7 @@ hist(tb$mpg,
 
 ```
 
-8.  We can alternately specify the ranges of the bins:
+5.  We can alternately specify the ranges of the bins:
 
 ```{r}
 # Create a histogram of mpg column with specific bin ranges
@@ -266,9 +258,7 @@ hist(tb$mpg,
 
 1.  Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset (Wand & Jones, 1995).
 
-2.  Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection.
-
-3.  A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset
+2.  Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset.
 
 ```{r}
 # Create a density plot of mpg column
@@ -278,19 +268,19 @@ plot(density(tb$mpg),
      col="blue")
 ```
 
-4.  In the provided code segment, we make use of the `density()` function to generate a density plot for the `mpg` column.
+* In the provided code segment, we make use of the `density()` function to generate a density plot for the `mpg` column.
 
-5.  Here, we utilize the `plot()` function to graph the resulting density object.
+* Here, we utilize the `plot()` function to graph the resulting density object.
 
-6.  The `main` argument is implemented to stipulate the title of the plot, and the `xlab` argument designates the label for the x-axis.
+* The `main` argument is implemented to stipulate the title of the plot, and the `xlab` argument designates the label for the x-axis.
 
-7.  Through the `col` argument, we determine the color of the plotted line.
+* Through the `col` argument, we determine the color of the plotted line.
 
-8.  The final plot displays the probability density of `mpg` values in our dataset, using the curve to signify the data distribution.
+* The final plot displays the probability density of `mpg` values in our dataset, using the curve to signify the data distribution.
 
 ### Cumulative Distribution Function (CDF) Plot
 
-1.  CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis (Hyndman & Fan, 1996).
+1.  CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis [3].
 
 2.  They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread.
 
@@ -303,18 +293,17 @@ plot(ecdf(tb$mpg),
      xlab = "Miles Per Gallon (mpg)")
 ```
 
-4.  In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column.
+* In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column.
 
-5.  The main argument assigns the title to the plot, while the `xlab` argument labels the x-axis.
+* The `main` argument assigns the title to the plot, while the `xlab` argument labels the x-axis.
 
-6.  The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
+* The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
 
 ### Boxplot
 
-1.  Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution's center, spread, and potential outliers (McGill, Tukey, & Larsen, 1978).
+1.  Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution's center, spread, and potential outliers [5].
 
-2.  The box plot's construction involves the use of an interquartile range (IQR) represented by a box, which contains the middle 50% of the dataset.
-
+2. Here is sample code to generate a boxplot of `mpg` (miles per gallon) values of the cars . 
 ```{r}
 boxplot(tb$mpg, 
         xlab = "Boxplot",
@@ -323,9 +312,9 @@ boxplot(tb$mpg,
        )
 ```
 
-3.  The box's internal line signifies the median, while the "whiskers" reach out to the smallest and largest observations within a distance of 1.5 times the IQR.
+3.  The box plot's construction involves the use of an interquartile range (IQR) represented by a box, which contains the middle 50% of the dataset.
 
-4.  We can generate a box plot for the mpg (miles per gallon) values of the cars in our `tb` dataset with the following command:
+4.  The box's internal line signifies the median, while the "whiskers" reach out to the smallest and largest observations within a distance of 1.5 times the IQR.
 
 5.  The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.
 
@@ -333,11 +322,9 @@ boxplot(tb$mpg,
 
 ### Bee Swarm plot
 
-A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
+1. A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.
 
-1.  A bee swarm plot is a plot that displays all of the individual data points along with a visual representation of their distribution.
-
-2.  It can be useful for displaying the distribution of small datasets.
+2.  It displays all of the individual data points along with a visual representation of their distribution. It can be useful for displaying the distribution of small datasets.
 
 ```{r}
 # Load the beeswarm package
@@ -351,27 +338,25 @@ beeswarm(tb$mpg,
          col="blue")
 ```
 
-3.  In the above code, we load the `beeswarm` package using the `library()` function.
+* In the above code, we load the `beeswarm` package using the `library()` function.
 
-4.  We then create a bee swarm plot of the `mpg` column using the `beeswarm()` function.
+* We then create a bee swarm plot of the `mpg` column using the `beeswarm()` function.
 
-5.  The `main` argument is used to specify the title of the plot.
+* The `main` argument is used to specify the title of the plot.
 
-6.  The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
+* The `pch` argument is used to set the type of points to be plotted, and the `cex` argument is used to set the size of the points.
 
-7.  The `col` argument is used to set the color of the points.
+* The `col` argument is used to set the color of the points.
 
-8.  The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
+* The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
 
 ### Violin plot
 
-1.  Violin plots, a compelling tool that merges the benefits of box plots and kernel density plots, enable us to depict a detailed view of data distribution.
+1.  Violin plots are a compelling tool to merge the benefits of box plots and kernel density plots and enable us to depict a detailed view of data distribution.
 
-2.  These plots exhibit the probability density at different values, where the plot's breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points (Hintze & Nelson, 1998).
+2.  These plots exhibit the probability density at different values, where the plot's breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles [5].
 
-3.  Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles.
-
-4.  The `vioplot()` function, part of the `vioplot` package in R, allows us to create such a violin plot.
+3.  The `vioplot()` function, part of the `vioplot` package in R, allows us to create such a violin plot.
 
 ```{r}
 # Loading the vioplot package
@@ -383,11 +368,11 @@ vioplot(tb$mpg,
         ylab="Miles per gallon")
 ```
 
-5.  In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.
+* In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.
 
-6.  The resulting plot unveils the entire mpg data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
+* The resulting plot unveils the entire `mpg` data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
 
-7.  Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.
+*  Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.
 
 ### Quantile-Quantile (Q-Q) Plots
 
@@ -395,9 +380,9 @@ vioplot(tb$mpg,
 
 2.  Suppose we order a data column from the smallest to the biggest value, and each data point gets a *score* based on its position. This is what we call a *quantile*. Now, imagine a perfectly normal distribution doing the same thing. In a Q-Q plot, we compare our data's scores to the scores from the ideal normal distribution.
 
-3.  If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn't follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not.
+3.  If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn't follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not [7].
 
-4.  In R, we can use the `qqnorm()` function to create the plot and the `qqline()` function to add the reference line. If the points lie close to the reference line, it's a good indication that our data is normally distributed. (Thode Jr, 2002)
+4.  In R, we can use the `qqnorm()` function to create the plot and the `qqline()` function to add the reference line. If the points lie close to the reference line, it's a good indication that our data is normally distributed.
 
 ```{r}
 # Generate a Q-Q plot for 'mpg' column
@@ -424,17 +409,21 @@ In sum, this chapter presents key R functions and techniques for visualising con
 
 ## References
 
-\[1\] Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). Introduction to the Practice of Statistics. Freeman.
+\[1\]
+
+Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). Introduction to the Practice of Statistics. Freeman.
 
 Triola, M. (2017). Elementary Statistics. Pearson.
 
-\[2\]
-
 Gravetter, F. J., & Wallnau, L. B. (2016). Statistics for the Behavioral Sciences. Cengage Learning.
+
+\[2\]
 
 Downey, A. B. (2014). Think Stats: Exploratory Data Analysis. O'Reilly Media.
 
 Bogaert, P. (2021). "A Comparison of Kernel Density Estimators." Computational Statistics & Data Analysis, 77, 402-413.
+
+Gravetter, F. J., & Wallnau, L. B. (2016). Statistics for the Behavioral Sciences. Cengage Learning.
 
 Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
 
@@ -442,24 +431,32 @@ R Core Team (2020). R: A language and environment for statistical computing. R F
 
 Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.12, https://CRAN.R-project.org/package=psych.
 
-Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
 
 \[3\]
 
+Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
+
+Wand, M. P., & Jones, M. C. (1995). Kernel Smoothing. Chapman and Hall/CRC.
+
 Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
-
-Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
-
-Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
 
 Hyndman, R. J., & Fan, Y. (1996). Sample quantiles in statistical packages. The American Statistician, 50(4), 361-365.
 
+
+\[4\]
+
 McGill, R., Tukey, J. W., & Larsen, W. A. (1978). Variations of Box Plots. The American Statistician, 32(1), 12-16.
 
-Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
+\[5\]
+
+Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
+
+\[6\]
 
 Thode Jr, H. C. (2002). Testing for normality. CRC press.
 
+\[7\]
+
 Tukey, J. W. (1977). Exploratory data analysis. Addison-Wesley.
 
-Wand, M. P., & Jones, M. C. (1995). Kernel Smoothing. Chapman and Hall/CRC.
+

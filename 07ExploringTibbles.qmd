@@ -1,4 +1,4 @@
-# Diving Deep into *tibbles* & *dplyr*
+# Exploring *tibbles* & *dplyr*
 
 *Aug 03, 2023.*
 

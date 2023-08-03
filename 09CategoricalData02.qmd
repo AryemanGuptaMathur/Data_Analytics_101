@@ -1,6 +1,6 @@
 # Categorical Data (2 of 3)
 
-*July 30, 2023*
+*Aug 3, 2023*
 
 ## Overview of Bivariate Categorical Data
 
@@ -10,7 +10,7 @@
 
 3.  **Contingency Table**: A contingency table, also known as a **cross-tabulation** or **crosstab**, is a type of table in a matrix format that displays the frequency distribution of the variables. In the case of a univariate factor variable, a contingency table is essentially the same as a frequency table, as there's only one variable involved. In more complex analyses involving two or more variables, contingency tables provide a way to examine the interactions between the variables. \[1\]
 
-4.  **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -19,12 +19,13 @@ suppressPackageStartupMessages(library(dplyr))
 # Read the mtcars dataset into a tibble called tb
 data(mtcars)
 tb <- as_tibble(mtcars)
-attach(tb)
 # Convert several numeric columns into factor variables
 tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
 tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
+# Directly access the data columns of tb, without tb$mpg
+attach(tb)
 ```
 
 ### Frequency Tables for Bivariate Categorical Data

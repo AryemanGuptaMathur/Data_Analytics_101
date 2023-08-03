@@ -1,6 +1,6 @@
 # Continuous Data (3 of 5)
 
-*Aug 3, 2023. V1.1 -=- This chapter is very much Work in Progress*
+*Aug 3, 2023. V1.1*
 
 ## Continuous Data Across Categories
 
@@ -10,7 +10,7 @@
 
 3.  To achieve this, we demonstrate the use of libraries such as `dplyr` and `ggplot2`. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
 
-4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we have setup the `mtcars` data in a tibble named `tb`, by running the following code:
+4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -19,7 +19,6 @@ suppressPackageStartupMessages(library(dplyr))
 # Read the mtcars dataset into a tibble called tb
 data(mtcars)
 tb <- as_tibble(mtcars)
-attach(tb)
 # Convert several numeric columns into factor variables
 tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
@@ -28,6 +27,7 @@ tb$gear <- as.factor(tb$gear)
 # Directly access the data columns of tb, without tb$mpg
 attach(tb)
 ```
+
 
 ## Summarizing Continuous Data by one Factor
 
@@ -51,7 +51,7 @@ agg
 
 -   The third argument, `FUN`, is the function we want to apply to each subset of data. We are using `mean` here, meaning we're calculating the average mpg for each unique cyl value.
 
--   The output of `aggregate()` is saved in a new tibble named `agg`. 
+-   The output of `aggregate()` is saved in a new tibble named `agg`.
 
 -   Finally, we utilize the `names()` function to rename the columns and display `agg`. \[1\]
 
@@ -67,11 +67,11 @@ tapply(tb$mpg, tb$cyl, mean)
 
 -   In this code, `tapply(tb$mpg, tb$cyl, mean)` calculates the average miles per gallon (`mpg`) for each unique number of cylinders (`cyl`) within the `tb` tibble.
 
--   `tb\$mpg` represents the vector to which we want to apply the function. 
+-   `tb\$mpg` represents the vector to which we want to apply the function.
 
 -   `tb\$cyl` serves as our grouping factor. We are partitioning our data based on the unique values within the `cyl` column in our `tb` tibble.
 
--   `mean` is the function that we're applying to each subset of our data. 
+-   `mean` is the function that we're applying to each subset of our data.
 
 -   The result will be a vector where each element is the average `mpg` for a unique number of cylinders (`cyl`), as determined by the unique values of `tb\$cyl`. \[1\]
 
@@ -89,7 +89,6 @@ describeBy(mpg, cyl)
 -   `describeBy(mpg, cyl)` computes descriptive statistics of miles per gallon `mpg` variable, broken down by the unique values in the number of cylinders (`cyl`).
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
-
 
 ## Summarizing Continuous Data by two Factors
 

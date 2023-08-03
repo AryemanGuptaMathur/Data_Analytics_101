@@ -1,12 +1,12 @@
 # Continuous Data (2 of 5)
 
-*Aug 2, 2023*
+*Aug 3, 2023*
 
 ## Using ggplot2 for Visualizing Univariate Continuous Data
 
 1.  In R, we can create these plots for Visualizing Univariate Continuous Data using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections.
 
-2.  **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -23,7 +23,7 @@ tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
 ```
 
-Let's load the ggplot2, dplyr libraries. These packages provide tools for creating stunning graphics and managing our data respectively. The package ggthemes allows us to use a variety of themes.
+3. Let us load the ggplot2, dplyr libraries. These packages provide tools for creating stunning graphics and managing our data respectively. The package ggthemes allows us to use a variety of themes.
 
 ```{r}
 library(dplyr)

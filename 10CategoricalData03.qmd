@@ -1,6 +1,6 @@
 # Categorical Data (3 of 3)
 
-*July 30, 2023*
+*Aug 3, 2023*
 
 ## Overview of Multivariate Categorical Variables
 
@@ -8,7 +8,7 @@
 
 2.  This form of analysis can help **reveal complex interactions and dependencies** between multiple variables that cannot be detected in bivariate analyses. For example, we might want to explore the relationship between a person's gender, car ownership status, and their level of education (high school, bachelor's, master's, etc.). Both bivariate and multivariate analyses are essential in statistical and data analysis as they allow us to uncover relationships and patterns in data
 
-3.  **Data**: Let us work with the same mtcars data from the previous chapter. Suppose we have run the following code:
+3.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -17,12 +17,13 @@ suppressPackageStartupMessages(library(dplyr))
 # Read the mtcars dataset into a tibble called tb
 data(mtcars)
 tb <- as_tibble(mtcars)
-attach(tb)
 # Convert several numeric columns into factor variables
 tb$cyl <- as.factor(tb$cyl)
 tb$vs <- as.factor(tb$vs)
 tb$am <- as.factor(tb$am)
 tb$gear <- as.factor(tb$gear)
+# Directly access the data columns of tb, without tb$mpg
+attach(tb)
 ```
 
 ## Three Way Relationships
