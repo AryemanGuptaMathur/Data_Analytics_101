@@ -303,12 +303,12 @@ plot(ecdf(tb$mpg),
 
 1.  Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution's center, spread, and potential outliers [5].
 
-2. Here is sample code to generate a boxplot of `mpg` (miles per gallon) values of the cars . 
+2. Here is sample code to generate a boxplot of `wt` (Weight) of the cars . 
 ```{r}
-boxplot(tb$mpg, 
+boxplot(tb$wt, 
         xlab = "Boxplot",
         ylab = "Weight",
-        main = "Boxplot of MPG (mpg)"
+        main = "Boxplot of Weight (wt)"
        )
 ```
 
@@ -330,9 +330,9 @@ boxplot(tb$mpg,
 # Load the beeswarm package
 library(beeswarm)
 
-# Create a bee swarm plot of mpg column
-beeswarm(tb$mpg, 
-         main="Bee Swarm Plot of mpg", 
+# Create a bee swarm plot of wt column
+beeswarm(tb$wt, 
+         main="Bee Swarm Plot of Weight (wt)", 
          pch=16, 
          cex=1.2, 
          col="blue")
@@ -340,7 +340,7 @@ beeswarm(tb$mpg,
 
 * In the above code, we load the `beeswarm` package using the `library()` function.
 
-* We then create a bee swarm plot of the `mpg` column using the `beeswarm()` function.
+* We then create a bee swarm plot of the `wt` column using the `beeswarm()` function.
 
 * The `main` argument is used to specify the title of the plot.
 
@@ -348,7 +348,7 @@ beeswarm(tb$mpg,
 
 * The `col` argument is used to set the color of the points.
 
-* The resulting plot will display the individual `mpg` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
+* The resulting plot will display the individual `wt` values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.
 
 ### Violin plot
 
@@ -362,15 +362,15 @@ beeswarm(tb$mpg,
 # Loading the vioplot package
 library(vioplot)
 
-# Constructing a violin plot for the mpg column
-vioplot(tb$mpg, 
-        main="Violin Plot of MPG", 
-        ylab="Miles per gallon")
+# Constructing a violin plot for the wt
+vioplot(tb$wt, 
+        main="Violin Plot of Weight (wt)", 
+        ylab="Weight")
 ```
 
 * In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.
 
-* The resulting plot unveils the entire `mpg` data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
+* The resulting plot unveils the entire `wt` data distribution, with a kernel density estimate indicating the concentration of data points at different sections.
 
 *  Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.
 

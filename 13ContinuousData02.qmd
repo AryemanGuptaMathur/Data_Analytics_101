@@ -2,7 +2,7 @@
 
 *Aug 3, 2023*
 
-## Using ggplot2 for Visualizing Univariate Continuous Data
+## Using the **ggplot2** Package for Visualizing Univariate Continuous Data
 
 1.  In R, we can create these plots for Visualizing Univariate Continuous Data using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections.
 

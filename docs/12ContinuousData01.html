@@ -735,13 +735,13 @@ carb      1.26  0.29</code></pre>
 <h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
 <ol type="1">
 <li><p>Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution’s center, spread, and potential outliers [5].</p></li>
-<li><p>Here is sample code to generate a boxplot of <code>mpg</code> (miles per gallon) values of the cars .</p></li>
+<li><p>Here is sample code to generate a boxplot of <code>wt</code> (Weight) of the cars .</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(tb<span class="sc">$</span>mpg, </span>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(tb<span class="sc">$</span>wt, </span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Boxplot"</span>,</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of MPG (mpg)"</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Weight (wt)"</span></span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="768"></p>
@@ -764,9 +764,9 @@ carb      1.26  0.29</code></pre>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the beeswarm package</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beeswarm)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of mpg column</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of mpg"</span>, </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of wt column</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of Weight (wt)"</span>, </span>
 <span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>, </span>
 <span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex=</span><span class="fl">1.2</span>, </span>
 <span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -776,11 +776,11 @@ carb      1.26  0.29</code></pre>
 </div>
 <ul>
 <li><p>In the above code, we load the <code>beeswarm</code> package using the <code>library()</code> function.</p></li>
-<li><p>We then create a bee swarm plot of the <code>mpg</code> column using the <code>beeswarm()</code> function.</p></li>
+<li><p>We then create a bee swarm plot of the <code>wt</code> column using the <code>beeswarm()</code> function.</p></li>
 <li><p>The <code>main</code> argument is used to specify the title of the plot.</p></li>
 <li><p>The <code>pch</code> argument is used to set the type of points to be plotted, and the <code>cex</code> argument is used to set the size of the points.</p></li>
 <li><p>The <code>col</code> argument is used to set the color of the points.</p></li>
-<li><p>The resulting plot will display the individual <code>mpg</code> values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.</p></li>
+<li><p>The resulting plot will display the individual <code>wt</code> values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.</p></li>
 </ul>
 </section>
 <section id="violin-plot" class="level3">
@@ -811,17 +811,17 @@ Attaching package: 'zoo'</code></pre>
 
     as.Date, as.Date.numeric</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing a violin plot for the mpg column</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Violin Plot of MPG"</span>, </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Miles per gallon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing a violin plot for the wt</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Violin Plot of Weight (wt)"</span>, </span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <ul>
 <li><p>In this code, the <code>vioplot()</code> function crafts a violin plot for the mpg variable. We use the <code>main</code> argument to assign the plot’s title and the <code>ylab</code> argument to designate the label for the y-axis.</p></li>
-<li><p>The resulting plot unveils the entire <code>mpg</code> data distribution, with a kernel density estimate indicating the concentration of data points at different sections.</p></li>
+<li><p>The resulting plot unveils the entire <code>wt</code> data distribution, with a kernel density estimate indicating the concentration of data points at different sections.</p></li>
 <li><p>Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.</p></li>
 </ul>
 </section>
