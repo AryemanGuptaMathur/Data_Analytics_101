@@ -287,8 +287,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#continuous-data-4-of-5" id="toc-continuous-data-4-of-5" class="nav-link active" data-scroll-target="#continuous-data-4-of-5">Continuous Data (4 of 5)</a>
   <ul class="collapse">
   <li><a href="#continuous-data-across-categories-using-ggplot2" id="toc-continuous-data-across-categories-using-ggplot2" class="nav-link" data-scroll-target="#continuous-data-across-categories-using-ggplot2">Continuous Data Across Categories using ggplot2</a></li>
-  <li><a href="#summarizing-continuous-data-by-one-factor-using-ggplot2" id="toc-summarizing-continuous-data-by-one-factor-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-by-one-factor-using-ggplot2">Summarizing Continuous Data by one Factor, using ggplot2</a></li>
-  <li><a href="#bivariate-continuous-data-unveiling-relationships-with-scatterplots-and-categorical-breakdowns" id="toc-bivariate-continuous-data-unveiling-relationships-with-scatterplots-and-categorical-breakdowns" class="nav-link" data-scroll-target="#bivariate-continuous-data-unveiling-relationships-with-scatterplots-and-categorical-breakdowns">Bivariate Continuous Data: Unveiling Relationships with Scatterplots and Categorical Breakdowns</a></li>
+  <li><a href="#summarizing-continuous-data-across-one-factor-using-ggplot2" id="toc-summarizing-continuous-data-across-one-factor-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-one-factor-using-ggplot2">Summarizing Continuous Data across one Factor, <strong>using ggplot2</strong></a></li>
+  <li><a href="#visualizing-continuous-data-across-one-factor-using-ggplot2" id="toc-visualizing-continuous-data-across-one-factor-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-one-factor-using-ggplot2">Visualizing Continuous Data across one Factor, <strong>using ggplot2</strong></a></li>
+  <li><a href="#summarizing-continuous-data-across-two-factors-using-ggplot2" id="toc-summarizing-continuous-data-across-two-factors-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-two-factors-using-ggplot2">Summarizing Continuous Data across two Factors <strong>using ggplot2</strong></a></li>
+  <li><a href="#visualizing-continuous-data-across-two-factors-using-ggplot2" id="toc-visualizing-continuous-data-across-two-factors-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-two-factors-using-ggplot2">Visualizing Continuous Data across two Factors <strong>using ggplot2</strong></a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="15ContinuousData04.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -323,8 +325,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="summarizing-continuous-data-by-one-factor-using-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-continuous-data-by-one-factor-using-ggplot2">Summarizing Continuous Data by one Factor, using ggplot2</h2>
+<section id="summarizing-continuous-data-across-one-factor-using-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-one-factor-using-ggplot2">Summarizing Continuous Data across one Factor, <strong>using ggplot2</strong></h2>
 <ol type="1">
 <li>We investigate the bivariate Relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>) using ggplot2.</li>
 </ol>
@@ -354,12 +356,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Note that na.rm = TRUE is used in both mean() and sd() to remove missing values before calculation. This ensures that our calculations won’t be disrupted by any missing data. If you are sure your data has no missing values, you may omit this.</p></li>
 </ul>
 </section>
-<section id="bivariate-continuous-data-unveiling-relationships-with-scatterplots-and-categorical-breakdowns" class="level2">
-<h2 class="anchored" data-anchor-id="bivariate-continuous-data-unveiling-relationships-with-scatterplots-and-categorical-breakdowns">Bivariate Continuous Data: Unveiling Relationships with Scatterplots and Categorical Breakdowns</h2>
-<p>This chapter marks the exploration of relationships between two continuous variables. We start by summarizing bivariate continuous data, showing how to calculate correlation coefficients and other related statistics using R and dplyr.</p>
-<p>Following this, we dive into the visualization of bivariate continuous data. We introduce scatterplots as the primary tool for this purpose, illustrating how to create them using ggplot2. In addition, we discuss how to add trend lines to scatterplots, and the interpretations that can be made from them.</p>
-<p>In the later sections, we add another layer of complexity by breaking down bivariate continuous data by categorical variables. We demonstrate how to use color, shape, and facets in ggplot2 to create scatterplots that can visualize the interaction between two continuous variables across different categories.</p>
-<p>By the end of this chapter, you will be equipped with robust techniques to analyze and visualize interactions between two continuous variables, while considering the impact of categorical variables.</p>
+<section id="visualizing-continuous-data-across-one-factor-using-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-one-factor-using-ggplot2">Visualizing Continuous Data across one Factor, <strong>using ggplot2</strong></h2>
+</section>
+<section id="summarizing-continuous-data-across-two-factors-using-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-two-factors-using-ggplot2">Summarizing Continuous Data across two Factors <strong>using ggplot2</strong></h2>
+</section>
+<section id="visualizing-continuous-data-across-two-factors-using-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-two-factors-using-ggplot2">Visualizing Continuous Data across two Factors <strong>using ggplot2</strong></h2>
 
 
 </section>

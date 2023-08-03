@@ -28,8 +28,7 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-
-## Summarizing Continuous Data by one Factor
+## Summarizing Continuous Data across one Category
 
 1.  Using `aggregate()`
 
@@ -90,21 +89,61 @@ describeBy(mpg, cyl)
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
 
-## Summarizing Continuous Data by two Factors
 
-1.  Using `aggregate()`
 
-Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
+
+
+
+
+
+## Visualizing Continuous Data across one Category
+
+Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including 
+
+(i) Histograms; 
+
+(ii) PDF and CDF Density plots; 
+
+(iii) Box plots; 
+
+(iv) Bee Swarm plots; 
+
+(v) Violin plots; 
+
+(vi) Q-Q plots.
+
+
+### Histograms of Continuous Data across one Category
+
+Visualizing histograms of car milegage (mpg) broken down by transmission (am=0,1)
 
 ```{r}
-aggregate(wt, 
-          by = list("am" =am, "cyl" = cyl),
-          mean)
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Create a 1-row 2-column layout
+par(mfrow = c(1, 2))
+
+# Define the color vector
+color_vector <- c("lightpink", "lightblue")
+
+# Create a histogram for each subset
+for (i in 1:length(split_data)) {
+  hist(split_data[[i]], 
+       main = paste("Histogram of mpg for am =", i - 1), 
+       breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
+       xlab = "Miles per gallon", 
+       col = color_vector[i], # Use the color vector, 
+       border = "white",
+       ylim = c(0, 10))
+}
 ```
 
-## Visualizing Continuous Data by one Factor
 
-### Box Plot of Continuous Data by one Factor
+
+
+
+### Box Plot of Continuous Data across one Category
 
 Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (cyl=4,6,8)
 
@@ -116,7 +155,7 @@ boxplot(mpg~cyl
         )
 ```
 
-### Means Plot of Continuous Data by one Factor
+### Means Plot of Continuous Data across one Category
 
 Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
 
@@ -130,26 +169,10 @@ plotmeans(data = mtcars,
           )
 ```
 
-### Means Plot of Continuous Data by two Factors
 
-We show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8).
+### Stem-and-Leaf Plot of Continuous Data across one Category
 
-```{r warning=FALSE, message=FALSE}
-library(gplots)
-plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
-          , data = mtcars
-          , mean.labels = TRUE
-          , digits=2
-          , connect = FALSE
-          , main = "Mean (mpg) by cyl = {4,6,8} & am = {0,1}"
-          , xlab= "cyl = {4,6,8} & am = {0,1}"
-          , ylab="Average MPG"
-          )
-```
-
-### Stem-and-Leaf Plot of Continuous Data by one Factor
-
-1.  The provided R code first selects the mpg and cyl columns from tb, then it segments the data into groups based on cyl values, and lastly, it generates a stem-and-leaf plot for the mpg values in each separate group.
+1.  The provided R code first selects the `mpg` and `cyl` columns from `tb,` then it segments the data into groups based on `cyl` values, and lastly, it generates a stem-and-leaf plot for the `mpg` values in each separate group.
 
 ```{r warning=FALSE, message=FALSE}
 # Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.
@@ -172,6 +195,56 @@ lapply(tb_split,
 -   `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
 
 -   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
+
+
+
+
+
+
+
+
+
+
+## Summarizing Continuous Data across two Categories
+
+1.  Using `aggregate()`
+
+Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
+
+```{r}
+aggregate(wt, 
+          by = list("am" =am, "cyl" = cyl),
+          mean)
+```
+
+
+
+
+
+
+
+
+
+## Visualizing Continuous Data across two Categories
+
+### Means Plot of Continuous Data across two Factors
+
+We show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8).
+
+```{r warning=FALSE, message=FALSE}
+library(gplots)
+plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
+          , data = mtcars
+          , mean.labels = TRUE
+          , digits=2
+          , connect = FALSE
+          , main = "Mean (mpg) by cyl = {4,6,8} & am = {0,1}"
+          , xlab= "cyl = {4,6,8} & am = {0,1}"
+          , ylab="Average MPG"
+          )
+```
+
+
 
 ## References
 

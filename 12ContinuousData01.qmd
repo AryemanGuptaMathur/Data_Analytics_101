@@ -186,7 +186,21 @@ describe(tb)
 
 -   In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.
 
--   Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.
+-   Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
+
+    i\) Stem-and-Leaf plots;
+
+    \(ii\) Histograms;
+
+    \(iii\) PDF and CDF Density plots;
+
+    \(iv\) Box plots;
+
+    \(v\) Bee Swarm plots;
+
+    \(vi\) Violin plots;
+
+    \(vii\) Q-Q plots.
 
 ### Stem-and-Leaf Plots
 

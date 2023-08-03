@@ -24,7 +24,8 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-## Summarizing Continuous Data by one Factor, using ggplot2
+
+## Summarizing Continuous Data across one Category, **using ggplot2**
 
 1.  We investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) using ggplot2.
 
@@ -38,7 +39,7 @@ agg <- tb %>%
 agg
 ```
 
-2.  Discussion:
+2. Discussion:
 
 -   In this code, we are using the pipe operator %\>% to perform a series of operations. We first group the data by the cyl column using the group_by() function. We then use summarise() to apply both the mean() and sd() functions to the mpg column.
 
@@ -46,12 +47,39 @@ agg
 
 -   Note that na.rm = TRUE is used in both mean() and sd() to remove missing values before calculation. This ensures that our calculations won't be disrupted by any missing data. If you are sure your data has no missing values, you may omit this.
 
-## Bivariate Continuous Data: Unveiling Relationships with Scatterplots and Categorical Breakdowns
 
-This chapter marks the exploration of relationships between two continuous variables. We start by summarizing bivariate continuous data, showing how to calculate correlation coefficients and other related statistics using R and dplyr.
 
-Following this, we dive into the visualization of bivariate continuous data. We introduce scatterplots as the primary tool for this purpose, illustrating how to create them using ggplot2. In addition, we discuss how to add trend lines to scatterplots, and the interpretations that can be made from them.
 
-In the later sections, we add another layer of complexity by breaking down bivariate continuous data by categorical variables. We demonstrate how to use color, shape, and facets in ggplot2 to create scatterplots that can visualize the interaction between two continuous variables across different categories.
+## Visualizing Continuous Data across one Category, **using ggplot2**
 
-By the end of this chapter, you will be equipped with robust techniques to analyze and visualize interactions between two continuous variables, while considering the impact of categorical variables.
+Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including 
+
+(i) Histograms, using ggplot2; 
+
+(ii) PDF and CDF Density plots, using ggplot2; 
+
+(iii) Box plots, using ggplot2; 
+
+(iv) Bee Swarm plots, using ggplot2; 
+
+(v) Violin plots, using ggplot2; 
+
+(vi) Q-Q plots, using ggplot2.
+
+
+
+
+
+
+## Summarizing Continuous Data across two Categories **using ggplot2**
+
+
+
+
+
+
+
+## Visualizing Continuous Data across two Categories **using ggplot2**
+
+
+

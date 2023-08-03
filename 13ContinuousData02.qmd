@@ -31,19 +31,19 @@ library(ggthemes)
 library(ggplot2)
 ```
 
-4.  
+4.  Let's take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using `ggplot2` and related packages, including
 
-    -   Let's take a closer look at some of the most effective ways of Visualizing Univariate Continuous Data using the `ggplot2` and related packages, including
+    Histograms using `ggplot2`;
 
-```{=html}
-<!-- -->
-```
-(i) Histograms;
-(ii) PDF and CDF Density plots;
-(iii) Box plots;
-(iv) Bee Swarm plots;
-(v) Violin plots;
-(vi) Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.
+    PDF and CDF Density plots using `ggplot2`;
+
+    Box plots using `ggplot2`;
+
+    Bee Swarm plots using `ggbeeswarm`;
+
+    Violin plots using `ggplot2`;
+
+    Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.
 
 ### Histogram using `ggplot2`
 
@@ -219,7 +219,7 @@ ggplot(tb, aes(x = "", y = mpg)) +
   labs(x = "", y = "Miles Per Gallon (mpg)", title = "Violin Plot with Boxplot of mpg")
 ```
 
-### Quantile-Quantile (Q-Q) Plots using ggplot
+### Quantile-Quantile (Q-Q) Plots using `ggplot2`
 
 -   In order to create a Q-Q plot, we use the `ggplot()` function to specify our dataset and aesthetic mappings `aes()`. Subsequently, we use `stat_qq()` to generate the Q-Q plot and `stat_qq_line()` to add the reference line:
 
