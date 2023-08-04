@@ -1,4 +1,4 @@
-# Reading Data in R
+# Reading Data into R
 
 *July 29, 2023.*
 

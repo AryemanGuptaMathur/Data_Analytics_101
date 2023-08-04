@@ -42,7 +42,7 @@ Chapter 02 transports you into the expansive world of R packages, illuminating t
 Chapter 03 immerses you into the core data structures of R, primarily focusing on vectors. This chapter guides you through creating and operating on vectors - numeric, character, and logical - highlighting their significance in computations and data management. It demonstrates the application of various mathematical, logical, and statistical operations on vectors. The chapter also provides insights into string manipulation within vectors and the key role of vectors in data analysis and modeling.
 
 
-### Chapter 04: Exploring how to Read Data
+### Chapter 04: Reading Data into R
 
 Chapter 04 advances our understanding of data frames in R, highlighting techniques to read different file formats into a data frame, manage the working directory, merge data frames, and introduces tibbles. It explains the workings of a 'working directory' and showcases how to navigate and alter it for efficient file handling. The chapter illustrates how to read various file formats, such as CSV and Excel, into a data frame and merge multiple data sources. Importantly, it intorduces tibbles, a modern take on data frames, discussing their creation, conversion, and distinct features.
 

@@ -1,4 +1,4 @@
-# The World of R Packages
+# Exploring R Packages
 
 *July 29, 2023.*
 

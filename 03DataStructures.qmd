@@ -1,4 +1,4 @@
-# Data Structures in R
+# Exploring Data Structures
 
 *July 29, 2023.*
 
