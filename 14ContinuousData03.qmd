@@ -109,6 +109,9 @@ Let's take a closer look at some of the most effective ways of visualizing univa
 
 (vi) Q-Q plots.
 
+
+
+
 ### Histograms of Continuous Data across one Category
 
 Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
@@ -121,7 +124,7 @@ split_data <- split(tb$mpg, tb$am)
 par(mfrow = c(1, 2))
 
 # Define the color vector
-color_vector <- c("lightpink", "lightblue")
+color_vector <- c("lightpink", "gold")
 
 # Create a histogram for each subset
 for (i in 1:length(split_data)) {
@@ -140,10 +143,11 @@ for (i in 1:length(split_data)) {
 Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
 
 ```{r}
-boxplot(mpg~cyl
-        , ylab = "cyl"
-        , xlab = "Mileage (mpg)"
-        , horizontal = TRUE
+boxplot(mpg~cyl,
+        ylab = "cyl",
+        xlab = "Mileage (mpg)",
+        col = "gold",
+        horizontal = TRUE
         )
 ```
 

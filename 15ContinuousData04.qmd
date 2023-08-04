@@ -96,7 +96,7 @@ library(ggplot2)
 # mpg plot
 ggplot(s1, aes(x = cyl, y = Mean_mpg)) +
   geom_bar(stat = "identity", 
-           fill = "skyblue", 
+           fill = "gold", 
            alpha = 0.7) +
   geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, 
                     ymax = Mean_mpg + SD_mpg), 
@@ -169,6 +169,101 @@ Let's take a closer look at some of the most effective ways of visualizing conti
 (v) Violin plots, using ggplot2;
 
 (vi) Q-Q plots, using ggplot2.
+
+
+
+
+### Histograms of Continuous Data across one Category
+
+Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_histogram(binwidth = 5, color = "black") +
+  scale_fill_manual(values = c("gold", "pink")) +
+  theme_minimal() +
+  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Frequency")
+```
+* If we want separate histograms, we can set facet_wrap(~ am)
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_histogram(binwidth = 5, color = "black") +
+  scale_fill_manual(values = c("gold", "pink")) +
+  facet_wrap(~ am) +
+  theme_minimal() +
+  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Frequency")
+```
+
+
+
+
+
+
+
+#### Histogram using `ggpubr`
+
+```{r}
+library(ggpubr)
+gghistogram(tb, 
+            x = "mpg", 
+            bins = 6,
+            add = "mean", 
+            rug = TRUE, 
+            color = "am", 
+            fill = "am", 
+            palette = c("gold", "lightpink"))
+```
+
+
+
+
+### Box Plot of Continuous Data across one Category
+
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
+
+
+```{r}
+library(ggplot2)
+
+ggplot(tb, aes(x = cyl, 
+               y = mpg)) +
+  geom_boxplot(fill = "gold", 
+               color = "black") +
+  coord_flip() +
+  labs(title = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
+       y = "Miles Per Gallon (mpg)",
+       x = "Cylinders")
+```
+
+
+
+#### Boxplot using `ggpubr`
+
+* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
+
+```{r, warning=FALSE}
+library(ggpubr)
+ggboxplot(tb, 
+          y = "mpg", 
+          x = "cyl",
+          color = "black" ,
+          fill = "lightpink",
+          shape = "cyl",
+          orientation = "horizontal",
+          add = "jitter",
+          title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"
+)
+```
+
+
+
 
 
 
@@ -246,3 +341,8 @@ tb %>%
 Wickham, H., François, R., Henry, L., & Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
 
 Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. ISBN 978-3-319-24277-4, https://ggplot2.tidyverse.org.
+
+[2]
+
+Kassambara A (2023). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.6.0, https://rpkgs.datanovia.com/ggpubr/.
+
