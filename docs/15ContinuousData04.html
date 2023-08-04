@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-4-of-6" class="level1">
 <h1>Continuous Data (4 of 6)</h1>
-<p><em>Aug 4, 2023.</em></p>
+<p><em>Aug 4, 2023. V1.3</em></p>
 <ol type="1">
 <li><p>THIS CHAPTER explores Continuous x Categorical data using <strong><code>ggplot2</code></strong>. Specifically, it demonstrates the use of the popular <strong><code>ggplot2</code></strong> package to further explore <em>bivariate continuous data across categories</em>.</p></li>
 <li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
@@ -405,6 +405,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="summarizing-continuous-data-across-two-categories-using-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-two-categories-using-ggplot2">Summarizing Continuous Data across two Categories <strong>using ggplot2</strong></h2>
+<ol type="1">
+<li>We demonstrate the relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>) and Transmission type (<code>am</code>) using <code>ggplot2</code>. Recall that a car’s transmission may be automatic (<code>am=0</code>) or manual (<code>am=1</code>).</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, am) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'cyl'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   cyl [3]
+  cyl   am    Mean_mpg SD_mpg
+  &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 4     0         22.9  1.45 
+2 4     1         28.1  4.48 
+3 6     0         19.1  1.63 
+4 6     1         20.6  0.751
+5 8     0         15.0  2.77 
+6 8     1         15.4  0.566</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>In the above code, we are grouping by both <code>cyl</code> and <code>am</code> before summarizing. This will provide the mean and standard deviation of <code>mpg</code> for each unique combination of <code>cyl</code> and <code>am</code>.</p></li>
+<li><p>In the below code, the order of the variables is reversed - the data is first grouped by <code>am</code>, then by <code>cyl</code>. So, the function first sorts the data by the <code>am</code> variable, and within each <code>am</code> group, it further groups the data by <code>cyl</code>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am, cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'am'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   am [2]
+  am    cyl   Mean_mpg SD_mpg
+  &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 0     4         22.9  1.45 
+2 0     6         19.1  1.63 
+3 0     8         15.0  2.77 
+4 1     4         28.1  4.48 
+5 1     6         20.6  0.751
+6 1     8         15.4  0.566</code></pre>
+</div>
+</div>
 </section>
 <section id="visualizing-continuous-data-across-two-categories-using-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-two-categories-using-ggplot2">Visualizing Continuous Data across two Categories <strong>using ggplot2</strong></h2>

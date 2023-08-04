@@ -1,6 +1,6 @@
 # Continuous Data (3 of 6)
 
-*Aug 4, 2023.*
+*Aug 4, 2023. V1.3*
 
 1. THIS CHAPTER explores Continuous x Categorical data. Specifically, it explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
@@ -218,7 +218,7 @@ lapply(tb_split,
 
 1.  Using `aggregate()`
 
-Distribution of Weight (`wt`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
+* Distribution of Mileage (`mpg`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
 ```{r}
 agg2 <- aggregate(tb$mpg, 
@@ -229,13 +229,56 @@ agg2
 ```
 
 
+
+
 2.  Discussion:
 
- In our script, the first argument of aggregate() is tb$mpg, indicating that we want to perform computations on the mpg variable.
+* In our code, the first argument of `aggregate()` is `tb$mpg`, indicating that we want to perform computations on the `mpg` variable.
 
-The by argument is a list of variables by which we want to group our data, specified as list(tb$cyl, tb$am). This means that separate computations are done for each unique combination of cyl and am.
+* The by argument is a list of variables by which we want to group our data, specified as `list(tb$cyl, tb$am)`. This means that separate computations are done for each unique combination of `cyl` and `am`.
 
-The FUN argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.
+* The `FUN` argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.
+
+
+3. Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:
+
+* Distribution of Mileage (`mpg`), Weight (`wt`), Horsepower (`hp`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
+
+```{r}
+agg3 <- aggregate(list(tb$mpg, tb$wt, tb$hp), 
+          by = list(tb$am, tb$cyl),
+          FUN = mean)
+names(agg3) <- c("Transmission","Cylinders","Mean_mpg","Mean_wt","Mean_hp")
+agg3
+```
+
+4.  Discussion:
+
+* In this code, the `aggregate()` function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of `am` and `cyl`.
+
+* The sequence of the categorizing variables also varies - initially, the data is grouped by `cyl`, followed by a subdivision based on `am`. 
+
+
+5.  Using `tapply()` 
+
+-   While the `tapply()` function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use. 
+
+
+
+
+
+6.  Using `describeBy()` from package `psych`
+
+-   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles.
+
+-   Consider the following code:
+
+
+```{r}
+tb_subset <- tb[c("mpg", "wt", "hp", "am", "cyl")]
+list(tb$am, tb$cyl)
+
+```
 
 
 

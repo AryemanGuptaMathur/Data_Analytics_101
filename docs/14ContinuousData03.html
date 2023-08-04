@@ -317,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-3-of-6" class="level1">
 <h1>Continuous Data (3 of 6)</h1>
-<p><em>Aug 4, 2023.</em></p>
+<p><em>Aug 4, 2023. V1.3</em></p>
 <ol type="1">
 <li><p>THIS CHAPTER explores Continuous x Categorical data. Specifically, it explains how to summarize and visualize <em>bivariate continuous data across categories</em>. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p></li>
 <li><p>We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p></li>
@@ -355,10 +355,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>cyl), </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN =</span> mean)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cylinders"</span>, <span class="st">"Avg MPG"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cylinders"</span>, <span class="st">"Mean_mpg"</span>)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>agg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Cylinders  Avg MPG
+<pre><code>  Cylinders Mean_mpg
 1         4 26.66364
 2         6 19.74286
 3         8 15.10000</code></pre>
@@ -574,24 +574,69 @@ NULL</code></pre>
 </section>
 <section id="summarizing-continuous-data-across-two-categories" class="level2">
 <h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-two-categories">Summarizing Continuous Data across two Categories</h2>
+<ul>
+<li><p>We extend the above discussion and study how to summarize continuous data split across <strong>two</strong> categories.</p></li>
+<li><p>We review the use of the inbuilt functions (i) <code>aggregate()</code>; (ii) <code>tapply()</code>; and the function (iii) <code>describeBy()</code> from package <code>pysch</code>.</p></li>
+</ul>
 <ol type="1">
 <li>Using <code>aggregate()</code></li>
 </ol>
-<p>Distribution of Weight (<code>wt</code>) by Cylinders (<code>cyl</code> = {4,6,8}) and Transmisson Type (<code>am</code> = {0,1})</p>
+<ul>
+<li>Distribution of Mileage (<code>mpg</code>) by Cylinders (<code>cyl</code> = {4,6,8}) and Transmisson Type (<code>am</code> = {0,1})</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(wt, </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(<span class="st">"am"</span> <span class="ot">=</span>am, <span class="st">"cyl"</span> <span class="ot">=</span> cyl),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>agg2 <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN =</span> mean)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agg2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cylinders"</span>,<span class="st">"Transmission"</span>,<span class="st">"Mean_mpg"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>agg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  am cyl        x
-1  0   4 2.935000
-2  1   4 2.042250
-3  0   6 3.388750
-4  1   6 2.755000
-5  0   8 4.104083
-6  1   8 3.370000</code></pre>
+<pre><code>  Cylinders Transmission Mean_mpg
+1         4            0 22.90000
+2         6            0 19.12500
+3         8            0 15.05000
+4         4            1 28.07500
+5         6            1 20.56667
+6         8            1 15.40000</code></pre>
 </div>
 </div>
+<ol start="2" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>In our script, the first argument of <code>aggregate()</code> is <code>tb$mpg</code>, indicating that we want to perform computations on the <code>mpg</code> variable.</p></li>
+<li><p>The by argument is a list of variables by which we want to group our data, specified as <code>list(tb$cyl, tb$am)</code>. This means that separate computations are done for each unique combination of <code>cyl</code> and <code>am</code>.</p></li>
+<li><p>The <code>FUN</code> argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.</p></li>
+</ul>
+<ol start="3" type="1">
+<li>Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:</li>
+</ol>
+<ul>
+<li>Distribution of Mileage (<code>mpg</code>), Weight (<code>wt</code>), Horsepower (<code>hp</code>) by Cylinders (<code>cyl</code> = {4,6,8}) and Transmisson Type (<code>am</code> = {0,1})</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>agg3 <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(<span class="fu">list</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>wt, tb<span class="sc">$</span>hp), </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>am, tb<span class="sc">$</span>cyl),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN =</span> mean)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agg3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Transmission"</span>,<span class="st">"Cylinders"</span>,<span class="st">"Mean_mpg"</span>,<span class="st">"Mean_wt"</span>,<span class="st">"Mean_hp"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>agg3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Transmission Cylinders Mean_mpg  Mean_wt   Mean_hp
+1            0         4 22.90000 2.935000  84.66667
+2            1         4 28.07500 2.042250  81.87500
+3            0         6 19.12500 3.388750 115.25000
+4            1         6 20.56667 2.755000 131.66667
+5            0         8 15.05000 4.104083 194.16667
+6            1         8 15.40000 3.370000 299.50000</code></pre>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>In this code, the <code>aggregate()</code> function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of <code>am</code> and <code>cyl</code>.</p></li>
+<li><p>The sequence of the categorizing variables also varies - initially, the data is grouped by <code>cyl</code>, followed by a subdivision based on <code>am</code>.</p></li>
+</ul>
 </section>
 <section id="visualizing-continuous-data-across-two-categories" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-two-categories">Visualizing Continuous Data across two Categories</h2>
@@ -599,18 +644,18 @@ NULL</code></pre>
 <h3 class="anchored" data-anchor-id="means-plot-of-continuous-data-across-two-factors">Means Plot of Continuous Data across two Factors</h3>
 <p>We show a mean plot showing the mean weight of the cars broken down by Transmission Type (<code>am</code>= 0 or 1) &amp; cylinders (<code>cyl</code> = 4,6,8).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(mpg <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (mpg) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average MPG"</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(mpg <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (mpg) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average MPG"</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
