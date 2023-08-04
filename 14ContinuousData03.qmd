@@ -1,8 +1,8 @@
 # Continuous Data (3 of 6)
 
-*Aug 4, 2023. V1.3*
+*Aug 4, 2023. V1.4*
 
-1. THIS CHAPTER explores Continuous x Categorical data. Specifically, it explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
+1.  THIS CHAPTER explores Continuous x Categorical data. Specifically, it explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
 2.  We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
 
@@ -26,20 +26,13 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-
-
-
-
-
 ## Summarizing Continuous Data across one Category
 
-* R has a variety of functions that can be used to summarize continuous data split across a category. 
+-   R has a variety of functions that can be used to summarize continuous data split across a category.
 
-* We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
+-   We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
 
-
-
-1.  Using `aggregate()`
+1.  **Using `aggregate()`**
 
 -   We can use the `aggregate()` function to investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`). The following code will display a summary table showing the average mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
 
@@ -63,9 +56,7 @@ agg
 
 -   Finally, we utilize the `names()` function to rename the columns and display `agg`. \[1\]
 
-
-
-3.  Using `tapply()`
+3.  **Using `tapply()`**
 
 -   The `tapply()` function is a convenient tool to apply a function to subsets of a vector, grouped by some factors.
 
@@ -85,13 +76,15 @@ tapply(tb$mpg, tb$cyl, mean)
 
 -   The result will be a vector where each element is the average `mpg` for a unique number of cylinders (`cyl`), as determined by the unique values of `tb\$cyl`. \[1\]
 
-5.  Using `describeBy()` from package `psych`
+5.  **Using `describeBy()` from package `psych`**
 
 -   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of a numeric variable, broken down by levels of a grouping variable.
 
 ```{r}
 library(psych)
-describeBy(mpg, cyl)
+stats0 <- describeBy(mpg, cyl)
+stats0
+
 ```
 
 6.  Discussion:
@@ -99,14 +92,6 @@ describeBy(mpg, cyl)
 -   `describeBy(mpg, cyl)` computes descriptive statistics of miles per gallon `mpg` variable, broken down by the unique values in the number of cylinders (`cyl`).
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
-
-
-
-
-
-
-
-
 
 ## Visualizing Continuous Data across one Category
 
@@ -193,6 +178,7 @@ lapply(tb_split,
        function(x) 
          stem(x$mpg))
 ```
+
 2.  Discussion:
 
 -   `tb3 <- select(tb, mpg, cyl)`: In this line, we're using the `select()` function from the `dplyr` package to pick out the `mpg` and `cyl` columns from the tibble `tb`. We then store this newly created subset of the original tibble into a new tibble `tb3`.
@@ -201,24 +187,15 @@ lapply(tb_split,
 
 -   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
 
-
-
-
-
-
-
-
 ## Summarizing Continuous Data across two Categories
 
-* We extend the above discussion and study how to summarize continuous data split across **two** categories. 
+-   We extend the above discussion and study how to summarize continuous data split across **two** categories.
 
-* We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
+-   We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
 
+1.  **Using `aggregate()`**
 
-
-1.  Using `aggregate()`
-
-* Distribution of Mileage (`mpg`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
+-   Distribution of Mileage (`mpg`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
 ```{r}
 agg2 <- aggregate(tb$mpg, 
@@ -228,21 +205,17 @@ names(agg2) <- c("Cylinders","Transmission","Mean_mpg")
 agg2
 ```
 
-
-
-
 2.  Discussion:
 
-* In our code, the first argument of `aggregate()` is `tb$mpg`, indicating that we want to perform computations on the `mpg` variable.
+-   In our code, the first argument of `aggregate()` is `tb$mpg`, indicating that we want to perform computations on the `mpg` variable.
 
-* The by argument is a list of variables by which we want to group our data, specified as `list(tb$cyl, tb$am)`. This means that separate computations are done for each unique combination of `cyl` and `am`.
+-   The by argument is a list of variables by which we want to group our data, specified as `list(tb$cyl, tb$am)`. This means that separate computations are done for each unique combination of `cyl` and `am`.
 
-* The `FUN` argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.
+-   The `FUN` argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.
 
+3.  Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:
 
-3. Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:
-
-* Distribution of Mileage (`mpg`), Weight (`wt`), Horsepower (`hp`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
+-   Distribution of Mileage (`mpg`), Weight (`wt`), Horsepower (`hp`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
 ```{r}
 agg3 <- aggregate(list(tb$mpg, tb$wt, tb$hp), 
@@ -254,41 +227,35 @@ agg3
 
 4.  Discussion:
 
-* In this code, the `aggregate()` function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of `am` and `cyl`.
+-   In this code, the `aggregate()` function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of `am` and `cyl`.
 
-* The sequence of the categorizing variables also varies - initially, the data is grouped by `cyl`, followed by a subdivision based on `am`. 
+-   The sequence of the categorizing variables also varies - initially, the data is grouped by `cyl`, followed by a subdivision based on `am`.
 
+5.  **Using `tapply()`**
 
-5.  Using `tapply()` 
+-   While the `tapply()` function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use.
 
--   While the `tapply()` function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use. 
-
-
-
-
-
-6.  Using `describeBy()` from package `psych`
+6.  **Using `describeBy()` from package `psych`**
 
 -   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles.
 
 -   Consider the following code:
 
-
 ```{r}
-tb_subset <- tb[c("mpg", "wt", "hp", "am", "cyl")]
-list(tb$am, tb$cyl)
-
+tb_columns <- tb[c("mpg", "wt", "hp")]
+tb_factors <- list(tb$am, tb$cyl)
+# Use describeBy()
+stats <- describeBy(tb_columns, tb_factors)
+print(stats)
 ```
 
+7.  Discussion:
 
+-   We first specify a subset of the dataframe `tb` that includes only the columns `mpg`, `wt`, and `hp` and save it into a variable `tb_columns`.
 
+-   Next, we create a list, `tb_factors`, that contains the factors `am` and `cyl`.
 
-
-
-
-
-
-
+-   After that, we call the `describeBy()` function from the `psych` package. This function calculates descriptive statistics, such as mean, standard deviation, and median, for each combination of levels of the factors `am` and `cyl` and for each of the continouous variables `mpg`, `wt`, and `hp`.
 
 ## Visualizing Continuous Data across two Categories
 

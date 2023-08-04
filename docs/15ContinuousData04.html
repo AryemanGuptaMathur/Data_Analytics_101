@@ -292,10 +292,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#continuous-data-4-of-6" id="toc-continuous-data-4-of-6" class="nav-link active" data-scroll-target="#continuous-data-4-of-6">Continuous Data (4 of 6)</a>
   <ul class="collapse">
-  <li><a href="#summarizing-continuous-data-across-one-category-using-ggplot2" id="toc-summarizing-continuous-data-across-one-category-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-one-category-using-ggplot2">Summarizing Continuous Data across one Category, <strong>using ggplot2</strong></a></li>
-  <li><a href="#visualizing-continuous-data-across-one-category-using-ggplot2" id="toc-visualizing-continuous-data-across-one-category-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-one-category-using-ggplot2">Visualizing Continuous Data across one Category, <strong>using ggplot2</strong></a></li>
-  <li><a href="#summarizing-continuous-data-across-two-categories-using-ggplot2" id="toc-summarizing-continuous-data-across-two-categories-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-two-categories-using-ggplot2">Summarizing Continuous Data across two Categories <strong>using ggplot2</strong></a></li>
-  <li><a href="#visualizing-continuous-data-across-two-categories-using-ggplot2" id="toc-visualizing-continuous-data-across-two-categories-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-two-categories-using-ggplot2">Visualizing Continuous Data across two Categories <strong>using ggplot2</strong></a></li>
+  <li><a href="#summarizing-continuous-data-across-one-category-using-ggplot2" id="toc-summarizing-continuous-data-across-one-category-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-one-category-using-ggplot2">Summarizing Continuous Data across one Category, using <code>ggplot2</code></a></li>
+  <li><a href="#visualizing-continuous-data-across-one-category-using-ggplot2" id="toc-visualizing-continuous-data-across-one-category-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-one-category-using-ggplot2">Visualizing Continuous Data across one Category, using <code>ggplot2</code></a></li>
+  <li><a href="#summarizing-continuous-data-across-two-categories-using-ggplot2" id="toc-summarizing-continuous-data-across-two-categories-using-ggplot2" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-two-categories-using-ggplot2">Summarizing Continuous Data across two Categories using <code>ggplot2</code></a></li>
+  <li><a href="#visualizing-continuous-data-across-two-categories-using-ggplot2" id="toc-visualizing-continuous-data-across-two-categories-using-ggplot2" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-two-categories-using-ggplot2">Visualizing Continuous Data across two Categories using <code>ggplot2</code></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-4-of-6" class="level1">
 <h1>Continuous Data (4 of 6)</h1>
-<p><em>Aug 4, 2023. V1.3</em></p>
+<p><em>Aug 4, 2023. V1.4</em></p>
 <ol type="1">
 <li><p>THIS CHAPTER explores Continuous x Categorical data using <strong><code>ggplot2</code></strong>. Specifically, it demonstrates the use of the popular <strong><code>ggplot2</code></strong> package to further explore <em>bivariate continuous data across categories</em>.</p></li>
 <li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
@@ -329,17 +329,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="summarizing-continuous-data-across-one-category-using-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-one-category-using-ggplot2">Summarizing Continuous Data across one Category, <strong>using ggplot2</strong></h2>
+<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-one-category-using-ggplot2">Summarizing Continuous Data across one Category, using <code>ggplot2</code></h2>
 <ol type="1">
 <li>We demonstrate the bivariate relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>) using <code>ggplot2</code>.</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> tb <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   cyl   Mean_mpg SD_mpg
@@ -358,20 +358,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>We set <code>na.rm = TRUE</code> in both <code>mean()</code> and <code>sd()</code> function calls, to remove any missing values before calculation. [1]</p></li>
 </ul>
 <ol start="3" type="1">
+<li>Visualizing the mean and standard deviation</li>
+</ol>
+<ul>
+<li><p>The data resulting from the above code consists of grouped cylinder counts (<code>cyl</code>), their corresponding mean miles per gallon (<code>Mean_mpg</code>), and the standard deviation of miles per gallon (<code>SD_mpg</code>).</p></li>
+<li><p>A simple way to visualize this data would be to create a <strong>line plot</strong> for the mean miles per gallon with <strong>error bars</strong> to indicate standard deviation. Here is an example of how we could do this with <code>ggplot2</code>:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggplot2'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'tb':
+
+    mpg</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(s1, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">y =</span> Mean_mpg)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">group=</span><span class="dv">1</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean_mpg <span class="sc">-</span> SD_mpg, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax =</span> Mean_mpg <span class="sc">+</span> SD_mpg), </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> .<span class="dv">2</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cylinders"</span>, <span class="at">y =</span> <span class="st">"Mean mpg"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="15ContinuousData04_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p><code>aes(x = cyl, y = Mean_mpg)</code> assigns the <code>cyl</code> values to the x-axis and <code>Mean_mpg</code> to the y-axis.</p></li>
+<li><p><code>geom_line(group=1, color = "blue")</code> adds a blue line connecting the data points.</p></li>
+<li><p><code>geom_point(size = 2, color = "red")</code> adds red points for each data point.</p></li>
+<li><p><code>geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg), width = .2, colour = "black")</code> adds error bars, where the error is the standard deviation.</p></li>
+<li><p>The <code>ymin</code> and <code>ymax</code> arguments define the range of the error bars.</p></li>
+<li><p><code>labs(x = "Cylinders", y = "Mean mpg")</code> labels the x and y axes.</p></li>
+<li><p><code>theme_minimal()</code> applies a minimal theme to the plot.</p></li>
+</ul>
+<ol start="5" type="1">
+<li>Alternate visualization:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mpg plot</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(s1, <span class="fu">aes</span>(<span class="at">x =</span> cyl, <span class="at">y =</span> Mean_mpg)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="st">"skyblue"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> Mean_mpg <span class="sc">-</span> SD_mpg, </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ymax =</span> Mean_mpg <span class="sc">+</span> SD_mpg), </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cylinders"</span>, <span class="at">y =</span> <span class="st">"Mean mpg"</span>) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="15ContinuousData04_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p><code>ggplot(s1, aes(x = cyl, y = Mean_mpg))</code>: The <code>ggplot()</code> function initializes a ggplot object. It’s specifying the data to use (<code>s1</code> data frame) and mapping aesthetic elements to variables in the data. Here, <code>aes(x = cyl, y = Mean_mpg)</code> specifies that the x-axis represents <code>cyl</code> (number of cylinders) and the y-axis represents <code>Mean_mpg</code> (mean miles per gallon).</p></li>
+<li><p><code>geom_bar(stat = "identity", fill = "skyblue", alpha = 0.7)</code>: The <code>geom_bar()</code> function is used to create a bar chart. Setting <code>stat = "identity"</code> indicates that the heights of the bars represent the values in the data (in this case, <code>Mean_mpg</code>). The <code>fill = "skyblue"</code> argument sets the color of the bars to sky blue, and <code>alpha = 0.7</code> sets the transparency of the bars.</p></li>
+<li><p><code>geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg), width = .2)</code>: The <code>geom_errorbar()</code> function adds error bars to the plot. The arguments <code>aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg)</code> set the bottom (<code>ymin</code>) and top (<code>ymax</code>) of the error bars to represent one standard deviation below and above the mean, respectively. <code>width = .2</code> sets the horizontal width of the error bars.</p></li>
+<li><p><code>labs(x = "Cylinders", y = "Mean mpg")</code>: The <code>labs()</code> function is used to specify the labels for the x-axis and y-axis.</p></li>
+<li><p><code>theme_minimal()</code>: The <code>theme_minimal()</code> function is used to set a minimalistic theme for the plot.</p></li>
+<li><p>This plot provides a clear visual representation of the mean miles per gallon for different numbers of cylinders, with the variation in each group indicated by the error bars.</p></li>
+</ul>
+<ol start="7" type="1">
 <li>We extend this code to demonstrate how to measure the bivariate relationships between multiple continuous variables from the mtcars data and the categorical variable number of Cylinders (<code>cyl</code>), using <code>ggplot2</code>. Specifically, we consider the continuous variables (i) Miles Per Gallon (<code>mpg</code>); (ii) Weight (<code>wt</code>); (iii) Horsepower (<code>hp</code>) across the number of Cylinders (<code>cyl</code>).</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_wt =</span> <span class="fu">mean</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_wt =</span> <span class="fu">sd</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_hp =</span> <span class="fu">mean</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_hp =</span> <span class="fu">sd</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>s3 <span class="ot">&lt;-</span> tb <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_wt =</span> <span class="fu">mean</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_wt =</span> <span class="fu">sd</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_hp =</span> <span class="fu">mean</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_hp =</span> <span class="fu">sd</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(s3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 7
   cyl   Mean_mpg SD_mpg Mean_wt SD_wt Mean_hp SD_hp
@@ -381,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3 8         15.1   2.56    4.00 0.759   209.   51.0</code></pre>
 </div>
 </div>
-<ol start="4" type="1">
+<ol start="8" type="1">
 <li>Discussion:</li>
 </ol>
 <ul>
@@ -392,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="visualizing-continuous-data-across-one-category-using-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-one-category-using-ggplot2">Visualizing Continuous Data across one Category, <strong>using ggplot2</strong></h2>
+<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-one-category-using-ggplot2">Visualizing Continuous Data across one Category, using <code>ggplot2</code></h2>
 <p>Let’s take a closer look at some of the most effective ways of visualizing continuous data, across one Category, <strong>using ggplot2</strong>, including</p>
 <ol type="i">
 <li><p>Histograms, using ggplot2;</p></li>
@@ -404,16 +479,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="summarizing-continuous-data-across-two-categories-using-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-two-categories-using-ggplot2">Summarizing Continuous Data across two Categories <strong>using ggplot2</strong></h2>
+<h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-two-categories-using-ggplot2">Summarizing Continuous Data across two Categories using <code>ggplot2</code></h2>
 <ol type="1">
 <li>We demonstrate the relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>) and Transmission type (<code>am</code>) using <code>ggplot2</code>. Recall that a car’s transmission may be automatic (<code>am=0</code>) or manual (<code>am=1</code>).</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, am) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl, am) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'cyl'. You can override using the `.groups`
 argument.</code></pre>
@@ -439,11 +514,11 @@ argument.</code></pre>
 <li><p>In the below code, the order of the variables is reversed - the data is first grouped by <code>am</code>, then by <code>cyl</code>. So, the function first sorts the data by the <code>am</code> variable, and within each <code>am</code> group, it further groups the data by <code>cyl</code>.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am, cyl) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am, cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'am'. You can override using the `.groups`
 argument.</code></pre>
@@ -461,14 +536,47 @@ argument.</code></pre>
 6 1     8         15.4  0.566</code></pre>
 </div>
 </div>
+<ol start="3" type="1">
+<li>The following code produces a new data frame that contains the mean and standard deviation of the continuous variables <code>mpg</code>, <code>wt</code>, and <code>hp</code> for each combination of the factor variables <code>am</code> and <code>cyl</code>. [1]</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tb <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(am, cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_mpg =</span> <span class="fu">mean</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_mpg =</span> <span class="fu">sd</span>(mpg, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_wt =</span> <span class="fu">mean</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_wt =</span> <span class="fu">sd</span>(wt, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean_hp =</span> <span class="fu">mean</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">SD_hp =</span> <span class="fu">sd</span>(hp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'am'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+# Groups:   am [2]
+  am    cyl   Mean_mpg SD_mpg Mean_wt SD_wt Mean_hp SD_hp
+  &lt;fct&gt; &lt;fct&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1 0     4         22.9  1.45     2.94 0.408    84.7 19.7 
+2 0     6         19.1  1.63     3.39 0.116   115.   9.18
+3 0     8         15.0  2.77     4.10 0.768   194.  33.4 
+4 1     4         28.1  4.48     2.04 0.409    81.9 22.7 
+5 1     6         20.6  0.751    2.76 0.128   132.  37.5 
+6 1     8         15.4  0.566    3.37 0.283   300.  50.2 </code></pre>
+</div>
+</div>
 </section>
 <section id="visualizing-continuous-data-across-two-categories-using-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-two-categories-using-ggplot2">Visualizing Continuous Data across two Categories <strong>using ggplot2</strong></h2>
+<h2 class="anchored" data-anchor-id="visualizing-continuous-data-across-two-categories-using-ggplot2">Visualizing Continuous Data across two Categories using <code>ggplot2</code></h2>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>[1]</p>
 <p>Wickham, H., François, R., Henry, L., &amp; Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr</p>
+<p>Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. ISBN 978-3-319-24277-4, https://ggplot2.tidyverse.org.</p>
 
 
 </section>

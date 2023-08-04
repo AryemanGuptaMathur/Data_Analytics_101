@@ -1,6 +1,6 @@
 # Continuous Data (4 of 6)
 
-*Aug 4, 2023. V1.3*
+*Aug 4, 2023. V1.4*
 
 1. THIS CHAPTER explores Continuous x Categorical data using **`ggplot2`**. Specifically, it demonstrates the use of the popular **`ggplot2`** package to further explore *bivariate continuous data across categories*.
 
@@ -28,19 +28,17 @@ attach(tb)
 
 
 
-## Summarizing Continuous Data across one Category, **using ggplot2**
-
-
+## Summarizing Continuous Data across one Category, using `ggplot2`
 
 1.  We demonstrate the bivariate relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) using `ggplot2`.
 
 ```{r}
 library(dplyr)
-
-tb %>%
+s1 <- tb %>%
   group_by(cyl) %>%
   summarise(Mean_mpg = mean(mpg, na.rm = TRUE),
             SD_mpg = sd(mpg, na.rm = TRUE)) 
+print(s1)
 ```
 
 2.  Discussion:
@@ -52,12 +50,82 @@ tb %>%
 -   We set `na.rm = TRUE` in both `mean()` and `sd()` function calls, to remove any missing values before calculation. [1]
 
 
+3. Visualizing the mean and standard deviation 
 
-3.  We extend this code to demonstrate how to measure the bivariate relationships between multiple continuous variables from the mtcars data and the categorical variable number of Cylinders (`cyl`), using `ggplot2`. Specifically, we consider the continuous variables (i) Miles Per Gallon (`mpg`);  (ii) Weight (`wt`); (iii) Horsepower (`hp`) across the number of Cylinders (`cyl`).
+* The data resulting from the above code consists of grouped cylinder counts (`cyl`), their corresponding mean miles per gallon (`Mean_mpg`), and the standard deviation of miles per gallon (`SD_mpg`).
+
+* A simple way to visualize this data would be to create a **line plot** for the mean miles per gallon with **error bars** to indicate standard deviation. Here is an example of how we could do this with `ggplot2`:
+
+
+```{r}
+library(ggplot2)
+ggplot(s1, 
+       aes(x = cyl, y = Mean_mpg)) +
+  geom_line(group=1, color = "blue") +
+  geom_point(size = 2, color = "red") +
+  geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, 
+                    ymax = Mean_mpg + SD_mpg), 
+                width = .2, colour = "black") +
+  labs(x = "Cylinders", y = "Mean mpg") +
+  theme_minimal()
+
+```
+
+4.  Discussion:
+
+* `aes(x = cyl, y = Mean_mpg)` assigns the `cyl` values to the x-axis and `Mean_mpg` to the y-axis.
+
+* `geom_line(group=1, color = "blue")` adds a blue line connecting the data points.
+
+* `geom_point(size = 2, color = "red")` adds red points for each data point.
+* `geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg), width = .2, colour = "black")` adds error bars, where the error is the standard deviation. 
+
+* The `ymin` and `ymax` arguments define the range of the error bars.
+
+* `labs(x = "Cylinders", y = "Mean mpg")` labels the x and y axes.
+
+* `theme_minimal()` applies a minimal theme to the plot.
+
+
+
+5. Alternate visualization:
+
+```{r}
+library(ggplot2)
+
+# mpg plot
+ggplot(s1, aes(x = cyl, y = Mean_mpg)) +
+  geom_bar(stat = "identity", 
+           fill = "skyblue", 
+           alpha = 0.7) +
+  geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, 
+                    ymax = Mean_mpg + SD_mpg), 
+                width = .2) +
+  labs(x = "Cylinders", y = "Mean mpg") +
+  theme_minimal()
+```
+
+6. Discussion:
+
+* `ggplot(s1, aes(x = cyl, y = Mean_mpg))`: The `ggplot()` function initializes a ggplot object. It's specifying the data to use (`s1` data frame) and mapping aesthetic elements to variables in the data. Here, `aes(x = cyl, y = Mean_mpg)` specifies that the x-axis represents `cyl` (number of cylinders) and the y-axis represents `Mean_mpg` (mean miles per gallon).
+
+* `geom_bar(stat = "identity", fill = "skyblue", alpha = 0.7)`: The `geom_bar()` function is used to create a bar chart. Setting `stat = "identity"` indicates that the heights of the bars represent the values in the data (in this case, `Mean_mpg`). The `fill = "skyblue"` argument sets the color of the bars to sky blue, and `alpha = 0.7` sets the transparency of the bars.
+
+* `geom_errorbar(aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg), width = .2)`: The `geom_errorbar()` function adds error bars to the plot. The arguments `aes(ymin = Mean_mpg - SD_mpg, ymax = Mean_mpg + SD_mpg)` set the bottom (`ymin`) and top (`ymax`) of the error bars to represent one standard deviation below and above the mean, respectively. `width = .2` sets the horizontal width of the error bars.
+
+* `labs(x = "Cylinders", y = "Mean mpg")`: The `labs()` function is used to specify the labels for the x-axis and y-axis.
+
+* `theme_minimal()`: The `theme_minimal()` function is used to set a minimalistic theme for the plot.
+
+* This plot provides a clear visual representation of the mean miles per gallon for different numbers of cylinders, with the variation in each group indicated by the error bars.
+
+
+
+7.  We extend this code to demonstrate how to measure the bivariate relationships between multiple continuous variables from the mtcars data and the categorical variable number of Cylinders (`cyl`), using `ggplot2`. Specifically, we consider the continuous variables (i) Miles Per Gallon (`mpg`);  (ii) Weight (`wt`); (iii) Horsepower (`hp`) across the number of Cylinders (`cyl`).
 
 ```{r}
 library(dplyr)
-tb %>%
+s3 <- tb %>%
   group_by(cyl) %>%
   summarise(
     Mean_mpg = mean(mpg, na.rm = TRUE),
@@ -67,9 +135,10 @@ tb %>%
     Mean_hp = mean(hp, na.rm = TRUE),
     SD_hp = sd(hp, na.rm = TRUE)
     ) 
+print(s3)
 ```
 
-4.  Discussion:
+8.  Discussion:
 
 * With `tb %>%`, we indicate that we are going to perform a series of operations on the `tb` data frame. The next operation is `group_by(cyl)`, which groups the data by the `cyl` variable.
 
@@ -85,10 +154,7 @@ tb %>%
 
 
 
-
-
-
-## Visualizing Continuous Data across one Category, **using ggplot2**
+## Visualizing Continuous Data across one Category, using `ggplot2`
 
 Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including
 
@@ -113,7 +179,7 @@ Let's take a closer look at some of the most effective ways of visualizing conti
 
 
 
-## Summarizing Continuous Data across two Categories **using ggplot2**
+## Summarizing Continuous Data across two Categories using `ggplot2`
 
 
 1.  We demonstrate the relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) and Transmission type (`am`) using `ggplot2`. Recall that a car's transmission may be automatic (`am=0`) or manual (`am=1`). 
@@ -144,12 +210,28 @@ tb %>%
 
 
 
+3. The following code produces a new data frame that contains the mean and standard deviation of the continuous variables `mpg`, `wt`, and `hp` for each combination of the factor variables `am` and `cyl`.  [1]
+
+```{r}
+library(dplyr)
+tb %>%
+  group_by(am, cyl) %>%
+  summarise(
+    Mean_mpg = mean(mpg, na.rm = TRUE),
+    SD_mpg = sd(mpg, na.rm = TRUE),
+    Mean_wt = mean(wt, na.rm = TRUE),
+    SD_wt = sd(wt, na.rm = TRUE),
+    Mean_hp = mean(hp, na.rm = TRUE),
+    SD_hp = sd(hp, na.rm = TRUE)
+    ) 
+```
 
 
 
 
 
-## Visualizing Continuous Data across two Categories **using ggplot2**
+
+## Visualizing Continuous Data across two Categories using `ggplot2`
 
 
 
@@ -163,4 +245,4 @@ tb %>%
 
 Wickham, H., François, R., Henry, L., & Müller, K. (2021). dplyr: A Grammar of Data Manipulation. R package version 1.0.7. https://CRAN.R-project.org/package=dplyr
 
-
+Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York. ISBN 978-3-319-24277-4, https://ggplot2.tidyverse.org.
