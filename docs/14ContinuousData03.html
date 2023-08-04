@@ -173,25 +173,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01GettingStarted.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diving into R</span></a>
+ <span class="menu-text">Exploring R programming</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The World of R Packages</span></a>
+ <span class="menu-text">Exploring R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures in R</span></a>
+ <span class="menu-text">Exploring Data Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data in R</span></a>
+ <span class="menu-text">Reading Data into R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -292,7 +292,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#continuous-data-3-of-6" id="toc-continuous-data-3-of-6" class="nav-link active" data-scroll-target="#continuous-data-3-of-6">Continuous Data (3 of 6)</a>
   <ul class="collapse">
-  <li><a href="#exploring-bivariate-continuous-x-categorical-data" id="toc-exploring-bivariate-continuous-x-categorical-data" class="nav-link" data-scroll-target="#exploring-bivariate-continuous-x-categorical-data">Exploring bivariate Continuous x Categorical data</a></li>
   <li><a href="#summarizing-continuous-data-across-one-category" id="toc-summarizing-continuous-data-across-one-category" class="nav-link" data-scroll-target="#summarizing-continuous-data-across-one-category">Summarizing Continuous Data across one Category</a></li>
   <li><a href="#visualizing-continuous-data-across-one-category" id="toc-visualizing-continuous-data-across-one-category" class="nav-link" data-scroll-target="#visualizing-continuous-data-across-one-category">Visualizing Continuous Data across one Category</a>
   <ul class="collapse">
@@ -319,13 +318,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="continuous-data-3-of-6" class="level1">
 <h1>Continuous Data (3 of 6)</h1>
 <p><em>Aug 4, 2023.</em></p>
-<section id="exploring-bivariate-continuous-x-categorical-data" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-bivariate-continuous-x-categorical-data">Exploring bivariate Continuous x Categorical data</h2>
-<p>THIS CHAPTER explores how to summarize and visualize <em>bivariate continuous data across categories</em>.</p>
 <ol type="1">
-<li><p>This chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p></li>
+<li><p>THIS CHAPTER explores Continuous x Categorical data. Specifically, it explains how to summarize and visualize <em>bivariate continuous data across categories</em>. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p></li>
 <li><p>We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p></li>
-<li><p>To achieve this, we demonstrate the use of libraries such as <code>dplyr</code> and <code>ggplot2</code>. Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.</p></li>
+<li><p>Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.</p></li>
 <li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
 </ol>
 <div class="cell">
@@ -343,9 +339,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Directly access the data columns of tb, without tb$mpg</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(tb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 <section id="summarizing-continuous-data-across-one-category" class="level2">
 <h2 class="anchored" data-anchor-id="summarizing-continuous-data-across-one-category">Summarizing Continuous Data across one Category</h2>
+<ul>
+<li><p>R has a variety of functions that can be used to summarize continuous data split across a category.</p></li>
+<li><p>We review the use of the inbuilt functions (i) <code>aggregate()</code>; (ii) <code>tapply()</code>; and the function (iii) <code>describeBy()</code> from package <code>pysch</code>.</p></li>
+</ul>
 <ol type="1">
 <li>Using <code>aggregate()</code></li>
 </ol>
@@ -564,7 +563,7 @@ NULL</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>Here is how it works:</li>
+<li>Discussion:</li>
 </ol>
 <ul>
 <li><p><code>tb3 &lt;- select(tb, mpg, cyl)</code>: In this line, we’re using the <code>select()</code> function from the <code>dplyr</code> package to pick out the <code>mpg</code> and <code>cyl</code> columns from the tibble <code>tb</code>. We then store this newly created subset of the original tibble into a new tibble <code>tb3</code>.</p></li>
