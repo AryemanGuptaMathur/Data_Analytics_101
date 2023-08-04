@@ -1,5 +1,5 @@
 
-### BEGIN yaml FOR BOOK'S WEBSITE (Jul 28, 2023) ###
+### BEGIN yaml FOR BOOK'S WEBSITE (Aug 04, 2023) ###
 project:
   type: website
   output-dir: docs
@@ -45,7 +45,7 @@ website:
     footer: ""
     contents:
       - href: index.qmd
-        text: Welcome
+        text: Overview
       - 01GettingStarted.qmd
       - 02RPackages.qmd
       - 03DataStructures.qmd
@@ -62,7 +62,8 @@ website:
       - 14ContinuousData03.qmd
       - 15ContinuousData04.qmd
       - 16ContinuousData05.qmd
-      - 17LiveCase03.qmd
+      - 17ContinuousData06.qmd
+      - 18LiveCase03.qmd
 ### END yaml FOR BOOK'S WEBSITE ###
 
 format:

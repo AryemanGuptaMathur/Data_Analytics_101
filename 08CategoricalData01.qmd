@@ -1,8 +1,10 @@
 # Categorical Data (1 of 3)
 
-*Aug 03, 2023*
+*Aug 4, 2023*
 
-## Overview
+## Exploring Univariate Categorical Data
+
+THIS CHAPTER explores how to summarize and visualize *univariate, categorical* data.
 
 1.  Categorical data is a type of data that can be divided into categories or groups. labels or categorical codes like "male" and "female," "red," "green," and "blue," or "A," "B," and "C" are frequently used to describe category data. This data type is commonly employed in research and statistics where you can categorize the data under various headings depending on their features, characteristics, or any other parameters \[1\]
 

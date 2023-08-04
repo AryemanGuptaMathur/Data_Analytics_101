@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12ContinuousData01.html">Continuous Data (1 of 5)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12ContinuousData01.html">Continuous Data (1 of 6)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome</span></a>
+ <span class="menu-text">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -239,36 +239,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12ContinuousData01.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Continuous Data (1 of 5)</span></a>
+ <span class="menu-text">Continuous Data (1 of 6)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13ContinuousData02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (2 of 5)</span></a>
+ <span class="menu-text">Continuous Data (2 of 6)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14ContinuousData03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (3 of 5)</span></a>
+ <span class="menu-text">Continuous Data (3 of 6)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./15ContinuousData04.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (4 of 5)</span></a>
+ <span class="menu-text">Continuous Data (4 of 6)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16ContinuousData05.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (5 of 5)</span></a>
+ <span class="menu-text">Continuous Data (5 of 6)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17LiveCase03.html" class="sidebar-item-text sidebar-link">
+  <a href="./17ContinuousData06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Continuous Data (6 of 6)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18LiveCase03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Live Case: S&amp;P500 (3 of 3)</span></a>
   </div>
 </li>
@@ -284,9 +290,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#continuous-data-1-of-5" id="toc-continuous-data-1-of-5" class="nav-link active" data-scroll-target="#continuous-data-1-of-5">Continuous Data (1 of 5)</a>
+  <li><a href="#continuous-data-1-of-6" id="toc-continuous-data-1-of-6" class="nav-link active" data-scroll-target="#continuous-data-1-of-6">Continuous Data (1 of 6)</a>
   <ul class="collapse">
-  <li><a href="#exploring-univariate-continuous-data-summarization-and-visualization-in-r" id="toc-exploring-univariate-continuous-data-summarization-and-visualization-in-r" class="nav-link" data-scroll-target="#exploring-univariate-continuous-data-summarization-and-visualization-in-r">Exploring Univariate Continuous Data: Summarization and Visualization in R</a>
+  <li><a href="#exploring-univariate-continuous-data" id="toc-exploring-univariate-continuous-data" class="nav-link" data-scroll-target="#exploring-univariate-continuous-data">Exploring Univariate Continuous Data</a>
   <ul class="collapse">
   <li><a href="#measures-of-central-tendency" id="toc-measures-of-central-tendency" class="nav-link" data-scroll-target="#measures-of-central-tendency">Measures of Central Tendency</a></li>
   <li><a href="#measures-of-variability" id="toc-measures-of-variability" class="nav-link" data-scroll-target="#measures-of-variability">Measures of Variability</a></li>
@@ -317,11 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="continuous-data-1-of-5" class="level1">
-<h1>Continuous Data (1 of 5)</h1>
-<p><em>Aug 3, 2023</em></p>
-<section id="exploring-univariate-continuous-data-summarization-and-visualization-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-univariate-continuous-data-summarization-and-visualization-in-r">Exploring Univariate Continuous Data: Summarization and Visualization in R</h2>
+<section id="continuous-data-1-of-6" class="level1">
+<h1>Continuous Data (1 of 6)</h1>
+<p><em>Aug 4, 2023</em></p>
+<section id="exploring-univariate-continuous-data" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-univariate-continuous-data">Exploring Univariate Continuous Data</h2>
+<p>THIS CHAPTER explores how to summarize and visualize <em>univariate, continuous</em> data.</p>
 <ol type="1">
 <li><p>In our exploration of data analysis, we frequently deal with a specific type of data, referred to as <strong>univariate</strong> continuous data. This term implies that our data comes from <strong>one feature or variable</strong>, which could take on an infinite number of possible values, typically within an interval [1].</p></li>
 <li><p>Meanwhile, “continuous” in univariate <strong>continuous</strong> data communicates that our variable of interest can take on an endless variety of values within its possible range. For instance, in the <code>mtcars</code> dataset in R, variables like <code>mpg</code> (miles per gallon), <code>wt</code> (weight), and <code>hp</code> (horsepower) epitomize continuous data. They are not limited to specific, separate numbers and can encompass any value, including decimal points, within their respective ranges [1].</p></li>
@@ -594,7 +601,14 @@ carb      1.26  0.29</code></pre>
 <h2 class="anchored" data-anchor-id="visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</h2>
 <ul>
 <li><p>In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.</p></li>
-<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including i) Stem-and-Leaf plots; (ii) Histograms; (iii) Density plots; (iv) Box plots; (v) Bee Swarm plots; (vi) Violin plots; (vii) Q-Q plots.</p></li>
+<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including</p>
+<p>i) Stem-and-Leaf plots;</p>
+<p>(ii) Histograms;</p>
+<p>(iii) PDF and CDF Density plots;</p>
+<p>(iv) Box plots;</p>
+<p>(v) Bee Swarm plots;</p>
+<p>(vi) Violin plots;</p>
+<p>(vii) Q-Q plots.</p></li>
 </ul>
 <section id="stem-and-leaf-plots" class="level3">
 <h3 class="anchored" data-anchor-id="stem-and-leaf-plots">Stem-and-Leaf Plots</h3>

@@ -1,8 +1,10 @@
-# Continuous Data (1 of 5)
+# Continuous Data (1 of 6)
 
-*Aug 3, 2023*
+*Aug 4, 2023*
 
-## Exploring Univariate Continuous Data: Summarization and Visualization in R
+## Exploring Univariate Continuous Data
+
+THIS CHAPTER explores how to summarize and visualize *univariate, continuous* data.
 
 1.  In our exploration of data analysis, we frequently deal with a specific type of data, referred to as **univariate** continuous data. This term implies that our data comes from **one feature or variable**, which could take on an infinite number of possible values, typically within an interval \[1\].
 

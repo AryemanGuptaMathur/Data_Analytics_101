@@ -1,8 +1,12 @@
-# Continuous Data (5 of 5)
+# Continuous Data (5 of 6)
 
-*Aug 3, 2023. V1.1 -=- This chapter is very much Work in Progress*
+*Aug 4, 2023.*
 
-2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
+## Exploring bivariate Continuous x Continuous data
+
+THIS CHAPTER explores how to summarize and visualize the interaction between *bivariate continuous data* using correlation analysis, scatter plots, scatter plot matrices and other such techniques.
+
+**Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -20,9 +24,7 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-## Bivariate relationships between Continuous data
-
-## Scatterplot
+## Scatterplots
 
 A scatter plot is a type of graph used to display the relationship between two continuous variables. It is a graphical representation of a bivariate distribution, where the values of two variables are plotted as points on a two-dimensional coordinate system.
 
@@ -33,45 +35,14 @@ The mtcars data set in R is a built-in data set that contains data on various ca
 ### Scatterplot using plot()
 
 ```{r}
-plot(tb$wt, tb$mpg, main = "Scatter Plot of MPG vs. Weight",
+plot(tb$wt, 
+     tb$mpg, 
+     main = "Scatter Plot of MPG vs. Weight",
      xlab = "Weight", ylab = "MPG", pch = 16)
 
 ```
 
 This code will first load the mtcars data set, then create a scatter plot of `mpg` against `wt` using the `plot()` function. The main argument adds a title to the plot, the `xlab` and `ylab` arguments add axis labels, and the pch argument changes the shape of the points to a solid circle. The resulting scatter plot will show the relationship between `mpg` and `wt` in the `mtcars` data set.
-
-### Scatterplot using ggplot2
-
-```{r}
-# Load the ggplot2 package
-library(ggplot2)
-
-# Create the scatter plot
-ggplot(tb, aes(x = wt, y = mpg)) + 
-  geom_point() + 
-  xlab("Weight (1000 lbs)") + 
-  ylab("Miles per gallon") + 
-  ggtitle("Scatter Plot of Weight vs. MPG")
-
-```
-
-This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis. The geom_point() function is used to add the points to the plot, and xlab(), ylab(), and ggtitle() are used to add axis labels and a plot title, respectively. You can adjust the aesthetics of the plot, such as the color and size of the points, by adding additional arguments to the geom_point() function.
-
-### Scatterplot using Lattice
-
-```{r}
-# Load the Lattice package
-library(lattice)
-
-# Create the scatter plot
-xyplot(mpg ~ wt, data = tb, 
-       xlab = "Weight (1000 lbs)", 
-       ylab = "Miles per gallon", 
-       main = "Scatter Plot of Weight vs. MPG")
-
-```
-
-This code creates a scatter plot of the wt variable (weight in 1000 lbs) on the x-axis and the mpg variable (miles per gallon) on the y-axis using the xyplot() function. The data argument specifies the data frame to use, and xlab, ylab, and main are used to add axis labels and a plot title, respectively. You can also add additional arguments to adjust the aesthetics of the plot, such as the size and color of the points or the type of line connecting the points, depending on your data and preferences.
 
 ## Scatterplot Matrix
 
@@ -85,17 +56,6 @@ A scatter plot matrix is particularly useful for exploring multivariate datasets
 
 # scatter plot matrix for mpg, wt, hp, drat
 pairs(tb[,c("mpg","wt","hp","drat")], pch = 19)
-
-```
-
-### Scatterplot Matrix Using ggpairs()
-
-```{r warning=FALSE,message=FALSE}
-# Load the GGally package
-library(GGally)
-
-# Create a scatterplot matrix using ggpairs()
-ggpairs(tb[,c("mpg","wt","hp","drat")])
 
 ```
 
@@ -120,38 +80,5 @@ library(psych)
 # Create a scatterplot matrix using pairs.panels()
 pairs.panels(tb[,c("mpg","wt","hp","drat")], 
              main = "Scatterplot Matrix")
-
-```
-
-## Scatterplots broken down by Categorical Variables
-
-### Scatterplot with colored by Categorical Variable Using ggplot()
-
-This will create a scatterplot of miles per gallon (mpg) against weight, with each point colored according to the number of cylinders in the engine (cyl).
-
-```{r}
-# Load the ggplot2 package
-library(ggplot2)
-
-# Create a scatterplot of mpg vs. wt, colored by cyl
-ggplot(tb, aes(x = wt, y = mpg, color = factor(cyl))) +
-  geom_point() +
-  labs(x = "Weight (lbs/1000)", y = "Miles per gallon") +
-  scale_color_discrete(name = "Cylinders")
-
-```
-
-### Scatterplot with broken down by Categorical Variable Using ggplot()
-
-This will create a scatterplot of miles per gallon (mpg) against weight, with each plot faceted by the number of cylinders in the engine (cyl).
-
-```{r warning=FALSE,message=FALSE}
-# Load the ggplot2 package
-library(ggplot2)
-
-# Create a scatterplot matrix using ggplot()
-ggplot(tb, aes(x = mpg, y = disp)) +
-  geom_point() +
-  facet_grid(. ~ cyl)
 
 ```

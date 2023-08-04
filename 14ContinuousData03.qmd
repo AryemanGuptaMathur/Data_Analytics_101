@@ -1,8 +1,10 @@
-# Continuous Data (3 of 5)
+# Continuous Data (3 of 6)
 
-*Aug 3, 2023. V1.3*
+*Aug 4, 2023.*
 
-## Continuous Data Across Categories
+## Exploring bivariate Continuous x Categorical data
+
+THIS CHAPTER explores how to summarize and visualize *bivariate continuous data across categories*.
 
 1.  This chapter takes us a step further in our exploration of continuous data. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
@@ -89,33 +91,25 @@ describeBy(mpg, cyl)
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
 
-
-
-
-
-
-
-
 ## Visualizing Continuous Data across one Category
 
-Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including 
+Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
 
-(i) Histograms; 
+(i) Histograms;
 
-(ii) PDF and CDF Density plots; 
+(ii) PDF and CDF Density plots;
 
-(iii) Box plots; 
+(iii) Box plots;
 
-(iv) Bee Swarm plots; 
+(iv) Bee Swarm plots;
 
-(v) Violin plots; 
+(v) Violin plots;
 
 (vi) Q-Q plots.
 
-
 ### Histograms of Continuous Data across one Category
 
-Visualizing histograms of car milegage (mpg) broken down by transmission (am=0,1)
+Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
 
 ```{r}
 # Split the data by 'am' variable
@@ -139,13 +133,9 @@ for (i in 1:length(split_data)) {
 }
 ```
 
-
-
-
-
 ### Box Plot of Continuous Data across one Category
 
-Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (cyl=4,6,8)
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
 
 ```{r}
 boxplot(mpg~cyl
@@ -157,7 +147,7 @@ boxplot(mpg~cyl
 
 ### Means Plot of Continuous Data across one Category
 
-Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (am=1 & am=0)
+Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (`am`= 0 or 1)
 
 ```{r}
 library(gplots)
@@ -168,7 +158,6 @@ plotmeans(data = mtcars,
           main = "Mean(mpg) by cyl = {4,6,8}"
           )
 ```
-
 
 ### Stem-and-Leaf Plot of Continuous Data across one Category
 
@@ -196,20 +185,11 @@ lapply(tb_split,
 
 -   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
 
-
-
-
-
-
-
-
-
-
 ## Summarizing Continuous Data across two Categories
 
 1.  Using `aggregate()`
 
-Distribution of Weight (wt) by Cylinders (cyl = {4,6,8}) and Transmisson Type (am = {0,1})
+Distribution of Weight (`wt`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
 ```{r}
 aggregate(wt, 
@@ -217,19 +197,11 @@ aggregate(wt,
           mean)
 ```
 
-
-
-
-
-
-
-
-
 ## Visualizing Continuous Data across two Categories
 
 ### Means Plot of Continuous Data across two Factors
 
-We show a mean plot showing the mean weight of the cars broken down by Transmission Type (am=1 & am=0) & cylinders (cyl=4,6,8).
+We show a mean plot showing the mean weight of the cars broken down by Transmission Type (`am`= 0 or 1) & cylinders (`cyl` = 4,6,8).
 
 ```{r warning=FALSE, message=FALSE}
 library(gplots)
@@ -243,8 +215,6 @@ plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
           , ylab="Average MPG"
           )
 ```
-
-
 
 ## References
 

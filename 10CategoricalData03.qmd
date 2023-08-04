@@ -1,8 +1,10 @@
 # Categorical Data (3 of 3)
 
-*Aug 3, 2023*
+*Aug 4, 2023*
 
-## Overview of Multivariate Categorical Variables
+## Exploring Multivariate Categorical Data
+
+THIS CHAPTER explores how to summarize and visualize *multivariate, categorical* data.
 
 1.  Multivariate categorical variables allow us to analyze and comprehend relationships between **three or more** categorical variables respectively.
 

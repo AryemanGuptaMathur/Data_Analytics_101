@@ -1,8 +1,10 @@
 # Categorical Data (2 of 3)
 
-*Aug 3, 2023*
+*Aug 4, 2023*
 
-## Overview of Bivariate Categorical Data
+## Exploring Bivariate Categorical Data
+
+THIS CHAPTER explores how to summarize and visualize *Bivariate, categorical* data.
 
 1.  Bivariate analysis involves examining the **relationship between two variables**. For instance, we might examine the relationship between a person's gender (male, female, or non-binary) and whether they own a car (yes or no). By exploring these two categorical variables together, we can discern potential correlations or associations.
 

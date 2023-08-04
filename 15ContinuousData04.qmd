@@ -1,8 +1,10 @@
-# Continuous Data (4 of 5)
+# Continuous Data (4 of 6)
 
-*Aug 3, 2023. V1.2 -=- This chapter is very much Work in Progress*
+*Aug 4, 2023.*
 
-## Continuous Data Across Categories using ggplot2
+## Exploring bivariate Continuous x Categorical data, using **`ggplot2`**
+
+THIS CHAPTER explores how to summarize and visualize *bivariate continuous data across categories*.
 
 1.  This chapter takes us a step further in our exploration of continuous data. Here, we delve into the use of ggplot2.
 
@@ -24,7 +26,6 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-
 ## Summarizing Continuous Data across one Category, **using ggplot2**
 
 1.  We investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) using ggplot2.
@@ -39,47 +40,30 @@ agg <- tb %>%
 agg
 ```
 
-2. Discussion:
+2.  Discussion:
 
--   In this code, we are using the pipe operator %\>% to perform a series of operations. We first group the data by the cyl column using the group_by() function. We then use summarise() to apply both the mean() and sd() functions to the mpg column.
+-   In this code, we are using the pipe operator %\>% to perform a series of operations. We first group the data by the `cyl` column using the group_by() function. We then use summarise() to apply both the mean() and sd() functions to the mpg column.
 
 -   The results are stored in new columns, Avg_MPG and SD_MPG.
 
 -   Note that na.rm = TRUE is used in both mean() and sd() to remove missing values before calculation. This ensures that our calculations won't be disrupted by any missing data. If you are sure your data has no missing values, you may omit this.
 
-
-
-
 ## Visualizing Continuous Data across one Category, **using ggplot2**
 
-Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including 
+Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including
 
-(i) Histograms, using ggplot2; 
+(i) Histograms, using ggplot2;
 
-(ii) PDF and CDF Density plots, using ggplot2; 
+(ii) PDF and CDF Density plots, using ggplot2;
 
-(iii) Box plots, using ggplot2; 
+(iii) Box plots, using ggplot2;
 
-(iv) Bee Swarm plots, using ggplot2; 
+(iv) Bee Swarm plots, using ggplot2;
 
-(v) Violin plots, using ggplot2; 
+(v) Violin plots, using ggplot2;
 
 (vi) Q-Q plots, using ggplot2.
 
-
-
-
-
-
 ## Summarizing Continuous Data across two Categories **using ggplot2**
 
-
-
-
-
-
-
 ## Visualizing Continuous Data across two Categories **using ggplot2**
-
-
-
