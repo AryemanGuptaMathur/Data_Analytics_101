@@ -209,28 +209,15 @@ ggdensity(tb,
 
 ### Cumulative Distribution Function (CDF) Plot using `ggplot2`
 
--   We can generate a CDF plot. First, we'll calculate the cumulative distribution. This can be achieved by arranging the data in ascending order, then adding a column representing the proportion of values less than or equal to each value:
-
 ```{r}
-tb <- tb %>%
-  arrange(mpg) %>%
-  mutate(cdf = row_number() / n())
-```
-
--   The `arrange()` function sorts the data, `mutate()` creates a new column, and `row_number()` gives the rank of each row, while `n()` provides the total number of rows.
-
--   The quotient of these represents the proportion of values less than or equal to each value.
-
--   Finally, we can create the CDF plot using the following code:
-
-```{r}
-ggplot(tb, 
-       aes(x = mpg, y = cdf)) +
-  geom_line() +
+# Load required library
+library(ggplot2)
+# Create a CDF plot
+ggplot(tb, aes(x = mpg)) +
+  stat_ecdf(geom = "line", color = "black") +
   labs(x = "Miles Per Gallon (mpg)", y = "CDF", 
-       title = "Cumulative Distribution Function (CDF) of Miles Per Gallon (mpg)") +
-  theme(panel.background = element_rect(fill = "lightblue"))
-
+       title = "Cumulative Distribution Function (CDF) of Mileage (mpg)") +
+  theme_minimal() 
 ```
 
 
@@ -243,7 +230,8 @@ ggplot(tb,
 ```{r}
 ggplot(tb, 
        aes(y = mpg)) +
-  geom_boxplot(fill = "gold") +
+  geom_boxplot(fill = "gold",
+               width = 1) +
   theme_minimal() +
   labs(title = "Boxplot of Miles Per Gallon (mpg)", y = "Miles Per Gallon (mpg)")
 ```
