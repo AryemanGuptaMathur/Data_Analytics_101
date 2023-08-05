@@ -1,6 +1,6 @@
 # Continuous Data (4 of 6)
 
-*Aug 5, 2023. V1.1*
+*Aug 5, 2023*
 
 1. THIS CHAPTER explores **Continuous x Categorical** data using the **`ggplot2`** package. Specifically, it demonstrates the use of **`ggplot2`** package to further explore *bivariate continuous data across categories*.
 
@@ -23,7 +23,10 @@ attach(tb)
 ```
 
 
-## Summarizing Continuous Data across one Category, using `ggplot2`
+## Summarizing Continuous Data using `ggplot2`
+
+
+### Across one Category using `ggplot2`
 
 1.  We demonstrate the bivariate relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) using `ggplot2`.
 
@@ -146,175 +149,7 @@ print(s3)
 
 
 
-
-
-
-## Visualizing Continuous Data across one Category, using `ggplot2`
-
-Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including
-
-(i) Histograms, using ggplot2;
-
-(ii) PDF and CDF Density plots, using ggplot2;
-
-(iii) Box plots, using ggplot2;
-
-(iv) Bee Swarm plots, using ggplot2;
-
-(v) Violin plots, using ggplot2;
-
-(vi) Q-Q plots, using ggplot2.
-
-
-
-### Histograms of Continuous Data across one Category
-
-Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
-
-```{r}
-ggplot(tb, aes(x = mpg, 
-               fill = am)) +
-  geom_histogram(binwidth = 5, color = "black") +
-  scale_fill_manual(values = c("gold", "lightblue")) +
-  theme_minimal() +
-  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
-       x = "Miles Per Gallon (mpg)",
-       y = "Frequency")
-```
-* If we want separate histograms, we can set facet_wrap(~ am)
-
-```{r}
-ggplot(tb, aes(x = mpg, 
-               fill = am)) +
-  geom_histogram(binwidth = 5, color = "black") +
-  scale_fill_manual(values = c("gold", "lightblue")) +
-  facet_wrap(~ am) +
-  theme_minimal() +
-  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
-       x = "Miles Per Gallon (mpg)",
-       y = "Frequency")
-```
-
-#### Histogram using `ggpubr`
-
-```{r}
-library(ggpubr)
-gghistogram(tb, 
-            x = "mpg", 
-            bins = 6,
-            add = "mean", 
-            rug = TRUE, 
-            color = "am", 
-            fill = "am", 
-            alpha = 0.8,
-            palette = c("gold", "lightblue"))
-```
-
-
-
-
-
-### Probability Density Function (PDF) plot across one Category using `ggplot2`
-
-```{r}
-ggplot(tb, aes(x = mpg, 
-               fill = am)) +
-  geom_density(color = "black") +
-  scale_fill_manual(values = c("gold", "lightblue")) +
-  facet_wrap(~ am) +
-  theme_minimal() +
-  labs(title = "Density Plot of Miles Per Gallon (mpg) by Transmission Type (am)",
-       x = "Miles Per Gallon (mpg)",
-       y = "Density")
-
-```
-
-
-
-
-### Cumulative Density Function (PDF) plot across one Category using `ggplot2`
-
-```{r}
-library(ggplot2)
-
-# Create separate CDFs for 'am = 0' and 'am = 1'
-ggplot(tb, aes(x = mpg, 
-               color = factor(am))) +
-  stat_ecdf(geom = "line") +
-  scale_color_manual(values = c("blue", "black")) +
-  labs(x = "Miles Per Gallon (mpg)", y = "CDF", 
-       title = "Cumulative Distribution Function (CDF) of Mileage (mpg) for Transmission (am)",
-       color = "am") +
-  theme_minimal() 
-```
-
-
-
-
-
-### Box Plot of Continuous Data across one Category
-
-Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
-
-
-```{r}
-library(ggplot2)
-
-ggplot(tb, aes(x = cyl, 
-               y = mpg)) +
-  geom_boxplot(fill = "gold", 
-               color = "black") +
-  coord_flip() +
-  labs(title = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
-       y = "Miles Per Gallon (mpg)",
-       x = "Cylinders") +
-  theme_minimal()
-```
-
-
-
-#### Boxplot using `ggpubr`
-
-* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
-
-```{r, warning=FALSE}
-library(ggpubr)
-ggboxplot(tb, 
-          y = "mpg", 
-          x = "cyl",
-          color = "black" ,
-          fill = "lightblue",
-          shape = "cyl",
-          orientation = "horizontal",
-          add = "jitter", #jitter helps display the data points
-          title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()",
-          ylab = "Miles Per Gallon (mpg)",
-          xlab = "Cylinders"
-)
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Summarizing Continuous Data across two Categories using `ggplot2`
+### Across two Categories using `ggplot2`
 
 
 1.  We demonstrate the relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`) and Transmission type (`am`) using `ggplot2`. Recall that a car's transmission may be automatic (`am=0`) or manual (`am=1`). 
@@ -366,7 +201,243 @@ tb %>%
 
 
 
-## Visualizing Continuous Data across two Categories using `ggplot2`
+## Visualizing Continuous Data using `ggplot2`
+
+Let's take a closer look at some of the most effective ways of visualizing continuous data, across one Category, **using ggplot2**, including
+
+(i) Histograms, using ggplot2;
+
+(ii) PDF and CDF Density plots, using ggplot2;
+
+(iii) Box plots, using ggplot2;
+
+(iv) Bee Swarm plots, using ggplot2;
+
+(v) Violin plots, using ggplot2;
+
+(vi) Q-Q plots, using ggplot2.
+
+
+
+### Histogram across one Category using `ggplot2`
+
+Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_histogram(binwidth = 5, color = "black") +
+  scale_fill_manual(values = c("gold", "lightblue")) +
+  theme_minimal() +
+  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Frequency")
+```
+* If we want separate histograms, we can set facet_wrap(~ am)
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_histogram(binwidth = 5, color = "black") +
+  scale_fill_manual(values = c("gold", "lightblue")) +
+  facet_wrap(~ am) +
+  theme_minimal() +
+  labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Frequency")
+```
+
+#### Histogram across one Category using `ggpubr`
+
+```{r}
+library(ggpubr)
+gghistogram(tb, 
+            x = "mpg", 
+            bins = 6,
+            add = "mean", 
+            rug = TRUE, 
+            color = "am", 
+            fill = "am", 
+            alpha = 0.8,
+            palette = c("gold", "lightblue"))
+```
+
+
+
+
+
+### PDF across one Category using `ggplot2`
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_density(color = "black") +
+  scale_fill_manual(values = c("gold", "lightblue")) +
+  facet_wrap(~ am) +
+  theme_minimal() +
+  labs(title = "Density Plot of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Density")
+
+```
+
+
+
+
+
+#### PDF across one Category using `ggpubr`
+
+* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
+
+```{r, warning=FALSE}
+library(ggpubr)
+ggdensity(tb, 
+          x = "mpg", 
+          color = "am" ,
+          fill = "am",
+          add = "mean",
+          rug = TRUE,
+          palette = c("gold", "skyblue"),
+          title = "PDF of Miles Per Gallon (mpg), using ggpubr::ggdensity()",
+          ylab = "Miles Per Gallon (mpg)",
+          xlab = "Transmission (am)"
+)
+```
+
+
+
+### CDF across one Category using `ggplot2`
+
+```{r}
+library(ggplot2)
+
+# Create separate CDFs for 'am = 0' and 'am = 1'
+ggplot(tb, aes(x = mpg, 
+               color = factor(am))) +
+  stat_ecdf(geom = "line") +
+  scale_color_manual(values = c("blue", "black")) +
+  labs(x = "Miles Per Gallon (mpg)", y = "CDF", 
+       title = "Cumulative Distribution Function (CDF) of Mileage (mpg) for Transmission (am)",
+       color = "am") +
+  theme_minimal() 
+```
+
+
+
+
+
+### Box Plot across one Category using `ggplot2`
+
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
+
+
+```{r}
+library(ggplot2)
+
+ggplot(tb, aes(x = cyl, 
+               y = mpg)) +
+  geom_boxplot(fill = c("gold","lightblue","lightpink"), 
+               color = "black") +
+  coord_flip() +
+  labs(title = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
+       y = "Miles Per Gallon (mpg)",
+       x = "Cylinders") +
+  theme_minimal()
+```
+
+
+
+#### Box Plot across one Category using `ggpubr`
+
+* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
+
+```{r, warning=FALSE}
+library(ggpubr)
+ggboxplot(tb, 
+          y = "mpg", 
+          x = "cyl",
+          color = "cyl",
+          fill = "white",
+          palette = c("black","blue","red"),
+          shape = "cyl",
+          orientation = "horizontal",
+          add = "jitter", #jitter helps display the data points
+          title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()",
+          ylab = "Miles Per Gallon (mpg)",
+          xlab = "Cylinders"
+)
+```
+
+
+
+### Bee Swarm Plot across one Category using `ggbeeswarm`
+
+
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
+
+```{r}
+library(ggplot2)
+library(ggbeeswarm)
+# Create the beeswarm plot
+ggplot(mtcars, 
+       aes(x = factor(cyl), 
+           y = mpg)) +
+  geom_beeswarm() +
+  labs(title = "Bee Swarm plot of Miles Per Gallon (mpg) by Cylinders",
+       x = "Cylinders (cyl)",
+       y = "Mileage (mpg)") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "lightblue"))
+```
+
+
+
+
+
+### Violin Plot across one Category using `ggplot2`
+
+Visualizing using Violin Plot -- distribution of mpg of the cars broken down by cylinders (`cyl`=4,6,8)
+
+
+```{r}
+library(ggplot2)
+
+ggplot(tb, aes(x = factor(cyl), 
+               y = mpg)) +
+  geom_violin(aes(fill = factor(cyl)), 
+              color = "black") +
+  scale_fill_manual(values = c("gold","lightblue","lightpink"), 
+                    name = "Cylinders") +
+  coord_flip() +
+  labs(title = "Violin plot of Miles Per Gallon (mpg) by Cylinders",
+       y = "Miles Per Gallon (mpg)",
+       x = "Cylinders") +
+  theme_minimal()
+```
+We can embed boxplots within the above Violin plots, as follows.
+
+```{r}
+library(ggplot2)
+
+ggplot(tb, aes(x = factor(cyl), 
+               y = mpg)) +
+  geom_violin(aes(fill = factor(cyl)), 
+              color = "black") +
+  scale_fill_manual(values = c("gold","lightblue","lightpink"), 
+                    name = "Cylinders") +
+  geom_boxplot(width=0.2, 
+               fill="white") +
+  coord_flip() +
+  labs(title = "Violin plot of Miles Per Gallon (mpg) by Cylinders",
+       y = "Miles Per Gallon (mpg)",
+       x = "Cylinders") +
+  theme_minimal()
+
+```
+
+
+
+
 
 
 

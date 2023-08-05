@@ -223,7 +223,7 @@ describe(tb)
 hist(tb$mpg, 
      main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="gold", 
+     col="skyblue", 
      border="black")
 ```
 
@@ -241,7 +241,7 @@ hist(tb$mpg,
      breaks = 12, # This creates 12 bins of equal width
      main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="gold", 
+     col="skyblue", 
      border="black")
 
 ```
@@ -254,7 +254,7 @@ hist(tb$mpg,
      breaks = seq(5, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
      main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="gold", 
+     col="skyblue", 
      border="black")
 ```
 
@@ -280,7 +280,7 @@ plot(dens,
      xlab = "Miles per gallon (mpg)", 
 )
 # Add a polygon to fill under the density curve
-polygon(dens, col = "gold", border = "black")
+polygon(dens, col = "skyblue", border = "black")
 ```
 3. Discussion:
 
@@ -320,6 +320,23 @@ plot(ecdf(tb$mpg),
 -   The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
 
 
+**Lookup**:  
+
+* To discover the cumulative distribution function (CDF) value corresponding to a specific mpg value, we apply the ecdf() function, which is a part of the base R package. Suppose we want to identify the CDF at mpg = 20, here's how we do it:
+
+```{r}
+# Generate the empirical cumulative distribution function
+ecdf_func <- ecdf(tb$mpg)
+
+# Derive the CDF for mpg = 20
+ecdf_func(20)
+```
+If we're interested in knowing the mpg value that corresponds to a certain CDF value, the base R function quantile() comes to our aid. For instance, we can obtain the mpg value associated with a CDF of 0.6 as follows:
+
+```{r}
+# Discover the mpg corresponding to CDF = 0.6
+quantile(tb$mpg, 0.6)
+```
 
 
 
@@ -331,9 +348,10 @@ plot(ecdf(tb$mpg),
 
 ```{r}
 boxplot(tb$wt, 
-        xlab = "Boxplot",
-        ylab = "Weight",
-        main = "Boxplot of Weight (wt)"
+        xlab = "",
+        ylab = "Weight ('000 kg)",
+        main = "Boxplot of Weight (wt)",
+        col = "skyblue"
        )
 ```
 
@@ -344,6 +362,10 @@ boxplot(tb$wt,
 5.  The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.
 
 6.  Any points outside of the whiskers are considered outliers and are plotted individually.
+
+
+
+
 
 ### Bee Swarm plot
 
@@ -358,6 +380,7 @@ library(beeswarm)
 # Create a bee swarm plot of wt column
 beeswarm(tb$wt, 
          main="Bee Swarm Plot of Weight (wt)", 
+         ylab = "Weight ('000 kg)",
          pch=16, 
          cex=1.2, 
          col="blue")
@@ -384,13 +407,12 @@ beeswarm(tb$wt,
 3.  The `vioplot()` function, part of the `vioplot` package in R, allows us to create such a violin plot.
 
 ```{r}
-# Loading the vioplot package
 library(vioplot)
-
 # Constructing a violin plot for the wt
 vioplot(tb$wt, 
         main="Violin Plot of Weight (wt)", 
-        ylab="Weight")
+        ylab="Weight",
+        col = "skyblue")
 ```
 
 -   In this code, the `vioplot()` function crafts a violin plot for the mpg variable. We use the `main` argument to assign the plot's title and the `ylab` argument to designate the label for the y-axis.

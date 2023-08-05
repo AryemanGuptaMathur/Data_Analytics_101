@@ -1,6 +1,6 @@
 # Continuous Data (3 of 6)
 
-*Aug 5, 2023. V1.1*
+*Aug 5, 2023*
 
 1.  THIS CHAPTER explores **Continuous x Categorical** data. Specifically, it explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
@@ -26,7 +26,9 @@ tb$gear <- as.factor(tb$gear)
 attach(tb)
 ```
 
-## Summarizing Continuous Data across one Category
+## Summarizing Continuous Data 
+
+### Across one Category
 
 -   R has a variety of functions that can be used to summarize continuous data split across a category.
 
@@ -93,247 +95,11 @@ stats0
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
 
-## Visualizing Continuous Data across one Category
 
-Let's take a closer look at some of the most effective ways of visualizing univariate continuous data across one category, including
 
-(i) Histograms;
 
-(ii) PDF and CDF Density plots;
 
-(iii) Box plots;
-
-(iv) Bee Swarm plots;
-
-(v) Violin plots;
-
-(vi) Q-Q plots.
-
-
-
-
-### Histograms of Continuous Data across one Category
-
-Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
-
-```{r}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
-
-# Create a 1-row 2-column layout
-par(mfrow = c(1, 2))
-
-# Define the color vector
-color_vector <- c("lightblue", "gold")
-
-# Create a histogram for each subset
-for (i in 1:length(split_data)) {
-  hist(split_data[[i]], 
-       main = paste("Histogram of mpg for am =", i - 1), 
-       breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
-       xlab = "Miles per gallon", 
-       col = color_vector[i], # Use the color vector, 
-       border = "black",
-       ylim = c(0, 10))
-}
-```
-
-
-
-### Probability Density Function (PDF) of Continuous Data across one Category
-
-Visualizing Probability Density Function (PDF) of car milegage (`mpg`) broken down by transmission (`am`=0,1)
-
-```{r, warning=FALSE}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
-
-# Create a 1-row 2-column layout
-par(mfrow = c(1, 2))
-
-# Define the color vector
-color_vector <- c("lightblue", "gold")
-
-# Create a density plot for each subset
-for (i in 1:length(split_data)) {
-  # Calculate density
-  dens <- density(split_data[[i]])
-
-  # Plot density
-  plot(dens, 
-       main = paste("PDF of mpg for am =", i - 1), 
-       xlab = "Miles per gallon", 
-       col = color_vector[i], 
-       border = "black",
-       ylim = c(0, 0.15), # Adjust this value if necessary
-       lwd = 2) # line width
-
-  # Add a polygon to fill under the density curve
-  polygon(dens, col = color_vector[i], border = "black")
-}
-```
-* We can alternately draw overlapping PDFs on the same plot.
-
-```{r, warning=FALSE}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
-
-# Define the color vector
-color_vector <- c("lightblue", "gold")
-
-# Define the legend labels
-legend_labels <- c("am = 0", "am = 1")
-
-# Create a density plot for each subset
-# Start with an empty plot with ranges accommodating both data sets
-plot(0, 0, xlim = range(tb$mpg), ylim = c(0, 0.15), type = "n", 
-     xlab = "Miles per gallon", ylab = "Density", 
-     main = "PDFs of Mileage (mpg) for automatic, manual transmissions (am)")
-
-for (i in 1:length(split_data)) {
-  # Calculate density
-  dens <- density(split_data[[i]])
-  
-  # Add density plot
-  lines(dens, 
-        col = color_vector[i], 
-        lwd = 2) # line width
-
-  # Add a polygon to fill under the density curve
-  polygon(dens, col = adjustcolor(color_vector[i], alpha.f = 0.8), border = "black")
-}
-
-# Add legend to the plot
-legend("topright", legend = legend_labels, fill = color_vector, border = "black")
-```
-
-
-
-
-### Cumulative Density Function (CDF) of Continuous Data across one Category
-
-```{r}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
-
-# Define the color vector
-color_vector <- c("blue", "black")
-
-# Define the legend labels
-legend_labels <- c("am = 0", "am = 1")
-
-# Create a cumulative density plot for each subset
-# Start with an empty plot with ranges accommodating both data sets
-plot(0, 0, xlim = range(mtcars$mpg), ylim = c(0, 1), type = "n", 
-     xlab = "Miles per gallon", ylab = "Cumulative Density", 
-     main = "CDFs of Mileage (mpg) for automatic, manual transmissions (am)")
-
-for (i in 1:length(split_data)) {
-  # Calculate empirical cumulative density function
-  ecdf_func <- ecdf(split_data[[i]])
-  
-  # Add CDF plot using curve function
-  curve(ecdf_func(x), 
-        from = min(split_data[[i]]), to = max(split_data[[i]]), 
-        col = color_vector[i], 
-        add = TRUE, 
-        lwd = 2) # line width
-}
-
-# Add legend to the plot
-legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Box Plot of Continuous Data across one Category
-
-Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
-
-```{r}
-boxplot(mpg~cyl,
-        ylab = "cyl",
-        xlab = "Mileage (mpg)",
-        col = "gold",
-        horizontal = TRUE
-        )
-```
-
-### Means Plot of Continuous Data across one Category
-
-Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (`am`= 0 or 1)
-
-```{r}
-library(gplots)
-plotmeans(data = mtcars,
-          mpg ~ cyl, 
-          mean.labels = TRUE,
-          digits=3,
-          main = "Mean(mpg) by cyl = {4,6,8}"
-          )
-```
-
-### Stem-and-Leaf Plot of Continuous Data across one Category
-
-1.  The provided R code first selects the `mpg` and `cyl` columns from `tb,` then it segments the data into groups based on `cyl` values, and lastly, it generates a stem-and-leaf plot for the `mpg` values in each separate group.
-
-```{r warning=FALSE, message=FALSE}
-# Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.
-tb3 <- select(tb, mpg, cyl)
-
-# Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.
-tb_split <- split(tb3, tb3$cyl)
-
-# Apply a function to each subset of 'tb_split' using 'lapply()'. 
-# The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.
-lapply(tb_split, 
-       function(x) 
-         stem(x$mpg))
-```
-
-2.  Discussion:
-
--   `tb3 <- select(tb, mpg, cyl)`: In this line, we're using the `select()` function from the `dplyr` package to pick out the `mpg` and `cyl` columns from the tibble `tb`. We then store this newly created subset of the original tibble into a new tibble `tb3`.
-
--   `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
-
--   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Summarizing Continuous Data across two Categories
+### Across two Categories
 
 -   We extend the above discussion and study how to summarize continuous data split across **two** categories.
 
@@ -403,9 +169,239 @@ print(stats)
 
 -   After that, we call the `describeBy()` function from the `psych` package. This function calculates descriptive statistics, such as mean, standard deviation, and median, for each combination of levels of the factors `am` and `cyl` and for each of the continouous variables `mpg`, `wt`, and `hp`.
 
-## Visualizing Continuous Data across two Categories
 
-### Means Plot of Continuous Data across two Factors
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Visualizing Continuous Data
+
+Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
+
+(i) Histograms;
+
+(ii) PDF and CDF Density plots;
+
+(iii) Box plots;
+
+(iv) Bee Swarm plots;
+
+(v) Violin plots;
+
+(vi) Q-Q plots.
+
+
+
+
+### Histograms across one Category
+
+Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+
+```{r}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Create a 1-row 2-column layout
+par(mfrow = c(1, 2))
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Create a histogram for each subset
+for (i in 1:length(split_data)) {
+  hist(split_data[[i]], 
+       main = paste("Histogram of mpg for am =", i - 1), 
+       breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
+       xlab = "Miles per gallon", 
+       col = color_vector[i], # Use the color vector, 
+       border = "black",
+       ylim = c(0, 10))
+}
+```
+
+
+
+### Probability Density Function (PDF) across one Category
+
+Visualizing Probability Density Function (PDF) of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+
+```{r, warning=FALSE}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Create a 1-row 2-column layout
+par(mfrow = c(1, 2))
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Create a density plot for each subset
+for (i in 1:length(split_data)) {
+  # Calculate density
+  dens <- density(split_data[[i]])
+
+  # Plot density
+  plot(dens, 
+       main = paste("PDF of mpg for am =", i - 1), 
+       xlab = "Miles per gallon", 
+       col = color_vector[i], 
+       border = "black",
+       ylim = c(0, 0.15), # Adjust this value if necessary
+       lwd = 2) # line width
+
+  # Add a polygon to fill under the density curve
+  polygon(dens, col = color_vector[i], border = "black")
+}
+```
+* We can alternately draw overlapping PDFs on the same plot.
+
+```{r, warning=FALSE}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Define the legend labels
+legend_labels <- c("am = 0", "am = 1")
+
+# Create a density plot for each subset
+# Start with an empty plot with ranges accommodating both data sets
+plot(0, 0, xlim = range(tb$mpg), ylim = c(0, 0.15), type = "n", 
+     xlab = "Miles per gallon", ylab = "Density", 
+     main = "PDFs of Mileage (mpg) for automatic, manual transmissions (am)")
+
+for (i in 1:length(split_data)) {
+  # Calculate density
+  dens <- density(split_data[[i]])
+  
+  # Add density plot
+  lines(dens, 
+        col = color_vector[i], 
+        lwd = 2) # line width
+
+  # Add a polygon to fill under the density curve
+  polygon(dens, col = adjustcolor(color_vector[i], alpha.f = 0.8), border = "black")
+}
+
+# Add legend to the plot
+legend("topright", legend = legend_labels, fill = color_vector, border = "black")
+```
+
+
+
+
+### Cumulative Density Function (CDF) across one Category
+
+```{r}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Define the color vector
+color_vector <- c("blue", "black")
+
+# Define the legend labels
+legend_labels <- c("am = 0", "am = 1")
+
+# Create a cumulative density plot for each subset
+# Start with an empty plot with ranges accommodating both data sets
+plot(0, 0, xlim = range(mtcars$mpg), ylim = c(0, 1), type = "n", 
+     xlab = "Miles per gallon", ylab = "Cumulative Density", 
+     main = "CDFs of Mileage (mpg) for automatic, manual transmissions (am)")
+
+for (i in 1:length(split_data)) {
+  # Calculate empirical cumulative density function
+  ecdf_func <- ecdf(split_data[[i]])
+  
+  # Add CDF plot using curve function
+  curve(ecdf_func(x), 
+        from = min(split_data[[i]]), to = max(split_data[[i]]), 
+        col = color_vector[i], 
+        add = TRUE, 
+        lwd = 2) # line width
+}
+# Add legend to the plot
+legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
+```
+
+
+
+
+
+### Box Plots across one Category
+
+Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
+
+```{r}
+boxplot(mpg~cyl,
+        main = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
+        ylab = "Cylinders (cyl)",
+        xlab = "Mileage (mpg)",
+        col = c("gold","skyblue","lightpink"),
+        horizontal = TRUE
+        )
+```
+```{r}
+library(ggplot2)
+library(ggbeeswarm)
+# Create the beeswarm plot
+ggplot(tb, 
+       aes(x = cyl, 
+           y = mpg)) +
+  geom_beeswarm() +
+  labs(title = "Bee Swarm plot of Miles Per Gallon (mpg) by Cylinders",
+       x = "Cylinders (cyl)",
+       y = "Mileage (mpg)") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = "lightblue"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Means Plot across one Category
+
+Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (`am`= 0 or 1)
+
+```{r}
+library(gplots)
+plotmeans(data = tb,
+          mpg ~ cyl, 
+          mean.labels = TRUE,
+          digits=3,
+          main = "Mean(mpg) by cyl = {4,6,8}"
+          )
+```
+
+
+
+### Means Plot across two Categories
 
 We show a mean plot showing the mean weight of the cars broken down by Transmission Type (`am`= 0 or 1) & cylinders (`cyl` = 4,6,8).
 
@@ -421,6 +417,42 @@ plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
           , ylab="Average MPG"
           )
 ```
+
+
+
+### Stem-and-Leaf Plot across one Category
+
+1.  The provided R code first selects the `mpg` and `cyl` columns from `tb,` then it segments the data into groups based on `cyl` values, and lastly, it generates a stem-and-leaf plot for the `mpg` values in each separate group.
+
+```{r warning=FALSE, message=FALSE}
+# Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.
+tb3 <- select(tb, mpg, cyl)
+
+# Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.
+tb_split <- split(tb3, tb3$cyl)
+
+# Apply a function to each subset of 'tb_split' using 'lapply()'. 
+# The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.
+lapply(tb_split, 
+       function(x) 
+         stem(x$mpg))
+```
+
+2.  Discussion:
+
+-   `tb3 <- select(tb, mpg, cyl)`: In this line, we're using the `select()` function from the `dplyr` package to pick out the `mpg` and `cyl` columns from the tibble `tb`. We then store this newly created subset of the original tibble into a new tibble `tb3`.
+
+-   `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
+
+-   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
+
+
+
+
+
+
+
+
 
 ## References
 

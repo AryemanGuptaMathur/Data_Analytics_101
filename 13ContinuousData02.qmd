@@ -123,7 +123,7 @@ gghistogram(tb,
             bins = 6,
             rug = TRUE, 
             color = "black" ,
-            fill = "lightblue",
+            fill = "lightpink",
             title = "Histogram of Miles Per Gallon (mpg), using ggpubr"
 )
 ```
@@ -193,22 +193,14 @@ ggdensity(tb,
             add = "mean", 
             rug = TRUE, 
             color = "black" ,
-            fill = "lightblue",
+            fill = "lightpink",
             title = "PDF of Miles Per Gallon (mpg), using ggpubr::ggdensity()"
 )
 ```
 
 
 
-
-
-
-
-
-
-
 ### Cumulative Distribution Function (CDF) Plot using `ggplot2`
-
 ```{r}
 # Load required library
 library(ggplot2)
@@ -230,10 +222,10 @@ ggplot(tb, aes(x = mpg)) +
 ```{r}
 ggplot(tb, 
        aes(y = mpg)) +
-  geom_boxplot(fill = "gold",
-               width = 1) +
+  geom_boxplot(fill = "gold") +
   theme_minimal() +
-  labs(title = "Boxplot of Miles Per Gallon (mpg)", y = "Miles Per Gallon (mpg)")
+  labs(title = "Boxplot of Miles Per Gallon (mpg)", 
+       y = "Miles Per Gallon (mpg)")
 ```
 
 1.  We're first specifying the source of our data and the aesthetic mappings, which define how variables in the data are mapped to visual properties. In this case, we're only specifying the y aesthetic, since a boxplot of a single variable doesn't need an x aesthetic. The y aesthetic is mapped to the mpg variable.
@@ -258,17 +250,11 @@ ggboxplot(tb,
             y = "mpg", 
             rug = TRUE, 
             color = "black" ,
-            fill = "lightblue",
+            fill = "lightpink",
             add = "jitter",
             title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"
 )
 ```
-
-
-
-
-
-
 
 
 
@@ -285,7 +271,10 @@ library(ggbeeswarm)
 ggplot(tb, 
        aes(x = 1, y = mpg)) +
   geom_beeswarm() +
-  labs(title = "Bee Swarm plot of mpg", y = "Miles Per Gallon (mpg)")
+  labs(title = "Bee Swarm plot of Miles Per Gallon (mpg)",
+       y = "Miles Per Gallon (mpg)") +
+  theme_minimal() +
+  theme(panel.background = element_rect(fill = 'white'))
 ```
 
 3.  Discussion:
@@ -320,7 +309,7 @@ ggplot(tb,
 ```{r}
 ggplot(tb, aes(x = "", y = mpg)) +
   geom_violin(fill = "gold") +
-  geom_boxplot(fill = "blue", width = 0.2) +
+  geom_boxplot(fill = "skyblue", width = 0.2) +
   labs(x = "", y = "Miles Per Gallon (mpg)", title = "Violin Plot with Boxplot of Miles Per Gallon (mpg)")
 ```
 
@@ -352,7 +341,7 @@ ggplot(tb,
   stat_qq() +
   stat_qq_line() +
   labs(x = "Theoretical Quantiles", y = "Sample Quantiles", title = "Q-Q Plot of Miles Per Gallon (mpg)") +
-  theme(panel.background = element_rect(fill = "gold")) 
+  theme(panel.background = element_rect(fill = "skyblue")) 
 ```
 
 
