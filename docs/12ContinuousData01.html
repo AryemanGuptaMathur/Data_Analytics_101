@@ -173,25 +173,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01GettingStarted.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diving into R</span></a>
+ <span class="menu-text">Exploring R programming</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The World of R Packages</span></a>
+ <span class="menu-text">Exploring R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures in R</span></a>
+ <span class="menu-text">Exploring Data Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data in R</span></a>
+ <span class="menu-text">Reading Data into R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -303,7 +303,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#visualizing-univariate-continuous-data" id="toc-visualizing-univariate-continuous-data" class="nav-link" data-scroll-target="#visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</a>
   <ul class="collapse">
-  <li><a href="#stem-and-leaf-plots" id="toc-stem-and-leaf-plots" class="nav-link" data-scroll-target="#stem-and-leaf-plots">Stem-and-Leaf Plots</a></li>
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
   <li><a href="#probability-density-function-pdf-plot" id="toc-probability-density-function-pdf-plot" class="nav-link" data-scroll-target="#probability-density-function-pdf-plot">Probability Density Function (PDF) plot</a></li>
   <li><a href="#cumulative-distribution-function-cdf-plot" id="toc-cumulative-distribution-function-cdf-plot" class="nav-link" data-scroll-target="#cumulative-distribution-function-cdf-plot">Cumulative Distribution Function (CDF) Plot</a></li>
@@ -311,8 +310,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bee-swarm-plot" id="toc-bee-swarm-plot" class="nav-link" data-scroll-target="#bee-swarm-plot">Bee Swarm plot</a></li>
   <li><a href="#violin-plot" id="toc-violin-plot" class="nav-link" data-scroll-target="#violin-plot">Violin plot</a></li>
   <li><a href="#quantile-quantile-q-q-plots" id="toc-quantile-quantile-q-q-plots" class="nav-link" data-scroll-target="#quantile-quantile-q-q-plots">Quantile-Quantile (Q-Q) Plots</a></li>
+  <li><a href="#stem-and-leaf-plots" id="toc-stem-and-leaf-plots" class="nav-link" data-scroll-target="#stem-and-leaf-plots">Stem-and-Leaf Plots</a></li>
   </ul></li>
-  <li><a href="#summary-of-chapter-12-continuous-data-1-of-5" id="toc-summary-of-chapter-12-continuous-data-1-of-5" class="nav-link" data-scroll-target="#summary-of-chapter-12-continuous-data-1-of-5">Summary of Chapter 12 – Continuous Data (1 of 5)</a></li>
+  <li><a href="#summary-of-chapter-12-continuous-data-1-of-6" id="toc-summary-of-chapter-12-continuous-data-1-of-6" class="nav-link" data-scroll-target="#summary-of-chapter-12-continuous-data-1-of-6">Summary of Chapter 12 – Continuous Data (1 of 6)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -601,15 +601,245 @@ carb      1.26  0.29</code></pre>
 <h2 class="anchored" data-anchor-id="visualizing-univariate-continuous-data">Visualizing Univariate Continuous Data</h2>
 <ul>
 <li><p>In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.</p></li>
-<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including</p>
-<p>i) Stem-and-Leaf plots;</p>
-<p>(ii) Histograms;</p>
-<p>(iii) PDF and CDF Density plots;</p>
-<p>(iv) Box plots;</p>
-<p>(v) Bee Swarm plots;</p>
-<p>(vi) Violin plots;</p>
-<p>(vii) Q-Q plots.</p></li>
+<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including</p></li>
+<li><p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including</p></li>
 </ul>
+<ol type="i">
+<li><p>Histograms;</p></li>
+<li><p>PDF and CDF Density plots;</p></li>
+<li><p>Box plots;</p></li>
+<li><p>Bee Swarm plots;</p></li>
+<li><p>Violin plots;</p></li>
+<li><p>Q-Q plots;</p></li>
+<li><p>Stem-and-Leaf plots</p></li>
+</ol>
+<section id="histogram" class="level3">
+<h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
+<ol type="1">
+<li><p>A histogram is a graphical representation showcasing the frequency of discrete or grouped data points within a dataset.</p></li>
+<li><p>It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis. [3]</p></li>
+<li><p>It serves as a valuable tool for demonstrating the distribution shape of the data. In R, we can construct a histogram using the <code>hist()</code> function.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of Miles per gallon (mpg)"</span>, </span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gold"</span>, </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ul>
+<li><p>This code generates a histogram of the mpg column using the hist() function. The <code>main</code> argument denotes the plot’s title, while the <code>xlab</code> argument labels the x-axis.</p></li>
+<li><p>We use the <code>col</code> argument to specify the color of the histogram bars, and the <code>border</code> argument to determine the color of the bar borders.</p></li>
+<li><p>The final histogram visually depicts the frequency of <code>mpg</code> values in the dataset, where each bar represents the count of observations within a specific range of values.</p></li>
+</ul>
+<ol start="4" type="1">
+<li>We can control the number of bins or the ranges of the bins in a histogram using the <code>breaks</code> argument inside the <code>hist()</code> function. Here is how we can specify the number of bins:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column with a specific number of bins of equal width</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">12</span>, <span class="co"># This creates 12 bins of equal width</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of Miles per gallon (mpg)"</span>, </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gold"</span>, </span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>We can alternately specify the ranges of the bins:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column with specific bin ranges</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="co"># This creates bins with ranges 10-15, 15-20, etc.</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of Miles per gallon (mpg)"</span>, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gold"</span>, </span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ul>
+<li><p>In this variation, the breaks argument uses the <code>seq()</code> function to create a sequence of break points from 5 to 35, with a step of 5.</p></li>
+<li><p>This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35.</p></li>
+</ul>
+</section>
+<section id="probability-density-function-pdf-plot" class="level3">
+<h3 class="anchored" data-anchor-id="probability-density-function-pdf-plot">Probability Density Function (PDF) plot</h3>
+<ol type="1">
+<li><p>Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset (Wand &amp; Jones, 1995).</p></li>
+<li><p>Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate density</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>dens <span class="ot">&lt;-</span> <span class="fu">density</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dens, </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"PDF of Mileage (mpg)"</span>, </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per gallon (mpg)"</span>, </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a polygon to fill under the density curve</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(dens, <span class="at">col =</span> <span class="st">"gold"</span>, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>In the provided code, we make use of the <code>density()</code> function to generate a density plot for the <code>mpg</code> column.</p></li>
+<li><p>Here, we utilize the <code>plot()</code> function to graph the resulting density object.</p></li>
+<li><p>The <code>main</code> argument stipulates the title of the plot, and the <code>xlab</code> argument designates the label for the x-axis.</p></li>
+<li><p>Through the <code>polygon()</code> function, we determine the shaded color.</p></li>
+<li><p>The final plot displays the probability density of <code>mpg</code> values, using the curve to signify the data distribution.</p></li>
+</ul>
+</section>
+<section id="cumulative-distribution-function-cdf-plot" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf-plot">Cumulative Distribution Function (CDF) Plot</h3>
+<ol type="1">
+<li><p>CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis [3].</p></li>
+<li><p>They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread.</p></li>
+<li><p>In R, we can employ the <code>ecdf()</code> function to generate a CDF plot.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a CDF plot of mpg column</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(tb<span class="sc">$</span>mpg),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CDF of Miles Per Gallon (mpg)"</span>,</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles Per Gallon (mpg)"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Cumulative Density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ul>
+<li><p>In this code snippet, the <code>ecdf()</code> function is used to construct a CDF plot for the <code>mpg</code> column.</p></li>
+<li><p>The <code>main</code> argument assigns the title to the plot, while the <code>xlab</code> argument labels the x-axis.</p></li>
+<li><p>The resulting plot gives us an overview of how the <code>mpg</code> data points accumulate across the range of values, providing a complete picture of the data distribution.</p></li>
+</ul>
+</section>
+<section id="boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
+<ol type="1">
+<li><p>Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution’s center, spread, and potential outliers [5].</p></li>
+<li><p>Here is sample code to generate a boxplot of <code>wt</code> (Weight) of the cars .</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Boxplot"</span>,</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Weight"</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Weight (wt)"</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><p>The box plot’s construction involves the use of an interquartile range (IQR) represented by a box, which contains the middle 50% of the dataset.</p></li>
+<li><p>The box’s internal line signifies the median, while the “whiskers” reach out to the smallest and largest observations within a distance of 1.5 times the IQR.</p></li>
+<li><p>The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.</p></li>
+<li><p>Any points outside of the whiskers are considered outliers and are plotted individually.</p></li>
+</ol>
+</section>
+<section id="bee-swarm-plot" class="level3">
+<h3 class="anchored" data-anchor-id="bee-swarm-plot">Bee Swarm plot</h3>
+<ol type="1">
+<li><p>A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.</p></li>
+<li><p>It displays all of the individual data points along with a visual representation of their distribution. It can be useful for displaying the distribution of small datasets.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the beeswarm package</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beeswarm)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of wt column</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of Weight (wt)"</span>, </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex=</span><span class="fl">1.2</span>, </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ul>
+<li><p>In the above code, we load the <code>beeswarm</code> package using the <code>library()</code> function.</p></li>
+<li><p>We then create a bee swarm plot of the <code>wt</code> column using the <code>beeswarm()</code> function.</p></li>
+<li><p>The <code>main</code> argument is used to specify the title of the plot.</p></li>
+<li><p>The <code>pch</code> argument is used to set the type of points to be plotted, and the <code>cex</code> argument is used to set the size of the points.</p></li>
+<li><p>The <code>col</code> argument is used to set the color of the points.</p></li>
+<li><p>The resulting plot will display the individual <code>wt</code> values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.</p></li>
+</ul>
+</section>
+<section id="violin-plot" class="level3">
+<h3 class="anchored" data-anchor-id="violin-plot">Violin plot</h3>
+<ol type="1">
+<li><p>Violin plots are a compelling tool to merge the benefits of box plots and kernel density plots and enable us to depict a detailed view of data distribution.</p></li>
+<li><p>These plots exhibit the probability density at different values, where the plot’s breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles [5].</p></li>
+<li><p>The <code>vioplot()</code> function, part of the <code>vioplot</code> package in R, allows us to create such a violin plot.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the vioplot package</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vioplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: sm</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package 'sm', version 2.2-5.7: type help(sm) for summary information</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: zoo</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'zoo'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing a violin plot for the wt</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Violin Plot of Weight (wt)"</span>, </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ul>
+<li><p>In this code, the <code>vioplot()</code> function crafts a violin plot for the mpg variable. We use the <code>main</code> argument to assign the plot’s title and the <code>ylab</code> argument to designate the label for the y-axis.</p></li>
+<li><p>The resulting plot unveils the entire <code>wt</code> data distribution, with a kernel density estimate indicating the concentration of data points at different sections.</p></li>
+<li><p>Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.</p></li>
+</ul>
+</section>
+<section id="quantile-quantile-q-q-plots" class="level3">
+<h3 class="anchored" data-anchor-id="quantile-quantile-q-q-plots">Quantile-Quantile (Q-Q) Plots</h3>
+<ol type="1">
+<li><p>Quantile-Quantile plots, commonly referred to as Q-Q plots, are a visual tool we use to check if data follows a particular distribution, like a normal distribution.</p></li>
+<li><p>Suppose we order a data column from the smallest to the biggest value, and each data point gets a <em>score</em> based on its position. This is what we call a <em>quantile</em>. Now, imagine a perfectly normal distribution doing the same thing. In a Q-Q plot, we compare our data’s scores to the scores from the ideal normal distribution.</p></li>
+<li><p>If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn’t follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not [7].</p></li>
+<li><p>In R, we can use the <code>qqnorm()</code> function to create the plot and the <code>qqline()</code> function to add the reference line. If the points lie close to the reference line, it’s a good indication that our data is normally distributed.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a Q-Q plot for 'mpg' column</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(tb<span class="sc">$</span>mpg)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a reference line to the plot</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(tb<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>This approach isn’t limited to normal distributions. We can compare our data with other distributions too, which makes Q-Q plots a versatile tool for understanding our data’s behavior.</li>
+</ol>
+</section>
 <section id="stem-and-leaf-plots" class="level3">
 <h3 class="anchored" data-anchor-id="stem-and-leaf-plots">Stem-and-Leaf Plots</h3>
 <ol type="1">
@@ -617,7 +847,7 @@ carb      1.26  0.29</code></pre>
 <li><p>We can utilize the <code>stem()</code> function in R to devise stem-and-leaf plots. Here’s how we can apply it to the <code>mpg</code> column in our <code>tb</code> tibble:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(tb<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stem</span>(tb<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   The decimal point is at the |
@@ -641,228 +871,9 @@ carb      1.26  0.29</code></pre>
 <li><p>This visual representation enables us to swiftly assess the data’s distribution, the center, and the spread, in a fashion similar to a histogram. However, unlike a histogram, a stem-and-leaf plot retains the original data to a certain degree, providing more granular detail.</p></li>
 </ol>
 </section>
-<section id="histogram" class="level3">
-<h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
-<ol type="1">
-<li><p>A histogram is a graphical representation showcasing the frequency of discrete or grouped data points within a dataset.</p></li>
-<li><p>It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. They offer a straightforward portrayal of data distribution and assist in identifying patterns like skewness and kurtosis. [3]</p></li>
-<li><p>It serves as a valuable tool for demonstrating the distribution shape of the data. In R, we can construct a histogram using the <code>hist()</code> function.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of mpg"</span>, </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>This code generates a histogram of the mpg column using the hist() function. The <code>main</code> argument denotes the plot’s title, while the <code>xlab</code> argument labels the x-axis.</p></li>
-<li><p>We use the <code>col</code> argument to specify the color of the histogram bars, and the <code>border</code> argument to determine the color of the bar borders.</p></li>
-<li><p>The final histogram visually depicts the frequency of <code>mpg</code> values in the dataset, where each bar represents the count of observations within a specific range of values.</p></li>
-</ul>
-<ol start="4" type="1">
-<li>We can control the number of bins or the ranges of the bins in a histogram using the <code>breaks</code> argument inside the <code>hist()</code> function. Here is how we can specify the number of bins:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column with a specific number of bins of equal width</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">12</span>, <span class="co"># This creates 12 bins of equal width</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of mpg"</span>, </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ol start="5" type="1">
-<li>We can alternately specify the ranges of the bins:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of mpg column with specific bin ranges</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(tb<span class="sc">$</span>mpg, </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="co"># This creates bins with ranges 10-15, 15-20, etc.</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Histogram of mpg"</span>, </span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"lightblue"</span>, </span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span><span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>In this variation, the breaks argument uses the <code>seq()</code> function to create a sequence of break points from 5 to 35, with a step of 5.</p></li>
-<li><p>This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35.</p></li>
-</ul>
 </section>
-<section id="probability-density-function-pdf-plot" class="level3">
-<h3 class="anchored" data-anchor-id="probability-density-function-pdf-plot">Probability Density Function (PDF) plot</h3>
-<ol type="1">
-<li><p>Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset (Wand &amp; Jones, 1995).</p></li>
-<li><p>Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot of mpg column</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(tb<span class="sc">$</span>mpg), </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Density Plot of mpg"</span>, </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Miles per gallon"</span>, </span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>In the provided code segment, we make use of the <code>density()</code> function to generate a density plot for the <code>mpg</code> column.</p></li>
-<li><p>Here, we utilize the <code>plot()</code> function to graph the resulting density object.</p></li>
-<li><p>The <code>main</code> argument is implemented to stipulate the title of the plot, and the <code>xlab</code> argument designates the label for the x-axis.</p></li>
-<li><p>Through the <code>col</code> argument, we determine the color of the plotted line.</p></li>
-<li><p>The final plot displays the probability density of <code>mpg</code> values in our dataset, using the curve to signify the data distribution.</p></li>
-</ul>
-</section>
-<section id="cumulative-distribution-function-cdf-plot" class="level3">
-<h3 class="anchored" data-anchor-id="cumulative-distribution-function-cdf-plot">Cumulative Distribution Function (CDF) Plot</h3>
-<ol type="1">
-<li><p>CDF plots deliver a thorough portrayal of data, indicating the fraction of data points that are less than or equal to a specified value on the x-axis [3].</p></li>
-<li><p>They offer an all-encompassing perspective of the full range of data and facilitate easy representation of the median, percentiles, and spread.</p></li>
-<li><p>In R, we can employ the <code>ecdf()</code> function to generate a CDF plot.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a CDF plot of mpg column</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">ecdf</span>(tb<span class="sc">$</span>mpg),</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CDF of Miles Per Gallon (mpg)"</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles Per Gallon (mpg)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>In this code snippet, the <code>ecdf()</code> function is used to construct a CDF plot for the <code>mpg</code> column.</p></li>
-<li><p>The <code>main</code> argument assigns the title to the plot, while the <code>xlab</code> argument labels the x-axis.</p></li>
-<li><p>The resulting plot gives us an overview of how the <code>mpg</code> data points accumulate across the range of values, providing a complete picture of the data distribution.</p></li>
-</ul>
-</section>
-<section id="boxplot" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot">Boxplot</h3>
-<ol type="1">
-<li><p>Box-and-whisker plots, commonly known as box plots, are crucial graphical instruments for illustrating a distribution’s center, spread, and potential outliers [5].</p></li>
-<li><p>Here is sample code to generate a boxplot of <code>wt</code> (Weight) of the cars .</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(tb<span class="sc">$</span>wt, </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Boxplot"</span>,</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Weight"</span>,</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Weight (wt)"</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ol start="3" type="1">
-<li><p>The box plot’s construction involves the use of an interquartile range (IQR) represented by a box, which contains the middle 50% of the dataset.</p></li>
-<li><p>The box’s internal line signifies the median, while the “whiskers” reach out to the smallest and largest observations within a distance of 1.5 times the IQR.</p></li>
-<li><p>The whiskers extend to the minimum and maximum non-outlier values, or 1.5 times the interquartile range beyond the quartiles, whichever is shorter.</p></li>
-<li><p>Any points outside of the whiskers are considered outliers and are plotted individually.</p></li>
-</ol>
-</section>
-<section id="bee-swarm-plot" class="level3">
-<h3 class="anchored" data-anchor-id="bee-swarm-plot">Bee Swarm plot</h3>
-<ol type="1">
-<li><p>A Bee Swarm plot is a one-dimensional scatter plot that reduces overlap and provides a better representation of the distribution of individual data points (Ellis, 2011). This type of plot provides a more detailed view of the data, particularly for smaller data sets.</p></li>
-<li><p>It displays all of the individual data points along with a visual representation of their distribution. It can be useful for displaying the distribution of small datasets.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the beeswarm package</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beeswarm)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of wt column</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(tb<span class="sc">$</span>wt, </span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of Weight (wt)"</span>, </span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>, </span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex=</span><span class="fl">1.2</span>, </span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>In the above code, we load the <code>beeswarm</code> package using the <code>library()</code> function.</p></li>
-<li><p>We then create a bee swarm plot of the <code>wt</code> column using the <code>beeswarm()</code> function.</p></li>
-<li><p>The <code>main</code> argument is used to specify the title of the plot.</p></li>
-<li><p>The <code>pch</code> argument is used to set the type of points to be plotted, and the <code>cex</code> argument is used to set the size of the points.</p></li>
-<li><p>The <code>col</code> argument is used to set the color of the points.</p></li>
-<li><p>The resulting plot will display the individual <code>wt</code> values in the dataset as points on a horizontal axis, with no overlap between points. This provides a visual representation of the distribution of the data, as well as any outliers or gaps in the data.</p></li>
-</ul>
-</section>
-<section id="violin-plot" class="level3">
-<h3 class="anchored" data-anchor-id="violin-plot">Violin plot</h3>
-<ol type="1">
-<li><p>Violin plots are a compelling tool to merge the benefits of box plots and kernel density plots and enable us to depict a detailed view of data distribution.</p></li>
-<li><p>These plots exhibit the probability density at different values, where the plot’s breadth represents the density or frequency of data points. More extensive areas denote a higher aggregation of data points Akin to a box plot, a violin plot provides a visual display of the entire data distribution via a kernel density estimate, as opposed to just presenting the quartiles [5].</p></li>
-<li><p>The <code>vioplot()</code> function, part of the <code>vioplot</code> package in R, allows us to create such a violin plot.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the vioplot package</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vioplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: sm</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Package 'sm', version 2.2-5.7: type help(sm) for summary information</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: zoo</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'zoo'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    as.Date, as.Date.numeric</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructing a violin plot for the wt</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">vioplot</span>(tb<span class="sc">$</span>wt, </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Violin Plot of Weight (wt)"</span>, </span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ul>
-<li><p>In this code, the <code>vioplot()</code> function crafts a violin plot for the mpg variable. We use the <code>main</code> argument to assign the plot’s title and the <code>ylab</code> argument to designate the label for the y-axis.</p></li>
-<li><p>The resulting plot unveils the entire <code>wt</code> data distribution, with a kernel density estimate indicating the concentration of data points at different sections.</p></li>
-<li><p>Lastly, the plot incorporates the median, quartiles, and any outliers present in the data.</p></li>
-</ul>
-</section>
-<section id="quantile-quantile-q-q-plots" class="level3">
-<h3 class="anchored" data-anchor-id="quantile-quantile-q-q-plots">Quantile-Quantile (Q-Q) Plots</h3>
-<ol type="1">
-<li><p>Quantile-Quantile plots, commonly referred to as Q-Q plots, are a visual tool we use to check if data follows a particular distribution, like a normal distribution.</p></li>
-<li><p>Suppose we order a data column from the smallest to the biggest value, and each data point gets a <em>score</em> based on its position. This is what we call a <em>quantile</em>. Now, imagine a perfectly normal distribution doing the same thing. In a Q-Q plot, we compare our data’s scores to the scores from the ideal normal distribution.</p></li>
-<li><p>If our data aligns with the normal distribution, the points in the Q-Q plot will form a straight line. But if our data doesn’t follow the normal distribution, the points will stray from the line. This way, the Q-Q plot gives us an intuitive, visual way to decide if our data is normally distributed or not [7].</p></li>
-<li><p>In R, we can use the <code>qqnorm()</code> function to create the plot and the <code>qqline()</code> function to add the reference line. If the points lie close to the reference line, it’s a good indication that our data is normally distributed.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a Q-Q plot for 'mpg' column</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(tb<span class="sc">$</span>mpg)</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a reference line to the plot</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(tb<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="12ContinuousData01_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<ol start="5" type="1">
-<li>This approach isn’t limited to normal distributions. We can compare our data with other distributions too, which makes Q-Q plots a versatile tool for understanding our data’s behavior.</li>
-</ol>
-</section>
-</section>
-<section id="summary-of-chapter-12-continuous-data-1-of-5" class="level2">
-<h2 class="anchored" data-anchor-id="summary-of-chapter-12-continuous-data-1-of-5">Summary of Chapter 12 – Continuous Data (1 of 5)</h2>
+<section id="summary-of-chapter-12-continuous-data-1-of-6" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-chapter-12-continuous-data-1-of-6">Summary of Chapter 12 – Continuous Data (1 of 6)</h2>
 <p>This section of the book examines continuous univariate data, focusing on single variables in the ‘mtcars’ dataset using R’s dplyr and ggplot packages. We employ R’s inherent functions and the ‘modeest’ package to compute the mean, median, and mode, alongside variability measures like range, variance, and standard deviation.</p>
 <p>We use R’s ‘summary()’ and the psych package’s ‘describe()’ functions to create succinct and detailed overviews of our data, providing insights into its central tendency, spread, and distribution shape. These functions can also summarise an entire dataframe or tibble, setting the stage for future analysis.</p>
 <p>Visualisations are key to understanding data patterns and distributions. We use bee swarm plots, box plots, violin plots, histograms, and density plots. Bee swarm plots, using the <code>beeswarm()</code> function, show all data points and their distributions. Stem-and-leaf plots, created using the <code>stem()</code> function, provide a quick evaluation of the data’s distribution.</p>

@@ -175,7 +175,7 @@ Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`
 ggplot(tb, aes(x = mpg, 
                fill = am)) +
   geom_histogram(binwidth = 5, color = "black") +
-  scale_fill_manual(values = c("gold", "pink")) +
+  scale_fill_manual(values = c("gold", "lightblue")) +
   theme_minimal() +
   labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
        x = "Miles Per Gallon (mpg)",
@@ -187,7 +187,7 @@ ggplot(tb, aes(x = mpg,
 ggplot(tb, aes(x = mpg, 
                fill = am)) +
   geom_histogram(binwidth = 5, color = "black") +
-  scale_fill_manual(values = c("gold", "pink")) +
+  scale_fill_manual(values = c("gold", "lightblue")) +
   facet_wrap(~ am) +
   theme_minimal() +
   labs(title = "Histogram of Miles Per Gallon (mpg) by Transmission Type (am)",
@@ -206,10 +206,54 @@ gghistogram(tb,
             rug = TRUE, 
             color = "am", 
             fill = "am", 
-            palette = c("gold", "lightpink"))
+            alpha = 0.8,
+            palette = c("gold", "lightblue"))
 ```
 
 
+
+
+
+### Probability Density Function (PDF) plot across one Category using `ggplot2`
+
+```{r}
+ggplot(tb, aes(x = mpg, 
+               fill = am)) +
+  geom_density(color = "black") +
+  scale_fill_manual(values = c("gold", "lightblue")) +
+  facet_wrap(~ am) +
+  theme_minimal() +
+  labs(title = "Density Plot of Miles Per Gallon (mpg) by Transmission Type (am)",
+       x = "Miles Per Gallon (mpg)",
+       y = "Density")
+
+```
+
+
+
+
+### Cumulative Density Function (PDF) plot across one Category using `ggplot2`
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+# Create separate CDFs for 'am = 0' and 'am = 1'
+tb <- tb %>%
+  arrange(am, mpg) %>%
+  group_by(am) %>%
+  mutate(cdf = row_number() / n())
+
+# Create a CDF plot
+ggplot(tb, 
+       aes(x = mpg, y = cdf, color = factor(am))) +
+  geom_line() +
+  scale_color_manual(values = c("blue", "black")) +
+  labs(x = "Miles Per Gallon (mpg)", y = "CDF", 
+       title = "Cumulative Distribution Function (CDF) of Mileage (mpg) for transmission (am)",
+       color = "am") +
+  theme_minimal() 
+```
 
 
 
@@ -236,7 +280,8 @@ ggplot(tb, aes(x = cyl,
   coord_flip() +
   labs(title = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
        y = "Miles Per Gallon (mpg)",
-       x = "Cylinders")
+       x = "Cylinders") +
+  theme_minimal()
 ```
 
 
@@ -251,7 +296,7 @@ ggboxplot(tb,
           y = "mpg", 
           x = "cyl",
           color = "black" ,
-          fill = "lightpink",
+          fill = "lightblue",
           shape = "cyl",
           orientation = "horizontal",
           add = "jitter", #jitter helps display the data points

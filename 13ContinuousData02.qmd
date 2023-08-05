@@ -47,20 +47,14 @@ library(ggplot2)
 
     Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.
 
+
+
+
+
+
 ### Histogram using `ggplot2`
 
 1.  The following code creates a histogram using the `ggplot2` package:
-
-```{r}
-ggplot(tb, 
-       aes(x = mpg)) +
-  geom_histogram() +
-  theme_minimal() +
-  labs(title = "Histogram of Miles Per Gallon (mpg)", x = "Miles Per Gallon (mpg)", y = "Frequency")
-
-```
-
-2.  We can personalize the appearance of the histogram, as follows:
 
 ```{r}
 ggplot(tb, 
@@ -69,10 +63,12 @@ ggplot(tb,
                  fill = "gold", 
                  color = "black") +
   theme_minimal() +
-  labs(title = "Histogram of Miles Per Gallon (mpg)", x = "Miles Per Gallon (mpg)", y = "Frequency")
+  labs(title = "Histogram of Miles Per Gallon (mpg)", 
+       x = "Miles Per Gallon (mpg)", y = "Frequency")
+
 ```
 
-3.  Discussion:
+2.  Discussion:
 
 -   First, we specify our data set and the aesthetic mappings with the `ggplot()` function. The x aesthetic, which stands for the variable that we are binning (`mpg`), is needed for a histogram.
 
@@ -82,7 +78,7 @@ ggplot(tb,
 
 -   Lastly, the `labs()` function allows us to add a title to our plot and labels for our x and y axes. \[1\]
 
-4.  We can set the number of bins in the histogram using the `bins` argument within the `geom_histogram()` function instead of `binwidth`. For example, in order to create a histogram with 12 bins of equal width, we can modify the code as follows:
+3.  We can set the number of bins in the histogram using the `bins` argument within the `geom_histogram()` function instead of `binwidth`. For example, in order to create a histogram with 12 bins of equal width, we can modify the code as follows:
 
 ```{r}
 ggplot(tb, 
@@ -95,11 +91,11 @@ ggplot(tb,
 
 ```
 
-5.  Discussion:
+4.  Discussion:
 
 -   By replacing `binwidth = 2` with `bins = 12`, we instruct R to create 12 bins of equal width. The bins argument decides the number of bins in the histogram, and the width of the bins is calculated by dividing the range of the data by the number of bins.
 
-6.  We can specify custom bin ranges in a histogram. We typically use the `breaks` argument within the `geom_histogram()` function. We need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35-40, for the `mpg` variable, we could write the following code:
+5.  We can specify custom bin ranges in a histogram. We typically use the `breaks` argument within the `geom_histogram()` function. We need to supply a vector of breakpoints which defines the range of each bin. For example, if we wanted to define bins with ranges of 5-10, 10-15, 15-20, 20-25, 25-30, 30-35, 35-40, for the `mpg` variable, we could write the following code:
 
 ```{r}
 ggplot(tb, 
@@ -127,7 +123,7 @@ gghistogram(tb,
             bins = 6,
             rug = TRUE, 
             color = "black" ,
-            fill = "lightpink",
+            fill = "lightblue",
             title = "Histogram of Miles Per Gallon (mpg), using ggpubr"
 )
 ```
@@ -172,10 +168,10 @@ This line uses the gghistogram() function to create a histogram of the mpg varia
 ```{r}
 ggplot(tb, 
        aes(x = mpg)) +
-  geom_density(fill = "gold", 
-               alpha = 0.5) +
+  geom_density(fill = "gold") +
   theme_minimal() +
-  labs(title = "Probability Density Function of Miles Per Gallon (mpg)", x = "Miles Per Gallon (mpg)", y = "Density")
+  labs(title = "Probability Density Function of Miles Per Gallon (mpg)", 
+       x = "Miles Per Gallon (mpg)", y = "density") 
 ```
 
 -   We designate our data source and the aesthetic mappings using the `ggplot()` function. The aesthetic mapping for x is `mpg`.
@@ -197,7 +193,7 @@ ggdensity(tb,
             add = "mean", 
             rug = TRUE, 
             color = "black" ,
-            fill = "lightpink",
+            fill = "lightblue",
             title = "PDF of Miles Per Gallon (mpg), using ggpubr::ggdensity()"
 )
 ```
@@ -231,9 +227,16 @@ tb <- tb %>%
 ggplot(tb, 
        aes(x = mpg, y = cdf)) +
   geom_line() +
-  labs(x = "Miles Per Gallon (mpg)", y = "CDF", title = "Cumulative Distribution Function (CDF) of Miles Per Gallon (mpg)")+
-  theme(panel.background = element_rect(fill = "gold")) 
+  labs(x = "Miles Per Gallon (mpg)", y = "CDF", 
+       title = "Cumulative Distribution Function (CDF) of Miles Per Gallon (mpg)") +
+  theme(panel.background = element_rect(fill = "lightblue"))
+
 ```
+
+
+
+
+
 
 ### Boxplots using `ggplot2`
 
@@ -267,7 +270,7 @@ ggboxplot(tb,
             y = "mpg", 
             rug = TRUE, 
             color = "black" ,
-            fill = "lightpink",
+            fill = "lightblue",
             add = "jitter",
             title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"
 )
@@ -289,11 +292,11 @@ ggboxplot(tb,
 2.  We use the `ggbeeswarm` package on the `mpg` column of the `tb` tibble.
 
 ```{r}
+library(ggplot2)
 library(ggbeeswarm)
 ggplot(tb, 
        aes(x = 1, y = mpg)) +
   geom_beeswarm() +
-  theme_economist() +
   labs(title = "Bee Swarm plot of mpg", y = "Miles Per Gallon (mpg)")
 ```
 
@@ -366,7 +369,7 @@ ggplot(tb,
 
 
 
-## Summary of Chapter 13 -- Continuous Data (2 of 5)
+## Summary of Chapter 13 -- Continuous Data (2 of 6)
 
 In this chapter, we explore how to visualize univariate continuous data using the `ggplot2` package in R. We use the `mtcars` data set, converting it to a tibble called `tb` for easier manipulation.
 

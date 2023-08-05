@@ -190,33 +190,25 @@ describe(tb)
 
 -   Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
 
-    i\) Stem-and-Leaf plots;
+* Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
 
-    \(ii\) Histograms;
+(i) Histograms;
 
-    \(iii\) PDF and CDF Density plots;
+(ii) PDF and CDF Density plots;
 
-    \(iv\) Box plots;
+(iii) Box plots;
 
-    \(v\) Bee Swarm plots;
+(iv) Bee Swarm plots;
 
-    \(vi\) Violin plots;
+(v) Violin plots;
 
-    \(vii\) Q-Q plots.
+(vi) Q-Q plots;
 
-### Stem-and-Leaf Plots
+(vii) Stem-and-Leaf plots
 
-1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) \[7\]
 
-2.  We can utilize the `stem()` function in R to devise stem-and-leaf plots. Here's how we can apply it to the `mpg` column in our `tb` tibble:
 
-```{r}
-stem(tb$mpg)
-```
 
-3.  In the resulting plot, the vertical bar ("\|") symbolizes the decimal point's location.
-
-4.  This visual representation enables us to swiftly assess the data's distribution, the center, and the spread, in a fashion similar to a histogram. However, unlike a histogram, a stem-and-leaf plot retains the original data to a certain degree, providing more granular detail.
 
 ### Histogram
 
@@ -229,10 +221,10 @@ stem(tb$mpg)
 ```{r}
 # Create a histogram of mpg column
 hist(tb$mpg, 
-     main="Histogram of mpg", 
+     main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="lightblue", 
-     border="white")
+     col="gold", 
+     border="black")
 ```
 
 -   This code generates a histogram of the mpg column using the hist() function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
@@ -247,10 +239,10 @@ hist(tb$mpg,
 # Create a histogram of mpg column with a specific number of bins of equal width
 hist(tb$mpg, 
      breaks = 12, # This creates 12 bins of equal width
-     main="Histogram of mpg", 
+     main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="lightblue", 
-     border="white")
+     col="gold", 
+     border="black")
 
 ```
 
@@ -260,15 +252,18 @@ hist(tb$mpg,
 # Create a histogram of mpg column with specific bin ranges
 hist(tb$mpg, 
      breaks = seq(5, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
-     main="Histogram of mpg", 
+     main="Histogram of Miles per gallon (mpg)", 
      xlab="Miles per gallon", 
-     col="lightblue", 
-     border="white")
+     col="gold", 
+     border="black")
 ```
 
 -   In this variation, the breaks argument uses the `seq()` function to create a sequence of break points from 5 to 35, with a step of 5.
 
 -   This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35.
+
+
+
 
 ### Probability Density Function (PDF) plot
 
@@ -276,23 +271,31 @@ hist(tb$mpg,
 
 2.  Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset.
 
-```{r}
-# Create a density plot of mpg column
-plot(density(tb$mpg), 
-     main="Density Plot of mpg", 
-     xlab="Miles per gallon", 
-     col="blue")
+```{r, warning=FALSE}
+# Calculate density
+dens <- density(mtcars$mpg)
+# Create a density plot
+plot(dens, 
+     main = "PDF of Mileage (mpg)", 
+     xlab = "Miles per gallon (mpg)", 
+)
+# Add a polygon to fill under the density curve
+polygon(dens, col = "gold", border = "black")
 ```
+3. Discussion:
 
--   In the provided code segment, we make use of the `density()` function to generate a density plot for the `mpg` column.
+-   In the provided code, we make use of the `density()` function to generate a density plot for the `mpg` column.
 
 -   Here, we utilize the `plot()` function to graph the resulting density object.
 
--   The `main` argument is implemented to stipulate the title of the plot, and the `xlab` argument designates the label for the x-axis.
+-   The `main` argument stipulates the title of the plot, and the `xlab` argument designates the label for the x-axis.
 
--   Through the `col` argument, we determine the color of the plotted line.
+-   Through the `polygon()` function, we determine the shaded color.
 
--   The final plot displays the probability density of `mpg` values in our dataset, using the curve to signify the data distribution.
+-   The final plot displays the probability density of `mpg` values, using the curve to signify the data distribution.
+
+
+
 
 ### Cumulative Distribution Function (CDF) Plot
 
@@ -306,7 +309,8 @@ plot(density(tb$mpg),
 # Create a CDF plot of mpg column
 plot(ecdf(tb$mpg),
      main = "CDF of Miles Per Gallon (mpg)",
-     xlab = "Miles Per Gallon (mpg)")
+     xlab = "Miles Per Gallon (mpg)",
+     ylab = "Cumulative Density")
 ```
 
 -   In this code snippet, the `ecdf()` function is used to construct a CDF plot for the `mpg` column.
@@ -314,6 +318,10 @@ plot(ecdf(tb$mpg),
 -   The `main` argument assigns the title to the plot, while the `xlab` argument labels the x-axis.
 
 -   The resulting plot gives us an overview of how the `mpg` data points accumulate across the range of values, providing a complete picture of the data distribution.
+
+
+
+
 
 ### Boxplot
 
@@ -410,7 +418,30 @@ qqline(tb$mpg)
 
 5.  This approach isn't limited to normal distributions. We can compare our data with other distributions too, which makes Q-Q plots a versatile tool for understanding our data's behavior.
 
-## Summary of Chapter 12 -- Continuous Data (1 of 5)
+
+
+
+### Stem-and-Leaf Plots
+
+1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) \[7\]
+
+2.  We can utilize the `stem()` function in R to devise stem-and-leaf plots. Here's how we can apply it to the `mpg` column in our `tb` tibble:
+
+```{r}
+stem(tb$mpg)
+```
+
+3.  In the resulting plot, the vertical bar ("\|") symbolizes the decimal point's location.
+
+4.  This visual representation enables us to swiftly assess the data's distribution, the center, and the spread, in a fashion similar to a histogram. However, unlike a histogram, a stem-and-leaf plot retains the original data to a certain degree, providing more granular detail.
+
+
+
+
+
+
+
+## Summary of Chapter 12 -- Continuous Data (1 of 6)
 
 This section of the book examines continuous univariate data, focusing on single variables in the 'mtcars' dataset using R's dplyr and ggplot packages. We employ R's inherent functions and the 'modeest' package to compute the mean, median, and mode, alongside variability measures like range, variance, and standard deviation.
 
