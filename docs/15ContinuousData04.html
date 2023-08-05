@@ -312,9 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-data-4-of-6" class="level1">
 <h1>Continuous Data (4 of 6)</h1>
-<p><em>Aug 4, 2023. V1.4</em></p>
+<p><em>Aug 5, 2023. V1.1</em></p>
 <ol type="1">
-<li><p>THIS CHAPTER explores Continuous x Categorical data using <strong><code>ggplot2</code></strong>. Specifically, it demonstrates the use of the popular <strong><code>ggplot2</code></strong> package to further explore <em>bivariate continuous data across categories</em>.</p></li>
+<li><p>THIS CHAPTER explores <strong>Continuous x Categorical</strong> data using the <strong><code>ggplot2</code></strong> package. Specifically, it demonstrates the use of <strong><code>ggplot2</code></strong> package to further explore <em>bivariate continuous data across categories</em>.</p></li>
 <li><p><strong>Data</strong>: Let us work with the same <code>mtcars</code> data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called <code>tb</code>:</p></li>
 </ol>
 <div class="cell">
@@ -564,9 +564,11 @@ Attaching package: 'ggplot2'</code></pre>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"lightpink"</span>,</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">shape =</span> <span class="st">"cyl"</span>,</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">orientation =</span> <span class="st">"horizontal"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"jitter"</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">add =</span> <span class="st">"jitter"</span>, <span class="co">#jitter helps display the data points</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"</span>,</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab =</span> <span class="st">"Miles Per Gallon (mpg)"</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab =</span> <span class="st">"Cylinders"</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="15ContinuousData04_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
 </div>

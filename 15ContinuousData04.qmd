@@ -1,8 +1,8 @@
 # Continuous Data (4 of 6)
 
-*Aug 4, 2023. V1.4*
+*Aug 5, 2023. V1.1*
 
-1. THIS CHAPTER explores Continuous x Categorical data using **`ggplot2`**. Specifically, it demonstrates the use of the popular **`ggplot2`** package to further explore *bivariate continuous data across categories*.
+1. THIS CHAPTER explores **Continuous x Categorical** data using the **`ggplot2`** package. Specifically, it demonstrates the use of **`ggplot2`** package to further explore *bivariate continuous data across categories*.
 
 2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
 
@@ -21,11 +21,6 @@ tb$gear <- as.factor(tb$gear)
 # Directly access the data columns of tb, without tb$mpg
 attach(tb)
 ```
-
-
-
-
-
 
 
 ## Summarizing Continuous Data across one Category, using `ggplot2`
@@ -172,7 +167,6 @@ Let's take a closer look at some of the most effective ways of visualizing conti
 
 
 
-
 ### Histograms of Continuous Data across one Category
 
 Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
@@ -201,12 +195,6 @@ ggplot(tb, aes(x = mpg,
        y = "Frequency")
 ```
 
-
-
-
-
-
-
 #### Histogram using `ggpubr`
 
 ```{r}
@@ -220,6 +208,15 @@ gghistogram(tb,
             fill = "am", 
             palette = c("gold", "lightpink"))
 ```
+
+
+
+
+
+
+
+
+
 
 
 
@@ -257,10 +254,21 @@ ggboxplot(tb,
           fill = "lightpink",
           shape = "cyl",
           orientation = "horizontal",
-          add = "jitter",
-          title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"
+          add = "jitter", #jitter helps display the data points
+          title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()",
+          ylab = "Miles Per Gallon (mpg)",
+          xlab = "Cylinders"
 )
 ```
+
+
+
+
+
+
+
+
+
 
 
 
