@@ -139,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16ContinuousData05.html">Continuous Data (5 of 6)</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16ContinuousData05.html">Continuous x Continous data (1 of 2)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -173,25 +173,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01GettingStarted.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Diving into R</span></a>
+ <span class="menu-text">Exploring R programming</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02RPackages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The World of R Packages</span></a>
+ <span class="menu-text">Exploring R Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03DataStructures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Structures in R</span></a>
+ <span class="menu-text">Exploring Data Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04ReadingData.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Reading Data in R</span></a>
+ <span class="menu-text">Reading Data into R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -263,13 +263,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./16ContinuousData05.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Continuous Data (5 of 6)</span></a>
+ <span class="menu-text">Continuous x Continous data (1 of 2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./17ContinuousData06.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Continuous Data (6 of 6)</span></a>
+ <span class="menu-text">Continuous x Continous data (1 of 2)</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -290,19 +290,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#continuous-data-5-of-6" id="toc-continuous-data-5-of-6" class="nav-link active" data-scroll-target="#continuous-data-5-of-6">Continuous Data (5 of 6)</a>
+  <li><a href="#continuous-x-continous-data-1-of-2" id="toc-continuous-x-continous-data-1-of-2" class="nav-link active" data-scroll-target="#continuous-x-continous-data-1-of-2">Continuous x Continous data (1 of 2)</a>
   <ul class="collapse">
   <li><a href="#exploring-bivariate-continuous-x-continuous-data" id="toc-exploring-bivariate-continuous-x-continuous-data" class="nav-link" data-scroll-target="#exploring-bivariate-continuous-x-continuous-data">Exploring bivariate Continuous x Continuous data</a></li>
   <li><a href="#scatterplots" id="toc-scatterplots" class="nav-link" data-scroll-target="#scatterplots">Scatterplots</a>
   <ul class="collapse">
-  <li><a href="#scatterplot-using-plot" id="toc-scatterplot-using-plot" class="nav-link" data-scroll-target="#scatterplot-using-plot">Scatterplot using plot()</a></li>
+  <li><a href="#scatterplot-using-plot" id="toc-scatterplot-using-plot" class="nav-link" data-scroll-target="#scatterplot-using-plot">Scatterplot using <code>plot()</code></a></li>
   </ul></li>
   <li><a href="#scatterplot-matrix" id="toc-scatterplot-matrix" class="nav-link" data-scroll-target="#scatterplot-matrix">Scatterplot Matrix</a>
   <ul class="collapse">
-  <li><a href="#scatterplot-matrix-using-pairs" id="toc-scatterplot-matrix-using-pairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</a></li>
+  <li><a href="#scatterplot-matrix-using-pairs" id="toc-scatterplot-matrix-using-pairs" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs">Scatterplot Matrix Using <code>pairs()</code></a></li>
   <li><a href="#scatterplot-matrix-using-scatterplotmatrix" id="toc-scatterplot-matrix-using-scatterplotmatrix" class="nav-link" data-scroll-target="#scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</a></li>
   <li><a href="#scatterplot-matrix-using-pairs.panels" id="toc-scatterplot-matrix-using-pairs.panels" class="nav-link" data-scroll-target="#scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="16ContinuousData05.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -312,9 +313,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="continuous-data-5-of-6" class="level1">
-<h1>Continuous Data (5 of 6)</h1>
-<p><em>Aug 4, 2023.</em></p>
+<section id="continuous-x-continous-data-1-of-2" class="level1">
+<h1>Continuous x Continous data (1 of 2)</h1>
+<p><em>Aug 6, 2023.</em></p>
 <section id="exploring-bivariate-continuous-x-continuous-data" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-bivariate-continuous-x-continuous-data">Exploring bivariate Continuous x Continuous data</h2>
 <p>THIS CHAPTER explores how to summarize and visualize the interaction between <em>bivariate continuous data</em> using correlation analysis, scatter plots, scatter plot matrices and other such techniques.</p>
@@ -337,67 +338,202 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scatterplots" class="level2">
 <h2 class="anchored" data-anchor-id="scatterplots">Scatterplots</h2>
-<p>A scatter plot is a type of graph used to display the relationship between two continuous variables. It is a graphical representation of a bivariate distribution, where the values of two variables are plotted as points on a two-dimensional coordinate system.</p>
-<p>A scatter plot can be used to identify trends, clusters, outliers, and other patterns in the data. It is also useful for detecting the presence of any outliers or influential observations that may affect the analysis.</p>
-<p>The mtcars data set in R is a built-in data set that contains data on various car models. To create a scatter plot of mpg (miles per gallon) against wt (weight) in the mtcars data set, you can use the following code:</p>
+<ol type="1">
+<li><p>A scatter plot is a type of graph used to display the relationship between two continuous variables. It is a graphical representation of a bivariate distribution, where the values of two variables are plotted as points on a two-dimensional coordinate system.</p></li>
+<li><p>A scatter plot can be used to identify trends, clusters, outliers, and other patterns in the data. It is also useful for detecting the presence of any outliers or influential observations that may affect the analysis. [1]</p></li>
+<li><p>To create a scatter plot of <code>mpg</code> (miles per gallon) against <code>wt</code> (weight) in the mtcars data set, we can use the following code:</p></li>
+</ol>
 <section id="scatterplot-using-plot" class="level3">
-<h3 class="anchored" data-anchor-id="scatterplot-using-plot">Scatterplot using plot()</h3>
+<h3 class="anchored" data-anchor-id="scatterplot-using-plot">Scatterplot using <code>plot()</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tb<span class="sc">$</span>wt, </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     tb<span class="sc">$</span>mpg, </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter Plot of MPG vs. Weight"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"MPG"</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter Plot of Mileage vs. Weight"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"Miles per gallon (mpg)"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>This code will first load the mtcars data set, then create a scatter plot of <code>mpg</code> against <code>wt</code> using the <code>plot()</code> function. The main argument adds a title to the plot, the <code>xlab</code> and <code>ylab</code> arguments add axis labels, and the pch argument changes the shape of the points to a solid circle. The resulting scatter plot will show the relationship between <code>mpg</code> and <code>wt</code> in the <code>mtcars</code> data set.</p>
-</section>
-</section>
-<section id="scatterplot-matrix" class="level2">
-<h2 class="anchored" data-anchor-id="scatterplot-matrix">Scatterplot Matrix</h2>
-<p>A scatter plot matrix (also called a pairs plot or a SPLOM) is a graphical display of pairwise scatter plots of a set of variables. In a scatter plot matrix, each variable in the dataset is plotted against every other variable in a matrix format. This allows us to visualize the relationships between pairs of variables and explore potential patterns or trends in the data.</p>
-<p>A scatter plot matrix is particularly useful for exploring multivariate datasets, as it allows us to quickly identify which pairs of variables may be strongly correlated, which may have weak or no correlation, and which may exhibit nonlinear relationships. It can also be used to identify outliers or unusual observations, and to visualize clusters or groups of observations based on patterns in the scatter plots.</p>
-<section id="scatterplot-matrix-using-pairs" class="level3">
-<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs">Scatterplot Matrix Using pairs()</h3>
+<ol start="4" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><p>This code will first load the mtcars data set, then create a scatter plot of <code>mpg</code> against <code>wt</code> using the <code>plot()</code> function.</p></li>
+<li><p>The <code>main</code> argument adds a title to the plot, the <code>xlab</code> and <code>ylab</code> arguments add axis labels</p></li>
+<li><p>the <code>pch</code> argument sets the shape of the points to a solid circle. pch = 15 gives a filled square. Here are popular values: pch = 16 gives a filled circle, pch = 17 gives a filled triangle (pointing upwards), pch = 18 gives a filled diamond, pch = 19 gives a solid circle, pch = 20 gives a filled bullet (smaller than pch = 19)</p></li>
+<li><p>the <code>col</code> argument specifies the color of the data points. We can use any named color in R, or we can use hexadecimal color codes. For instance, <code>col = "#FF0000"</code> would give us red points. [2]</p></li>
+</ul>
+<ol start="5" type="1">
+<li>We can personalize the appearance of the scatterplot in a variety of additional ways.</li>
+</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix for mpg, wt, hp, drat</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     tb<span class="sc">$</span>mpg, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter Plot of MPG vs. Weight"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"Mileage (mpg)"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">cex =</span> <span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"blue"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.lab=</span><span class="st">"red"</span>, <span class="at">cex.lab=</span><span class="fl">1.5</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col.main=</span><span class="st">"darkgreen"</span>, <span class="at">cex.main=</span><span class="dv">2</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">"gray"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a grid</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">col =</span> <span class="st">"gray"</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+<ol start="6" type="1">
+<li>Discussion</li>
+</ol>
+<ul>
+<li><p>Point Size: In the second plot, the size of the points is 1.5 times the default size (<code>cex = 1.5</code>), while in the first plot, the size of the points is the default size as <code>cex</code> is not specified.</p></li>
+<li><p>Axis Labels’ Color and Size: The second plot has red-colored, larger size axis labels (<code>col.lab="red", cex.lab=1.5</code>), while the first plot uses the default color and size as these parameters are not specified.</p></li>
+<li><p>Title’s Color and Size: The second plot has a dark green title that is twice the default size (<code>col.main="darkgreen", cex.main=2</code>), while the first plot uses the default color and size for the title as these parameters are not specified.</p></li>
+<li><p>Background Color: The second plot has a light gray background (<code>bg = "lightgray"</code>), while the first plot uses the default background color as the bg parameter is not specified.</p></li>
+<li><p>Grid: The second plot includes a grid with gray dotted lines (<code>grid(col = "gray", lty = "dotted", lwd = 0.5)</code>), while the first plot does not have a grid as the grid() function is not called. [2]</p></li>
+</ul>
+<ol start="7" type="1">
+<li>Scatterplot with best fit line</li>
+</ol>
+<ul>
+<li>We can add a line of best fit (a regression line) to your scatterplot using the <code>abline()</code> and <code>lm()</code> functions. <code>lm()</code> is used to fit linear models, and <code>abline()</code> adds a straight line to the plot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     tb<span class="sc">$</span>mpg, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter Plot of Mileage vs. Weight"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"Miles per gallon (mpg)"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"blue"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear model</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(tb<span class="sc">$</span>mpg <span class="sc">~</span> tb<span class="sc">$</span>wt)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a regression line</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(fit, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Discussion:</li>
+</ol>
+<ul>
+<li><code>lm(tb$mpg ~ tb$wt)</code> fits a linear model predicting <code>mpg</code> from <code>wt</code>. The <code>~</code> operator is a formula operator in R that separates the response variable (on the left of <code>~</code>) from the predictor variables (on the right of <code>~</code>). <code>abline(fit, col = "red")</code> subsequently adds the regression line to the plot, drawn in red color. [3]</li>
+</ul>
+<ol start="9" type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatterplot with points colored by cyl</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tb<span class="sc">$</span>wt, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     tb<span class="sc">$</span>mpg, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter Plot of Mileage vs. Weight for cylinders (cyl=4,6,8)"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Weight"</span>, <span class="at">ylab =</span> <span class="st">"Miles per gallon (mpg)"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"blue"</span>)[tb<span class="sc">$</span>cyl])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">levels</span>(tb<span class="sc">$</span>cyl), </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>), </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="10" type="1">
+<li>Discussion</li>
+</ol>
+<ul>
+<li><p>In the snippet <code>col=c("red","green","blue")[tb$cyl]</code>, we assign the color of the data points according to the <code>cyl</code> variable. It translates to us giving distinct colors for different <code>cyl</code> values in the plot.</p></li>
+<li><p>Moreover, when we incorporate the <code>legend()</code> function with parameters such as <code>"topright"</code>, we place a legend at the top-right corner of the plot. The identifiers in the legend are corresponding to the unique values of the <code>cyl</code> variable, and we’ve made sure the color scheme and point design in the legend are consistent with those in our plot. [2]</p></li>
+</ul>
+</section>
+</section>
+<section id="scatterplot-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="scatterplot-matrix">Scatterplot Matrix</h2>
+<ol type="1">
+<li><p>A scatter plot matrix, also known as a pairs plot or SPLOM, is a powerful visual tool that helps us in depicting the pair-wise relationships among a group of variables. In this matrix, every distinct variable from the dataset is charted against each other in a grid-like structure. This enables us to delve into the associations between variable pairs and identify possible trends or patterns in the dataset.</p></li>
+<li><p>When dealing with multivariate datasets, scatter plot matrices can be remarkably handy. They equip us with a rapid way to discern potential correlations among variable pairs – whether they are strong, weak, or non-existent. It’s also a convenient method to spot non-linear relationships between variables. In addition, it’s a beneficial tool to recognize outliers or peculiar data points and to observe clusters or collections of observations, as suggested by the patterns within the scatter plots. [4]</p></li>
+</ol>
+<section id="scatterplot-matrix-using-pairs" class="level3">
+<h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs">Scatterplot Matrix Using <code>pairs()</code></h3>
+<ol type="1">
+<li></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix for mpg, wt, hp, drat</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)],</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Scatter Plot Matrix for mpg, wt, hp, drat"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scatter plot matrix for mpg, wt, hp, drat</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"Scatter Plot Matrix for mpg, wt, hp, drat"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Miles per Gallon"</span>, <span class="st">"Weight"</span>, <span class="st">"Horsepower"</span>, <span class="st">"Rear Axle Ratio"</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">cex =</span> <span class="fl">0.8</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>Discussion:</p>
+<p>Symbol: The pch parameter is used to specify the symbol that represents data points in a plot.</p>
+<p>Labels: The labels parameter lets you customize the variable labels that appear on the diagonal:</p>
+<p>Color: You can specify different colors for the points in each scatter plot with the col parameter.</p>
+<p>Point Size: The cex parameter controls the size of the points in the scatter plot.</p>
 </section>
 <section id="scatterplot-matrix-using-scatterplotmatrix" class="level3">
 <h3 class="anchored" data-anchor-id="scatterplot-matrix-using-scatterplotmatrix">Scatterplot Matrix Using scatterplotMatrix()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the car package</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using scatterplotMatrix()</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> mpg <span class="sc">+</span> disp <span class="sc">+</span>drat <span class="sc">+</span>wt, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> tb, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the car package</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using scatterplotMatrix()</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> mpg <span class="sc">+</span> disp <span class="sc">+</span>drat <span class="sc">+</span>wt, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span> tb, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
 <section id="scatterplot-matrix-using-pairs.panels" class="level3">
 <h3 class="anchored" data-anchor-id="scatterplot-matrix-using-pairs.panels">Scatterplot Matrix Using pairs.panels()</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the psych package</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using pairs.panels()</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"Scatterplot Matrix"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the psych package</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a scatterplot matrix using pairs.panels()</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(tb[,<span class="fu">c</span>(<span class="st">"mpg"</span>,<span class="st">"wt"</span>,<span class="st">"hp"</span>,<span class="st">"drat"</span>)], </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">main =</span> <span class="st">"Scatterplot Matrix"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+<p><img src="16ContinuousData05_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>[1]</p>
+<p>Everitt, B. S., &amp; Hothorn, T. (2014). A Handbook of Statistical Analyses Using R. Chapman and Hall/CRC. (</p>
+<p>[2]</p>
+<p>R Core Team. (2023). R: A language and environment for statistical computing. R Foundation for Statistical Computing. https://www.R-project.org/</p>
+<p>[3]</p>
+<p>Fox, J., &amp; Weisberg, S. (2019). An R Companion to Applied Regression (3rd ed.). Sage.</p>
+<p>[4]</p>
+<p>Everitt, B., &amp; Hothorn, T. (2011). An introduction to applied multivariate analysis with R. Springer.</p>
+
+
 </section>
 </section>
 
