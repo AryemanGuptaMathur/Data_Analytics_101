@@ -1,12 +1,12 @@
 # Continuous x Continous data (1 of 2)
 
-*Aug 6, 2023.*
+*Aug 7, 2023.*
 
 ## Exploring bivariate Continuous x Continuous data
 
 THIS CHAPTER explores how to summarize and visualize the interaction between *bivariate continuous data* using correlation analysis, scatter plots, scatter plot matrices and other such techniques.
 
-**Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
+**Data**: **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis and save it in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -16,10 +16,10 @@ suppressPackageStartupMessages(library(dplyr))
 data(mtcars)
 tb <- as_tibble(mtcars)
 # Convert several numeric columns into factor variables
-tb$cyl <- as.factor(tb$cyl)
-tb$vs <- as.factor(tb$vs)
-tb$am <- as.factor(tb$am)
-tb$gear <- as.factor(tb$gear)
+tb$cyl <- as.factor(tb$cyl) # cyl = {4,6,8}, number of cylinders
+tb$am <- as.factor(tb$am) # am = {0,1}, 0:automatic, 1: manual transmission
+tb$vs <- as.factor(tb$vs) # vs = {0,1}, v-shaped engine, 0:no, 1:yes
+tb$gear <- as.factor(tb$gear) # gear = {3,4,5}, number of gears
 # Directly access the data columns of tb, without tb$mpg
 attach(tb)
 ```

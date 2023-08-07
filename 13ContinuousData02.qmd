@@ -1,6 +1,6 @@
-# Continuous Data (2 of 6)
+# Continuous Data (2 of 2)
 
-*Aug 4, 2023.*
+*Aug 7, 2023 V1.*
 
 ## Exploring Univariate Continuous Data using **`ggplot2`**
 
@@ -8,7 +8,7 @@ THIS CHAPTER demonstrates the use of the popular **`ggplot2`** package to furthe
 
 1.  In R, we can create these plots for Visualizing Univariate Continuous Data using the `ggplot2` package. For instance, the function `geom_boxplot()` produces box plots, `geom_violin()` creates violin plots, and `geom_histogram()` and `geom_density()` generate histograms and density plots, respectively. The `ggbeeswarm` package can be used for creating bee swarm plots with the `geom_beeswarm()` function. We will go into more detail about how to use these functions and interpret these plots in the upcoming sections.
 
-2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
+2.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis and save it in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -17,12 +17,13 @@ suppressPackageStartupMessages(library(dplyr))
 # Read the mtcars dataset into a tibble called tb
 data(mtcars)
 tb <- as_tibble(mtcars)
-attach(tb)
 # Convert several numeric columns into factor variables
-tb$cyl <- as.factor(tb$cyl)
-tb$vs <- as.factor(tb$vs)
-tb$am <- as.factor(tb$am)
-tb$gear <- as.factor(tb$gear)
+tb$cyl <- as.factor(tb$cyl) # cyl = {4,6,8}, number of cylinders
+tb$am <- as.factor(tb$am) # am = {0,1}, 0:automatic, 1: manual transmission
+tb$vs <- as.factor(tb$vs) # vs = {0,1}, v-shaped engine, 0:no, 1:yes
+tb$gear <- as.factor(tb$gear) # gear = {3,4,5}, number of gears
+# Directly access the data columns of tb, without tb$mpg
+attach(tb)
 ```
 
 3.  Let us load the `ggplot2`, `dplyr` and `ggthemes` packages. The package `ggthemes` allows us to use a variety of themes.
@@ -46,11 +47,6 @@ library(ggplot2)
     Violin plots using `ggplot2`;
 
     Q-Q plots. Note that it is inconvenient to create Stem-and-Leaf plots using ggplot2 and hence we ignore this.
-
-
-
-
-
 
 ### Histogram using `ggplot2`
 
@@ -109,11 +105,9 @@ ggplot(tb,
 
 -   In this code, the `seq()` function is used to generate a sequence of numbers from 5 to 40, with an increment of 5. These numbers serve as the breakpoints for the bins in the histogram. The `breaks` argument then uses these numbers to set the bin ranges. The plot aesthetics remain the same as before.
 
-
-
 #### Histogram using `ggpubr`
 
-* The provided R code creates a histogram of the mpg (miles per gallon) variable in the tb dataset, using the gghistogram() function from the ggpubr package. 
+-   The provided R code creates a histogram of the mpg (miles per gallon) variable in the tb dataset, using the gghistogram() function from the ggpubr package.
 
 ```{r, warning=FALSE}
 library(ggpubr)
@@ -127,39 +121,28 @@ gghistogram(tb,
             title = "Histogram of Miles Per Gallon (mpg), using ggpubr"
 )
 ```
+
 Discussion:
 
-gghistogram(tb, x = "mpg", add = "mean", bins = 6, rug = TRUE, color = "black", fill = "gold", title = "Histogram of Miles Per Gallon (mpg), using ggpubr"): 
+gghistogram(tb, x = "mpg", add = "mean", bins = 6, rug = TRUE, color = "black", fill = "gold", title = "Histogram of Miles Per Gallon (mpg), using ggpubr"):
 
 This line uses the gghistogram() function to create a histogram of the mpg variable from the tb dataset.
 
-* tb: Specifies the dataset to use.
+-   tb: Specifies the dataset to use.
 
-* x = "mpg": Specifies the variable to create a histogram for.
+-   x = "mpg": Specifies the variable to create a histogram for.
 
-* add = "mean": Adds a vertical line at the mean of mpg.
+-   add = "mean": Adds a vertical line at the mean of mpg.
 
-* bins = 6: Specifies the number of bins in the histogram. This can be adjusted based on the specific data and desired level of granularity.
+-   bins = 6: Specifies the number of bins in the histogram. This can be adjusted based on the specific data and desired level of granularity.
 
-* rug = TRUE: Adds a rug plot at the bottom of the histogram, which displays a small vertical line for each observation along the range of mpg.
+-   rug = TRUE: Adds a rug plot at the bottom of the histogram, which displays a small vertical line for each observation along the range of mpg.
 
-* color = "black": Specifies the color of the border of the bars in the histogram.
+-   color = "black": Specifies the color of the border of the bars in the histogram.
 
-* fill = "gold": Specifies the fill color of the bars in the histogram.
+-   fill = "gold": Specifies the fill color of the bars in the histogram.
 
-* title = "Histogram of Miles Per Gallon (mpg), using ggpubr": Specifies the title of the plot.
-
-
-
-
-
-
-
-
-
-
-
-
+-   title = "Histogram of Miles Per Gallon (mpg), using ggpubr": Specifies the title of the plot.
 
 ### Probability Density Function (PDF) plot using `ggplot2`
 
@@ -178,13 +161,9 @@ ggplot(tb,
 
 -   Subsequently, we append a density plot to our plot by using the `geom_density()` function. We fill the area under the curve with a light pink color by setting `fill` to "lightpink" and `alpha` to 0.5.
 
-
-
-
-
 #### PDF using `ggpubr`
 
-* The provided R code creates a PDF of the mpg (miles per gallon) variable in the tb dataset, using the `ggdensity()` function from the `ggpubr` package. 
+-   The provided R code creates a PDF of the mpg (miles per gallon) variable in the tb dataset, using the `ggdensity()` function from the `ggpubr` package.
 
 ```{r, warning=FALSE}
 library(ggpubr)
@@ -198,9 +177,8 @@ ggdensity(tb,
 )
 ```
 
-
-
 ### Cumulative Distribution Function (CDF) Plot using `ggplot2`
+
 ```{r}
 # Load required library
 library(ggplot2)
@@ -211,11 +189,6 @@ ggplot(tb, aes(x = mpg)) +
        title = "Cumulative Distribution Function (CDF) of Mileage (mpg)") +
   theme_minimal() 
 ```
-
-
-
-
-
 
 ### Boxplots using `ggplot2`
 
@@ -236,13 +209,9 @@ ggplot(tb,
 
 4.  Finally, we're adding some labels to the plot with the `labs()` function.
 
-
-
-
-
 #### Boxplot using `ggpubr`
 
-* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
+-   The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package.
 
 ```{r, warning=FALSE}
 library(ggpubr)
@@ -255,9 +224,6 @@ ggboxplot(tb,
             title = "Boxplot of Miles Per Gallon (mpg), using ggpubr::ggboxplot()"
 )
 ```
-
-
-
 
 ### Bee Swarm plot using `ggbeeswarm`
 
@@ -315,7 +281,7 @@ ggplot(tb, aes(x = "", y = mpg)) +
 
 #### Violin plot using `ggpubr`
 
-* The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package. 
+-   The provided R code creates a Boxplot of the `mpg` (miles per gallon) variable in the `tb` dataset, using the `ggboxplot()` function from the `ggpubr` package.
 
 ```{r, warning=FALSE}
 library(ggpubr)
@@ -329,8 +295,6 @@ ggviolin(tb,
 )
 ```
 
-
-
 ### Quantile-Quantile (Q-Q) Plots using `ggplot2`
 
 -   In order to create a Q-Q plot, we use the `ggplot()` function to specify our dataset and aesthetic mappings `aes()`. Subsequently, we use `stat_qq()` to generate the Q-Q plot and `stat_qq_line()` to add the reference line:
@@ -343,8 +307,6 @@ ggplot(tb,
   labs(x = "Theoretical Quantiles", y = "Sample Quantiles", title = "Q-Q Plot of Miles Per Gallon (mpg)") +
   theme(panel.background = element_rect(fill = "skyblue")) 
 ```
-
-
 
 ## Summary of Chapter 13 -- Continuous Data (2 of 6)
 
@@ -364,8 +326,6 @@ Henderson, D. R. (1974). Motor Trend Car Road Tests. Motor Trend, 1974. Data ret
 
 Eklund, A. (2020). ggbeeswarm: Categorical Scatter (Violin Point) Plots. R package version 0.6.0. https://CRAN.R-project.org/package=ggbeeswarm
 
-[2]
+\[2\]
 
 Kassambara A (2023). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.6.0, https://rpkgs.datanovia.com/ggpubr/.
-
-

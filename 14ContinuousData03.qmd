@@ -1,14 +1,14 @@
-# Continuous Data (3 of 6)
+# Continuous x Categorical data (1 of 2)
 
-*Aug 5, 2023*
+*Aug 7, 2023*
 
-1.  THIS CHAPTER explores **Continuous x Categorical** data. Specifically, it explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
+1.  THIS CHAPTER explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
 2.  We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
 
 3.  Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
 
-4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis. The data is now in a tibble called `tb`:
+4.  **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis and save it in a tibble called `tb`:
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -18,15 +18,15 @@ suppressPackageStartupMessages(library(dplyr))
 data(mtcars)
 tb <- as_tibble(mtcars)
 # Convert several numeric columns into factor variables
-tb$cyl <- as.factor(tb$cyl)
-tb$vs <- as.factor(tb$vs)
-tb$am <- as.factor(tb$am)
-tb$gear <- as.factor(tb$gear)
+tb$cyl <- as.factor(tb$cyl) # cyl = {4,6,8}, number of cylinders
+tb$am <- as.factor(tb$am) # am = {0,1}, 0:automatic, 1: manual transmission
+tb$vs <- as.factor(tb$vs) # vs = {0,1}, v-shaped engine, 0:no, 1:yes
+tb$gear <- as.factor(tb$gear) # gear = {3,4,5}, number of gears
 # Directly access the data columns of tb, without tb$mpg
 attach(tb)
 ```
 
-## Summarizing Continuous Data 
+## Summarizing Continuous Data
 
 ### Across one Category
 
@@ -94,10 +94,6 @@ stats0
 -   `describeBy(mpg, cyl)` computes descriptive statistics of miles per gallon `mpg` variable, broken down by the unique values in the number of cylinders (`cyl`).
 
 -   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
-
-
-
-
 
 ### Across two Categories
 
@@ -169,27 +165,6 @@ print(stats)
 
 -   After that, we call the `describeBy()` function from the `psych` package. This function calculates descriptive statistics, such as mean, standard deviation, and median, for each combination of levels of the factors `am` and `cyl` and for each of the continouous variables `mpg`, `wt`, and `hp`.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Visualizing Continuous Data
 
 Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
@@ -205,9 +180,6 @@ Let's take a closer look at some of the most effective ways of visualizing univa
 (v) Violin plots;
 
 (vi) Q-Q plots.
-
-
-
 
 ### Histograms across one Category
 
@@ -234,8 +206,6 @@ for (i in 1:length(split_data)) {
        ylim = c(0, 10))
 }
 ```
-
-
 
 ### Probability Density Function (PDF) across one Category
 
@@ -269,7 +239,8 @@ for (i in 1:length(split_data)) {
   polygon(dens, col = color_vector[i], border = "black")
 }
 ```
-* We can alternately draw overlapping PDFs on the same plot.
+
+-   We can alternately draw overlapping PDFs on the same plot.
 
 ```{r, warning=FALSE}
 # Split the data by 'am' variable
@@ -304,9 +275,6 @@ for (i in 1:length(split_data)) {
 legend("topright", legend = legend_labels, fill = color_vector, border = "black")
 ```
 
-
-
-
 ### Cumulative Density Function (CDF) across one Category
 
 ```{r}
@@ -340,10 +308,6 @@ for (i in 1:length(split_data)) {
 legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
 ```
 
-
-
-
-
 ### Box Plots across one Category
 
 Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
@@ -357,6 +321,7 @@ boxplot(mpg~cyl,
         horizontal = TRUE
         )
 ```
+
 ```{r}
 library(ggplot2)
 library(ggbeeswarm)
@@ -372,19 +337,6 @@ ggplot(tb,
   theme(panel.background = element_rect(fill = "lightblue"))
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Means Plot across one Category
 
 Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (`am`= 0 or 1)
@@ -398,8 +350,6 @@ plotmeans(data = tb,
           main = "Mean(mpg) by cyl = {4,6,8}"
           )
 ```
-
-
 
 ### Means Plot across two Categories
 
@@ -417,8 +367,6 @@ plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
           , ylab="Average MPG"
           )
 ```
-
-
 
 ### Stem-and-Leaf Plot across one Category
 
@@ -445,14 +393,6 @@ lapply(tb_split,
 -   `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
 
 -   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
-
-
-
-
-
-
-
-
 
 ## References
 

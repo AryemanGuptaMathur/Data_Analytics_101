@@ -1,4 +1,4 @@
-# Categorical Data (1 of 3)
+# Categorical Data
 
 *Aug 4, 2023*
 
