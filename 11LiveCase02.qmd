@@ -1,5 +1,7 @@
 # Live Case: S&P500 (2 of 3)
 
+*Aug 7, 2023*
+
 ISSUE: Understanding the S&P500 as a whole *Aug 06, 2023 -=- This chapter is being heavily edited*
 
 ## S&P 500 Data - PRELIMINARY SETUP

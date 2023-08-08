@@ -1,12 +1,12 @@
 # Continuous x Continous data (2 of 2)
 
-*Aug 7, 2023*
+*Aug 7, 2023.*
 
 ## Exploring bivariate Continuous x Continuous data, using **`ggplot2`**
 
 THIS CHAPTER demonstrates the use of the popular **`ggplot2`** package to further explore the interaction between *bivariate continuous data*.
 
-**Data**: **Data**: Let us work with the same `mtcars` data from the previous chapter. Suppose we run the following code to prepare the data for subsequent analysis and save it in a tibble called `tb`:
+**Data**: Suppose we run the following code to prepare the `mtcars` data for subsequent analysis and save it in a tibble called `tb`.
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -15,7 +15,7 @@ suppressPackageStartupMessages(library(dplyr))
 # Read the mtcars dataset into a tibble called tb
 data(mtcars)
 tb <- as_tibble(mtcars)
-# Convert several numeric columns into factor variables
+# Convert relevant columns into factor variables
 tb$cyl <- as.factor(tb$cyl) # cyl = {4,6,8}, number of cylinders
 tb$am <- as.factor(tb$am) # am = {0,1}, 0:automatic, 1: manual transmission
 tb$vs <- as.factor(tb$vs) # vs = {0,1}, v-shaped engine, 0:no, 1:yes
