@@ -1,4 +1,4 @@
-# Continuous x Categorical data (1 of 2)
+# Categorical x Continuous data (1 of 2)
 
 *Aug 9, 2023.*
 
@@ -291,97 +291,95 @@ lapply(tb_split,
 
 ### Histograms across one Category
 
-Visualizing histograms of car mileage (`mpg`) broken down by transmission (`am`=0,1)
+1. Visualizing histograms of car mileage (`mpg`) broken down by transmission (`am`=0,1)
 
 ```{r}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
+split_data <- split(tb$mpg, tb$am) # Split the data by 'am' variable
+par(mfrow = c(1, 2)) # Create a 1-row 2-column layout
+color_vector <- c("skyblue", "gold") # Define the color vector
 
-# Create a 1-row 2-column layout
-par(mfrow = c(1, 2))
+# Create a histogram for subset with am = 0
+hist(split_data[[1]], 
+     main = "Histogram of mpg for am = 0", 
+     breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
+     xlab = "Miles per gallon", 
+     col = color_vector[1], # Use the color vector, 
+     border = "black",
+     ylim = c(0, 10))
 
-# Define the color vector
-color_vector <- c("skyblue", "gold")
-
-# Create a histogram for each subset
-for (i in 1:length(split_data)) {
-  hist(split_data[[i]], 
-       main = paste("Histogram of mpg for am =", i - 1), 
-       breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
-       xlab = "Miles per gallon", 
-       col = color_vector[i], # Use the color vector, 
-       border = "black",
-       ylim = c(0, 10))
-}
+# Create a histogram for subset with am = 1
+hist(split_data[[2]], 
+     main = "Histogram of mpg for am = 1", 
+     breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
+     xlab = "Miles per gallon", 
+     col = color_vector[2], # Use the color vector, 
+     border = "black",
+     ylim = c(0, 10))
 ```
+*In Appendix A1, we have alternative code written using a for loop*
+
+2.  **Discussion**:
+
+* We aim to visualize the distribution of the `mpg` values from the `tb` dataset based on the `am` variable, which can be either 0 or 1.
+
+* Data Splitting: We segregate `mpg` values into two subsets using the `split` function, depending on the `am` values. In R, the double brackets [[ ]] are used to access the elements of a list or a specific column of a data frame. `split_data[[1]]` accesses the first element of the list `split_data`.
+
+* Layout Setting: The `par` function is configured to display two plots side by side in a single row and two columns format.
+
+3. Color Vector: We introduce a `color_vector` to assign distinct colors to each histogram for differentiation.
+
+4. Histogram: Two histograms are generated, one for each `am` value (0 and 1). These histograms use various parameters like title, x-axis label, color, and y-axis limits to provide a clear representation of the data's distribution. [4]
+
+
+
 
 ### Probability Density Function (PDF) across one Category
 
-Visualizing Probability Density Function (PDF) of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+1. Visualizing Probability Density Functions (PDF) of car mileage (`mpg`) broken down by transmission (`am`=0,1)
 
 ```{r, warning=FALSE}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
+split_data <- split(tb$mpg, tb$am)  # Split 'mpg' data by 'am' values
+par(mfrow = c(1, 2))  # Set layout for 2 plots side by side
+color_vector <- c("skyblue", "gold")  # Define colors for the plots
 
-# Create a 1-row 2-column layout
-par(mfrow = c(1, 2))
+# Calculate density for am = 0 and plot it
+dens_0 <- density(split_data[[1]])  
+plot(dens_0, 
+     main = "PDF of mpg for am = 0", 
+     xlab = "Miles per gallon", 
+     col = color_vector[1], 
+     border = "black",
+     ylim = c(0, 0.15), 
+     lwd = 2)  # Plot density curve for am = 0
+polygon(dens_0, col = color_vector[1], border = "black")  # Fill under the curve
 
-# Define the color vector
-color_vector <- c("skyblue", "gold")
-
-# Create a density plot for each subset
-for (i in 1:length(split_data)) {
-  # Calculate density
-  dens <- density(split_data[[i]])
-
-  # Plot density
-  plot(dens, 
-       main = paste("PDF of mpg for am =", i - 1), 
-       xlab = "Miles per gallon", 
-       col = color_vector[i], 
-       border = "black",
-       ylim = c(0, 0.15), # Adjust this value if necessary
-       lwd = 2) # line width
-
-  # Add a polygon to fill under the density curve
-  polygon(dens, col = color_vector[i], border = "black")
-}
+# Calculate density for am = 1 and plot it
+dens_1 <- density(split_data[[2]])  
+plot(dens_1, 
+     main = "PDF of mpg for am = 1", 
+     xlab = "Miles per gallon", 
+     col = color_vector[2], 
+     border = "black",
+     ylim = c(0, 0.15), 
+     lwd = 2)  # Plot density curve for am = 1
+polygon(dens_1, col = color_vector[2], border = "black")  # Fill under the curve
 ```
+*In Appendix A2, we have alternative code written using a for loop*
 
--   We can alternately draw overlapping PDFs on the same plot.
 
-```{r, warning=FALSE}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
+2.  **Discussion**:
 
-# Define the color vector
-color_vector <- c("skyblue", "gold")
+* `dens_0 <- density(split_data[[1]])` calculates the density values for the subset where `am` is 0.
 
-# Define the legend labels
-legend_labels <- c("am = 0", "am = 1")
+* The subsequent plot function visualizes the density curve, setting various parameters like the title, x-axis label, color, and line width.
 
-# Create a density plot for each subset
-# Start with an empty plot with ranges accommodating both data sets
-plot(0, 0, xlim = range(tb$mpg), ylim = c(0, 0.15), type = "n", 
-     xlab = "Miles per gallon", ylab = "Density", 
-     main = "PDFs of Mileage (mpg) for automatic, manual transmissions (am)")
+* The polygon function fills the area under the density curve with the specified color, giving a shaded appearance to the plot.
 
-for (i in 1:length(split_data)) {
-  # Calculate density
-  dens <- density(split_data[[i]])
-  
-  # Add density plot
-  lines(dens, 
-        col = color_vector[i], 
-        lwd = 2) # line width
+* The process is repeated for the subset where `am` is 1. The code calculates the density, plots it, and then uses the polygon function to shade the area under the curve.
 
-  # Add a polygon to fill under the density curve
-  polygon(dens, col = adjustcolor(color_vector[i], alpha.f = 0.8), border = "black")
-}
+*In Appendix A3, we demonstrate how to draw overlapping PDFs on the same plot*
 
-# Add legend to the plot
-legend("topright", legend = legend_labels, fill = color_vector, border = "black")
-```
+
 
 ### Cumulative Density Function (CDF) across one Category
 
@@ -415,6 +413,10 @@ for (i in 1:length(split_data)) {
 # Add legend to the plot
 legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
 ```
+
+
+
+
 
 ### Box Plots across one Category
 
@@ -487,7 +489,108 @@ Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Ed
 
 \[3\] Chambers, J. M., Freeny, A. E., & Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp. 145--193). Pacific Grove, CA: Wadsworth & Brooks/Cole.
 
+[4] Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer.
+
+
 
 ## Appendix
 
+
+#### Appendix A1
+Visualizing histograms of car mileage (`mpg`) broken down by transmission (`am`=0,1)
+
+*Code written using a for loop*
+
+```{r}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Create a 1-row 2-column layout
+par(mfrow = c(1, 2))
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Create a histogram for each subset
+for (i in 1:length(split_data)) {
+  hist(split_data[[i]], 
+       main = paste("Histogram of mpg for am =", i - 1), 
+       breaks = seq(10, 35, by = 5), # This creates bins with ranges 10-15, 15-20, etc.
+       xlab = "Miles per gallon", 
+       col = color_vector[i], # Use the color vector, 
+       border = "black",
+       ylim = c(0, 10))
+}
+```
+
+
+#### Appendix A2
+Visualizing Probability Density Function (PDF) of car milegage (`mpg`) broken down by transmission (`am`=0,1), using for loop
+
+```{r, warning=FALSE}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Create a 1-row 2-column layout
+par(mfrow = c(1, 2))
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Create a density plot for each subset
+for (i in 1:length(split_data)) {
+  # Calculate density
+  dens <- density(split_data[[i]])
+
+  # Plot density
+  plot(dens, 
+       main = paste("PDF of mpg for am =", i - 1), 
+       xlab = "Miles per gallon", 
+       col = color_vector[i], 
+       border = "black",
+       ylim = c(0, 0.15), # Adjust this value if necessary
+       lwd = 2) # line width
+
+  # Add a polygon to fill under the density curve
+  polygon(dens, col = color_vector[i], border = "black")
+}
+```
+
+
+#### Appendix A3
+
+Visualizing Probability Density Function (PDF) of car milegage (`mpg`) broken down by transmission (`am`=0,1), overlapping PDFs on the same plot
+
+```{r, warning=FALSE}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Define the color vector
+color_vector <- c("skyblue", "gold")
+
+# Define the legend labels
+legend_labels <- c("am = 0", "am = 1")
+
+# Create a density plot for each subset
+# Start with an empty plot with ranges accommodating both data sets
+plot(0, 0, xlim = range(tb$mpg), ylim = c(0, 0.15), type = "n", 
+     xlab = "Miles per gallon", ylab = "Density", 
+     main = "PDFs of Mileage (mpg) for automatic, manual transmissions (am)")
+
+for (i in 1:length(split_data)) {
+  # Calculate density
+  dens <- density(split_data[[i]])
+  
+  # Add density plot
+  lines(dens, 
+        col = color_vector[i], 
+        lwd = 2) # line width
+
+  # Add a polygon to fill under the density curve
+  polygon(dens, col = adjustcolor(color_vector[i], alpha.f = 0.8), border = "black")
+}
+
+# Add legend to the plot
+legend("topright", legend = legend_labels, fill = color_vector, border = "black")
+```
 

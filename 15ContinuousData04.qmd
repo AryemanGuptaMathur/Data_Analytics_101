@@ -1,6 +1,6 @@
-# Continuous x Categorical data (2 of 2)
+# Categorical x Continuous data (2 of 2)
 
-*Aug 7, 2023*
+*Aug 9, 2023*
 
 1.  THIS CHAPTER explores **Continuous x Categorical** data using the **`ggplot2`** package. Specifically, it demonstrates the use of **`ggplot2`** package to further explore *bivariate continuous data across categories*.
 
