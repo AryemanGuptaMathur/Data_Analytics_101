@@ -822,8 +822,8 @@ NULL</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">~</span>cyl,</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg) by Cylinders"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>),</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -832,17 +832,34 @@ NULL</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li><p><strong>Discussion</strong>:</p></li>
-<li><p>Visualizing Median using Box Plot – median weight of the cars broken down by cylinders (<code>cyl</code>=4,6,8) and Transmission (<code>am</code>=0,1)</p></li>
+<li><strong>Discussion</strong>:</li>
+</ol>
+<ul>
+<li><p>This code creates a visual representation of the distribution of miles per gallon (<code>mpg</code>) based on the number of cylinders (<code>cyl</code>), using the <code>boxplot</code> function from the base graphics package in R. down:</p></li>
+<li><p>Data Input: The formula <code>mpg ~ cyl</code> instructs R to create separate boxplots for each unique value of <code>cyl</code>, with each boxplot representing the distribution of <code>mpg</code> values for that particular cylinder count.</p></li>
+<li><p>Title Configuration: <code>main</code> specifies the title of the plot as “Boxplot of Miles Per Gallon (mpg) by Cylinders.”</p></li>
+<li><p>Axis Labels: The labels for the x-axis and y-axis are set using <code>xlab</code> and <code>ylab</code>, respectively. Here, <code>xlab</code> labels the mileage (or <code>mpg</code>), while <code>ylab</code> labels the number of cylinders (<code>cyl</code>).</p></li>
+<li><p>Color Choice: The <code>col</code> argument is set to “skyblue,” which colors the body of the boxplots in a light blue shade.</p></li>
+<li><p>Orientation: By setting <code>horizontal</code> to <code>TRUE</code>, the boxplots are displayed in a horizontal orientation rather than the default vertical orientation.</p></li>
+<li><p>In essence, we’re visualizing the variations in car mileage based on the number of cylinders using horizontal boxplots. This type of visualization helps in understanding the central tendency, spread, and potential outliers of mileage for different cylinder counts.</p></li>
+</ul>
+<ol start="3" type="1">
+<li>Visualizing Median using Box Plot – median weight of the cars broken down by cylinders (<code>cyl</code>=4,6,8) and Transmission (<code>am</code>=0,1)</li>
 </ol>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg <span class="sc">~</span> cyl <span class="sc">*</span> am,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg) by Cylinders and Transmission"</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Cylinders &amp; Transmission (cyl:am)"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Mileage (mpg) by Cylinders (4,6,8) and Transmission (0,1)"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cylinders &amp; Transmission (cyl:am)"</span>,</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>), <span class="co"># added a second color for differentiation</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Automatic"</span>, <span class="st">"Manual"</span>), </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>), </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Transmission"</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
 </div>
@@ -850,6 +867,14 @@ NULL</code></pre>
 <ol start="4" type="1">
 <li><strong>Discussion</strong>:</li>
 </ol>
+<ul>
+<li><p>This R code presents a horizontal boxplot showcasing the distribution of mileage (<code>mpg</code>) based on the interaction between the number of car cylinders (<code>cyl</code>) and the type of transmission (<code>am</code>).</p></li>
+<li><p>Boxplot Creation: The <code>boxplot</code> function is used to generate the visualization. With the formula <code>mpg ~ cyl * am</code>, we plot the distribution of <code>mpg</code> for every combination of <code>cyl</code> and <code>am</code>.</p></li>
+<li><p>Color Configuration: The <code>col</code> argument specifies the colors for the boxplots. We’ve opted for “skyblue” and “gold” for differentiation. Depending on the order of factor levels in your data, one color typically represents one level of <code>am</code> (e.g., automatic) and the other color represents the second level (e.g., manual).</p></li>
+<li><p>Orientation: The <code>horizontal</code> argument, set to <code>TRUE</code>, orients the boxplots horizontally.</p></li>
+<li><p>Legend Addition: Following the boxplot, we add a legend using the <code>legend</code> function. Placed at the “topright” position, this legend differentiates between “Automatic” and “Manual” transmissions using the designated colors.</p></li>
+<li><p>In essence, our code generates a detailed visualization that elucidates the mileage distribution for various combinations of cylinder counts and transmission types in cars.</p></li>
+</ul>
 </section>
 <section id="means-plot-across-one-category" class="level3">
 <h3 class="anchored" data-anchor-id="means-plot-across-one-category">Means Plot across one Category</h3>

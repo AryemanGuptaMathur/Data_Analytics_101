@@ -393,13 +393,28 @@ polygon(dens_1, col = color_vector[2], border = "black")  # Fill under the curve
 ```{r}
 boxplot(mpg~cyl,
         main = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
-        ylab = "Mileage (mpg)",
-        xlab = "Cylinders (cyl)",
+        xlab = "Mileage (mpg)",
+        ylab = "Cylinders (cyl)",
         col = c("skyblue"),
         horizontal = TRUE
         )
 ```
 2.  **Discussion**:
+
+* This code creates a visual representation of the distribution of miles per gallon (`mpg`) based on the number of cylinders (`cyl`), using the `boxplot` function from the base graphics package in R.
+down:
+
+* Data Input: The formula `mpg ~ cyl` instructs R to create separate boxplots for each unique value of `cyl`, with each boxplot representing the distribution of `mpg` values for that particular cylinder count.
+
+* Title Configuration: `main` specifies the title of the plot as "Boxplot of Miles Per Gallon (mpg) by Cylinders."
+
+* Axis Labels: The labels for the x-axis and y-axis are set using `xlab` and `ylab`, respectively. Here, `xlab` labels the mileage (or `mpg`), while `ylab` labels the number of cylinders (`cyl`).
+
+* Color Choice: The `col` argument is set to "skyblue," which colors the body of the boxplots in a light blue shade.
+
+* Orientation: By setting `horizontal` to `TRUE`, the boxplots are displayed in a horizontal orientation rather than the default vertical orientation.
+
+* In essence, we're visualizing the variations in car mileage based on the number of cylinders using horizontal boxplots. This type of visualization helps in understanding the central tendency, spread, and potential outliers of mileage for different cylinder counts.
 
 
 
@@ -407,17 +422,33 @@ boxplot(mpg~cyl,
 
 ```{r}
 boxplot(mpg ~ cyl * am,
-        main = "Boxplot of Miles Per Gallon (mpg) by Cylinders and Transmission",
-        ylab = "Mileage (mpg)",
-        xlab = "Cylinders & Transmission (cyl:am)",
+        main = "Boxplot of Mileage (mpg) by Cylinders (4,6,8) and Transmission (0,1)",
+        xlab = "Mileage (mpg)",
+        ylab = "Cylinders & Transmission (cyl:am)",
         col = c("skyblue", "gold"), # added a second color for differentiation
         horizontal = TRUE
         )
+# Add a legend
+legend("topright", 
+       legend = c("Automatic", "Manual"), 
+       fill = c("skyblue", "gold"), 
+       title = "Transmission"
+)
 ```
 
 4.  **Discussion**:
 
+* This R code presents a horizontal boxplot showcasing the distribution of mileage (`mpg`) based on the interaction between the number of car cylinders (`cyl`) and the type of transmission (`am`).
 
+* Boxplot Creation: The `boxplot` function is used to generate the visualization. With the formula `mpg ~ cyl * am`, we  plot the distribution of `mpg` for every combination of `cyl` and `am`.
+
+* Color Configuration: The `col` argument specifies the colors for the boxplots. We've opted for "skyblue" and "gold" for differentiation. Depending on the order of factor levels in your data, one color typically represents one level of `am` (e.g., automatic) and the other color represents the second level (e.g., manual).
+
+* Orientation: The `horizontal` argument, set to `TRUE`, orients the boxplots horizontally.
+
+* Legend Addition: Following the boxplot, we add a legend using the `legend` function. Placed at the "topright" position, this legend differentiates between "Automatic" and "Manual" transmissions using the designated colors. 
+
+* In essence, our code generates a detailed visualization that elucidates the mileage distribution for various combinations of cylinder counts and transmission types in cars.
 
 
 
@@ -466,6 +497,7 @@ Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Ed
 \[3\] Chambers, J. M., Freeny, A. E., & Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp. 145--193). Pacific Grove, CA: Wadsworth & Brooks/Cole.
 
 [4] Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer.
+
 
 
 
