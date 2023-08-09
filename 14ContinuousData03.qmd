@@ -377,45 +377,13 @@ polygon(dens_1, col = color_vector[2], border = "black")  # Fill under the curve
 
 * The process is repeated for the subset where `am` is 1. The code calculates the density, plots it, and then uses the polygon function to shade the area under the curve.
 
-*In Appendix A3, we demonstrate how to draw overlapping PDFs on the same plot*
+*In Appendix A3, we demonstrate how to draw overlapping PDFs on the same plot, using base R functions.*
 
 
 
 ### Cumulative Density Function (CDF) across one Category
 
-```{r}
-# Split the data by 'am' variable
-split_data <- split(tb$mpg, tb$am)
-
-# Define the color vector
-color_vector <- c("blue", "black")
-
-# Define the legend labels
-legend_labels <- c("am = 0", "am = 1")
-
-# Create a cumulative density plot for each subset
-# Start with an empty plot with ranges accommodating both data sets
-plot(0, 0, xlim = range(mtcars$mpg), ylim = c(0, 1), type = "n", 
-     xlab = "Miles per gallon", ylab = "Cumulative Density", 
-     main = "CDFs of Mileage (mpg) for automatic, manual transmissions (am)")
-
-for (i in 1:length(split_data)) {
-  # Calculate empirical cumulative density function
-  ecdf_func <- ecdf(split_data[[i]])
-  
-  # Add CDF plot using curve function
-  curve(ecdf_func(x), 
-        from = min(split_data[[i]]), to = max(split_data[[i]]), 
-        col = color_vector[i], 
-        add = TRUE, 
-        lwd = 2) # line width
-}
-# Add legend to the plot
-legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
-```
-
-
-
+*In Appendix A4, we demonstrate how to draw a CDF, using base R functions*
 
 
 ### Box Plots across one Category
@@ -594,3 +562,36 @@ for (i in 1:length(split_data)) {
 legend("topright", legend = legend_labels, fill = color_vector, border = "black")
 ```
 
+
+#### Appendix A4
+
+```{r}
+# Split the data by 'am' variable
+split_data <- split(tb$mpg, tb$am)
+
+# Define the color vector
+color_vector <- c("blue", "black")
+
+# Define the legend labels
+legend_labels <- c("am = 0", "am = 1")
+
+# Create a cumulative density plot for each subset
+# Start with an empty plot with ranges accommodating both data sets
+plot(0, 0, xlim = range(mtcars$mpg), ylim = c(0, 1), type = "n", 
+     xlab = "Miles per gallon", ylab = "Cumulative Density", 
+     main = "CDFs of Mileage (mpg) for automatic, manual transmissions (am)")
+
+for (i in 1:length(split_data)) {
+  # Calculate empirical cumulative density function
+  ecdf_func <- ecdf(split_data[[i]])
+  
+  # Add CDF plot using curve function
+  curve(ecdf_func(x), 
+        from = min(split_data[[i]]), to = max(split_data[[i]]), 
+        col = color_vector[i], 
+        add = TRUE, 
+        lwd = 2) # line width
+}
+# Add legend to the plot
+legend("bottomright", legend = legend_labels, fill = color_vector, border = "black")
+```
