@@ -1,14 +1,12 @@
 # Continuous x Categorical data (1 of 2)
 
-*Aug 7, 2023*
+*Aug 9, 2023.*
 
 1.  THIS CHAPTER explains how to summarize and visualize *bivariate continuous data across categories*. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.
 
-2.  We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
+2.  We bring to light methods for generating statistics per group and  data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. We visualize such data by creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.
 
-3.  Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.
-
-4.  **Data**: Suppose we run the following code to prepare the `mtcars` data for subsequent analysis and save it in a tibble called `tb`.
+3.  **Data**: Suppose we run the following code to prepare the `mtcars` data for subsequent analysis and save it in a tibble called `tb`.
 
 ```{r, warning=FALSE}
 # Load the required libraries, suppressing annoying startup messages
@@ -30,13 +28,11 @@ attach(tb)
 
 ### Across one Category
 
--   R has a variety of functions that can be used to summarize continuous data split across a category.
-
--   We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
+-   We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`, to summarize continuous data split across a category.
 
 1.  **Using `aggregate()`**
 
--   We can use the `aggregate()` function to investigate the bivariate Relationship between Miles Per Gallon (`mpg`) and Cylinders (`cyl`). The following code will display a summary table showing the average mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
+-   We use the `aggregate()` function to investigate the bivariate relationship between mileage (`mpg`) and number of cylinders (`cyl`). The following code displays a summary table showing the average mileage of the cars broken down by number of cylinders (`cyl` = 4, 6, 8) using `aggregate()`.
 
 ```{r}
 agg <- aggregate(tb$mpg, 
@@ -46,33 +42,31 @@ names(agg) <- c("Cylinders", "Mean_mpg")
 agg
 ```
 
-2.  Discussion:
+2.  **Discussion**:
 
--   The first argument in `aggregate()` is `tb$mpg`, which is the data vector we want to apply the function to.
+-   The first argument in `aggregate()` is the data vector `tb$mpg`. 
 
--   The second argument, `by`, denotes a list of variables to group by. Here, we've supplied `tb$cyl`, implying that we wish to partition our data based on the unique values of `cyl`.
+-   The second argument, `by`, denotes a list of variables to group by. Here, we have supplied `tb$cyl`, since we wish to partition our data based on the unique values of `cyl`.
 
--   The third argument, `FUN`, is the function we want to apply to each subset of data. We are using `mean` here, meaning we're calculating the average mpg for each unique cyl value.
+-   The third argument, `FUN`, is the function we want to apply to each subset of data. We are using `mean` here, calculating the average mpg for each unique `cyl` value. We can alternately aggregate based on a variety of statistical functions including `sum`, `median`, `min`, `max`, `sd`, `var`, `length`, `IQR`.  
 
--   The output of `aggregate()` is saved in a new tibble named `agg`.
-
--   Finally, we utilize the `names()` function to rename the columns and display `agg`. \[1\]
+-   The output of `aggregate()` is saved in a new tibble named `agg`. We utilize the `names()` function to rename the columns and display `agg`. \[1\]
 
 3.  **Using `tapply()`**
 
--   The `tapply()` function is a convenient tool to apply a function to subsets of a vector, grouped by some factors.
+-   The `tapply()` function is another convenient tool to apply a function to subsets of a vector, grouped by some factors.
 
 ```{r}
 tapply(tb$mpg, tb$cyl, mean)
 ```
 
-4.  Discussion:
+4.  **Discussion**:
 
 -   In this code, `tapply(tb$mpg, tb$cyl, mean)` calculates the average miles per gallon (`mpg`) for each unique number of cylinders (`cyl`) within the `tb` tibble.
 
--   `tb\$mpg` represents the vector to which we want to apply the function.
+-   `tb$mpg` represents the vector to which we want to apply the function.
 
--   `tb\$cyl` serves as our grouping factor. We are partitioning our data based on the unique values within the `cyl` column in our `tb` tibble.
+-   `tb$cyl` serves as our grouping factor. 
 
 -   `mean` is the function that we're applying to each subset of our data.
 
@@ -89,19 +83,21 @@ stats0
 
 ```
 
-6.  Discussion:
+6.  **Discussion**:
 
 -   `describeBy(mpg, cyl)` computes descriptive statistics of miles per gallon `mpg` variable, broken down by the unique values in the number of cylinders (`cyl`).
 
--   It calculates statistics such as the mean, standard deviation, and quartiles for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
+-   It calculates statistics such as the mean, sd, median, for `mpg`, separately for each unique number of cylinders (`cyl`). \[2\]
+
+
 
 ### Across two Categories
 
 -   We extend the above discussion and study how to summarize continuous data split across **two** categories.
 
--   We review the use of the inbuilt functions (i) `aggregate()`; (ii) `tapply()`; and the function (iii) `describeBy()` from package `pysch`.
+-   We review the use of the inbuilt functions (i) `aggregate()` and the function (ii) `describeBy()` from package `pysch`. While the `tapply()` function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use.
 
-1.  **Using `aggregate()`**
+1.  Using **`aggregate()`**
 
 -   Distribution of Mileage (`mpg`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
@@ -113,7 +109,7 @@ names(agg2) <- c("Cylinders","Transmission","Mean_mpg")
 agg2
 ```
 
-2.  Discussion:
+2.  **Discussion**:
 
 -   In our code, the first argument of `aggregate()` is `tb$mpg`, indicating that we want to perform computations on the `mpg` variable.
 
@@ -121,7 +117,7 @@ agg2
 
 -   The `FUN` argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.
 
-3.  Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:
+3.  Using **`aggregate()`** for multiple continuous variables: Consider this extension of the above code for calculating the mean of three variables - `mpg`, `wt`, and `hp`, grouped by both am and cyl variables:
 
 -   Distribution of Mileage (`mpg`), Weight (`wt`), Horsepower (`hp`) by Cylinders (`cyl` = {4,6,8}) and Transmisson Type (`am` = {0,1})
 
@@ -133,21 +129,50 @@ names(agg3) <- c("Transmission","Cylinders","Mean_mpg","Mean_wt","Mean_hp")
 agg3
 ```
 
-4.  Discussion:
+4.  **Discussion**:
 
 -   In this code, the `aggregate()` function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of `am` and `cyl`.
 
 -   The sequence of the categorizing variables also varies - initially, the data is grouped by `cyl`, followed by a subdivision based on `am`.
 
-5.  **Using `tapply()`**
+5.  Using **`aggregate()`** with multiple functions: Consider an extension of the above code for calculating the mean and the SD of `mpg`, grouped by both `am` and `cyl` factor variables:
 
--   While the `tapply()` function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use.
+-   Distribution of Mileage (`mpg`), by Cylinders (`cyl` = {4,6,8}) and Transmission Type (`am` = {0,1})
 
-6.  **Using `describeBy()` from package `psych`**
 
--   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles.
+```{r}
+agg_mean <- aggregate(tb$mpg, 
+                      by = list(tb$cyl, tb$am), 
+                      FUN = mean)
+agg_sd <- aggregate(tb$mpg, 
+                    by = list(tb$cyl, tb$am), 
+                    FUN = sd)
+agg_median <- aggregate(tb$mpg, 
+                        by = list(tb$cyl, tb$am), 
+                        FUN = median)
 
--   Consider the following code:
+# Merge them together, two data frames at a time
+merged_data <- merge(agg_mean, agg_sd, by = c("Group.1", "Group.2"))
+merged_data <- merge(merged_data, agg_median, by = c("Group.1", "Group.2"))
+
+# Rename columns for clarity
+names(merged_data) <- c("Cylinders", "Transmission", "Mean_mpg", "SD_mpg", "Median_mpg")
+merged_data 
+```
+
+6. **Discussion**:
+
+* We analyze our dataset to comprehend the relationships between vehicle miles per gallon (`mpg`), number of cylinders (`cyl`), and type of transmission (`am`). 
+
+* Initially, we computed the mean, standard deviation, and median of `mpg` for every unique combination of `cyl` and `am`. 
+
+* After individual computations, we combined these results into a single, comprehensive data frame called `merged_data`. This structured dataset now clearly presents the average, variability, and median of fuel efficiency segmented by cylinder count and transmission type.
+
+
+
+7.  **Using `describeBy()` from package `psych`**
+
+-   The `describeBy()` function, part of the `psych` package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles. Consider the following code:
 
 ```{r}
 tb_columns <- tb[c("mpg", "wt", "hp")]
@@ -157,33 +182,116 @@ stats <- describeBy(tb_columns, tb_factors)
 print(stats)
 ```
 
-7.  Discussion:
+7.  **Discussion**:
 
--   We first specify a subset of the dataframe `tb` that includes only the columns `mpg`, `wt`, and `hp` and save it into a variable `tb_columns`.
+-   We specify a subset of the dataframe `tb` that includes only the columns of interest -- `mpg`, `wt`, and `hp` and save it into a variable `tb_columns`.
 
 -   Next, we create a list, `tb_factors`, that contains the factors `am` and `cyl`.
 
--   After that, we call the `describeBy()` function from the `psych` package. This function calculates descriptive statistics, such as mean, standard deviation, and median, for each combination of levels of the factors `am` and `cyl` and for each of the continouous variables `mpg`, `wt`, and `hp`.
+-   After that, we call the `describeBy()` function from the `psych` package. This function calculates descriptive statistics for each combination of levels of the factors `am` and `cyl` and for each of the continuous variables `mpg`, `wt`, and `hp`.
+
+
+
+
+
 
 ## Visualizing Continuous Data
 
 Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
 
-(i) Histograms;
+(i) Bee Swarm plots;
 
-(ii) PDF and CDF Density plots;
+(ii) Stem-and-Leaf plots;
 
-(iii) Box plots;
+(iii) Histograms;
 
-(iv) Bee Swarm plots;
+(iv) PDF and CDF Density plots;
 
-(v) Violin plots;
+(v) Box plots;
 
-(vi) Q-Q plots.
+(vi) Violin plots;
+
+(vii) Q-Q plots.
+
+
+
+### Bee Swarm Plot
+
+1.  We extend a Bee Swarm plot of a *one-dimensional scatter plot* for a continuous variable, split by a categorical variable. \[6\]
+
+2. Consider the following code, which generates a beeswarm plot displaying vehicle weights (`wt`) segmented by their number of cylinders (`cyl`):
+
+```{r}
+# Load the beeswarm package
+library(beeswarm)
+# Create a bee swarm plot of wt column split by cyl
+beeswarm(tb$wt ~ tb$cyl, 
+         main="Bee Swarm Plot of Weight (wt) by Number of Cylinders", 
+         xlab="Number of Cylinders",
+         ylab="Weight ('000 kg)",
+         pch=16,  # type of points
+         cex=0.8, # size of the points
+         col=c("blue","red","darkgreen"),
+         horizontal = TRUE)
+```
+
+3.  **Discussion**:
+
+
+- **Data**: We use tb$wt ~ tb$cyl to specify that we want a beeswarm plot for Weight (`wt`), split by no of cylinders (`cyl`), 
+
+- **Title**: It is labeled "Bee Swarm Plot of Weight (wt) by Number of Cylinders".
+
+- **Axes Labels**: The x-axis shows "Number of Cylinders", while the y-axis denotes "Weight ('000 kg)".
+
+- **Data Points**: Using `pch=16`, data points appear as solid circles.
+
+- **Size of Points**: With `cex=0.8`, these circles are slightly smaller than default.
+
+- **Colors**: The `col` parameter assigns colors ("blue", "red", and "dark green") based on cylinder counts.
+
+- **Orientation**: Set as horizontal with `horizontal=TRUE`.
+
+- To summarize, this visual distinguishes vehicle weights across cylinder counts and highlights data point densities for each group.
+
+
+
+
+### Stem-and-Leaf Plot across one Category
+
+1.  Suppose we wanted to visualize the distribution of a continuous variable across different levels of a categorical variable, using stem-and-leaf plots. 
+
+2. To illustrate, let us display vehicle weights (`wt`) separately for each transmission type (`am`) using stem-and-leaf plots.
+
+```{r warning=FALSE, message=FALSE}
+# Choose 'wt' and 'cyl' columns from 'tb' dataframe. Assign the result to 'tb3'.
+tb3 <- tb[, c("wt", "am")]
+
+# Split the 'tb3' tibble into subsets based on 'am'. Each subset consists of rows with the same 'am' value. Save the list of these subsets to 'tb_split'.
+tb_split <- split(tb3, tb3$am)
+
+# Apply a function to each subset of 'tb_split' using 'lapply()'. 
+# The function takes a subset 'x' and creates a stem-and-leaf plot of the 'wt' values in 'x'.
+lapply(tb_split, 
+       function(x) 
+         stem(x$wt))
+```
+
+3.  **Discussion**:
+
+* Column Selection: The code extracts the `wt` (weight) and `am` (transmission type) columns from `tb` and saves them in `tb3`.
+
+* Data Splitting: It then divides `tb3` into subsets based on `am` values, resulting in separate groups for each transmission type.
+
+* Visualization: Using `lapply()`, the code generates stem-and-leaf plots for the `wt` values in each subset, showcasing weight distributions for different transmission types. In this context, it shows the distribution of vehicle weights for each transmission type (automatic and manual).
+
+
+
+
 
 ### Histograms across one Category
 
-Visualizing histograms of car milegage (`mpg`) broken down by transmission (`am`=0,1)
+Visualizing histograms of car mileage (`mpg`) broken down by transmission (`am`=0,1)
 
 ```{r}
 # Split the data by 'am' variable
@@ -368,38 +476,18 @@ plotmeans(mpg ~ interaction(am, cyl, sep = ", ")
           )
 ```
 
-### Stem-and-Leaf Plot across one Category
-
-1.  The provided R code first selects the `mpg` and `cyl` columns from `tb,` then it segments the data into groups based on `cyl` values, and lastly, it generates a stem-and-leaf plot for the `mpg` values in each separate group.
-
-```{r warning=FALSE, message=FALSE}
-# Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.
-tb3 <- select(tb, mpg, cyl)
-
-# Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.
-tb_split <- split(tb3, tb3$cyl)
-
-# Apply a function to each subset of 'tb_split' using 'lapply()'. 
-# The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.
-lapply(tb_split, 
-       function(x) 
-         stem(x$mpg))
-```
-
-2.  Discussion:
-
--   `tb3 <- select(tb, mpg, cyl)`: In this line, we're using the `select()` function from the `dplyr` package to pick out the `mpg` and `cyl` columns from the tibble `tb`. We then store this newly created subset of the original tibble into a new tibble `tb3`.
-
--   `tb_split <- split(tb3, tb3$cyl)`: With the `split()` function, we're segmenting the `tb3` tibble into subsets based on the `cyl` column. This action groups all rows with identical `cyl` values together into the same subset. We then store this list of new, smaller tibbles as `tb_split`.
-
--   `lapply(tb_split, function(x) stem(x$mpg))`: Here we employ the `lapply()` function to apply a specified function to each element within a list. The function we've elected to apply is `function(x) stem(x$mpg)`, which plots a stem-and-leaf display for the mpg column of each tibble `x` in `tb_split`. As `tb_split` is a list of tibbles that have been grouped according to `cyl` values, this step will generate a separate stem-and-leaf plot for each group of `cyl` values.
 
 ## References
 
-\[1\] R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+\[1\] R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 
 Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Edition. Thousand Oaks CA: Sage.
 
 \[2\] Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.9. https://CRAN.R-project.org/package=psych
 
-\[10\] Chambers, J. M., Freeny, A. E., & Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp. 145--193). Pacific Grove, CA: Wadsworth & Brooks/Cole.
+\[3\] Chambers, J. M., Freeny, A. E., & Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp. 145--193). Pacific Grove, CA: Wadsworth & Brooks/Cole.
+
+
+## Appendix
+
+

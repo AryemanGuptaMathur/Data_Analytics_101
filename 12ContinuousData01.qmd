@@ -142,14 +142,14 @@ suppressPackageStartupMessages(library(psych))
 # A summary of 'mpg' using describe()
 describe(tb$mpg)
 ```
-4. Specific columns from `describe(tb$mpg)`
+
+4.  Specific columns from `describe(tb$mpg)`
 
 ```{r}
 # Select specific columns from describe(mpg)
 columns = c("n","mean","sd","median","min","max","skew","kurtosis")
 describe(tb$mpg)[, columns]
 ```
-
 
 ### Summarizing an entire dataframe or tibble
 
@@ -160,7 +160,7 @@ describe(tb$mpg)[, columns]
 summary(tb)
 ```
 
-2. **Discussion**
+2.  **Discussion**
 
 -   For numeric columns, `summary()` delivers a six-number summary that includes minimum, first quartile (Q1 or 25th percentile), median (Q2 or 50th percentile), mean, third quartile (Q3 or 75th percentile), and maximum. This gives a broad understanding of the central tendency and dispersion of the data within each numeric column.
 
@@ -174,19 +174,15 @@ columns = c("n","mean","sd","median","min","max","skew","kurtosis")
 describe(tb)[, columns]
 ```
 
-4. **Discussion:**
+4.  **Discussion:**
 
 -   The `describe()` function analyzes each column in the provided tibble individually and outputs a range of useful statistics. For numeric columns, it offers count, mean, standard deviation, trimmed mean, minimum and maximum values, range, skewness, and kurtosis among others.
 
 -   For non-numeric or factor columns, the `describe()` function still provides a count of elements but defaults to `NA` for the rest of the statistics, as these metrics are not applicable.
 
-
-
-
 ## Visualizing Univariate Continuous Data
 
 -   In our journey to explore and understand univariate continuous data, visualizations act as our valuable companions. Visual graphics provide us with an instant and clear understanding of the underlying data patterns and distributions that may otherwise be challenging to discern from raw numerical data.
-
 
 -   Let's take a closer look at some of the most effective ways of visualizing univariate continuous data, including
 
@@ -204,10 +200,9 @@ describe(tb)[, columns]
 
 (vii) Quantile-Quantile (Q-Q) Plots
 
-
 ### Bee Swarm Plot
 
-1.  A Bee Swarm plot is a *one-dimensional scatter plot* that reduces overlap and provides a better representation of the distribution of individual data points. This type of plot provides a more detailed view of the data, particularly for smaller data sets. [6]
+1.  A Bee Swarm plot is a *one-dimensional scatter plot* that reduces overlap and provides a better representation of the distribution of individual data points. This type of plot provides a more detailed view of the data, particularly for smaller data sets. \[6\]
 
 ```{r}
 # Load the beeswarm package
@@ -223,7 +218,7 @@ beeswarm(tb$wt,
          horizontal = TRUE)
 ```
 
-2. **Discussion**
+2.  **Discussion**
 
 -   In the above code, we load the `beeswarm` package using the `library()` function.
 
@@ -239,8 +234,6 @@ beeswarm(tb$wt,
 
 -   `horizontal = TRUE`: Renders it horizontally rather than the default vertical orientation.
 
-
-
 ### Stem-and-Leaf Plot
 
 1.  Stem-and-leaf plots serve as an efficient tool for visualizing the distribution of data, particularly when working with small to medium-sized datasets. The method involves breaking down each data point into a "stem" and a "leaf", with the "stem" representing the primary digit(s) and the "leaf" embodying the subsequent digit(s) \[7\]
@@ -255,15 +248,11 @@ stem(tb$wt)
 
 4.  This visual representation enables us to swiftly assess the data's distribution, the center, and the spread, in a fashion similar to a histogram. However, unlike a histogram, a stem-and-leaf plot retains the original data to a certain degree, providing more granular detail.
 
-
-
-
-
 ### Histogram
 
 1.  A histogram is a graphical representation showcasing the *frequency* of discrete or grouped data points within a dataset.
 
-2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin. 
+2.  It splits the data into equal-width bins, with the height of each bar matching the frequency of data points in each respective bin.
 
 3.  It serves as a valuable tool for demonstrating the distribution shape of the data. In R, we can construct a histogram using the `hist()` function and control its appearance. The final histogram visually depicts the frequency of `mpg` values in the dataset, where each bar represents the count of observations within a specific range of values. \[7\]
 
@@ -277,15 +266,14 @@ hist(tb$mpg,
      border="black")
 
 ```
-4. **Discussion:**
+
+4.  **Discussion:**
 
 -   This code generates a histogram of `mpg` using the `hist()` function. The `main` argument denotes the plot's title, while the `xlab` argument labels the x-axis.
 
 -   We use the `col` argument to specify the color of the histogram bars, and the `border` argument to determine the color of the bar borders.
 
 -   We can control the *number of bins* or the ranges of the bins in a histogram using the `breaks` argument inside the `hist()` function:
-
-
 
 5.  We can alternately specify the *ranges of the bins*:
 
@@ -298,20 +286,18 @@ hist(tb$mpg,
      col="lightblue", 
      border="black")
 ```
-6. **Discussion:**
+
+6.  **Discussion:**
 
 -   The breaks argument uses the `seq()` function to create a sequence of break points from 5 to 35, with a step of 5.
 
--   This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35. [7]
-
-
-
+-   This results in bins with ranges 5-10, 10-15, 15-20, 20-25, 25-30, and 30-35. \[7\]
 
 ### Probability Density Function (PDF) plot
 
-1.  Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset. [7]
+1.  Smoothed approximations of histograms are often represented by density plots, as they assist in offering an estimation of the underlying continuous probability distribution of a given dataset. \[7\]
 
-2.  Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset. [7]
+2.  Compared to histograms, these plots often present superior accuracy and aesthetic appeal, and they eliminate the need for arbitrary bin selection. A density plot shares several similarities with a histogram. However, instead of presenting the frequency of individual values, it conveys the probability density of the dataset. \[7\]
 
 ```{r, warning=FALSE}
 # Calculate density
@@ -335,11 +321,7 @@ polygon(dens, col = "lightblue", border = "black")
 
 -   Through the `polygon()` function, we determine the shaded color.
 
--   The final plot displays the probability density of `mpg` values, using the curve to signify the data distribution. [7]
-
-
-
-
+-   The final plot displays the probability density of `mpg` values, using the curve to signify the data distribution. \[7\]
 
 ### Cumulative Distribution Function (CDF) Plot
 
@@ -360,25 +342,24 @@ plot(ecdf(tb$mpg),
      )
 grid(col = "gray", lty = "dotted")  # Add a grid to the plot
 ```
-4. **Discussion:**
 
-* `ecdf(tb$mpg)`: The function `ecdf()` computes the empirical cumulative distribution function (CDF) for the mpg column from the `tb` data frame.
+4.  **Discussion:**
 
-* `plot(ecdf(tb$mpg))`: Plots the CDF of the mpg column.
+-   `ecdf(tb$mpg)`: The function `ecdf()` computes the empirical cumulative distribution function (CDF) for the mpg column from the `tb` data frame.
 
-* `main, xlab, ylab`: Set the title and axis labels.
+-   `plot(ecdf(tb$mpg))`: Plots the CDF of the mpg column.
 
-* `col = "blue"`: Colors the plot line blue; `lty = 2`: Uses a dashed line.
+-   `main, xlab, ylab`: Set the title and axis labels.
 
-* `grid(col = "gray", lty = "dotted")`: Adds a gray, dotted grid to the plot.
+-   `col = "blue"`: Colors the plot line blue; `lty = 2`: Uses a dashed line.
 
+-   `grid(col = "gray", lty = "dotted")`: Adds a gray, dotted grid to the plot.
 
+5.  Computing and Inversing CDF Values
 
-5. Computing and Inversing CDF Values
+-   The following code demonstrates how to determine the cumulative distribution function (CDF) value for a given `mpg` using `ecdf()` and how to find the `mpg` value corresponding to a specific CDF with `quantile()`.
 
-* The following code demonstrates how to determine the cumulative distribution function (CDF) value for a given `mpg` using `ecdf()` and how to find the `mpg` value corresponding to a specific CDF with `quantile()`.
-
-* Suppose we want to identify the CDF at `mpg = 20`, here is how we do it:
+-   Suppose we want to identify the CDF at `mpg = 20`, here is how we do it:
 
 ```{r}
 # Generate the empirical cumulative distribution function
@@ -388,16 +369,12 @@ ecdf_func <- ecdf(tb$mpg)
 ecdf_func(20)
 ```
 
-* If we're interested in knowing the `mpg` value that corresponds to a certain CDF value, the `quantile()` function comes to our aid. For instance, we can obtain the `mpg` value associated with a CDF of `0.6` as follows:
+-   If we're interested in knowing the `mpg` value that corresponds to a certain CDF value, the `quantile()` function comes to our aid. For instance, we can obtain the `mpg` value associated with a CDF of `0.6` as follows:
 
 ```{r}
 # Discover the mpg corresponding to CDF = 0.6
 quantile(tb$mpg, 0.6)
 ```
-
-
-
-
 
 ### Box Plot
 
@@ -423,13 +400,11 @@ boxplot(tb$wt,
 
 6.  Any points outside of the whiskers are considered outliers and are plotted individually.
 
-7. Discussion:
+7.  Discussion:
 
-* The above R code creates a horizontal light blue boxplot for the `wt` column of the `tb` data frame, titled "Boxplot of Weight (wt)", with the x-axis labeled "Weight ('000 kg)" and no y-axis label.
+-   The above R code creates a horizontal light blue boxplot for the `wt` column of the `tb` data frame, titled "Boxplot of Weight (wt)", with the x-axis labeled "Weight ('000 kg)" and no y-axis label.
 
-* `horizontal = TRUE`: Renders the boxplot horizontally rather than the default vertical orientation.
-
-
+-   `horizontal = TRUE`: Renders the boxplot horizontally rather than the default vertical orientation.
 
 ### Violin Plot
 
@@ -449,7 +424,8 @@ vioplot(tb$wt,
         xlab="Weight"
         )
 ```
-4. **Discussion**:
+
+4.  **Discussion**:
 
 -   In this code, the `vioplot()` function crafts a violin plot for the `wt` variable. We use the `main` argument to assign the plot's title and the `xlab` argument to designate the axis label.
 
@@ -457,10 +433,7 @@ vioplot(tb$wt,
 
 -   The plot also visualizes the boxplot and the median, quartiles, and any outliers present in the data.
 
-- `horizontal = TRUE`: Renders the violin plot horizontally rather than the default vertical orientation.
-
-
-
+-   `horizontal = TRUE`: Renders the violin plot horizontally rather than the default vertical orientation.
 
 ### Quantile-Quantile (Q-Q) Plot
 
@@ -481,12 +454,6 @@ qqline(tb$mpg)
 
 5.  This approach isn't limited to normal distributions. We can compare our data with other distributions too, which makes Q-Q plots a versatile tool for understanding our data.
 
-
-
-
-
-
-
 ## Summary of Chapter 12 -- Continuous Data (1 of 2)
 
 This section of the book examines continuous univariate data, focusing on single variables in the 'mtcars' dataset using R's dplyr and ggplot packages. We employ R's inherent functions and the 'modeest' package to compute the mean, median, and mode, alongside variability measures like range, variance, and standard deviation.
@@ -503,44 +470,34 @@ In sum, this chapter presents key R functions and techniques for visualizing con
 
 ## References
 
-\[1\]
-Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). Introduction to the Practice of Statistics. Freeman.
+\[1\] Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). Introduction to the Practice of Statistics. Freeman.
 
 Triola, M. (2017). Elementary Statistics. Pearson.
 
 Gravetter, F. J., & Wallnau, L. B. (2016). Statistics for the Behavioral Sciences. Cengage Learning.
 
-\[2\]
-Downey, A. B. (2014). Think Stats: Exploratory Data Analysis. O'Reilly Media.
+\[2\] Downey, A. B. (2014). Think Stats: Exploratory Data Analysis. O'Reilly Media.
 
-\[3\]
-Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
+\[3\] Field, A., Miles, J., & Field, Z. (2012). Discovering statistics using R. Sage Publications.
 
 R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
 
-\[4\]
-Bogaert, P. (2021). "A Comparison of Kernel Density Estimators." Computational Statistics & Data Analysis, 77, 402-413.
+\[4\] Bogaert, P. (2021). "A Comparison of Kernel Density Estimators." Computational Statistics & Data Analysis, 77, 402-413.
 
-\[5\]
-Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.12, https://CRAN.R-project.org/package=psych.
+\[5\] Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.12, https://CRAN.R-project.org/package=psych.
 
 Tukey, J. W. (1977). Exploratory data analysis. Addison-Wesley.
 
-\[6\]
-Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
+\[6\] Ellis, K. (2011). Beeswarm: The Bee Swarm Plot, an Alternative to Stripchart. R package version 0.2.3.
 
 Hyndman, R. J., & Fan, Y. (1996). Sample quantiles in statistical packages. The American Statistician, 50(4), 361-365.
 
-\[7\]
-Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
+\[7\] Scott, D. W. (1979). On optimal and data-based histograms. Biometrika, 66(3), 605-610.
 
 Wand, M. P., & Jones, M. C. (1995). Kernel Smoothing. Chapman and Hall/CRC.
 
-\[8\]
-McGill, R., Tukey, J. W., & Larsen, W. A. (1978). Variations of Box Plots. The American Statistician, 32(1), 12-16.
+\[8\] McGill, R., Tukey, J. W., & Larsen, W. A. (1978). Variations of Box Plots. The American Statistician, 32(1), 12-16.
 
-\[9\]
-Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
+\[9\] Hintze, J. L., & Nelson, R. D. (1998). Violin Plots: A Box Plot-Density Trace Synergism. The American Statistician, 52(2), 181-184.
 
-\[10\]
-Thode Jr, H. C. (2002). Testing for normality. CRC press.
+\[10\] Thode Jr, H. C. (2002). Testing for normality. CRC press.

@@ -93,6 +93,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -260,12 +262,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Continuous x Continous data (2 of 2)</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./18LiveCase03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Live Case: S&amp;P500 (3 of 3)</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -287,15 +283,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#visualizing-continuous-data" id="toc-visualizing-continuous-data" class="nav-link" data-scroll-target="#visualizing-continuous-data">Visualizing Continuous Data</a>
   <ul class="collapse">
+  <li><a href="#bee-swarm-plot" id="toc-bee-swarm-plot" class="nav-link" data-scroll-target="#bee-swarm-plot">Bee Swarm Plot</a></li>
+  <li><a href="#stem-and-leaf-plot-across-one-category" id="toc-stem-and-leaf-plot-across-one-category" class="nav-link" data-scroll-target="#stem-and-leaf-plot-across-one-category">Stem-and-Leaf Plot across one Category</a></li>
   <li><a href="#histograms-across-one-category" id="toc-histograms-across-one-category" class="nav-link" data-scroll-target="#histograms-across-one-category">Histograms across one Category</a></li>
   <li><a href="#probability-density-function-pdf-across-one-category" id="toc-probability-density-function-pdf-across-one-category" class="nav-link" data-scroll-target="#probability-density-function-pdf-across-one-category">Probability Density Function (PDF) across one Category</a></li>
   <li><a href="#cumulative-density-function-cdf-across-one-category" id="toc-cumulative-density-function-cdf-across-one-category" class="nav-link" data-scroll-target="#cumulative-density-function-cdf-across-one-category">Cumulative Density Function (CDF) across one Category</a></li>
   <li><a href="#box-plots-across-one-category" id="toc-box-plots-across-one-category" class="nav-link" data-scroll-target="#box-plots-across-one-category">Box Plots across one Category</a></li>
   <li><a href="#means-plot-across-one-category" id="toc-means-plot-across-one-category" class="nav-link" data-scroll-target="#means-plot-across-one-category">Means Plot across one Category</a></li>
   <li><a href="#means-plot-across-two-categories" id="toc-means-plot-across-two-categories" class="nav-link" data-scroll-target="#means-plot-across-two-categories">Means Plot across two Categories</a></li>
-  <li><a href="#stem-and-leaf-plot-across-one-category" id="toc-stem-and-leaf-plot-across-one-category" class="nav-link" data-scroll-target="#stem-and-leaf-plot-across-one-category">Stem-and-Leaf Plot across one Category</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="14ContinuousData03.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -307,11 +305,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="continuous-x-categorical-data-1-of-2" class="level1">
 <h1>Continuous x Categorical data (1 of 2)</h1>
-<p><em>Aug 7, 2023</em></p>
+<p><em>Aug 9, 2023.</em></p>
 <ol type="1">
 <li><p>THIS CHAPTER explains how to summarize and visualize <em>bivariate continuous data across categories</em>. Here, we delve into the intersection of continuous data and categorical variables, examining how the former can be split, summarized, and compared across different levels of one or more categorical variables.</p></li>
-<li><p>We bring to light methods for generating statistics per group and sophisticated data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. When it comes to visualizations, our focus shifts towards creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p></li>
-<li><p>Incorporating categorical variables into our analysis elevates the depth of our comprehension of the data. It allows us to shift from a broad, holistic view to a more concentrated inspection of specific data segments. This approach empowers us to produce a more granular and nuanced interpretation of our data.</p></li>
+<li><p>We bring to light methods for generating statistics per group and data manipulation techniques. This includes processes like grouping, filtering, and summarizing continuous data, contingent on categorical variables. We visualize such data by creating juxtaposed box plots, segmented histograms, and density plots that reveal the distribution of continuous data across varied categories.</p></li>
 <li><p><strong>Data</strong>: Suppose we run the following code to prepare the <code>mtcars</code> data for subsequent analysis and save it in a tibble called <code>tb</code>.</p></li>
 </ol>
 <div class="cell">
@@ -334,14 +331,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="across-one-category" class="level3">
 <h3 class="anchored" data-anchor-id="across-one-category">Across one Category</h3>
 <ul>
-<li><p>R has a variety of functions that can be used to summarize continuous data split across a category.</p></li>
-<li><p>We review the use of the inbuilt functions (i) <code>aggregate()</code>; (ii) <code>tapply()</code>; and the function (iii) <code>describeBy()</code> from package <code>pysch</code>.</p></li>
+<li>We review the use of the inbuilt functions (i) <code>aggregate()</code>; (ii) <code>tapply()</code>; and the function (iii) <code>describeBy()</code> from package <code>pysch</code>, to summarize continuous data split across a category.</li>
 </ul>
 <ol type="1">
 <li><strong>Using <code>aggregate()</code></strong></li>
 </ol>
 <ul>
-<li>We can use the <code>aggregate()</code> function to investigate the bivariate Relationship between Miles Per Gallon (<code>mpg</code>) and Cylinders (<code>cyl</code>). The following code will display a summary table showing the average mileage of the cars broken down by number of cylinders (<code>cyl</code> = 4, 6, 8) using <code>aggregate()</code>.</li>
+<li>We use the <code>aggregate()</code> function to investigate the bivariate relationship between mileage (<code>mpg</code>) and number of cylinders (<code>cyl</code>). The following code displays a summary table showing the average mileage of the cars broken down by number of cylinders (<code>cyl</code> = 4, 6, 8) using <code>aggregate()</code>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
@@ -357,20 +353,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ol start="2" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
-<li><p>The first argument in <code>aggregate()</code> is <code>tb$mpg</code>, which is the data vector we want to apply the function to.</p></li>
-<li><p>The second argument, <code>by</code>, denotes a list of variables to group by. Here, we’ve supplied <code>tb$cyl</code>, implying that we wish to partition our data based on the unique values of <code>cyl</code>.</p></li>
-<li><p>The third argument, <code>FUN</code>, is the function we want to apply to each subset of data. We are using <code>mean</code> here, meaning we’re calculating the average mpg for each unique cyl value.</p></li>
-<li><p>The output of <code>aggregate()</code> is saved in a new tibble named <code>agg</code>.</p></li>
-<li><p>Finally, we utilize the <code>names()</code> function to rename the columns and display <code>agg</code>. [1]</p></li>
+<li><p>The first argument in <code>aggregate()</code> is the data vector <code>tb$mpg</code>.</p></li>
+<li><p>The second argument, <code>by</code>, denotes a list of variables to group by. Here, we have supplied <code>tb$cyl</code>, since we wish to partition our data based on the unique values of <code>cyl</code>.</p></li>
+<li><p>The third argument, <code>FUN</code>, is the function we want to apply to each subset of data. We are using <code>mean</code> here, calculating the average mpg for each unique <code>cyl</code> value. We can alternately aggregate based on a variety of statistical functions including <code>sum</code>, <code>median</code>, <code>min</code>, <code>max</code>, <code>sd</code>, <code>var</code>, <code>length</code>, <code>IQR</code>.</p></li>
+<li><p>The output of <code>aggregate()</code> is saved in a new tibble named <code>agg</code>. We utilize the <code>names()</code> function to rename the columns and display <code>agg</code>. [1]</p></li>
 </ul>
 <ol start="3" type="1">
 <li><strong>Using <code>tapply()</code></strong></li>
 </ol>
 <ul>
-<li>The <code>tapply()</code> function is a convenient tool to apply a function to subsets of a vector, grouped by some factors.</li>
+<li>The <code>tapply()</code> function is another convenient tool to apply a function to subsets of a vector, grouped by some factors.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>cyl, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -380,12 +375,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ol start="4" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
 <li><p>In this code, <code>tapply(tb$mpg, tb$cyl, mean)</code> calculates the average miles per gallon (<code>mpg</code>) for each unique number of cylinders (<code>cyl</code>) within the <code>tb</code> tibble.</p></li>
-<li><p><code>tb\$mpg</code> represents the vector to which we want to apply the function.</p></li>
-<li><p><code>tb\$cyl</code> serves as our grouping factor. We are partitioning our data based on the unique values within the <code>cyl</code> column in our <code>tb</code> tibble.</p></li>
+<li><p><code>tb$mpg</code> represents the vector to which we want to apply the function.</p></li>
+<li><p><code>tb$cyl</code> serves as our grouping factor.</p></li>
 <li><p><code>mean</code> is the function that we’re applying to each subset of our data.</p></li>
 <li><p>The result will be a vector where each element is the average <code>mpg</code> for a unique number of cylinders (<code>cyl</code>), as determined by the unique values of <code>tb$cyl</code>. [1]</p></li>
 </ul>
@@ -416,21 +411,21 @@ X1    1 14 15.1 2.56   15.2   15.15 1.56 10.4 19.2   8.8 -0.36    -0.57 0.68</co
 </div>
 </div>
 <ol start="6" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
 <li><p><code>describeBy(mpg, cyl)</code> computes descriptive statistics of miles per gallon <code>mpg</code> variable, broken down by the unique values in the number of cylinders (<code>cyl</code>).</p></li>
-<li><p>It calculates statistics such as the mean, standard deviation, and quartiles for <code>mpg</code>, separately for each unique number of cylinders (<code>cyl</code>). [2]</p></li>
+<li><p>It calculates statistics such as the mean, sd, median, for <code>mpg</code>, separately for each unique number of cylinders (<code>cyl</code>). [2]</p></li>
 </ul>
 </section>
 <section id="across-two-categories" class="level3">
 <h3 class="anchored" data-anchor-id="across-two-categories">Across two Categories</h3>
 <ul>
 <li><p>We extend the above discussion and study how to summarize continuous data split across <strong>two</strong> categories.</p></li>
-<li><p>We review the use of the inbuilt functions (i) <code>aggregate()</code>; (ii) <code>tapply()</code>; and the function (iii) <code>describeBy()</code> from package <code>pysch</code>.</p></li>
+<li><p>We review the use of the inbuilt functions (i) <code>aggregate()</code> and the function (ii) <code>describeBy()</code> from package <code>pysch</code>. While the <code>tapply()</code> function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use.</p></li>
 </ul>
 <ol type="1">
-<li><strong>Using <code>aggregate()</code></strong></li>
+<li>Using <strong><code>aggregate()</code></strong></li>
 </ol>
 <ul>
 <li>Distribution of Mileage (<code>mpg</code>) by Cylinders (<code>cyl</code> = {4,6,8}) and Transmisson Type (<code>am</code> = {0,1})</li>
@@ -452,7 +447,7 @@ X1    1 14 15.1 2.56   15.2   15.15 1.56 10.4 19.2   8.8 -0.36    -0.57 0.68</co
 </div>
 </div>
 <ol start="2" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
 <li><p>In our code, the first argument of <code>aggregate()</code> is <code>tb$mpg</code>, indicating that we want to perform computations on the <code>mpg</code> variable.</p></li>
@@ -460,7 +455,7 @@ X1    1 14 15.1 2.56   15.2   15.15 1.56 10.4 19.2   8.8 -0.36    -0.57 0.68</co
 <li><p>The <code>FUN</code> argument indicates the function to be applied to each subset of our data. Here, we use mean, meaning that we compute the mean mpg for each group.</p></li>
 </ul>
 <ol start="3" type="1">
-<li>Consider this extension of the above code for calculating the mean of three variables - mpg, wt, and hp, grouped by both am and cyl variables:</li>
+<li>Using <strong><code>aggregate()</code></strong> for multiple continuous variables: Consider this extension of the above code for calculating the mean of three variables - <code>mpg</code>, <code>wt</code>, and <code>hp</code>, grouped by both am and cyl variables:</li>
 </ol>
 <ul>
 <li>Distribution of Mileage (<code>mpg</code>), Weight (<code>wt</code>), Horsepower (<code>hp</code>) by Cylinders (<code>cyl</code> = {4,6,8}) and Transmisson Type (<code>am</code> = {0,1})</li>
@@ -482,31 +477,66 @@ X1    1 14 15.1 2.56   15.2   15.15 1.56 10.4 19.2   8.8 -0.36    -0.57 0.68</co
 </div>
 </div>
 <ol start="4" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
 <li><p>In this code, the <code>aggregate()</code> function takes a list of the three variables as its first argument, indicating that the mean should be calculated for each of these variables separately within each combination of <code>am</code> and <code>cyl</code>.</p></li>
 <li><p>The sequence of the categorizing variables also varies - initially, the data is grouped by <code>cyl</code>, followed by a subdivision based on <code>am</code>.</p></li>
 </ul>
 <ol start="5" type="1">
-<li><strong>Using <code>tapply()</code></strong></li>
+<li>Using <strong><code>aggregate()</code></strong> with multiple functions: Consider an extension of the above code for calculating the mean and the SD of <code>mpg</code>, grouped by both <code>am</code> and <code>cyl</code> factor variables:</li>
 </ol>
 <ul>
-<li>While the <code>tapply()</code> function can theoretically be employed for this task, the resulting code tends to be long and lacks efficiency. Therefore, we opt to exclude it from practical use.</li>
+<li>Distribution of Mileage (<code>mpg</code>), by Cylinders (<code>cyl</code> = {4,6,8}) and Transmission Type (<code>am</code> = {0,1})</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>agg_mean <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am), </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">FUN =</span> mean)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>agg_sd <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am), </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">FUN =</span> sd)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>agg_median <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(tb<span class="sc">$</span>mpg, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">by =</span> <span class="fu">list</span>(tb<span class="sc">$</span>cyl, tb<span class="sc">$</span>am), </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">FUN =</span> median)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge them together, two data frames at a time</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(agg_mean, agg_sd, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Group.1"</span>, <span class="st">"Group.2"</span>))</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>merged_data <span class="ot">&lt;-</span> <span class="fu">merge</span>(merged_data, agg_median, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Group.1"</span>, <span class="st">"Group.2"</span>))</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for clarity</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(merged_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cylinders"</span>, <span class="st">"Transmission"</span>, <span class="st">"Mean_mpg"</span>, <span class="st">"SD_mpg"</span>, <span class="st">"Median_mpg"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>merged_data </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Cylinders Transmission Mean_mpg    SD_mpg Median_mpg
+1         4            0 22.90000 1.4525839      22.80
+2         4            1 28.07500 4.4838599      28.85
+3         6            0 19.12500 1.6317169      18.65
+4         6            1 20.56667 0.7505553      21.00
+5         8            0 15.05000 2.7743959      15.20
+6         8            1 15.40000 0.5656854      15.40</code></pre>
+</div>
+</div>
 <ol start="6" type="1">
+<li><strong>Discussion</strong>:</li>
+</ol>
+<ul>
+<li><p>We analyze our dataset to comprehend the relationships between vehicle miles per gallon (<code>mpg</code>), number of cylinders (<code>cyl</code>), and type of transmission (<code>am</code>).</p></li>
+<li><p>Initially, we computed the mean, standard deviation, and median of <code>mpg</code> for every unique combination of <code>cyl</code> and <code>am</code>.</p></li>
+<li><p>After individual computations, we combined these results into a single, comprehensive data frame called <code>merged_data</code>. This structured dataset now clearly presents the average, variability, and median of fuel efficiency segmented by cylinder count and transmission type.</p></li>
+</ul>
+<ol start="7" type="1">
 <li><strong>Using <code>describeBy()</code> from package <code>psych</code></strong></li>
 </ol>
 <ul>
-<li><p>The <code>describeBy()</code> function, part of the <code>psych</code> package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles.</p></li>
-<li><p>Consider the following code:</p></li>
+<li>The <code>describeBy()</code> function, part of the <code>psych</code> package, can be used to compute descriptive statistics of continuous variable, broken down by levels of a two categorical varaibles. Consider the following code:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tb_columns <span class="ot">&lt;-</span> tb[<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="st">"hp"</span>)]</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tb_factors <span class="ot">&lt;-</span> <span class="fu">list</span>(tb<span class="sc">$</span>am, tb<span class="sc">$</span>cyl)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use describeBy()</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">describeBy</span>(tb_columns, tb_factors)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tb_columns <span class="ot">&lt;-</span> tb[<span class="fu">c</span>(<span class="st">"mpg"</span>, <span class="st">"wt"</span>, <span class="st">"hp"</span>)]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tb_factors <span class="ot">&lt;-</span> <span class="fu">list</span>(tb<span class="sc">$</span>am, tb<span class="sc">$</span>cyl)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use describeBy()</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>stats <span class="ot">&lt;-</span> <span class="fu">describeBy</span>(tb_columns, tb_factors)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Descriptive statistics by group 
@@ -578,12 +608,12 @@ hp  35.5</code></pre>
 </div>
 </div>
 <ol start="7" type="1">
-<li>Discussion:</li>
+<li><strong>Discussion</strong>:</li>
 </ol>
 <ul>
-<li><p>We first specify a subset of the dataframe <code>tb</code> that includes only the columns <code>mpg</code>, <code>wt</code>, and <code>hp</code> and save it into a variable <code>tb_columns</code>.</p></li>
+<li><p>We specify a subset of the dataframe <code>tb</code> that includes only the columns of interest – <code>mpg</code>, <code>wt</code>, and <code>hp</code> and save it into a variable <code>tb_columns</code>.</p></li>
 <li><p>Next, we create a list, <code>tb_factors</code>, that contains the factors <code>am</code> and <code>cyl</code>.</p></li>
-<li><p>After that, we call the <code>describeBy()</code> function from the <code>psych</code> package. This function calculates descriptive statistics, such as mean, standard deviation, and median, for each combination of levels of the factors <code>am</code> and <code>cyl</code> and for each of the continouous variables <code>mpg</code>, <code>wt</code>, and <code>hp</code>.</p></li>
+<li><p>After that, we call the <code>describeBy()</code> function from the <code>psych</code> package. This function calculates descriptive statistics for each combination of levels of the factors <code>am</code> and <code>cyl</code> and for each of the continuous variables <code>mpg</code>, <code>wt</code>, and <code>hp</code>.</p></li>
 </ul>
 </section>
 </section>
@@ -591,38 +621,128 @@ hp  35.5</code></pre>
 <h2 class="anchored" data-anchor-id="visualizing-continuous-data">Visualizing Continuous Data</h2>
 <p>Let’s take a closer look at some of the most effective ways of visualizing univariate continuous data, including</p>
 <ol type="i">
+<li><p>Bee Swarm plots;</p></li>
+<li><p>Stem-and-Leaf plots;</p></li>
 <li><p>Histograms;</p></li>
 <li><p>PDF and CDF Density plots;</p></li>
 <li><p>Box plots;</p></li>
-<li><p>Bee Swarm plots;</p></li>
 <li><p>Violin plots;</p></li>
 <li><p>Q-Q plots.</p></li>
 </ol>
+<section id="bee-swarm-plot" class="level3">
+<h3 class="anchored" data-anchor-id="bee-swarm-plot">Bee Swarm Plot</h3>
+<ol type="1">
+<li><p>We extend a Bee Swarm plot of a <em>one-dimensional scatter plot</em> for a continuous variable, split by a categorical variable. [6]</p></li>
+<li><p>Consider the following code, which generates a beeswarm plot displaying vehicle weights (<code>wt</code>) segmented by their number of cylinders (<code>cyl</code>):</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the beeswarm package</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(beeswarm)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bee swarm plot of wt column split by cyl</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">beeswarm</span>(tb<span class="sc">$</span>wt <span class="sc">~</span> tb<span class="sc">$</span>cyl, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">main=</span><span class="st">"Bee Swarm Plot of Weight (wt) by Number of Cylinders"</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">"Number of Cylinders"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">"Weight ('000 kg)"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>,  <span class="co"># type of points</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">cex=</span><span class="fl">0.8</span>, <span class="co"># size of the points</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">col=</span><span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"darkgreen"</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Discussion</strong>:</li>
+</ol>
+<ul>
+<li><p><strong>Data</strong>: We use tb<span class="math inline">\(wt ~ tb\)</span>cyl to specify that we want a beeswarm plot for Weight (<code>wt</code>), split by no of cylinders (<code>cyl</code>),</p></li>
+<li><p><strong>Title</strong>: It is labeled “Bee Swarm Plot of Weight (wt) by Number of Cylinders”.</p></li>
+<li><p><strong>Axes Labels</strong>: The x-axis shows “Number of Cylinders”, while the y-axis denotes “Weight (’000 kg)”.</p></li>
+<li><p><strong>Data Points</strong>: Using <code>pch=16</code>, data points appear as solid circles.</p></li>
+<li><p><strong>Size of Points</strong>: With <code>cex=0.8</code>, these circles are slightly smaller than default.</p></li>
+<li><p><strong>Colors</strong>: The <code>col</code> parameter assigns colors (“blue”, “red”, and “dark green”) based on cylinder counts.</p></li>
+<li><p><strong>Orientation</strong>: Set as horizontal with <code>horizontal=TRUE</code>.</p></li>
+<li><p>To summarize, this visual distinguishes vehicle weights across cylinder counts and highlights data point densities for each group.</p></li>
+</ul>
+</section>
+<section id="stem-and-leaf-plot-across-one-category" class="level3">
+<h3 class="anchored" data-anchor-id="stem-and-leaf-plot-across-one-category">Stem-and-Leaf Plot across one Category</h3>
+<ol type="1">
+<li><p>Suppose we wanted to visualize the distribution of a continuous variable across different levels of a categorical variable, using stem-and-leaf plots.</p></li>
+<li><p>To illustrate, let us display vehicle weights (<code>wt</code>) separately for each transmission type (<code>am</code>) using stem-and-leaf plots.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose 'wt' and 'cyl' columns from 'tb' dataframe. Assign the result to 'tb3'.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tb3 <span class="ot">&lt;-</span> tb[, <span class="fu">c</span>(<span class="st">"wt"</span>, <span class="st">"am"</span>)]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the 'tb3' tibble into subsets based on 'am'. Each subset consists of rows with the same 'am' value. Save the list of these subsets to 'tb_split'.</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>tb_split <span class="ot">&lt;-</span> <span class="fu">split</span>(tb3, tb3<span class="sc">$</span>am)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a function to each subset of 'tb_split' using 'lapply()'. </span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The function takes a subset 'x' and creates a stem-and-leaf plot of the 'wt' values in 'x'.</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(tb_split, </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x) </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stem</span>(x<span class="sc">$</span>wt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  The decimal point is at the |
+
+  2 | 5
+  3 | 22244445567888
+  4 | 1
+  5 | 334
+
+
+  The decimal point is at the |
+
+  1 | 5689
+  2 | 123
+  2 | 6889
+  3 | 2
+  3 | 6</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`0`
+NULL
+
+$`1`
+NULL</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li><strong>Discussion</strong>:</li>
+</ol>
+<ul>
+<li><p>Column Selection: The code extracts the <code>wt</code> (weight) and <code>am</code> (transmission type) columns from <code>tb</code> and saves them in <code>tb3</code>.</p></li>
+<li><p>Data Splitting: It then divides <code>tb3</code> into subsets based on <code>am</code> values, resulting in separate groups for each transmission type.</p></li>
+<li><p>Visualization: Using <code>lapply()</code>, the code generates stem-and-leaf plots for the <code>wt</code> values in each subset, showcasing weight distributions for different transmission types. In this context, it shows the distribution of vehicle weights for each transmission type (automatic and manual).</p></li>
+</ul>
+</section>
 <section id="histograms-across-one-category" class="level3">
 <h3 class="anchored" data-anchor-id="histograms-across-one-category">Histograms across one Category</h3>
-<p>Visualizing histograms of car milegage (<code>mpg</code>) broken down by transmission (<code>am</code>=0,1)</p>
+<p>Visualizing histograms of car mileage (<code>mpg</code>) broken down by transmission (<code>am</code>=0,1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1-row 2-column layout</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram for each subset</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(split_data[[i]], </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Histogram of mpg for am ="</span>, i <span class="sc">-</span> <span class="dv">1</span>), </span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="co"># This creates bins with ranges 10-15, 15-20, etc.</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, </span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> color_vector[i], <span class="co"># Use the color vector, </span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">"black"</span>,</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1-row 2-column layout</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram for each subset</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(split_data[[i]], </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Histogram of mpg for am ="</span>, i <span class="sc">-</span> <span class="dv">1</span>), </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">35</span>, <span class="at">by =</span> <span class="dv">5</span>), <span class="co"># This creates bins with ranges 10-15, 15-20, etc.</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, </span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> color_vector[i], <span class="co"># Use the color vector, </span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
@@ -630,108 +750,108 @@ hp  35.5</code></pre>
 <h3 class="anchored" data-anchor-id="probability-density-function-pdf-across-one-category">Probability Density Function (PDF) across one Category</h3>
 <p>Visualizing Probability Density Function (PDF) of car milegage (<code>mpg</code>) broken down by transmission (<code>am</code>=0,1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1-row 2-column layout</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot for each subset</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate density</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  dens <span class="ot">&lt;-</span> <span class="fu">density</span>(split_data[[i]])</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot density</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(dens, </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"PDF of mpg for am ="</span>, i <span class="sc">-</span> <span class="dv">1</span>), </span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, </span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> color_vector[i], </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">"black"</span>,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>), <span class="co"># Adjust this value if necessary</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a polygon to fill under the density curve</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(dens, <span class="at">col =</span> color_vector[i], <span class="at">border =</span> <span class="st">"black"</span>)</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a 1-row 2-column layout</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot for each subset</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate density</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  dens <span class="ot">&lt;-</span> <span class="fu">density</span>(split_data[[i]])</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot density</span></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(dens, </span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"PDF of mpg for am ="</span>, i <span class="sc">-</span> <span class="dv">1</span>), </span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, </span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> color_vector[i], </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>), <span class="co"># Adjust this value if necessary</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a polygon to fill under the density curve</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(dens, <span class="at">col =</span> color_vector[i], <span class="at">border =</span> <span class="st">"black"</span>)</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <ul>
 <li>We can alternately draw overlapping PDFs on the same plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the legend labels</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>legend_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"am = 0"</span>, <span class="st">"am = 1"</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot for each subset</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with an empty plot with ranges accommodating both data sets</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">range</span>(tb<span class="sc">$</span>mpg), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>), <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>, </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"PDFs of Mileage (mpg) for automatic, manual transmissions (am)"</span>)</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate density</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  dens <span class="ot">&lt;-</span> <span class="fu">density</span>(split_data[[i]])</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add density plot</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(dens, </span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> color_vector[i], </span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a polygon to fill under the density curve</span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(dens, <span class="at">col =</span> <span class="fu">adjustcolor</span>(color_vector[i], <span class="at">alpha.f =</span> <span class="fl">0.8</span>), <span class="at">border =</span> <span class="st">"black"</span>)</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot</span></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> legend_labels, <span class="at">fill =</span> color_vector, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"skyblue"</span>, <span class="st">"gold"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the legend labels</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>legend_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"am = 0"</span>, <span class="st">"am = 1"</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a density plot for each subset</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with an empty plot with ranges accommodating both data sets</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">range</span>(tb<span class="sc">$</span>mpg), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>), <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"PDFs of Mileage (mpg) for automatic, manual transmissions (am)"</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate density</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  dens <span class="ot">&lt;-</span> <span class="fu">density</span>(split_data[[i]])</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add density plot</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(dens, </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> color_vector[i], </span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a polygon to fill under the density curve</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">polygon</span>(dens, <span class="at">col =</span> <span class="fu">adjustcolor</span>(color_vector[i], <span class="at">alpha.f =</span> <span class="fl">0.8</span>), <span class="at">border =</span> <span class="st">"black"</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend =</span> legend_labels, <span class="at">fill =</span> color_vector, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
 <section id="cumulative-density-function-cdf-across-one-category" class="level3">
 <h3 class="anchored" data-anchor-id="cumulative-density-function-cdf-across-one-category">Cumulative Density Function (CDF) across one Category</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"black"</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the legend labels</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>legend_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"am = 0"</span>, <span class="st">"am = 1"</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cumulative density plot for each subset</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with an empty plot with ranges accommodating both data sets</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">range</span>(mtcars<span class="sc">$</span>mpg), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">"n"</span>, </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, <span class="at">ylab =</span> <span class="st">"Cumulative Density"</span>, </span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CDFs of Mileage (mpg) for automatic, manual transmissions (am)"</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate empirical cumulative density function</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  ecdf_func <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(split_data[[i]])</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add CDF plot using curve function</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">ecdf_func</span>(x), </span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">from =</span> <span class="fu">min</span>(split_data[[i]]), <span class="at">to =</span> <span class="fu">max</span>(split_data[[i]]), </span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> color_vector[i], </span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">add =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> legend_labels, <span class="at">fill =</span> color_vector, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data by 'am' variable</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>split_data <span class="ot">&lt;-</span> <span class="fu">split</span>(tb<span class="sc">$</span>mpg, tb<span class="sc">$</span>am)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the color vector</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>color_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"black"</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the legend labels</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>legend_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"am = 0"</span>, <span class="st">"am = 1"</span>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cumulative density plot for each subset</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Start with an empty plot with ranges accommodating both data sets</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">xlim =</span> <span class="fu">range</span>(mtcars<span class="sc">$</span>mpg), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Miles per gallon"</span>, <span class="at">ylab =</span> <span class="st">"Cumulative Density"</span>, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CDFs of Mileage (mpg) for automatic, manual transmissions (am)"</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(split_data)) {</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate empirical cumulative density function</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  ecdf_func <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(split_data[[i]])</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add CDF plot using curve function</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">ecdf_func</span>(x), </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">from =</span> <span class="fu">min</span>(split_data[[i]]), <span class="at">to =</span> <span class="fu">max</span>(split_data[[i]]), </span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> color_vector[i], </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">add =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># line width</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>, <span class="at">legend =</span> legend_labels, <span class="at">fill =</span> color_vector, <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
@@ -739,19 +859,19 @@ hp  35.5</code></pre>
 <h3 class="anchored" data-anchor-id="box-plots-across-one-category">Box Plots across one Category</h3>
 <p>Visualizing Median using Box Plot – median weight of the cars broken down by cylinders (<code>cyl</code>=4,6,8)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">~</span>cyl,</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg) by Cylinders"</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"gold"</span>,<span class="st">"skyblue"</span>,<span class="st">"lightpink"</span>),</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mpg<span class="sc">~</span>cyl,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Miles Per Gallon (mpg) by Cylinders"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Mileage (mpg)"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"gold"</span>,<span class="st">"skyblue"</span>,<span class="st">"lightpink"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">horizontal =</span> <span class="cn">TRUE</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'ggplot2'</code></pre>
@@ -766,19 +886,19 @@ Attaching package: 'ggplot2'</code></pre>
 
     mpg</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the beeswarm plot</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>() <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bee Swarm plot of Miles Per Gallon (mpg) by Cylinders"</span>,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mileage (mpg)"</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the beeswarm plot</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tb, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> cyl, </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>() <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bee Swarm plot of Miles Per Gallon (mpg) by Cylinders"</span>,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cylinders (cyl)"</span>,</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Mileage (mpg)"</span>) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
@@ -786,7 +906,7 @@ Attaching package: 'ggplot2'</code></pre>
 <h3 class="anchored" data-anchor-id="means-plot-across-one-category">Means Plot across one Category</h3>
 <p>Visualizing Means – mean plot showing the average weight of the cars, broken down by transmission (<code>am</code>= 0 or 1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'gplots'</code></pre>
@@ -796,14 +916,14 @@ Attaching package: 'gplots'</code></pre>
 
     lowess</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(<span class="at">data =</span> tb,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          mpg <span class="sc">~</span> cyl, </span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.labels =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">3</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Mean(mpg) by cyl = {4,6,8}"</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(<span class="at">data =</span> tb,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          mpg <span class="sc">~</span> cyl, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean.labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">3</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">main =</span> <span class="st">"Mean(mpg) by cyl = {4,6,8}"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
 </section>
@@ -811,91 +931,31 @@ Attaching package: 'gplots'</code></pre>
 <h3 class="anchored" data-anchor-id="means-plot-across-two-categories">Means Plot across two Categories</h3>
 <p>We show a mean plot showing the mean weight of the cars broken down by Transmission Type (<code>am</code>= 0 or 1) &amp; cylinders (<code>cyl</code> = 4,6,8).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(mpg <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (mpg) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average MPG"</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmeans</span>(mpg <span class="sc">~</span> <span class="fu">interaction</span>(am, cyl, <span class="at">sep =</span> <span class="st">", "</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>          , <span class="at">data =</span> mtcars</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>          , <span class="at">mean.labels =</span> <span class="cn">TRUE</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>          , <span class="at">digits=</span><span class="dv">2</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>          , <span class="at">connect =</span> <span class="cn">FALSE</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>          , <span class="at">main =</span> <span class="st">"Mean (mpg) by cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>          , <span class="at">xlab=</span> <span class="st">"cyl = {4,6,8} &amp; am = {0,1}"</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>          , <span class="at">ylab=</span><span class="st">"Average MPG"</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>          )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="768"></p>
+<p><img src="14ContinuousData03_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-</section>
-<section id="stem-and-leaf-plot-across-one-category" class="level3">
-<h3 class="anchored" data-anchor-id="stem-and-leaf-plot-across-one-category">Stem-and-Leaf Plot across one Category</h3>
-<ol type="1">
-<li>The provided R code first selects the <code>mpg</code> and <code>cyl</code> columns from <code>tb,</code> then it segments the data into groups based on <code>cyl</code> values, and lastly, it generates a stem-and-leaf plot for the <code>mpg</code> values in each separate group.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the 'select()' function from 'dplyr' to choose 'mpg' and 'cyl' columns from 'tb' tibble. Assign the result to 'tb3'.</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>tb3 <span class="ot">&lt;-</span> <span class="fu">select</span>(tb, mpg, cyl)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the 'tb3' tibble into subsets based on 'cyl'. Each subset consists of rows with the same 'cyl' value. Save the list of these subsets to 'tb_split'.</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>tb_split <span class="ot">&lt;-</span> <span class="fu">split</span>(tb3, tb3<span class="sc">$</span>cyl)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply a function to each subset of 'tb_split' using 'lapply()'. </span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The function takes a subset 'x' and creates a stem-and-leaf plot of the 'mpg' values in 'x'.</span></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(tb_split, </span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x) </span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>         <span class="fu">stem</span>(x<span class="sc">$</span>mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-  The decimal point is 1 digit(s) to the right of the |
-
-  2 | 12334
-  2 | 67
-  3 | 0024
-
-
-  The decimal point is at the |
-
-  17 | 8
-  18 | 1
-  19 | 27
-  20 | 
-  21 | 004
-
-
-  The decimal point is at the |
-
-  10 | 44
-  12 | 3
-  14 | 3702258
-  16 | 43
-  18 | 72</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$`4`
-NULL
-
-$`6`
-NULL
-
-$`8`
-NULL</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Discussion:</li>
-</ol>
-<ul>
-<li><p><code>tb3 &lt;- select(tb, mpg, cyl)</code>: In this line, we’re using the <code>select()</code> function from the <code>dplyr</code> package to pick out the <code>mpg</code> and <code>cyl</code> columns from the tibble <code>tb</code>. We then store this newly created subset of the original tibble into a new tibble <code>tb3</code>.</p></li>
-<li><p><code>tb_split &lt;- split(tb3, tb3$cyl)</code>: With the <code>split()</code> function, we’re segmenting the <code>tb3</code> tibble into subsets based on the <code>cyl</code> column. This action groups all rows with identical <code>cyl</code> values together into the same subset. We then store this list of new, smaller tibbles as <code>tb_split</code>.</p></li>
-<li><p><code>lapply(tb_split, function(x) stem(x$mpg))</code>: Here we employ the <code>lapply()</code> function to apply a specified function to each element within a list. The function we’ve elected to apply is <code>function(x) stem(x$mpg)</code>, which plots a stem-and-leaf display for the mpg column of each tibble <code>x</code> in <code>tb_split</code>. As <code>tb_split</code> is a list of tibbles that have been grouped according to <code>cyl</code> values, this step will generate a separate stem-and-leaf plot for each group of <code>cyl</code> values.</p></li>
-</ul>
 </section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<p>[1] R Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.</p>
+<p>[1] R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.</p>
 <p>Fox, J. and Weisberg, S. (2011). An R Companion to Applied Regression, Second Edition. Thousand Oaks CA: Sage.</p>
 <p>[2] Revelle, W. (2020). psych: Procedures for Psychological, Psychometric, and Personality Research. Northwestern University, Evanston, Illinois. R package version 2.0.9. https://CRAN.R-project.org/package=psych</p>
-<p>[10] Chambers, J. M., Freeny, A. E., &amp; Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp.&nbsp;145–193). Pacific Grove, CA: Wadsworth &amp; Brooks/Cole.</p>
+<p>[3] Chambers, J. M., Freeny, A. E., &amp; Heiberger, R. M. (1992). Analysis of variance; designed experiments. In Statistical Models in S (pp.&nbsp;145–193). Pacific Grove, CA: Wadsworth &amp; Brooks/Cole.</p>
+</section>
+<section id="appendix" class="level2">
+<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
 
 
 </section>
