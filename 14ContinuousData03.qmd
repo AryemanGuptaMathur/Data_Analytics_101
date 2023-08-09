@@ -388,38 +388,46 @@ polygon(dens_1, col = color_vector[2], border = "black")  # Fill under the curve
 
 ### Box Plots across one Category
 
-Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
+1. Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8)
 
 ```{r}
 boxplot(mpg~cyl,
         main = "Boxplot of Miles Per Gallon (mpg) by Cylinders",
-        ylab = "Cylinders (cyl)",
-        xlab = "Mileage (mpg)",
-        col = c("gold","skyblue","lightpink"),
+        ylab = "Mileage (mpg)",
+        xlab = "Cylinders (cyl)",
+        col = c("skyblue"),
+        horizontal = TRUE
+        )
+```
+2.  **Discussion**:
+
+
+
+3. Visualizing Median using Box Plot -- median weight of the cars broken down by cylinders (`cyl`=4,6,8) and Transmission (`am`=0,1)
+
+```{r}
+boxplot(mpg ~ cyl * am,
+        main = "Boxplot of Miles Per Gallon (mpg) by Cylinders and Transmission",
+        ylab = "Mileage (mpg)",
+        xlab = "Cylinders & Transmission (cyl:am)",
+        col = c("skyblue", "gold"), # added a second color for differentiation
         horizontal = TRUE
         )
 ```
 
-```{r}
-library(ggplot2)
-library(ggbeeswarm)
-# Create the beeswarm plot
-ggplot(tb, 
-       aes(x = cyl, 
-           y = mpg)) +
-  geom_beeswarm() +
-  labs(title = "Bee Swarm plot of Miles Per Gallon (mpg) by Cylinders",
-       x = "Cylinders (cyl)",
-       y = "Mileage (mpg)") +
-  theme_minimal() +
-  theme(panel.background = element_rect(fill = "lightblue"))
-```
+4.  **Discussion**:
+
+
+
+
+
+
 
 ### Means Plot across one Category
 
 Visualizing Means -- mean plot showing the average weight of the cars, broken down by transmission (`am`= 0 or 1)
 
-```{r}
+```{r, warn}
 library(gplots)
 plotmeans(data = tb,
           mpg ~ cyl, 
